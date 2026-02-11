@@ -1,0 +1,12 @@
+[
+  {
+    "id": "default-scene",
+    "title": "Default Scene Layer",
+    "importUrl": "https://raw.githubusercontent.com/urdf-studio/urdf-robot-gallery/main/docs/scenes/default.scene-layer.json",
+    "description": "Minimal floor + moving target marker. Works as a no-backend default scene for URDF Star.",
+    "owner": "urdf-studio",
+    "tags": ["default", "scene-layer", "starter"],
+    "runtimeTargets": ["link"],
+    "updatedAt": "2026-02-11T00:00:00Z"
+  }
+]

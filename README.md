@@ -26,6 +26,13 @@ Robot entries store the full URDF path in the `file` field to avoid filename col
 
 Metadata is stored in `docs/robots.meta.json` (version + counts).
 
+## Scene layers
+
+Shared scene links for URDF Star live in `docs/scenes/`.
+
+- `docs/scenes/index.json`: curated public scene list
+- `docs/scenes/*.scene-layer.json`: importable scene layer payloads
+
 ## Manifests
 
 Optional per-robot manifests live in `docs/manifests/<repoKey>/<fileBase>.json`.

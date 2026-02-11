@@ -1,0 +1,43 @@
+{
+  "scene": {
+    "objects": [
+      {
+        "id": "gallery-floor",
+        "type": "cube",
+        "position_xyz": [0, 0, -0.02],
+        "size_xyz": [1.5, 1.5, 0.04],
+        "color": "#1f2937",
+        "source": "user",
+        "tracked_joint_name": null,
+        "is_ik_target": false,
+        "ik_target_type": "punctual",
+        "orbit_radius": 0.3,
+        "orbit_inclination_deg": 45,
+        "orbit_phase_deg": 0,
+        "orbit_secondary_offset_deg": 180,
+        "orbit_target_point": "primary"
+      },
+      {
+        "id": "gallery-target",
+        "type": "point",
+        "position_xyz": [0.45, -0.12, 0.3],
+        "size_xyz": [0.04, 0.04, 0.04],
+        "color": "#f97316",
+        "source": "user",
+        "tracked_joint_name": null,
+        "is_ik_target": true,
+        "ik_target_type": "orbit",
+        "orbit_radius": 0.18,
+        "orbit_inclination_deg": 18,
+        "orbit_phase_deg": 12,
+        "orbit_secondary_offset_deg": 168,
+        "orbit_target_point": "center"
+      }
+    ],
+    "scenario_time_ms": 0,
+    "scenario_duration_ms": 12000
+  },
+  "environment": {
+    "preset": "default"
+  }
+}
