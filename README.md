@@ -7,6 +7,9 @@ This repository collects robot showcase submissions for URDF Studio.
 Use the submission form:
 https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=robot-repo-submission.yml
 
+For shared scenes, use:
+https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=scene-submission.yml
+
 Auto-ingest policy:
 - Auto-ingest runs only when the submitter has write access to the repo or is a URDF Studio maintainer. Otherwise, submissions are reviewed manually.
 - Repeated failed submissions (including missing URDFs) from the same author may be throttled and routed to manual review.
@@ -32,6 +35,7 @@ Shared scene links for URDF Star live in `docs/scenes/`.
 
 - `docs/scenes/index.json`: curated public scene list
 - `docs/scenes/*.scene-layer.json`: importable scene layer payloads
+- `docs/scenes.schema.json`: schema validated in CI (`npm run validate:scenes`)
 
 ## Manifests
 

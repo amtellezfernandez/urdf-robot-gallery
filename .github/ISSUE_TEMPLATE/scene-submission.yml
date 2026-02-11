@@ -1,0 +1,58 @@
+name: Scene Submission
+description: Submit a shared scene JSON for URDF Star.
+title: "scene-submission-request"
+labels:
+  - scene-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Auto-ingest runs only when the submitter has write access to this repo or is a URDF Studio maintainer.
+        Otherwise the submission is kept for manual review.
+  - type: input
+    id: scene_url
+    attributes:
+      label: Scene JSON URL
+      description: Public URL to an importable scene JSON (`.scene-layer.json` or compatible scene payload).
+      placeholder: https://raw.githubusercontent.com/urdf-studio/urdf-robot-gallery/main/docs/scenes/default.scene-layer.json
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Scene title
+      placeholder: Default Scene Layer
+    validations:
+      required: true
+  - type: input
+    id: scene_id
+    attributes:
+      label: Scene ID (optional)
+      description: Stable machine id (letters, numbers, dashes). Leave empty to auto-generate.
+      placeholder: default-scene
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (optional)
+      placeholder: Minimal floor + moving target marker.
+  - type: input
+    id: owner
+    attributes:
+      label: Owner (optional)
+      placeholder: urdf-studio
+  - type: input
+    id: tags
+    attributes:
+      label: Tags (optional)
+      description: Comma separated.
+      placeholder: default, scene-layer, starter
+  - type: input
+    id: runtime_targets
+    attributes:
+      label: Runtime targets (optional)
+      description: Comma separated. Default is `link`.
+      placeholder: link
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes (optional)

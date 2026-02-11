@@ -5,21 +5,29 @@ on:
     paths:
       - "docs/robots.json"
       - "docs/robots.schema.json"
+      - "docs/scenes/index.json"
+      - "docs/scenes.schema.json"
       - "docs/tags.json"
       - "docs/previews.json"
       - "docs/previews.schema.json"
+      - "tools/validate-scenes.mjs"
       - "tools/validate-robots.mjs"
       - "tools/validate-previews.mjs"
+      - "package.json"
   push:
     branches: [main]
     paths:
       - "docs/robots.json"
       - "docs/robots.schema.json"
+      - "docs/scenes/index.json"
+      - "docs/scenes.schema.json"
       - "docs/tags.json"
       - "docs/previews.json"
       - "docs/previews.schema.json"
+      - "tools/validate-scenes.mjs"
       - "tools/validate-robots.mjs"
       - "tools/validate-previews.mjs"
+      - "package.json"
 
 jobs:
   validate:
@@ -41,3 +49,6 @@ jobs:
 
       - name: Validate previews.json
         run: npm run validate:previews
+
+      - name: Validate scenes index
+        run: npm run validate:scenes
