@@ -3,7 +3,7 @@
 import fs from "node:fs/promises";
 import fsSync from "node:fs";
 import path from "node:path";
-import Ajv from "ajv";
+import Ajv2020 from "ajv/dist/2020.js";
 
 const ROOT = path.resolve();
 const PREVIEWS_PATH = path.join(ROOT, "docs", "previews.json");
@@ -19,7 +19,7 @@ const normalizePath = (value) => value.replace(/^\/+/, "");
 const main = async () => {
   const [previews, schema] = await Promise.all([readJson(PREVIEWS_PATH), readJson(SCHEMA_PATH)]);
 
-  const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
+  const ajv = new Ajv2020({ allErrors: true, allowUnionTypes: true });
   const validate = ajv.compile(schema);
   if (!validate(previews)) {
     console.error("[validate-previews] Schema validation failed.");
