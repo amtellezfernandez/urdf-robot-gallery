@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-21T22:31:13.000Z",
+  "generatedAt": "2026-02-21T22:34:58.632Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -27,6 +27,24 @@
       "fileBase": "alex_nub_hands--123jyoy",
       "webp": "previews/gepetto/example-robot-data/alex_nub_hands--123jyoy.webp",
       "png": "thumbnails/gepetto/example-robot-data/alex_nub_hands--123jyoy.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "alexander_v1.lowerbodyonly--7h4ydq",
+      "webp": "previews/gepetto/example-robot-data/alexander_v1.lowerbodyonly--7h4ydq.webp",
+      "png": "thumbnails/gepetto/example-robot-data/alexander_v1.lowerbodyonly--7h4ydq.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "allegro_left_hand--10f1huf",
+      "webp": "previews/gepetto/example-robot-data/allegro_left_hand--10f1huf.webp",
+      "png": "thumbnails/gepetto/example-robot-data/allegro_left_hand--10f1huf.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "allegro_right_hand--exfv92",
+      "webp": "previews/gepetto/example-robot-data/allegro_right_hand--exfv92.webp",
+      "png": "thumbnails/gepetto/example-robot-data/allegro_right_hand--exfv92.png"
     },
     {
       "repoKey": "robotis-git/turtlebot3",
