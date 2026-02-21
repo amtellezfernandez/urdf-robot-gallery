@@ -641,34 +641,6 @@
     "updatedAt": "2026-02-21T17:30:34.614Z"
   },
   {
-    "repo": "https://github.com/ianathompson/eDO_description",
-    "repoKey": "ianathompson/edo_description",
-    "org": "Comau",
-    "summary": "",
-    "demo": "",
-    "tags": [],
-    "robots": [
-      {
-        "name": "e.DO",
-        "file": "edo_sim.urdf",
-        "fileBase": "edo_sim--1t70ypx"
-      },
-      {
-        "name": "edo_sim",
-        "file": "edo_sim.urdf",
-        "fileBase": "edo_sim--1t70ypx"
-      }
-    ],
-    "hfDatasets": [],
-    "authorWebsite": "",
-    "authorX": "",
-    "authorLinkedin": "",
-    "authorGithub": "",
-    "contact": "",
-    "extra": "",
-    "updatedAt": "2026-02-21T10:26:02.035Z"
-  },
-  {
     "repo": "https://github.com/ANYbotics/anymal_c_simple_description",
     "repoKey": "anybotics/anymal_c_simple_description",
     "org": "",
