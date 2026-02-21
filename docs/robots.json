@@ -1,5 +1,233 @@
 [
   {
+    "repo": "https://github.com/frankarobotics/franka_description",
+    "repoKey": "frankarobotics/franka_description",
+    "org": "Franka Robotics",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "cobot_pump",
+        "file": "cobot_pump.urdf.xacro",
+        "fileBase": "cobot_pump--1ets0gi"
+      },
+      {
+        "name": "cobot_pump_arguments",
+        "file": "cobot_pump_arguments.xacro",
+        "fileBase": "cobot_pump_arguments--1cbeait"
+      },
+      {
+        "name": "ee_with_one_link",
+        "file": "ee_with_one_link.xacro",
+        "fileBase": "ee_with_one_link--1cfmow8"
+      },
+      {
+        "name": "franka_hand",
+        "file": "franka_hand.xacro",
+        "fileBase": "franka_hand--1l3pvd6"
+      },
+      {
+        "name": "utils",
+        "file": "utils.xacro",
+        "fileBase": "utils--holcvq"
+      },
+      {
+        "name": "franka_hand.srdf",
+        "file": "franka_hand.srdf.xacro",
+        "fileBase": "franka_hand.srdf--19d90id"
+      },
+      {
+        "name": "franka_hand",
+        "file": "franka_hand.urdf.xacro",
+        "fileBase": "franka_hand--11ly9p0"
+      },
+      {
+        "name": "franka_hand_arguments",
+        "file": "franka_hand_arguments.xacro",
+        "fileBase": "franka_hand_arguments--70ha4j"
+      },
+      {
+        "name": "franka_arm.ros2_control",
+        "file": "franka_arm.ros2_control.xacro",
+        "fileBase": "franka_arm.ros2_control--19kg6lj"
+      },
+      {
+        "name": "franka_arm.srdf",
+        "file": "franka_arm.srdf.xacro",
+        "fileBase": "franka_arm.srdf--4xv618"
+      },
+      {
+        "name": "franka_arm",
+        "file": "franka_arm.xacro",
+        "fileBase": "franka_arm--nqfccb"
+      },
+      {
+        "name": "franka_robot",
+        "file": "franka_robot.xacro",
+        "fileBase": "franka_robot--o0vk8h"
+      },
+      {
+        "name": "group_definition",
+        "file": "group_definition.xacro",
+        "fileBase": "group_definition--ap0op8"
+      },
+      {
+        "name": "utils",
+        "file": "utils.xacro",
+        "fileBase": "utils--1kine0e"
+      },
+      {
+        "name": "fer.srdf",
+        "file": "fer.srdf.xacro",
+        "fileBase": "fer.srdf--1yli12l"
+      },
+      {
+        "name": "fer",
+        "file": "fer.urdf.xacro",
+        "fileBase": "fer--k8n88c"
+      },
+      {
+        "name": "fp3.srdf",
+        "file": "fp3.srdf.xacro",
+        "fileBase": "fp3.srdf--1dnixgl"
+      },
+      {
+        "name": "fp3",
+        "file": "fp3.urdf.xacro",
+        "fileBase": "fp3--ngar44"
+      },
+      {
+        "name": "fr3.srdf",
+        "file": "fr3.srdf.xacro",
+        "fileBase": "fr3.srdf--m0l7e9"
+      },
+      {
+        "name": "fr3",
+        "file": "fr3.urdf.xacro",
+        "fileBase": "fr3--kpwrww"
+      },
+      {
+        "name": "fr3_duo.srdf",
+        "file": "fr3_duo.srdf.xacro",
+        "fileBase": "fr3_duo.srdf--1t339fl"
+      },
+      {
+        "name": "fr3_duo",
+        "file": "fr3_duo.urdf.xacro",
+        "fileBase": "fr3_duo--lbodkw"
+      },
+      {
+        "name": "fr3_duo_arm",
+        "file": "fr3_duo_arm.urdf.xacro",
+        "fileBase": "fr3_duo_arm--1i0f2d9"
+      },
+      {
+        "name": "fr3_duo_fixed_structure",
+        "file": "fr3_duo_fixed_structure.urdf.xacro",
+        "fileBase": "fr3_duo_fixed_structure--1d2htz7"
+      },
+      {
+        "name": "fr3_duo_mount",
+        "file": "fr3_duo_mount.xacro",
+        "fileBase": "fr3_duo_mount--kl8rd9"
+      },
+      {
+        "name": "fr3v2.srdf",
+        "file": "fr3v2.srdf.xacro",
+        "fileBase": "fr3v2.srdf--o7s34p"
+      },
+      {
+        "name": "fr3v2",
+        "file": "fr3v2.urdf.xacro",
+        "fileBase": "fr3v2--1uqycvs"
+      },
+      {
+        "name": "fr3v2_1.srdf",
+        "file": "fr3v2_1.srdf.xacro",
+        "fileBase": "fr3v2_1.srdf--1xq7c99"
+      },
+      {
+        "name": "fr3v2_1",
+        "file": "fr3v2_1.urdf.xacro",
+        "fileBase": "fr3v2_1--w0xtcc"
+      },
+      {
+        "name": "mobile_fr3_duo_v0_2",
+        "file": "mobile_fr3_duo_v0_2.urdf.xacro",
+        "fileBase": "mobile_fr3_duo_v0_2--wfipfg"
+      },
+      {
+        "name": "argo_drive",
+        "file": "argo_drive.xacro",
+        "fileBase": "argo_drive--17j9fj2"
+      },
+      {
+        "name": "caster_wheel",
+        "file": "caster_wheel.xacro",
+        "fileBase": "caster_wheel--tntaig"
+      },
+      {
+        "name": "inertia",
+        "file": "inertia.xacro",
+        "fileBase": "inertia--pn0edi"
+      },
+      {
+        "name": "lidar",
+        "file": "lidar.xacro",
+        "fileBase": "lidar--1q2jf12"
+      },
+      {
+        "name": "common",
+        "file": "common.xacro",
+        "fileBase": "common--smxi7o"
+      },
+      {
+        "name": "nanoscan3",
+        "file": "nanoscan3.urdf.xacro",
+        "fileBase": "nanoscan3--1f9zha7"
+      },
+      {
+        "name": "gazebo_macro",
+        "file": "gazebo_macro.xacro",
+        "fileBase": "gazebo_macro--z2hnp5"
+      },
+      {
+        "name": "nanoscan3_macro",
+        "file": "nanoscan3_macro.xacro",
+        "fileBase": "nanoscan3_macro--1de84mj"
+      },
+      {
+        "name": "rocker_arm",
+        "file": "rocker_arm.xacro",
+        "fileBase": "rocker_arm--1dxyftb"
+      },
+      {
+        "name": "tmrv0_2.ros2_control",
+        "file": "tmrv0_2.ros2_control.xacro",
+        "fileBase": "tmrv0_2.ros2_control--z3lr76"
+      },
+      {
+        "name": "tmrv0_2",
+        "file": "tmrv0_2.urdf.xacro",
+        "fileBase": "tmrv0_2--a198p0"
+      },
+      {
+        "name": "tmrv0_2",
+        "file": "tmrv0_2.xacro",
+        "fileBase": "tmrv0_2--a198p0"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-21T17:30:34.614Z"
+  },
+  {
     "repo": "https://github.com/ianathompson/eDO_description",
     "repoKey": "ianathompson/edo_description",
     "org": "Comau",
