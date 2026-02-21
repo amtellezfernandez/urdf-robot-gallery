@@ -10,9 +10,12 @@ on:
       - "docs/tags.json"
       - "docs/previews.json"
       - "docs/previews.schema.json"
+      - "docs/previews/**"
+      - "docs/thumbnails/**"
       - "tools/validate-scenes.mjs"
       - "tools/validate-robots.mjs"
       - "tools/validate-previews.mjs"
+      - "tools/validate-preview-media.mjs"
       - "package.json"
   push:
     branches: [main]
@@ -24,9 +27,12 @@ on:
       - "docs/tags.json"
       - "docs/previews.json"
       - "docs/previews.schema.json"
+      - "docs/previews/**"
+      - "docs/thumbnails/**"
       - "tools/validate-scenes.mjs"
       - "tools/validate-robots.mjs"
       - "tools/validate-previews.mjs"
+      - "tools/validate-preview-media.mjs"
       - "package.json"
 
 jobs:
@@ -49,6 +55,9 @@ jobs:
 
       - name: Validate previews.json
         run: npm run validate:previews
+
+      - name: Audit preview media contract
+        run: npm run validate:preview-media
 
       - name: Validate scenes index
         run: npm run validate:scenes

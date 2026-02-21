@@ -6,6 +6,7 @@
     "render-thumbnails": "node tools/render-thumbnails.mjs",
     "validate:robots": "node tools/validate-robots.mjs",
     "validate:previews": "node tools/validate-previews.mjs",
+    "validate:preview-media": "node tools/validate-preview-media.mjs",
     "validate:scenes": "node tools/validate-scenes.mjs",
     "generate:manifests": "node tools/generate-manifests.mjs",
     "cleanup:previews": "node tools/cleanup-previews.mjs",

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from "node:fs/promises";
+import fsSync from "node:fs";
 import path from "node:path";
 import Ajv from "ajv";
 
@@ -56,6 +57,11 @@ const main = async () => {
       const expected = `${folder}/${repoKey}/${fileBase}.${ext}`;
       if (normalized !== expected) {
         errors.push(`Entry ${key}: ${field} should be "${expected}", got "${value}".`);
+      }
+
+      const absolutePath = path.join(ROOT, "docs", normalized);
+      if (!fsSync.existsSync(absolutePath)) {
+        errors.push(`Entry ${key}: ${field} file is missing at "${normalized}".`);
       }
     }
   }

@@ -9,8 +9,10 @@ const ROBOTS_JSON = path.join(ROOT, "docs", "robots.json");
 const OUTPUT_ROOT = path.join(ROOT, "docs", "thumbnails");
 const STUDIO_URL = (process.env.URDF_STUDIO_URL || "http://localhost:5173/").replace(/\/+$/, "/");
 const VIEWPORT = 256;
-const THUMBNAIL_BACKGROUND = process.env.URDF_THUMB_BG || "#2b2b2b";
+const THUMBNAIL_BACKGROUND = process.env.URDF_THUMB_BG || "transparent";
 const THUMBNAIL_TIMEOUT_MS = Math.max(30000, Number(process.env.URDF_THUMB_TIMEOUT_MS || 240000));
+const USE_TRANSPARENT_BACKGROUND =
+  THUMBNAIL_BACKGROUND === "transparent" || THUMBNAIL_BACKGROUND === "none";
 
 const args = process.argv.slice(2);
 const getArg = (name) => {
@@ -22,6 +24,29 @@ const getArg = (name) => {
 const repoFilter = getArg("--repo");
 const limit = Number(getArg("--limit") || 0);
 const force = args.includes("--force");
+const allowOpaque = args.includes("--allow-opaque");
+
+const PNG_SIGNATURE = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+
+const readPngColorType = async (filePath) => {
+  const buffer = await fs.readFile(filePath);
+  if (buffer.length < 33 || !buffer.subarray(0, 8).equals(PNG_SIGNATURE)) {
+    throw new Error("Invalid PNG signature");
+  }
+
+  const ihdrLength = buffer.readUInt32BE(8);
+  const ihdrType = buffer.subarray(12, 16).toString("ascii");
+  if (ihdrType !== "IHDR" || ihdrLength < 13) {
+    throw new Error("Invalid PNG IHDR chunk");
+  }
+
+  return buffer.readUInt8(25);
+};
+
+const pngHasAlphaChannel = async (filePath) => {
+  const colorType = await readPngColorType(filePath);
+  return colorType === 4 || colorType === 6;
+};
 
 const slugify = (value) =>
   value
@@ -143,15 +168,29 @@ const run = async () => {
       if (!canvas) {
         throw new Error("Thumbnail canvas not found");
       }
-      await page.evaluate((bg) => {
+      await page.evaluate((bg, transparent) => {
         const canvasEl = document.getElementById("urdf-thumb-canvas");
         if (canvasEl instanceof HTMLCanvasElement) {
-          canvasEl.style.background = bg;
+          canvasEl.style.background = transparent ? "transparent" : bg;
         }
-        document.body.style.background = bg;
-      }, THUMBNAIL_BACKGROUND);
+        document.body.style.background = transparent ? "transparent" : bg;
+      }, THUMBNAIL_BACKGROUND, USE_TRANSPARENT_BACKGROUND);
       await ensureDir(outDir);
-      await canvas.screenshot({ path: outFile, omitBackground: false });
+      await canvas.screenshot({
+        path: outFile,
+        omitBackground: USE_TRANSPARENT_BACKGROUND,
+      });
+
+      if (USE_TRANSPARENT_BACKGROUND && !allowOpaque) {
+        const hasAlpha = await pngHasAlphaChannel(outFile);
+        if (!hasAlpha) {
+          await fs.rm(outFile, { force: true });
+          throw new Error(
+            "Rendered thumbnail is opaque (no alpha). Run with --allow-opaque to bypass."
+          );
+        }
+      }
+
       completed += 1;
       console.log(`done ${task.repoKey}/${task.baseName}`);
     } catch (error) {
