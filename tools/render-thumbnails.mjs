@@ -122,12 +122,15 @@ const run = async () => {
     }
 
     const page = await context.newPage();
+    page.setDefaultTimeout(120000);
     const url = `${STUDIO_URL}?thumbnail=1&github=${encodeURIComponent(task.repoUrl)}&urdf=${encodeURIComponent(task.fileTarget)}`;
     try {
       await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
-      await page.waitForFunction(() => window.__URDF_THUMB_READY__ === true, {
-        timeout: 120000,
-      });
+      await page.waitForFunction(
+        () => window.__URDF_THUMB_READY__ === true,
+        undefined,
+        { timeout: 120000 }
+      );
       const error = await page.evaluate(() => window.__URDF_THUMB_ERROR__ || "");
       if (error) {
         throw new Error(error);
