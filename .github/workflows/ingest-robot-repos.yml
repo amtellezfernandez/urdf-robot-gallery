@@ -615,8 +615,12 @@ jobs:
                 const baseName = stripSupportedRobotExtension(actualPath.split("/").pop() || actualPath);
                 const name = (robot.name || baseName).trim();
                 const fileName = actualPath.split("/").pop() || actualPath;
-                mappedRobots.push({ name, file: fileName, fileBase: toPreviewBase(actualPath) });
+                const fileBase = toPreviewBase(actualPath);
+                mappedRobots.push({ name, file: fileName, fileBase });
+                // Track both full path and basename to avoid duplicate mapped/detected entries.
                 mappedFileKeys.add(actualPath.toLowerCase());
+                mappedFileKeys.add(fileName.toLowerCase());
+                mappedFileKeys.add(fileBase.toLowerCase());
               }
             }
             const detectedRobots = urdfFiles.map((filePath) => ({
@@ -624,15 +628,24 @@ jobs:
               file: filePath.split("/").pop() || filePath,
               fileBase: toPreviewBase(filePath),
             }));
-            const robots =
+            const robotsRaw =
               mapping.length > 0
                 ? [
                     ...mappedRobots,
                     ...detectedRobots.filter(
-                      (robot) => !mappedFileKeys.has(robot.file.toLowerCase())
+                      (robot) =>
+                        !mappedFileKeys.has((robot.file || "").toLowerCase()) &&
+                        !mappedFileKeys.has((robot.fileBase || "").toLowerCase())
                     ),
                   ]
                 : detectedRobots;
+            const seenRobotKeys = new Set();
+            const robots = robotsRaw.filter((robot) => {
+              const dedupeKey = (robot.fileBase || robot.file || "").toLowerCase();
+              if (!dedupeKey || seenRobotKeys.has(dedupeKey)) return false;
+              seenRobotKeys.add(dedupeKey);
+              return true;
+            });
 
             const entry = {
               repo: `https://github.com/${owner}/${repo}`,
