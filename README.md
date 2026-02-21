@@ -13,7 +13,7 @@ https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=scene-subm
 Auto-ingest policy:
 - Auto-ingest runs only when the submitter has write access to the repo or is a URDF Studio maintainer. Otherwise, submissions are reviewed manually.
 - Repeated failed submissions (including missing URDFs) from the same author may be throttled and routed to manual review.
-- If no URDF files are detected in the repo, the entry is not added.
+- If no URDF/Xacro files are detected in the repo, the entry is not added.
 - Issue titles are updated automatically to include the repo name for easier tracking.
 
 ## Tag taxonomy

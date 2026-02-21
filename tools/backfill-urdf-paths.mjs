@@ -41,10 +41,29 @@ const concurrency = Math.max(1, Number(args.get("concurrency") || 2));
 const maxRetries = Math.max(0, Number(args.get("retries") || 3));
 const retryDelayMs = Math.max(250, Number(args.get("retry-delay-ms") || 1000));
 const metaPath = path.join(ROOT, "docs", "robots.meta.json");
+const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
+
+const hasSupportedRobotExtension = (value) => {
+  const normalized = String(value || "").toLowerCase();
+  return SUPPORTED_ROBOT_EXTENSIONS.some((ext) => normalized.endsWith(ext));
+};
+
+const stripSupportedRobotExtension = (value) => {
+  const normalized = String(value || "");
+  const lowered = normalized.toLowerCase();
+  for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
+    if (lowered.endsWith(ext)) {
+      return normalized.slice(0, normalized.length - ext.length);
+    }
+  }
+  return normalized;
+};
 
 const slugify = (value) =>
   value
     .trim()
+    .replace(/\.urdf\.xacro$/i, "")
+    .replace(/\.xacro$/i, "")
     .replace(/\.urdf$/i, "")
     .replace(/[^a-zA-Z0-9._-]+/g, "-")
     .replace(/-+/g, "-")
@@ -61,7 +80,7 @@ const hashString = (value) => {
 };
 
 const toPreviewBase = (value) => {
-  const normalized = value.replace(/\\/g, "/").replace(/\.urdf$/i, "");
+  const normalized = stripSupportedRobotExtension(value.replace(/\\/g, "/"));
   const name = normalized.split("/").pop() || normalized;
   const slug = slugify(name) || "robot";
   return `${slug}--${hashString(normalized)}`;
@@ -215,7 +234,7 @@ const main = async () => {
         repoKey,
         reason: `repo fetch failed: ${error.message}`,
       });
-      continue;
+      return;
     }
 
     const branch = repoData.default_branch || "main";
@@ -230,7 +249,7 @@ const main = async () => {
         repoKey,
         reason: `tree fetch failed: ${error.message}`,
       });
-      continue;
+      return;
     }
 
     if (treeData.truncated) {
@@ -251,7 +270,7 @@ const main = async () => {
       ? treePaths.map((p) => `${normalizedPath}/${p}`)
       : treePaths;
 
-    const urdfPaths = normalizedTreePaths.filter((p) => p.toLowerCase().endsWith(".urdf"));
+    const urdfPaths = normalizedTreePaths.filter((p) => hasSupportedRobotExtension(p));
     const urdfByName = new Map();
     const urdfByPath = new Map();
     for (const p of urdfPaths) {
@@ -277,7 +296,7 @@ const main = async () => {
       const resolved = candidate || raw;
       const fileName = path.posix.basename(resolved);
       const fileBase = toPreviewBase(resolved);
-      const name = !isString && robot?.name ? robot.name : fileName.replace(/\.urdf$/i, "");
+      const name = !isString && robot?.name ? robot.name : stripSupportedRobotExtension(fileName);
       const prevFile = isString ? raw : robot.file || "";
       const prevBase = isString ? "" : robot.fileBase || "";
       if (isString || prevFile !== fileName || prevBase !== fileBase) {

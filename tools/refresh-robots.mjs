@@ -39,6 +39,23 @@ const reportPath = args.get("report") || path.join(ROOT, "docs", "refresh-report
 const concurrency = Math.max(1, Number(args.get("concurrency") || 2));
 const maxRetries = Math.max(0, Number(args.get("retries") || 3));
 const retryDelayMs = Math.max(250, Number(args.get("retry-delay-ms") || 1000));
+const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
+
+const hasSupportedRobotExtension = (value) => {
+  const normalized = String(value || "").toLowerCase();
+  return SUPPORTED_ROBOT_EXTENSIONS.some((ext) => normalized.endsWith(ext));
+};
+
+const stripSupportedRobotExtension = (value) => {
+  const normalized = String(value || "");
+  const lowered = normalized.toLowerCase();
+  for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
+    if (lowered.endsWith(ext)) {
+      return normalized.slice(0, normalized.length - ext.length);
+    }
+  }
+  return normalized;
+};
 
 const normalizeRepoKey = (value) =>
   value
@@ -77,6 +94,8 @@ const pickBestPath = (paths, preferredPrefix, originalPath) => {
 const slugify = (value) =>
   value
     .trim()
+    .replace(/\.urdf\.xacro$/i, "")
+    .replace(/\.xacro$/i, "")
     .replace(/\.urdf$/i, "")
     .replace(/[^a-zA-Z0-9._-]+/g, "-")
     .replace(/-+/g, "-")
@@ -93,7 +112,7 @@ const hashString = (value) => {
 };
 
 const toPreviewBase = (value) => {
-  const normalized = value.replace(/\\/g, "/").replace(/\.urdf$/i, "");
+  const normalized = stripSupportedRobotExtension(value.replace(/\\/g, "/"));
   const name = normalized.split("/").pop() || normalized;
   const slug = slugify(name) || "robot";
   return `${slug}--${hashString(normalized)}`;
@@ -237,7 +256,7 @@ const main = async () => {
       ? treePaths.map((p) => `${normalizedPath}/${p}`)
       : treePaths;
 
-    const urdfPaths = normalizedTreePaths.filter((p) => p.toLowerCase().endsWith(".urdf"));
+    const urdfPaths = normalizedTreePaths.filter((p) => hasSupportedRobotExtension(p));
     if (urdfPaths.length === 0) {
       report.removedRepos.push(repoKey);
       return { keep: false };
@@ -274,7 +293,7 @@ const main = async () => {
       matchedPaths.add(candidate.toLowerCase());
       const fileName = path.posix.basename(candidate);
       const fileBase = toPreviewBase(candidate);
-      const name = !isString && robot?.name ? robot.name : fileName.replace(/\.urdf$/i, "");
+      const name = !isString && robot?.name ? robot.name : stripSupportedRobotExtension(fileName);
       updatedRobots.push({
         ...(isString ? {} : robot),
         name,
@@ -289,7 +308,7 @@ const main = async () => {
     for (const extra of sortedExtra) {
       const fileName = path.posix.basename(extra);
       updatedRobots.push({
-        name: fileName.replace(/\.urdf$/i, ""),
+        name: stripSupportedRobotExtension(fileName),
         file: fileName,
         fileBase: toPreviewBase(extra),
       });

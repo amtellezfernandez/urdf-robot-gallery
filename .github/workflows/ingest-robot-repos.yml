@@ -238,9 +238,29 @@ jobs:
                 .filter(Boolean);
             };
 
+            const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
+
+            const isSupportedRobotFile = (value) => {
+              const normalized = String(value || "").toLowerCase();
+              return SUPPORTED_ROBOT_EXTENSIONS.some((ext) => normalized.endsWith(ext));
+            };
+
+            const stripSupportedRobotExtension = (value) => {
+              const normalized = String(value || "");
+              const lowered = normalized.toLowerCase();
+              for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
+                if (lowered.endsWith(ext)) {
+                  return normalized.slice(0, normalized.length - ext.length);
+                }
+              }
+              return normalized;
+            };
+
             const slugify = (value) =>
               value
                 .trim()
+                .replace(/\.urdf\.xacro$/i, "")
+                .replace(/\.xacro$/i, "")
                 .replace(/\.urdf$/i, "")
                 .replace(/[^a-zA-Z0-9._-]+/g, "-")
                 .replace(/-+/g, "-")
@@ -257,7 +277,7 @@ jobs:
             };
 
             const toPreviewBase = (value) => {
-              const normalized = value.replace(/\\/g, "/").replace(/\.urdf$/i, "");
+              const normalized = stripSupportedRobotExtension(value.replace(/\\/g, "/"));
               const name = normalized.split("/").pop() || normalized;
               const slug = slugify(name) || "robot";
               return `${slug}--${hashString(normalized)}`;
@@ -301,7 +321,7 @@ jobs:
                 if (!name && !file) continue;
                 if (file) {
                   const fileName = file.split("/").pop() || file;
-                  robots.push({ name: name || fileName.replace(/\.urdf$/i, ""), file: fileName });
+                  robots.push({ name: name || stripSupportedRobotExtension(fileName), file: fileName });
                 } else {
                   robots.push({ name });
                 }
@@ -510,23 +530,22 @@ jobs:
                   )
                 : tree;
             const urdfFiles = normalizedTree
-              .filter((entry) => entry.type === "blob" && entry.path.toLowerCase().endsWith(".urdf"))
+              .filter((entry) => entry.type === "blob" && isSupportedRobotFile(entry.path))
               .map((entry) => entry.path);
             if (urdfFiles.length === 0) {
-              const altFormats = [".xacro", ".sdf", ".mjcf", ".xml", ".urdf.xacro"];
+              const altFormats = [".sdf", ".mjcf", ".xml"];
               const foundAlt = normalizedTree
                 .filter((entry) => entry.type === "blob")
                 .map((entry) => entry.path.toLowerCase())
                 .filter((path) => altFormats.some((ext) => path.endsWith(ext)));
               const altHint = foundAlt.length
-                ? `Detected non-URDF files: ${foundAlt.slice(0, 5).join(", ")}. `
+                ? `Detected non-URDF/Xacro files: ${foundAlt.slice(0, 5).join(", ")}. `
                 : "";
               await ensureComment(
-                "Auto-ingest: no .urdf files were detected",
-                `Auto-ingest: no .urdf files were detected in ${owner}/${repo}. ` +
+                "Auto-ingest: no .urdf/.xacro files were detected",
+                `Auto-ingest: no .urdf/.xacro files were detected in ${owner}/${repo}. ` +
                   altHint +
-                  "If your robot uses another format, support is coming. " +
-                  "Please add a URDF or point to the correct path and re-open this issue."
+                  "Please add a URDF/Xacro or point to the correct path and re-open this issue."
               );
               return;
             }
@@ -574,11 +593,24 @@ jobs:
               for (const robot of mapping) {
                 const rawFile = (robot.file || "").trim();
                 if (!rawFile) continue;
-                const candidate = rawFile.toLowerCase().endsWith(".urdf") ? rawFile : `${rawFile}.urdf`;
-                const key = candidate.toLowerCase();
-                const actualPath = pickBestPath(urdfFileNameMap.get(key));
+                const rawLower = rawFile.toLowerCase();
+                const candidateKeys = new Set();
+                const addCandidate = (value) => {
+                  const fileName = (value.split("/").pop() || value).toLowerCase();
+                  if (fileName) candidateKeys.add(fileName);
+                };
+                if (isSupportedRobotFile(rawFile)) addCandidate(rawLower);
+                addCandidate(rawLower);
+                for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
+                  addCandidate(`${rawLower}${ext}`);
+                }
+                let actualPath = "";
+                for (const key of candidateKeys) {
+                  actualPath = pickBestPath(urdfFileNameMap.get(key));
+                  if (actualPath) break;
+                }
                 if (!actualPath) continue;
-                const baseName = (actualPath.split("/").pop() || actualPath).replace(/\.urdf$/i, "");
+                const baseName = stripSupportedRobotExtension(actualPath.split("/").pop() || actualPath);
                 const name = (robot.name || baseName).trim();
                 const fileName = actualPath.split("/").pop() || actualPath;
                 mappedRobots.push({ name, file: fileName, fileBase: toPreviewBase(actualPath) });
@@ -586,7 +618,7 @@ jobs:
               }
             }
             const detectedRobots = urdfFiles.map((filePath) => ({
-              name: (filePath.split("/").pop() || filePath).replace(/\.urdf$/i, ""),
+              name: stripSupportedRobotExtension(filePath.split("/").pop() || filePath),
               file: filePath.split("/").pop() || filePath,
               fileBase: toPreviewBase(filePath),
             }));
