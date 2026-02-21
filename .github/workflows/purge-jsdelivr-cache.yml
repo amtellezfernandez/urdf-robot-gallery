@@ -1,0 +1,93 @@
+name: Purge jsDelivr cache
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/thumbnails/**"
+      - "docs/previews/**"
+      - "docs/manifests/**"
+      - "docs/scenes/**"
+      - "docs/robots.json"
+      - "docs/robots.meta.json"
+      - "docs/previews.json"
+      - "docs/tags.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Purge changed docs assets from jsDelivr
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          list_changed_files() {
+            local before="$1"
+            local after="$2"
+            if [[ -n "$before" && "$before" != "0000000000000000000000000000000000000000" ]]; then
+              git diff --name-only "$before" "$after"
+            else
+              git show --name-only --pretty='' "$after"
+            fi
+          }
+
+          mapfile -t changed < <(list_changed_files "$BEFORE_SHA" "$AFTER_SHA" | sort -u)
+          if [[ ${#changed[@]} -eq 0 ]]; then
+            echo "No changed files in push range."
+            exit 0
+          fi
+
+          should_purge() {
+            local path="$1"
+            [[ "$path" == docs/thumbnails/* ]] ||
+            [[ "$path" == docs/previews/* ]] ||
+            [[ "$path" == docs/manifests/* ]] ||
+            [[ "$path" == docs/scenes/* ]] ||
+            [[ "$path" == docs/robots.json ]] ||
+            [[ "$path" == docs/robots.meta.json ]] ||
+            [[ "$path" == docs/previews.json ]] ||
+            [[ "$path" == docs/tags.json ]]
+          }
+
+          purged=0
+          for path in "${changed[@]}"; do
+            if ! should_purge "$path"; then
+              continue
+            fi
+
+            purge_url="https://purge.jsdelivr.net/gh/${REPO}@main/${path}"
+            echo "Purging ${path}"
+
+            ok=0
+            for attempt in 1 2 3; do
+              if curl -fsS "$purge_url" >/dev/null; then
+                ok=1
+                break
+              fi
+              sleep $((attempt * 2))
+            done
+
+            if [[ "$ok" -ne 1 ]]; then
+              echo "Failed to purge ${path}"
+              exit 1
+            fi
+
+            purged=$((purged + 1))
+            sleep 0.2
+          done
+
+          echo "Purged ${purged} path(s)."

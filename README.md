@@ -106,3 +106,8 @@ gh workflow run ingest-robot-repos.yml -R urdf-studio/urdf-robot-gallery -f issu
 ## Where the gallery is displayed
 
 The public gallery is displayed on https://www.urdfstudio.com (not via GitHub Pages).
+
+## CDN cache refresh
+
+When `docs/` gallery assets change on `main` (thumbnails, previews, manifests, scenes, and key json indexes),
+GitHub Actions now automatically purges the matching jsDelivr cache paths so updates become visible without manual purge.
