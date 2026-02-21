@@ -14,6 +14,7 @@ Auto-ingest policy:
 - Auto-ingest runs only when the submitter has write access to the repo or is a URDF Studio maintainer. Otherwise, submissions are reviewed manually.
 - Repeated failed submissions (including missing URDFs) from the same author may be throttled and routed to manual review.
 - If no URDF/Xacro files are detected in the repo, the entry is not added.
+  Mesh assets (`.stl`, `.dae`, `.obj`, etc.) are supported, but they must be referenced by a URDF/Xacro root file.
 - Issue titles are updated automatically to include the repo name for easier tracking.
 
 ## Tag taxonomy

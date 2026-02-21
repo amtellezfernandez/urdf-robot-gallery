@@ -9,6 +9,7 @@ const ROBOTS_JSON = path.join(ROOT, "docs", "robots.json");
 const OUTPUT_ROOT = path.join(ROOT, "docs", "thumbnails");
 const STUDIO_URL = (process.env.URDF_STUDIO_URL || "http://localhost:5173/").replace(/\/+$/, "/");
 const VIEWPORT = 256;
+const THUMBNAIL_BACKGROUND = process.env.URDF_THUMB_BG || "#2b2b2b";
 
 const args = process.argv.slice(2);
 const getArg = (name) => {
@@ -135,8 +136,15 @@ const run = async () => {
       if (!canvas) {
         throw new Error("Thumbnail canvas not found");
       }
+      await page.evaluate((bg) => {
+        const canvasEl = document.getElementById("urdf-thumb-canvas");
+        if (canvasEl instanceof HTMLCanvasElement) {
+          canvasEl.style.background = bg;
+        }
+        document.body.style.background = bg;
+      }, THUMBNAIL_BACKGROUND);
       await ensureDir(outDir);
-      await canvas.screenshot({ path: outFile, omitBackground: true });
+      await canvas.screenshot({ path: outFile, omitBackground: false });
       completed += 1;
       console.log(`done ${task.repoKey}/${task.baseName}`);
     } catch (error) {

@@ -239,6 +239,7 @@ jobs:
             };
 
             const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
+            const KNOWN_MESH_EXTENSIONS = [".stl", ".dae", ".obj", ".ply", ".glb", ".gltf", ".fbx"];
 
             const isSupportedRobotFile = (value) => {
               const normalized = String(value || "").toLowerCase();
@@ -533,7 +534,7 @@ jobs:
               .filter((entry) => entry.type === "blob" && isSupportedRobotFile(entry.path))
               .map((entry) => entry.path);
             if (urdfFiles.length === 0) {
-              const altFormats = [".sdf", ".mjcf", ".xml"];
+              const altFormats = [".sdf", ".mjcf", ".xml", ...KNOWN_MESH_EXTENSIONS];
               const foundAlt = normalizedTree
                 .filter((entry) => entry.type === "blob")
                 .map((entry) => entry.path.toLowerCase())
@@ -545,6 +546,7 @@ jobs:
                 "Auto-ingest: no .urdf/.xacro files were detected",
                 `Auto-ingest: no .urdf/.xacro files were detected in ${owner}/${repo}. ` +
                   altHint +
+                  "Mesh files (.stl/.dae/.obj/...) are supported as assets, but a URDF/Xacro root file is still required. " +
                   "Please add a URDF/Xacro or point to the correct path and re-open this issue."
               );
               return;
