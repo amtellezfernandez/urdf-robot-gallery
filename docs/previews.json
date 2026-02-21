@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-05T01:14:43.857Z",
+  "generatedAt": "2026-02-21T22:31:13.000Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -15,6 +15,18 @@
       "webm": "previews/anybotics/anymal_c_simple_description/anymal--185350l.webm",
       "webp": "previews/anybotics/anymal_c_simple_description/anymal--185350l.webp",
       "png": "thumbnails/anybotics/anymal_c_simple_description/anymal--185350l.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "a1--1ac70hh",
+      "webp": "previews/gepetto/example-robot-data/a1--1ac70hh.webp",
+      "png": "thumbnails/gepetto/example-robot-data/a1--1ac70hh.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "alex_nub_hands--123jyoy",
+      "webp": "previews/gepetto/example-robot-data/alex_nub_hands--123jyoy.webp",
+      "png": "thumbnails/gepetto/example-robot-data/alex_nub_hands--123jyoy.png"
     },
     {
       "repoKey": "robotis-git/turtlebot3",
