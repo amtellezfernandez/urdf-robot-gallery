@@ -1,5 +1,418 @@
 [
   {
+    "repo": "https://github.com/Gepetto/example-robot-data",
+    "repoKey": "gepetto/example-robot-data",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "a1",
+        "file": "a1.urdf",
+        "fileBase": "a1--1ac70hh"
+      },
+      {
+        "name": "alex_nub_hands",
+        "file": "alex_nub_hands.urdf",
+        "fileBase": "alex_nub_hands--123jyoy"
+      },
+      {
+        "name": "alex_psyonic_hands",
+        "file": "alex_psyonic_hands.urdf",
+        "fileBase": "alex_psyonic_hands--10ub746"
+      },
+      {
+        "name": "alex_sake_hands",
+        "file": "alex_sake_hands.urdf",
+        "fileBase": "alex_sake_hands--31qf5v"
+      },
+      {
+        "name": "alexander_v1.lowerBodyOnly",
+        "file": "alexander_v1.lowerBodyOnly.urdf",
+        "fileBase": "alexander_v1.lowerbodyonly--7h4ydq"
+      },
+      {
+        "name": "allegro_left_hand",
+        "file": "allegro_left_hand.urdf",
+        "fileBase": "allegro_left_hand--10f1huf"
+      },
+      {
+        "name": "allegro_right_hand",
+        "file": "allegro_right_hand.urdf",
+        "fileBase": "allegro_right_hand--exfv92"
+      },
+      {
+        "name": "anymal-kinova",
+        "file": "anymal-kinova.urdf",
+        "fileBase": "anymal-kinova--whb93k"
+      },
+      {
+        "name": "anymal",
+        "file": "anymal.urdf",
+        "fileBase": "anymal--cgyler"
+      },
+      {
+        "name": "anymal",
+        "file": "anymal.urdf",
+        "fileBase": "anymal--14q30ai"
+      },
+      {
+        "name": "TwoDofs",
+        "file": "TwoDofs.urdf",
+        "fileBase": "twodofs--x9rft7"
+      },
+      {
+        "name": "b1-z1",
+        "file": "b1-z1.urdf",
+        "fileBase": "b1-z1--1fo0ksl"
+      },
+      {
+        "name": "b1",
+        "file": "b1.urdf",
+        "fileBase": "b1--14ey35h"
+      },
+      {
+        "name": "baxter",
+        "file": "baxter.urdf",
+        "fileBase": "baxter--46uisl"
+      },
+      {
+        "name": "bluevolta",
+        "file": "bluevolta.urdf",
+        "fileBase": "bluevolta--h4zjll"
+      },
+      {
+        "name": "bluevolta_bravo7_gripper",
+        "file": "bluevolta_bravo7_gripper.urdf",
+        "fileBase": "bluevolta_bravo7_gripper--ngwqv7"
+      },
+      {
+        "name": "bluevolta_bravo7_no_ee",
+        "file": "bluevolta_bravo7_no_ee.urdf",
+        "fileBase": "bluevolta_bravo7_no_ee--geh81a"
+      },
+      {
+        "name": "bolt",
+        "file": "bolt.urdf",
+        "fileBase": "bolt--1bsp0kx"
+      },
+      {
+        "name": "borinot_flying_arm_2",
+        "file": "borinot_flying_arm_2.urdf",
+        "fileBase": "borinot_flying_arm_2--1kpahd3"
+      },
+      {
+        "name": "bravo7_gripper",
+        "file": "bravo7_gripper.urdf",
+        "fileBase": "bravo7_gripper--boes0l"
+      },
+      {
+        "name": "bravo7_no_ee",
+        "file": "bravo7_no_ee.urdf",
+        "fileBase": "bravo7_no_ee--13idwdc"
+      },
+      {
+        "name": "centauro",
+        "file": "centauro.urdf",
+        "fileBase": "centauro--14imazx"
+      },
+      {
+        "name": "double_pendulum",
+        "file": "double_pendulum.urdf",
+        "fileBase": "double_pendulum--1x44fwx"
+      },
+      {
+        "name": "double_pendulum_continuous",
+        "file": "double_pendulum_continuous.urdf",
+        "fileBase": "double_pendulum_continuous--xpwlot"
+      },
+      {
+        "name": "double_pendulum_simple",
+        "file": "double_pendulum_simple.urdf",
+        "fileBase": "double_pendulum_simple--1js5fns"
+      },
+      {
+        "name": "falcon",
+        "file": "falcon.urdf",
+        "fileBase": "falcon--1k68yjl"
+      },
+      {
+        "name": "falcon_bravo7_gripper",
+        "file": "falcon_bravo7_gripper.urdf",
+        "fileBase": "falcon_bravo7_gripper--6nnrqz"
+      },
+      {
+        "name": "falcon_bravo7_no_ee",
+        "file": "falcon_bravo7_no_ee.urdf",
+        "fileBase": "falcon_bravo7_no_ee--5apuee"
+      },
+      {
+        "name": "finger_edu",
+        "file": "finger_edu.urdf",
+        "fileBase": "finger_edu--1579ch"
+      },
+      {
+        "name": "g1_29dof_rev_1_0",
+        "file": "g1_29dof_rev_1_0.urdf",
+        "fileBase": "g1_29dof_rev_1_0--w4f3al"
+      },
+      {
+        "name": "g1_29dof_with_hand_rev_1_0",
+        "file": "g1_29dof_with_hand_rev_1_0.urdf",
+        "fileBase": "g1_29dof_with_hand_rev_1_0--1975m4a"
+      },
+      {
+        "name": "go1",
+        "file": "go1.urdf",
+        "fileBase": "go1--vkyrbf"
+      },
+      {
+        "name": "go2",
+        "file": "go2.urdf",
+        "fileBase": "go2--1q8nfh9"
+      },
+      {
+        "name": "quadrotor_base",
+        "file": "quadrotor_base.urdf",
+        "fileBase": "quadrotor_base--z8vuaj"
+      },
+      {
+        "name": "quadrotor_base",
+        "file": "quadrotor_base.urdf.xacro",
+        "fileBase": "quadrotor_base--z8vuaj"
+      },
+      {
+        "name": "quadrotor_base",
+        "file": "quadrotor_base.xacro",
+        "fileBase": "quadrotor_base--z8vuaj"
+      },
+      {
+        "name": "hextilt_flying_arm_5",
+        "file": "hextilt_flying_arm_5.urdf",
+        "fileBase": "hextilt_flying_arm_5--1caf3bs"
+      },
+      {
+        "name": "human",
+        "file": "human.urdf",
+        "fileBase": "human--1lpwm9n"
+      },
+      {
+        "name": "hyq_no_sensors",
+        "file": "hyq_no_sensors.urdf",
+        "fileBase": "hyq_no_sensors--1ctmt6p"
+      },
+      {
+        "name": "icub",
+        "file": "icub.urdf",
+        "fileBase": "icub--js902l"
+      },
+      {
+        "name": "icub_reduced",
+        "file": "icub_reduced.urdf",
+        "fileBase": "icub_reduced--1c5gfns"
+      },
+      {
+        "name": "iris",
+        "file": "iris.urdf",
+        "fileBase": "iris--1sm3ygl"
+      },
+      {
+        "name": "iris_simple",
+        "file": "iris_simple.urdf",
+        "fileBase": "iris_simple--44hx9g"
+      },
+      {
+        "name": "kinova",
+        "file": "kinova.urdf",
+        "fileBase": "kinova--1dz2bx"
+      },
+      {
+        "name": "laikago",
+        "file": "laikago.urdf",
+        "fileBase": "laikago--o6i839"
+      },
+      {
+        "name": "panda",
+        "file": "panda.urdf",
+        "fileBase": "panda--1ul5s2d"
+      },
+      {
+        "name": "panda_collision",
+        "file": "panda_collision.urdf",
+        "fileBase": "panda_collision--1ujf3lq"
+      },
+      {
+        "name": "pr2",
+        "file": "pr2.urdf",
+        "fileBase": "pr2--15ob39l"
+      },
+      {
+        "name": "quadruped",
+        "file": "quadruped.urdf",
+        "fileBase": "quadruped--3jzktj"
+      },
+      {
+        "name": "romeo",
+        "file": "romeo.urdf",
+        "fileBase": "romeo--1bu48g1"
+      },
+      {
+        "name": "romeo_laas_small",
+        "file": "romeo_laas_small.urdf",
+        "fileBase": "romeo_laas_small--gy1i7d"
+      },
+      {
+        "name": "romeo_small",
+        "file": "romeo_small.urdf",
+        "fileBase": "romeo_small--1sy3fpl"
+      },
+      {
+        "name": "simple_humanoid",
+        "file": "simple_humanoid.urdf",
+        "fileBase": "simple_humanoid--zyrg6h"
+      },
+      {
+        "name": "simple_humanoid_classical",
+        "file": "simple_humanoid_classical.urdf",
+        "fileBase": "simple_humanoid_classical--htk1fv"
+      },
+      {
+        "name": "so100",
+        "file": "so100.urdf",
+        "fileBase": "so100--cnhqj"
+      },
+      {
+        "name": "so101",
+        "file": "so101.urdf",
+        "fileBase": "so101--2nw1k"
+      },
+      {
+        "name": "solo",
+        "file": "solo.urdf",
+        "fileBase": "solo--1xmu9qd"
+      },
+      {
+        "name": "solo12",
+        "file": "solo12.urdf",
+        "fileBase": "solo12--s4tai2"
+      },
+      {
+        "name": "talos_full_v2",
+        "file": "talos_full_v2.urdf",
+        "fileBase": "talos_full_v2--m5gbia"
+      },
+      {
+        "name": "talos_full_v2_box",
+        "file": "talos_full_v2_box.urdf",
+        "fileBase": "talos_full_v2_box--1riol4o"
+      },
+      {
+        "name": "talos_left_arm",
+        "file": "talos_left_arm.urdf",
+        "fileBase": "talos_left_arm--1iah4mw"
+      },
+      {
+        "name": "talos_reduced",
+        "file": "talos_reduced.urdf",
+        "fileBase": "talos_reduced--1l6ild6"
+      },
+      {
+        "name": "talos_reduced_box",
+        "file": "talos_reduced_box.urdf",
+        "fileBase": "talos_reduced_box--tpvfww"
+      },
+      {
+        "name": "talos_reduced_corrected",
+        "file": "talos_reduced_corrected.urdf",
+        "fileBase": "talos_reduced_corrected--13qe7wa"
+      },
+      {
+        "name": "tiago",
+        "file": "tiago.urdf",
+        "fileBase": "tiago--10gwv89"
+      },
+      {
+        "name": "tiago_dual",
+        "file": "tiago_dual.urdf",
+        "fileBase": "tiago_dual--15rt4hc"
+      },
+      {
+        "name": "tiago_no_hand",
+        "file": "tiago_no_hand.urdf",
+        "fileBase": "tiago_no_hand--2xhq67"
+      },
+      {
+        "name": "tiago_pro",
+        "file": "tiago_pro.urdf",
+        "fileBase": "tiago_pro--1xq159"
+      },
+      {
+        "name": "ur10_joint_limited_robot",
+        "file": "ur10_joint_limited_robot.urdf",
+        "fileBase": "ur10_joint_limited_robot--rp05nl"
+      },
+      {
+        "name": "ur10_robot",
+        "file": "ur10_robot.urdf",
+        "fileBase": "ur10_robot--14y91hn"
+      },
+      {
+        "name": "ur3",
+        "file": "ur3.urdf",
+        "fileBase": "ur3--f9x4lu"
+      },
+      {
+        "name": "ur3_gripper",
+        "file": "ur3_gripper.urdf",
+        "fileBase": "ur3_gripper--h0hdrq"
+      },
+      {
+        "name": "ur3_joint_limited_robot",
+        "file": "ur3_joint_limited_robot.urdf",
+        "fileBase": "ur3_joint_limited_robot--8j5ii7"
+      },
+      {
+        "name": "ur3_robot",
+        "file": "ur3_robot.urdf",
+        "fileBase": "ur3_robot--1h0vzul"
+      },
+      {
+        "name": "ur5_gripper",
+        "file": "ur5_gripper.urdf",
+        "fileBase": "ur5_gripper--1xs44ys"
+      },
+      {
+        "name": "ur5_joint_limited_robot",
+        "file": "ur5_joint_limited_robot.urdf",
+        "fileBase": "ur5_joint_limited_robot--ledtnh"
+      },
+      {
+        "name": "ur5_robot",
+        "file": "ur5_robot.urdf",
+        "fileBase": "ur5_robot--ezq59z"
+      },
+      {
+        "name": "xarm7",
+        "file": "xarm7.urdf",
+        "fileBase": "xarm7--qr6ct6"
+      },
+      {
+        "name": "z1",
+        "file": "z1.urdf",
+        "fileBase": "z1--w0ush1"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-21T17:31:54.312Z"
+  },
+  {
     "repo": "https://github.com/frankarobotics/franka_description",
     "repoKey": "frankarobotics/franka_description",
     "org": "Franka Robotics",
