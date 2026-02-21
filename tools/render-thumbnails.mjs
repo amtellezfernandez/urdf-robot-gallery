@@ -10,6 +10,7 @@ const OUTPUT_ROOT = path.join(ROOT, "docs", "thumbnails");
 const STUDIO_URL = (process.env.URDF_STUDIO_URL || "http://localhost:5173/").replace(/\/+$/, "/");
 const VIEWPORT = 256;
 const THUMBNAIL_BACKGROUND = process.env.URDF_THUMB_BG || "#2b2b2b";
+const THUMBNAIL_TIMEOUT_MS = Math.max(30000, Number(process.env.URDF_THUMB_TIMEOUT_MS || 240000));
 
 const args = process.argv.slice(2);
 const getArg = (name) => {
@@ -127,13 +128,16 @@ const run = async () => {
     try {
       await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
       await page.waitForFunction(
-        () => window.__URDF_THUMB_READY__ === true,
+        () => window.__URDF_THUMB_READY__ === true || Boolean(window.__URDF_THUMB_ERROR__),
         undefined,
-        { timeout: 120000 }
+        { timeout: THUMBNAIL_TIMEOUT_MS }
       );
-      const error = await page.evaluate(() => window.__URDF_THUMB_ERROR__ || "");
-      if (error) {
-        throw new Error(error);
+      const state = await page.evaluate(() => ({
+        ready: window.__URDF_THUMB_READY__ === true,
+        error: window.__URDF_THUMB_ERROR__ || "",
+      }));
+      if (!state.ready) {
+        throw new Error(state.error || "Thumbnail did not become ready");
       }
       const canvas = await page.$("#urdf-thumb-canvas");
       if (!canvas) {
