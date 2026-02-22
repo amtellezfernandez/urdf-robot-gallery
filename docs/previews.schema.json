@@ -21,7 +21,14 @@
         "webp": { "type": "string" },
         "webm": { "type": "string" },
         "mp4": { "type": "string" },
-        "png": { "type": "string" }
+        "png": { "type": "string" },
+        "sourceType": {
+          "type": "string",
+          "enum": ["urdf", "xacro", "urdf.xacro"]
+        },
+        "meshCount": { "type": "integer", "minimum": 0 },
+        "linkCount": { "type": "integer", "minimum": 0 },
+        "jointCount": { "type": "integer", "minimum": 0 }
       },
       "additionalProperties": false
     }

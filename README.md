@@ -25,6 +25,7 @@ Use the controlled tag list in `docs/tags.json`. Submissions with unknown tags a
 
 `docs/robots.json` is validated against `docs/robots.schema.json` in CI.
 `docs/previews.json` is validated against `docs/previews.schema.json` in CI.
+Preview entries may also include optional metadata fields: `sourceType`, `meshCount`, `linkCount`, `jointCount`.
 
 Robot entries store the full URDF path in the `file` field to avoid filename collisions.
 
