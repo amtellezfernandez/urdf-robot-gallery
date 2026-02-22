@@ -28,7 +28,10 @@
         },
         "meshCount": { "type": "integer", "minimum": 0 },
         "linkCount": { "type": "integer", "minimum": 0 },
-        "jointCount": { "type": "integer", "minimum": 0 }
+        "jointCount": { "type": "integer", "minimum": 0 },
+        "armCount": { "type": "integer", "minimum": 0 },
+        "legCount": { "type": "integer", "minimum": 0 },
+        "wheelCount": { "type": "integer", "minimum": 0 }
       },
       "additionalProperties": false
     }
