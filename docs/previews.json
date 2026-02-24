@@ -1,5 +1,27 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-24T23:34:17.736Z",
-  "previews": []
+  "generatedAt": "2026-02-25T00:53:00.000Z",
+  "previews": [
+    {
+      "repoKey": "therobotstudio/so-arm100",
+      "fileBase": "so100--vyv9ty",
+      "webm": "previews/therobotstudio/so-arm100/so100--vyv9ty.webm",
+      "webp": "previews/therobotstudio/so-arm100/so100--vyv9ty.webp",
+      "png": "thumbnails/therobotstudio/so-arm100/so100--vyv9ty.png"
+    },
+    {
+      "repoKey": "therobotstudio/so-arm100",
+      "fileBase": "so101_new_calib--1v0dn17",
+      "webm": "previews/therobotstudio/so-arm100/so101_new_calib--1v0dn17.webm",
+      "webp": "previews/therobotstudio/so-arm100/so101_new_calib--1v0dn17.webp",
+      "png": "thumbnails/therobotstudio/so-arm100/so101_new_calib--1v0dn17.png"
+    },
+    {
+      "repoKey": "therobotstudio/so-arm100",
+      "fileBase": "so101_old_calib--1byrygc",
+      "webm": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webm",
+      "webp": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webp",
+      "png": "thumbnails/therobotstudio/so-arm100/so101_old_calib--1byrygc.png"
+    }
+  ]
 }
