@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T20:44:13.060Z",
+  "generatedAt": "2026-02-25T20:49:32.664Z",
   "previews": [
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
@@ -13,6 +13,12 @@
       "fileBase": "barkour_vb_rev_1_0_head_straight--1wgqhct",
       "webp": "previews/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.webp",
       "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.png"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "fileBase": "ur10--1ye1ycw",
+      "webp": "previews/ros-industrial/universal_robot/ur10--1ye1ycw.webp",
+      "png": "thumbnails/ros-industrial/universal_robot/ur10--1ye1ycw.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
@@ -57,6 +63,12 @@
       ],
       "webp": "previews/ros-industrial/universal_robot/ur3--1jj82me.webp",
       "png": "thumbnails/ros-industrial/universal_robot/ur3--1jj82me.png"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "fileBase": "ur3e--1vzfpzp",
+      "webp": "previews/ros-industrial/universal_robot/ur3e--1vzfpzp.webp",
+      "png": "thumbnails/ros-industrial/universal_robot/ur3e--1vzfpzp.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
