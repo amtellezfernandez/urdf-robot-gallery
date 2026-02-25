@@ -52,9 +52,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "minitaur",
@@ -305,9 +303,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "a1",
@@ -722,9 +718,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "barkour_v0",
@@ -753,9 +747,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "toddlerbot_2xc",
@@ -807,9 +799,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "vx300s",
@@ -833,9 +823,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "gen3",
@@ -859,9 +847,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "gen3_macro",
@@ -1000,9 +986,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "robot",
@@ -1026,9 +1010,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "skydio_x2",
@@ -1052,9 +1034,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "tiago",
@@ -1078,9 +1058,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "common",
@@ -1104,9 +1082,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "baxter",
@@ -1130,9 +1106,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "go_bdx",
@@ -1194,9 +1168,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "atlas_convex_hull",
@@ -1285,9 +1257,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "rbkairos_plus",
@@ -1346,9 +1316,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "ur10",
@@ -1397,9 +1365,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "follower",
@@ -1423,9 +1389,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "egp",
@@ -1464,9 +1428,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "svh",
@@ -1513,9 +1475,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "aero_hand_open_left",
@@ -1540,8 +1500,7 @@
     "demo": "",
     "tags": [
       "Arm",
-      "LeRobotCompatible",
-      "awesome-seed"
+      "LeRobotCompatible"
     ],
     "robots": [
       {
@@ -1579,9 +1538,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "bambot_v0",
@@ -1604,9 +1561,7 @@
     "org": "Unitree Robotics",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "a1",
@@ -1876,9 +1831,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "r1_v2_1_0",
@@ -1902,9 +1855,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "awesome-seed"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "lite6",
