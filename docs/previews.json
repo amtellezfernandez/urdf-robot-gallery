@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T20:49:32.664Z",
+  "generatedAt": "2026-02-25T20:52:12.154Z",
   "previews": [
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
@@ -129,6 +129,7 @@
     {
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so101_old_calib--1byrygc",
+      "webm": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webm",
       "webp": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webp",
       "png": "thumbnails/therobotstudio/so-arm100/so101_old_calib--1byrygc.png"
     }
