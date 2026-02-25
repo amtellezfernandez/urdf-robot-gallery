@@ -1,7 +1,67 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T21:12:40.200Z",
+  "generatedAt": "2026-02-25T21:53:11.243Z",
   "previews": [
+    {
+      "repoKey": "anybotics/anymal_c_simple_description",
+      "fileBase": "anymal--185350l",
+      "webp": "previews/anybotics/anymal_c_simple_description/anymal--185350l.webp",
+      "png": "thumbnails/anybotics/anymal_c_simple_description/anymal--185350l.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur--1c1xxsp",
+      "webp": "previews/bulletphysics/bullet3/minitaur--1c1xxsp.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur--1c1xxsp.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "argo_drive--17j9fj2",
+      "webp": "previews/frankarobotics/franka_description/argo_drive--17j9fj2.webp",
+      "png": "thumbnails/frankarobotics/franka_description/argo_drive--17j9fj2.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "cobot_pump_arguments--1cbeait",
+      "webp": "previews/frankarobotics/franka_description/cobot_pump_arguments--1cbeait.webp",
+      "png": "thumbnails/frankarobotics/franka_description/cobot_pump_arguments--1cbeait.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "cobot_pump--1ets0gi",
+      "webp": "previews/frankarobotics/franka_description/cobot_pump--1ets0gi.webp",
+      "png": "thumbnails/frankarobotics/franka_description/cobot_pump--1ets0gi.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "ee_with_one_link--1cfmow8",
+      "webp": "previews/frankarobotics/franka_description/ee_with_one_link--1cfmow8.webp",
+      "png": "thumbnails/frankarobotics/franka_description/ee_with_one_link--1cfmow8.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "fer--k8n88c",
+      "webp": "previews/frankarobotics/franka_description/fer--k8n88c.webp",
+      "png": "thumbnails/frankarobotics/franka_description/fer--k8n88c.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "fer.srdf--1yli12l",
+      "webp": "previews/frankarobotics/franka_description/fer.srdf--1yli12l.webp",
+      "png": "thumbnails/frankarobotics/franka_description/fer.srdf--1yli12l.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "fp3.srdf--1dnixgl",
+      "webp": "previews/frankarobotics/franka_description/fp3.srdf--1dnixgl.webp",
+      "png": "thumbnails/frankarobotics/franka_description/fp3.srdf--1dnixgl.png"
+    },
+    {
+      "repoKey": "frankarobotics/franka_description",
+      "fileBase": "fr3_duo_fixed_structure--1d2htz7",
+      "webp": "previews/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.webp",
+      "png": "thumbnails/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.png"
+    },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
       "fileBase": "barkour_v0--1b1ih7q",
