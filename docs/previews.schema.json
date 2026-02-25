@@ -26,6 +26,10 @@
           "type": "string",
           "enum": ["urdf", "xacro", "urdf.xacro"]
         },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
         "meshCount": { "type": "integer", "minimum": 0 },
         "linkCount": { "type": "integer", "minimum": 0 },
         "jointCount": { "type": "integer", "minimum": 0 },
