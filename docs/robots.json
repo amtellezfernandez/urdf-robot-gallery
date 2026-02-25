@@ -1,5 +1,89 @@
 [
   {
+    "repo": "https://github.com/RobotLocomotion/models",
+    "repoKey": "robotlocomotion/models",
+    "path": "iiwa_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "dual_iiwa14_polytope_collision",
+        "file": "dual_iiwa14_polytope_collision.urdf",
+        "fileBase": "dual_iiwa14_polytope_collision--1w6x4kx"
+      },
+      {
+        "name": "iiwa.gazebo",
+        "file": "iiwa.gazebo.xacro",
+        "fileBase": "iiwa.gazebo--8a23vb"
+      },
+      {
+        "name": "iiwa.transmission",
+        "file": "iiwa.transmission.xacro",
+        "fileBase": "iiwa.transmission--1nomkrt"
+      },
+      {
+        "name": "iiwa14",
+        "file": "iiwa14.xacro",
+        "fileBase": "iiwa14--1jm4uig"
+      },
+      {
+        "name": "iiwa14_no_collision",
+        "file": "iiwa14_no_collision.urdf",
+        "fileBase": "iiwa14_no_collision--104xzyp"
+      },
+      {
+        "name": "iiwa14_polytope_collision",
+        "file": "iiwa14_polytope_collision.urdf",
+        "fileBase": "iiwa14_polytope_collision--1juqyhu"
+      },
+      {
+        "name": "iiwa14_primitive_collision",
+        "file": "iiwa14_primitive_collision.urdf",
+        "fileBase": "iiwa14_primitive_collision--1chdmy5"
+      },
+      {
+        "name": "iiwa14_spheres_collision",
+        "file": "iiwa14_spheres_collision.urdf",
+        "fileBase": "iiwa14_spheres_collision--fjs7yy"
+      },
+      {
+        "name": "iiwa14_spheres_dense_collision",
+        "file": "iiwa14_spheres_dense_collision.urdf",
+        "fileBase": "iiwa14_spheres_dense_collision--1tp34ai"
+      },
+      {
+        "name": "iiwa14_spheres_dense_elbow_collision",
+        "file": "iiwa14_spheres_dense_elbow_collision.urdf",
+        "fileBase": "iiwa14_spheres_dense_elbow_collision--ji6tr6"
+      },
+      {
+        "name": "materials",
+        "file": "materials.xacro",
+        "fileBase": "materials--pb8gtn"
+      },
+      {
+        "name": "planar_iiwa14_spheres_dense_elbow_collision",
+        "file": "planar_iiwa14_spheres_dense_elbow_collision.urdf",
+        "fileBase": "planar_iiwa14_spheres_dense_elbow_collision--1m4na3l"
+      },
+      {
+        "name": "utilities",
+        "file": "utilities.xacro",
+        "fileBase": "utilities--1n4mkz9"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T15:12:02.639Z"
+  },
+  {
     "repo": "https://github.com/Kinovarobotics/ros2_kortex",
     "repoKey": "kinovarobotics/ros2_kortex",
     "path": "kortex_description",
