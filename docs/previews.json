@@ -1,50 +1,106 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T20:12:00.499Z",
+  "generatedAt": "2026-02-25T20:44:13.060Z",
   "previews": [
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
       "fileBase": "barkour_v0--1b1ih7q",
-      "sourceType": "urdf",
-      "meshCount": 33,
-      "linkCount": 17,
-      "jointCount": 16,
-      "armCount": 0,
-      "legCount": 4,
-      "wheelCount": 0,
-      "tags": [
-        "meshes:33",
-        "links:17",
-        "joints:16",
-        "arms:0",
-        "legs:4",
-        "wheels:0",
-        "source:urdf"
-      ],
       "webp": "previews/google-deepmind/mujoco_menagerie/barkour_v0--1b1ih7q.webp",
       "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_v0--1b1ih7q.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
       "fileBase": "barkour_vb_rev_1_0_head_straight--1wgqhct",
-      "sourceType": "urdf",
-      "meshCount": 25,
-      "linkCount": 35,
-      "jointCount": 34,
-      "armCount": 0,
-      "legCount": 4,
-      "wheelCount": 0,
-      "tags": [
-        "meshes:25",
-        "links:35",
-        "joints:34",
-        "arms:0",
-        "legs:4",
-        "wheels:0",
-        "source:urdf"
-      ],
       "webp": "previews/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.webp",
       "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.png"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "fileBase": "ur10e--3d7cwz",
+      "sourceType": "urdf.xacro",
+      "meshCount": 27,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:27",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
+      "webp": "previews/ros-industrial/universal_robot/ur10e--3d7cwz.webp",
+      "png": "thumbnails/ros-industrial/universal_robot/ur10e--3d7cwz.png"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "fileBase": "ur3--1jj82me",
+      "sourceType": "urdf.xacro",
+      "meshCount": 32,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:32",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
+      "webp": "previews/ros-industrial/universal_robot/ur3--1jj82me.webp",
+      "png": "thumbnails/ros-industrial/universal_robot/ur3--1jj82me.png"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "fileBase": "ur5--1k37a0c",
+      "sourceType": "urdf.xacro",
+      "meshCount": 17,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
+      "webp": "previews/ros-industrial/universal_robot/ur5--1k37a0c.webp",
+      "png": "thumbnails/ros-industrial/universal_robot/ur5--1k37a0c.png"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "fileBase": "ur5e--1lz8wf3",
+      "sourceType": "urdf.xacro",
+      "meshCount": 27,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:27",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
+      "webp": "previews/ros-industrial/universal_robot/ur5e--1lz8wf3.webp",
+      "png": "thumbnails/ros-industrial/universal_robot/ur5e--1lz8wf3.png"
     },
     {
       "repoKey": "therobotstudio/so-arm100",
