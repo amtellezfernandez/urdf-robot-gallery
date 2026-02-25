@@ -1,5 +1,144 @@
 [
   {
+    "repo": "https://github.com/Kinovarobotics/ros2_kortex",
+    "repoKey": "kinovarobotics/ros2_kortex",
+    "path": "kortex_description",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "gen3_macro",
+        "file": "gen3_macro.xacro",
+        "fileBase": "gen3_macro--bvdopk"
+      },
+      {
+        "name": "gen3_transmission_macro",
+        "file": "gen3_transmission_macro.xacro",
+        "fileBase": "gen3_transmission_macro--10bh5nv"
+      },
+      {
+        "name": "kortex.ros2_control",
+        "file": "kortex.ros2_control.xacro",
+        "fileBase": "kortex.ros2_control--q9wenx"
+      },
+      {
+        "name": "gen3_macro",
+        "file": "gen3_macro.xacro",
+        "fileBase": "gen3_macro--oqirfl"
+      },
+      {
+        "name": "gen3_transmission_macro",
+        "file": "gen3_transmission_macro.xacro",
+        "fileBase": "gen3_transmission_macro--377430"
+      },
+      {
+        "name": "kortex.ros2_control",
+        "file": "kortex.ros2_control.xacro",
+        "fileBase": "kortex.ros2_control--w5s63y"
+      },
+      {
+        "name": "gen3_lite_macro",
+        "file": "gen3_lite_macro.xacro",
+        "fileBase": "gen3_lite_macro--r3zyuk"
+      },
+      {
+        "name": "gen3_lite_transmission_macro",
+        "file": "gen3_lite_transmission_macro.xacro",
+        "fileBase": "gen3_lite_transmission_macro--16mre07"
+      },
+      {
+        "name": "kortex.ros2_control",
+        "file": "kortex.ros2_control.xacro",
+        "fileBase": "kortex.ros2_control--1jp8k6"
+      },
+      {
+        "name": "GEN3-LITE-GRIPPER_URDF_SIMPLIFIED_V2",
+        "file": "GEN3-LITE-GRIPPER_URDF_SIMPLIFIED_V2.urdf",
+        "fileBase": "gen3-lite-gripper_urdf_simplified_v2--maqpb7"
+      },
+      {
+        "name": "gen3_lite_2f.ros2_control",
+        "file": "gen3_lite_2f.ros2_control.xacro",
+        "fileBase": "gen3_lite_2f.ros2_control--810e98"
+      },
+      {
+        "name": "gen3_lite_2f_macro",
+        "file": "gen3_lite_2f_macro.xacro",
+        "fileBase": "gen3_lite_2f_macro--b5ozkx"
+      },
+      {
+        "name": "gen3_lite_2f_transmission_macro",
+        "file": "gen3_lite_2f_transmission_macro.xacro",
+        "fileBase": "gen3_lite_2f_transmission_macro--885pv0"
+      },
+      {
+        "name": "robotiq_2f_140_macro",
+        "file": "robotiq_2f_140_macro.xacro",
+        "fileBase": "robotiq_2f_140_macro--1dc3xpp"
+      },
+      {
+        "name": "robotiq_2f_85_macro",
+        "file": "robotiq_2f_85_macro.xacro",
+        "fileBase": "robotiq_2f_85_macro--143vxdt"
+      },
+      {
+        "name": "kortex_dual_robots",
+        "file": "kortex_dual_robots.xacro",
+        "fileBase": "kortex_dual_robots--dmqcef"
+      },
+      {
+        "name": "gen3",
+        "file": "gen3.xacro",
+        "fileBase": "gen3--jet33r"
+      },
+      {
+        "name": "gen3_2f85",
+        "file": "gen3_2f85.urdf",
+        "fileBase": "gen3_2f85--1oog9z3"
+      },
+      {
+        "name": "gen3_lite",
+        "file": "gen3_lite.urdf",
+        "fileBase": "gen3_lite--1o8pmrw"
+      },
+      {
+        "name": "gen3_lite_gen3_lite_2f",
+        "file": "gen3_lite_gen3_lite_2f.xacro",
+        "fileBase": "gen3_lite_gen3_lite_2f--1kspvdk"
+      },
+      {
+        "name": "gen3_robotiq_2f_140",
+        "file": "gen3_robotiq_2f_140.xacro",
+        "fileBase": "gen3_robotiq_2f_140--1yjc7jz"
+      },
+      {
+        "name": "gen3_robotiq_2f_85",
+        "file": "gen3_robotiq_2f_85.xacro",
+        "fileBase": "gen3_robotiq_2f_85--1fiipon"
+      },
+      {
+        "name": "kinova",
+        "file": "kinova.urdf.xacro",
+        "fileBase": "kinova--l5wjci"
+      },
+      {
+        "name": "kortex_robot",
+        "file": "kortex_robot.xacro",
+        "fileBase": "kortex_robot--1tfekje"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T15:11:16.578Z"
+  },
+  {
     "repo": "https://github.com/ianathompson/eDO_description",
     "repoKey": "ianathompson/edo_description",
     "org": "",
