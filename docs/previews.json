@@ -1,25 +1,70 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T00:53:00.000Z",
+  "generatedAt": "2026-02-25T08:59:48.391Z",
   "previews": [
     {
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so100--vyv9ty",
-      "webm": "previews/therobotstudio/so-arm100/so100--vyv9ty.webm",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
       "webp": "previews/therobotstudio/so-arm100/so100--vyv9ty.webp",
       "png": "thumbnails/therobotstudio/so-arm100/so100--vyv9ty.png"
     },
     {
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so101_new_calib--1v0dn17",
-      "webm": "previews/therobotstudio/so-arm100/so101_new_calib--1v0dn17.webm",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
       "webp": "previews/therobotstudio/so-arm100/so101_new_calib--1v0dn17.webp",
       "png": "thumbnails/therobotstudio/so-arm100/so101_new_calib--1v0dn17.png"
     },
     {
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so101_old_calib--1byrygc",
-      "webm": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webm",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
       "webp": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webp",
       "png": "thumbnails/therobotstudio/so-arm100/so101_old_calib--1byrygc.png"
     }
