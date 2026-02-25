@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T20:52:12.154Z",
+  "generatedAt": "2026-02-25T21:12:40.200Z",
   "previews": [
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
@@ -17,6 +17,22 @@
     {
       "repoKey": "ros-industrial/universal_robot",
       "fileBase": "ur10--1ye1ycw",
+      "sourceType": "urdf.xacro",
+      "meshCount": 20,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:20",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
       "webp": "previews/ros-industrial/universal_robot/ur10--1ye1ycw.webp",
       "png": "thumbnails/ros-industrial/universal_robot/ur10--1ye1ycw.png"
     },
@@ -67,6 +83,22 @@
     {
       "repoKey": "ros-industrial/universal_robot",
       "fileBase": "ur3e--1vzfpzp",
+      "sourceType": "urdf.xacro",
+      "meshCount": 28,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:28",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
       "webp": "previews/ros-industrial/universal_robot/ur3e--1vzfpzp.webp",
       "png": "thumbnails/ros-industrial/universal_robot/ur3e--1vzfpzp.png"
     },
