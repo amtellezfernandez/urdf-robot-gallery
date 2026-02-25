@@ -1,77 +1,16 @@
 [
   {
-    "repo": "https://github.com/RobotLocomotion/models",
-    "repoKey": "robotlocomotion/models",
-    "path": "iiwa_description/urdf",
+    "repo": "https://github.com/ANYbotics/anymal_b_simple_description",
+    "repoKey": "anybotics/anymal_b_simple_description",
     "org": "",
     "summary": "",
     "demo": "",
     "tags": [],
     "robots": [
       {
-        "name": "dual_iiwa14_polytope_collision",
-        "file": "dual_iiwa14_polytope_collision.urdf",
-        "fileBase": "dual_iiwa14_polytope_collision--1w6x4kx"
-      },
-      {
-        "name": "iiwa.gazebo",
-        "file": "iiwa.gazebo.xacro",
-        "fileBase": "iiwa.gazebo--8a23vb"
-      },
-      {
-        "name": "iiwa.transmission",
-        "file": "iiwa.transmission.xacro",
-        "fileBase": "iiwa.transmission--1nomkrt"
-      },
-      {
-        "name": "iiwa14",
-        "file": "iiwa14.xacro",
-        "fileBase": "iiwa14--1jm4uig"
-      },
-      {
-        "name": "iiwa14_no_collision",
-        "file": "iiwa14_no_collision.urdf",
-        "fileBase": "iiwa14_no_collision--104xzyp"
-      },
-      {
-        "name": "iiwa14_polytope_collision",
-        "file": "iiwa14_polytope_collision.urdf",
-        "fileBase": "iiwa14_polytope_collision--1juqyhu"
-      },
-      {
-        "name": "iiwa14_primitive_collision",
-        "file": "iiwa14_primitive_collision.urdf",
-        "fileBase": "iiwa14_primitive_collision--1chdmy5"
-      },
-      {
-        "name": "iiwa14_spheres_collision",
-        "file": "iiwa14_spheres_collision.urdf",
-        "fileBase": "iiwa14_spheres_collision--fjs7yy"
-      },
-      {
-        "name": "iiwa14_spheres_dense_collision",
-        "file": "iiwa14_spheres_dense_collision.urdf",
-        "fileBase": "iiwa14_spheres_dense_collision--1tp34ai"
-      },
-      {
-        "name": "iiwa14_spheres_dense_elbow_collision",
-        "file": "iiwa14_spheres_dense_elbow_collision.urdf",
-        "fileBase": "iiwa14_spheres_dense_elbow_collision--ji6tr6"
-      },
-      {
-        "name": "materials",
-        "file": "materials.xacro",
-        "fileBase": "materials--pb8gtn"
-      },
-      {
-        "name": "planar_iiwa14_spheres_dense_elbow_collision",
-        "file": "planar_iiwa14_spheres_dense_elbow_collision.urdf",
-        "fileBase": "planar_iiwa14_spheres_dense_elbow_collision--1m4na3l"
-      },
-      {
-        "name": "utilities",
-        "file": "utilities.xacro",
-        "fileBase": "utilities--1n4mkz9"
+        "name": "anymal",
+        "file": "anymal.urdf",
+        "fileBase": "anymal--185350l"
       }
     ],
     "hfDatasets": [],
@@ -81,136 +20,20 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-25T15:12:02.639Z"
+    "updatedAt": "2026-02-04T15:41:04.361Z"
   },
   {
-    "repo": "https://github.com/Kinovarobotics/ros2_kortex",
-    "repoKey": "kinovarobotics/ros2_kortex",
-    "path": "kortex_description",
+    "repo": "https://github.com/ANYbotics/anymal_c_simple_description",
+    "repoKey": "anybotics/anymal_c_simple_description",
     "org": "",
     "summary": "",
     "demo": "",
     "tags": [],
     "robots": [
       {
-        "name": "gen3_macro",
-        "file": "gen3_macro.xacro",
-        "fileBase": "gen3_macro--bvdopk"
-      },
-      {
-        "name": "gen3_transmission_macro",
-        "file": "gen3_transmission_macro.xacro",
-        "fileBase": "gen3_transmission_macro--10bh5nv"
-      },
-      {
-        "name": "kortex.ros2_control",
-        "file": "kortex.ros2_control.xacro",
-        "fileBase": "kortex.ros2_control--q9wenx"
-      },
-      {
-        "name": "gen3_macro",
-        "file": "gen3_macro.xacro",
-        "fileBase": "gen3_macro--oqirfl"
-      },
-      {
-        "name": "gen3_transmission_macro",
-        "file": "gen3_transmission_macro.xacro",
-        "fileBase": "gen3_transmission_macro--377430"
-      },
-      {
-        "name": "kortex.ros2_control",
-        "file": "kortex.ros2_control.xacro",
-        "fileBase": "kortex.ros2_control--w5s63y"
-      },
-      {
-        "name": "gen3_lite_macro",
-        "file": "gen3_lite_macro.xacro",
-        "fileBase": "gen3_lite_macro--r3zyuk"
-      },
-      {
-        "name": "gen3_lite_transmission_macro",
-        "file": "gen3_lite_transmission_macro.xacro",
-        "fileBase": "gen3_lite_transmission_macro--16mre07"
-      },
-      {
-        "name": "kortex.ros2_control",
-        "file": "kortex.ros2_control.xacro",
-        "fileBase": "kortex.ros2_control--1jp8k6"
-      },
-      {
-        "name": "GEN3-LITE-GRIPPER_URDF_SIMPLIFIED_V2",
-        "file": "GEN3-LITE-GRIPPER_URDF_SIMPLIFIED_V2.urdf",
-        "fileBase": "gen3-lite-gripper_urdf_simplified_v2--maqpb7"
-      },
-      {
-        "name": "gen3_lite_2f.ros2_control",
-        "file": "gen3_lite_2f.ros2_control.xacro",
-        "fileBase": "gen3_lite_2f.ros2_control--810e98"
-      },
-      {
-        "name": "gen3_lite_2f_macro",
-        "file": "gen3_lite_2f_macro.xacro",
-        "fileBase": "gen3_lite_2f_macro--b5ozkx"
-      },
-      {
-        "name": "gen3_lite_2f_transmission_macro",
-        "file": "gen3_lite_2f_transmission_macro.xacro",
-        "fileBase": "gen3_lite_2f_transmission_macro--885pv0"
-      },
-      {
-        "name": "robotiq_2f_140_macro",
-        "file": "robotiq_2f_140_macro.xacro",
-        "fileBase": "robotiq_2f_140_macro--1dc3xpp"
-      },
-      {
-        "name": "robotiq_2f_85_macro",
-        "file": "robotiq_2f_85_macro.xacro",
-        "fileBase": "robotiq_2f_85_macro--143vxdt"
-      },
-      {
-        "name": "kortex_dual_robots",
-        "file": "kortex_dual_robots.xacro",
-        "fileBase": "kortex_dual_robots--dmqcef"
-      },
-      {
-        "name": "gen3",
-        "file": "gen3.xacro",
-        "fileBase": "gen3--jet33r"
-      },
-      {
-        "name": "gen3_2f85",
-        "file": "gen3_2f85.urdf",
-        "fileBase": "gen3_2f85--1oog9z3"
-      },
-      {
-        "name": "gen3_lite",
-        "file": "gen3_lite.urdf",
-        "fileBase": "gen3_lite--1o8pmrw"
-      },
-      {
-        "name": "gen3_lite_gen3_lite_2f",
-        "file": "gen3_lite_gen3_lite_2f.xacro",
-        "fileBase": "gen3_lite_gen3_lite_2f--1kspvdk"
-      },
-      {
-        "name": "gen3_robotiq_2f_140",
-        "file": "gen3_robotiq_2f_140.xacro",
-        "fileBase": "gen3_robotiq_2f_140--1yjc7jz"
-      },
-      {
-        "name": "gen3_robotiq_2f_85",
-        "file": "gen3_robotiq_2f_85.xacro",
-        "fileBase": "gen3_robotiq_2f_85--1fiipon"
-      },
-      {
-        "name": "kinova",
-        "file": "kinova.urdf.xacro",
-        "fileBase": "kinova--l5wjci"
-      },
-      {
-        "name": "kortex_robot",
-        "file": "kortex_robot.xacro",
-        "fileBase": "kortex_robot--1tfekje"
+        "name": "anymal",
+        "file": "anymal.urdf",
+        "fileBase": "anymal--185350l"
       }
     ],
     "hfDatasets": [],
@@ -220,20 +43,23 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-25T15:11:16.578Z"
+    "updatedAt": "2026-02-04T15:41:17.708Z"
   },
   {
-    "repo": "https://github.com/ianathompson/eDO_description",
-    "repoKey": "ianathompson/edo_description",
+    "repo": "https://github.com/bulletphysics/bullet3",
+    "repoKey": "bulletphysics/bullet3",
+    "path": "data/quadruped",
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [],
+    "tags": [
+      "awesome-seed"
+    ],
     "robots": [
       {
-        "name": "edo_sim",
-        "file": "edo_sim.urdf",
-        "fileBase": "edo_sim--1t70ypx"
+        "name": "minitaur",
+        "file": "minitaur.urdf",
+        "fileBase": "minitaur--1c1xxsp"
       }
     ],
     "hfDatasets": [],
@@ -243,7 +69,235 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-25T15:10:04.690Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/frankarobotics/franka_description",
+    "repoKey": "frankarobotics/franka_description",
+    "org": "Franka Robotics",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "cobot_pump",
+        "file": "cobot_pump.urdf.xacro",
+        "fileBase": "cobot_pump--1ets0gi"
+      },
+      {
+        "name": "cobot_pump_arguments",
+        "file": "cobot_pump_arguments.xacro",
+        "fileBase": "cobot_pump_arguments--1cbeait"
+      },
+      {
+        "name": "ee_with_one_link",
+        "file": "ee_with_one_link.xacro",
+        "fileBase": "ee_with_one_link--1cfmow8"
+      },
+      {
+        "name": "franka_hand",
+        "file": "franka_hand.xacro",
+        "fileBase": "franka_hand--1l3pvd6"
+      },
+      {
+        "name": "utils",
+        "file": "utils.xacro",
+        "fileBase": "utils--holcvq"
+      },
+      {
+        "name": "franka_hand.srdf",
+        "file": "franka_hand.srdf.xacro",
+        "fileBase": "franka_hand.srdf--19d90id"
+      },
+      {
+        "name": "franka_hand",
+        "file": "franka_hand.urdf.xacro",
+        "fileBase": "franka_hand--11ly9p0"
+      },
+      {
+        "name": "franka_hand_arguments",
+        "file": "franka_hand_arguments.xacro",
+        "fileBase": "franka_hand_arguments--70ha4j"
+      },
+      {
+        "name": "franka_arm.ros2_control",
+        "file": "franka_arm.ros2_control.xacro",
+        "fileBase": "franka_arm.ros2_control--19kg6lj"
+      },
+      {
+        "name": "franka_arm.srdf",
+        "file": "franka_arm.srdf.xacro",
+        "fileBase": "franka_arm.srdf--4xv618"
+      },
+      {
+        "name": "franka_arm",
+        "file": "franka_arm.xacro",
+        "fileBase": "franka_arm--nqfccb"
+      },
+      {
+        "name": "franka_robot",
+        "file": "franka_robot.xacro",
+        "fileBase": "franka_robot--o0vk8h"
+      },
+      {
+        "name": "group_definition",
+        "file": "group_definition.xacro",
+        "fileBase": "group_definition--ap0op8"
+      },
+      {
+        "name": "utils",
+        "file": "utils.xacro",
+        "fileBase": "utils--1kine0e"
+      },
+      {
+        "name": "fer.srdf",
+        "file": "fer.srdf.xacro",
+        "fileBase": "fer.srdf--1yli12l"
+      },
+      {
+        "name": "fer",
+        "file": "fer.urdf.xacro",
+        "fileBase": "fer--k8n88c"
+      },
+      {
+        "name": "fp3.srdf",
+        "file": "fp3.srdf.xacro",
+        "fileBase": "fp3.srdf--1dnixgl"
+      },
+      {
+        "name": "fp3",
+        "file": "fp3.urdf.xacro",
+        "fileBase": "fp3--ngar44"
+      },
+      {
+        "name": "fr3.srdf",
+        "file": "fr3.srdf.xacro",
+        "fileBase": "fr3.srdf--m0l7e9"
+      },
+      {
+        "name": "fr3",
+        "file": "fr3.urdf.xacro",
+        "fileBase": "fr3--kpwrww"
+      },
+      {
+        "name": "fr3_duo.srdf",
+        "file": "fr3_duo.srdf.xacro",
+        "fileBase": "fr3_duo.srdf--1t339fl"
+      },
+      {
+        "name": "fr3_duo",
+        "file": "fr3_duo.urdf.xacro",
+        "fileBase": "fr3_duo--lbodkw"
+      },
+      {
+        "name": "fr3_duo_arm",
+        "file": "fr3_duo_arm.urdf.xacro",
+        "fileBase": "fr3_duo_arm--1i0f2d9"
+      },
+      {
+        "name": "fr3_duo_fixed_structure",
+        "file": "fr3_duo_fixed_structure.urdf.xacro",
+        "fileBase": "fr3_duo_fixed_structure--1d2htz7"
+      },
+      {
+        "name": "fr3_duo_mount",
+        "file": "fr3_duo_mount.xacro",
+        "fileBase": "fr3_duo_mount--kl8rd9"
+      },
+      {
+        "name": "fr3v2.srdf",
+        "file": "fr3v2.srdf.xacro",
+        "fileBase": "fr3v2.srdf--o7s34p"
+      },
+      {
+        "name": "fr3v2",
+        "file": "fr3v2.urdf.xacro",
+        "fileBase": "fr3v2--1uqycvs"
+      },
+      {
+        "name": "fr3v2_1.srdf",
+        "file": "fr3v2_1.srdf.xacro",
+        "fileBase": "fr3v2_1.srdf--1xq7c99"
+      },
+      {
+        "name": "fr3v2_1",
+        "file": "fr3v2_1.urdf.xacro",
+        "fileBase": "fr3v2_1--w0xtcc"
+      },
+      {
+        "name": "mobile_fr3_duo_v0_2",
+        "file": "mobile_fr3_duo_v0_2.urdf.xacro",
+        "fileBase": "mobile_fr3_duo_v0_2--wfipfg"
+      },
+      {
+        "name": "argo_drive",
+        "file": "argo_drive.xacro",
+        "fileBase": "argo_drive--17j9fj2"
+      },
+      {
+        "name": "caster_wheel",
+        "file": "caster_wheel.xacro",
+        "fileBase": "caster_wheel--tntaig"
+      },
+      {
+        "name": "inertia",
+        "file": "inertia.xacro",
+        "fileBase": "inertia--pn0edi"
+      },
+      {
+        "name": "lidar",
+        "file": "lidar.xacro",
+        "fileBase": "lidar--1q2jf12"
+      },
+      {
+        "name": "common",
+        "file": "common.xacro",
+        "fileBase": "common--smxi7o"
+      },
+      {
+        "name": "nanoscan3",
+        "file": "nanoscan3.urdf.xacro",
+        "fileBase": "nanoscan3--1f9zha7"
+      },
+      {
+        "name": "gazebo_macro",
+        "file": "gazebo_macro.xacro",
+        "fileBase": "gazebo_macro--z2hnp5"
+      },
+      {
+        "name": "nanoscan3_macro",
+        "file": "nanoscan3_macro.xacro",
+        "fileBase": "nanoscan3_macro--1de84mj"
+      },
+      {
+        "name": "rocker_arm",
+        "file": "rocker_arm.xacro",
+        "fileBase": "rocker_arm--1dxyftb"
+      },
+      {
+        "name": "tmrv0_2.ros2_control",
+        "file": "tmrv0_2.ros2_control.xacro",
+        "fileBase": "tmrv0_2.ros2_control--z3lr76"
+      },
+      {
+        "name": "tmrv0_2",
+        "file": "tmrv0_2.urdf.xacro",
+        "fileBase": "tmrv0_2--a198p0"
+      },
+      {
+        "name": "tmrv0_2",
+        "file": "tmrv0_2.xacro",
+        "fileBase": "tmrv0_2--a198p0"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-21T17:30:34.614Z"
   },
   {
     "repo": "https://github.com/Gepetto/example-robot-data",
@@ -251,7 +305,9 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [],
+    "tags": [
+      "awesome-seed"
+    ],
     "robots": [
       {
         "name": "a1",
@@ -656,225 +712,380 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-21T17:31:54.312Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z",
+    "path": "robots"
   },
   {
-    "repo": "https://github.com/frankarobotics/franka_description",
-    "repoKey": "frankarobotics/franka_description",
-    "org": "Franka Robotics",
+    "repo": "https://github.com/google-deepmind/mujoco_menagerie",
+    "repoKey": "google-deepmind/mujoco_menagerie",
+    "path": "google_barkour_v0",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "barkour_v0",
+        "file": "barkour_v0.urdf",
+        "fileBase": "barkour_v0--1b1ih7q"
+      },
+      {
+        "name": "barkour_vb_rev_1_0_head_straight",
+        "file": "barkour_vb_rev_1_0_head_straight.urdf",
+        "fileBase": "barkour_vb_rev_1_0_head_straight--1wgqhct"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/hshi74/toddlerbot",
+    "repoKey": "hshi74/toddlerbot",
+    "path": "toddlerbot/descriptions",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "toddlerbot_2xc",
+        "file": "toddlerbot_2xc.urdf",
+        "fileBase": "toddlerbot_2xc--19zj2i2"
+      },
+      {
+        "name": "toddlerbot_2xm",
+        "file": "toddlerbot_2xm.urdf",
+        "fileBase": "toddlerbot_2xm--3aejf2"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/ianathompson/eDO_description",
+    "repoKey": "ianathompson/edo_description",
+    "org": "",
     "summary": "",
     "demo": "",
     "tags": [],
     "robots": [
       {
-        "name": "cobot_pump",
-        "file": "cobot_pump.urdf.xacro",
-        "fileBase": "cobot_pump--1ets0gi"
+        "name": "edo_sim",
+        "file": "edo_sim.urdf",
+        "fileBase": "edo_sim--1t70ypx"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T15:10:04.690Z"
+  },
+  {
+    "repo": "https://github.com/Interbotix/interbotix_ros_manipulators",
+    "repoKey": "interbotix/interbotix_ros_manipulators",
+    "path": "interbotix_ros_xsarms/interbotix_xsarm_descriptions/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "vx300s",
+        "file": "vx300s.urdf.xacro",
+        "fileBase": "vx300s--1i67cdn"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/Kinovarobotics/ros_kortex",
+    "repoKey": "kinovarobotics/ros_kortex",
+    "path": "kortex_description/robots",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "gen3",
+        "file": "gen3.urdf",
+        "fileBase": "gen3--jet33r"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/Kinovarobotics/ros2_kortex",
+    "repoKey": "kinovarobotics/ros2_kortex",
+    "path": "kortex_description",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "gen3_macro",
+        "file": "gen3_macro.xacro",
+        "fileBase": "gen3_macro--bvdopk"
       },
       {
-        "name": "cobot_pump_arguments",
-        "file": "cobot_pump_arguments.xacro",
-        "fileBase": "cobot_pump_arguments--1cbeait"
+        "name": "gen3_transmission_macro",
+        "file": "gen3_transmission_macro.xacro",
+        "fileBase": "gen3_transmission_macro--10bh5nv"
       },
       {
-        "name": "ee_with_one_link",
-        "file": "ee_with_one_link.xacro",
-        "fileBase": "ee_with_one_link--1cfmow8"
+        "name": "kortex.ros2_control",
+        "file": "kortex.ros2_control.xacro",
+        "fileBase": "kortex.ros2_control--q9wenx"
       },
       {
-        "name": "franka_hand",
-        "file": "franka_hand.xacro",
-        "fileBase": "franka_hand--1l3pvd6"
+        "name": "gen3_macro",
+        "file": "gen3_macro.xacro",
+        "fileBase": "gen3_macro--oqirfl"
       },
       {
-        "name": "utils",
-        "file": "utils.xacro",
-        "fileBase": "utils--holcvq"
+        "name": "gen3_transmission_macro",
+        "file": "gen3_transmission_macro.xacro",
+        "fileBase": "gen3_transmission_macro--377430"
       },
       {
-        "name": "franka_hand.srdf",
-        "file": "franka_hand.srdf.xacro",
-        "fileBase": "franka_hand.srdf--19d90id"
+        "name": "kortex.ros2_control",
+        "file": "kortex.ros2_control.xacro",
+        "fileBase": "kortex.ros2_control--w5s63y"
       },
       {
-        "name": "franka_hand",
-        "file": "franka_hand.urdf.xacro",
-        "fileBase": "franka_hand--11ly9p0"
+        "name": "gen3_lite_macro",
+        "file": "gen3_lite_macro.xacro",
+        "fileBase": "gen3_lite_macro--r3zyuk"
       },
       {
-        "name": "franka_hand_arguments",
-        "file": "franka_hand_arguments.xacro",
-        "fileBase": "franka_hand_arguments--70ha4j"
+        "name": "gen3_lite_transmission_macro",
+        "file": "gen3_lite_transmission_macro.xacro",
+        "fileBase": "gen3_lite_transmission_macro--16mre07"
       },
       {
-        "name": "franka_arm.ros2_control",
-        "file": "franka_arm.ros2_control.xacro",
-        "fileBase": "franka_arm.ros2_control--19kg6lj"
+        "name": "kortex.ros2_control",
+        "file": "kortex.ros2_control.xacro",
+        "fileBase": "kortex.ros2_control--1jp8k6"
       },
       {
-        "name": "franka_arm.srdf",
-        "file": "franka_arm.srdf.xacro",
-        "fileBase": "franka_arm.srdf--4xv618"
+        "name": "GEN3-LITE-GRIPPER_URDF_SIMPLIFIED_V2",
+        "file": "GEN3-LITE-GRIPPER_URDF_SIMPLIFIED_V2.urdf",
+        "fileBase": "gen3-lite-gripper_urdf_simplified_v2--maqpb7"
       },
       {
-        "name": "franka_arm",
-        "file": "franka_arm.xacro",
-        "fileBase": "franka_arm--nqfccb"
+        "name": "gen3_lite_2f.ros2_control",
+        "file": "gen3_lite_2f.ros2_control.xacro",
+        "fileBase": "gen3_lite_2f.ros2_control--810e98"
       },
       {
-        "name": "franka_robot",
-        "file": "franka_robot.xacro",
-        "fileBase": "franka_robot--o0vk8h"
+        "name": "gen3_lite_2f_macro",
+        "file": "gen3_lite_2f_macro.xacro",
+        "fileBase": "gen3_lite_2f_macro--b5ozkx"
       },
       {
-        "name": "group_definition",
-        "file": "group_definition.xacro",
-        "fileBase": "group_definition--ap0op8"
+        "name": "gen3_lite_2f_transmission_macro",
+        "file": "gen3_lite_2f_transmission_macro.xacro",
+        "fileBase": "gen3_lite_2f_transmission_macro--885pv0"
       },
       {
-        "name": "utils",
-        "file": "utils.xacro",
-        "fileBase": "utils--1kine0e"
+        "name": "robotiq_2f_140_macro",
+        "file": "robotiq_2f_140_macro.xacro",
+        "fileBase": "robotiq_2f_140_macro--1dc3xpp"
       },
       {
-        "name": "fer.srdf",
-        "file": "fer.srdf.xacro",
-        "fileBase": "fer.srdf--1yli12l"
+        "name": "robotiq_2f_85_macro",
+        "file": "robotiq_2f_85_macro.xacro",
+        "fileBase": "robotiq_2f_85_macro--143vxdt"
       },
       {
-        "name": "fer",
-        "file": "fer.urdf.xacro",
-        "fileBase": "fer--k8n88c"
+        "name": "kortex_dual_robots",
+        "file": "kortex_dual_robots.xacro",
+        "fileBase": "kortex_dual_robots--dmqcef"
       },
       {
-        "name": "fp3.srdf",
-        "file": "fp3.srdf.xacro",
-        "fileBase": "fp3.srdf--1dnixgl"
+        "name": "gen3",
+        "file": "gen3.xacro",
+        "fileBase": "gen3--jet33r"
       },
       {
-        "name": "fp3",
-        "file": "fp3.urdf.xacro",
-        "fileBase": "fp3--ngar44"
+        "name": "gen3_2f85",
+        "file": "gen3_2f85.urdf",
+        "fileBase": "gen3_2f85--1oog9z3"
       },
       {
-        "name": "fr3.srdf",
-        "file": "fr3.srdf.xacro",
-        "fileBase": "fr3.srdf--m0l7e9"
+        "name": "gen3_lite",
+        "file": "gen3_lite.urdf",
+        "fileBase": "gen3_lite--1o8pmrw"
       },
       {
-        "name": "fr3",
-        "file": "fr3.urdf.xacro",
-        "fileBase": "fr3--kpwrww"
+        "name": "gen3_lite_gen3_lite_2f",
+        "file": "gen3_lite_gen3_lite_2f.xacro",
+        "fileBase": "gen3_lite_gen3_lite_2f--1kspvdk"
       },
       {
-        "name": "fr3_duo.srdf",
-        "file": "fr3_duo.srdf.xacro",
-        "fileBase": "fr3_duo.srdf--1t339fl"
+        "name": "gen3_robotiq_2f_140",
+        "file": "gen3_robotiq_2f_140.xacro",
+        "fileBase": "gen3_robotiq_2f_140--1yjc7jz"
       },
       {
-        "name": "fr3_duo",
-        "file": "fr3_duo.urdf.xacro",
-        "fileBase": "fr3_duo--lbodkw"
+        "name": "gen3_robotiq_2f_85",
+        "file": "gen3_robotiq_2f_85.xacro",
+        "fileBase": "gen3_robotiq_2f_85--1fiipon"
       },
       {
-        "name": "fr3_duo_arm",
-        "file": "fr3_duo_arm.urdf.xacro",
-        "fileBase": "fr3_duo_arm--1i0f2d9"
+        "name": "kinova",
+        "file": "kinova.urdf.xacro",
+        "fileBase": "kinova--l5wjci"
       },
       {
-        "name": "fr3_duo_fixed_structure",
-        "file": "fr3_duo_fixed_structure.urdf.xacro",
-        "fileBase": "fr3_duo_fixed_structure--1d2htz7"
-      },
+        "name": "kortex_robot",
+        "file": "kortex_robot.xacro",
+        "fileBase": "kortex_robot--1tfekje"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/leap-hand/LEAP_Hand_Sim",
+    "repoKey": "leap-hand/leap_hand_sim",
+    "path": "assets/leap_hand",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
       {
-        "name": "fr3_duo_mount",
-        "file": "fr3_duo_mount.xacro",
-        "fileBase": "fr3_duo_mount--kl8rd9"
-      },
+        "name": "robot",
+        "file": "robot.urdf",
+        "fileBase": "robot--1825b6q"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/lvjonok/skydio_x2_description",
+    "repoKey": "lvjonok/skydio_x2_description",
+    "path": "urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
       {
-        "name": "fr3v2.srdf",
-        "file": "fr3v2.srdf.xacro",
-        "fileBase": "fr3v2.srdf--o7s34p"
-      },
+        "name": "skydio_x2",
+        "file": "skydio_x2.urdf",
+        "fileBase": "skydio_x2--1f78cpl"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/pal-robotics/tiago_robot",
+    "repoKey": "pal-robotics/tiago_robot",
+    "path": "tiago_description/robots",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
       {
-        "name": "fr3v2",
-        "file": "fr3v2.urdf.xacro",
-        "fileBase": "fr3v2--1uqycvs"
-      },
-      {
-        "name": "fr3v2_1.srdf",
-        "file": "fr3v2_1.srdf.xacro",
-        "fileBase": "fr3v2_1.srdf--1xq7c99"
-      },
-      {
-        "name": "fr3v2_1",
-        "file": "fr3v2_1.urdf.xacro",
-        "fileBase": "fr3v2_1--w0xtcc"
-      },
-      {
-        "name": "mobile_fr3_duo_v0_2",
-        "file": "mobile_fr3_duo_v0_2.urdf.xacro",
-        "fileBase": "mobile_fr3_duo_v0_2--wfipfg"
-      },
-      {
-        "name": "argo_drive",
-        "file": "argo_drive.xacro",
-        "fileBase": "argo_drive--17j9fj2"
-      },
-      {
-        "name": "caster_wheel",
-        "file": "caster_wheel.xacro",
-        "fileBase": "caster_wheel--tntaig"
-      },
-      {
-        "name": "inertia",
-        "file": "inertia.xacro",
-        "fileBase": "inertia--pn0edi"
-      },
-      {
-        "name": "lidar",
-        "file": "lidar.xacro",
-        "fileBase": "lidar--1q2jf12"
-      },
+        "name": "tiago",
+        "file": "tiago.urdf.xacro",
+        "fileBase": "tiago--7ivb51"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/PR2/pr2_common",
+    "repoKey": "pr2/pr2_common",
+    "path": "pr2_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
       {
         "name": "common",
         "file": "common.xacro",
-        "fileBase": "common--smxi7o"
-      },
-      {
-        "name": "nanoscan3",
-        "file": "nanoscan3.urdf.xacro",
-        "fileBase": "nanoscan3--1f9zha7"
-      },
-      {
-        "name": "gazebo_macro",
-        "file": "gazebo_macro.xacro",
-        "fileBase": "gazebo_macro--z2hnp5"
-      },
-      {
-        "name": "nanoscan3_macro",
-        "file": "nanoscan3_macro.xacro",
-        "fileBase": "nanoscan3_macro--1de84mj"
-      },
-      {
-        "name": "rocker_arm",
-        "file": "rocker_arm.xacro",
-        "fileBase": "rocker_arm--1dxyftb"
-      },
-      {
-        "name": "tmrv0_2.ros2_control",
-        "file": "tmrv0_2.ros2_control.xacro",
-        "fileBase": "tmrv0_2.ros2_control--z3lr76"
-      },
-      {
-        "name": "tmrv0_2",
-        "file": "tmrv0_2.urdf.xacro",
-        "fileBase": "tmrv0_2--a198p0"
-      },
-      {
-        "name": "tmrv0_2",
-        "file": "tmrv0_2.xacro",
-        "fileBase": "tmrv0_2--a198p0"
+        "fileBase": "common--1wiaqoe"
       }
     ],
     "hfDatasets": [],
@@ -884,20 +1095,23 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-21T17:30:34.614Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z"
   },
   {
-    "repo": "https://github.com/ANYbotics/anymal_c_simple_description",
-    "repoKey": "anybotics/anymal_c_simple_description",
+    "repo": "https://github.com/RethinkRobotics/baxter_common",
+    "repoKey": "rethinkrobotics/baxter_common",
+    "path": "baxter_description/urdf",
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [],
+    "tags": [
+      "awesome-seed"
+    ],
     "robots": [
       {
-        "name": "anymal",
-        "file": "anymal.urdf",
-        "fileBase": "anymal--185350l"
+        "name": "baxter",
+        "file": "baxter.urdf",
+        "fileBase": "baxter--1885pkh"
       }
     ],
     "hfDatasets": [],
@@ -907,20 +1121,23 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-04T15:41:17.708Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z"
   },
   {
-    "repo": "https://github.com/ANYbotics/anymal_b_simple_description",
-    "repoKey": "anybotics/anymal_b_simple_description",
+    "repo": "https://github.com/rimim/AWD",
+    "repoKey": "rimim/awd",
+    "path": "awd/data/assets/go_bdx",
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [],
+    "tags": [
+      "awesome-seed"
+    ],
     "robots": [
       {
-        "name": "anymal",
-        "file": "anymal.urdf",
-        "fileBase": "anymal--185350l"
+        "name": "go_bdx",
+        "file": "go_bdx.urdf",
+        "fileBase": "go_bdx--15rym5g"
       }
     ],
     "hfDatasets": [],
@@ -930,30 +1147,7 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-04T15:41:04.361Z"
-  },
-  {
-    "repo": "https://github.com/SIGRobotics-UIUC/LeKiwi",
-    "repoKey": "sigrobotics-uiuc/lekiwi",
-    "org": "",
-    "summary": "",
-    "demo": "",
-    "tags": [],
-    "robots": [
-      {
-        "name": "LeKiwi",
-        "file": "LeKiwi.urdf",
-        "fileBase": "lekiwi--gkj1ce"
-      }
-    ],
-    "hfDatasets": [],
-    "authorWebsite": "",
-    "authorX": "",
-    "authorLinkedin": "",
-    "authorGithub": "",
-    "contact": "",
-    "extra": "",
-    "updatedAt": "2026-02-04T15:31:32.117Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z"
   },
   {
     "repo": "https://github.com/ROBOTIS-GIT/turtlebot3",
@@ -994,12 +1188,425 @@
     "updatedAt": "2026-02-03T00:07:31.058Z"
   },
   {
+    "repo": "https://github.com/RobotLocomotion/models",
+    "repoKey": "robotlocomotion/models",
+    "path": "iiwa_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "atlas_convex_hull",
+        "file": "atlas_convex_hull.urdf",
+        "fileBase": "atlas_convex_hull--shueeg"
+      },
+      {
+        "name": "dual_iiwa14_polytope_collision",
+        "file": "dual_iiwa14_polytope_collision.urdf",
+        "fileBase": "dual_iiwa14_polytope_collision--1w6x4kx"
+      },
+      {
+        "name": "iiwa.gazebo",
+        "file": "iiwa.gazebo.xacro",
+        "fileBase": "iiwa.gazebo--8a23vb"
+      },
+      {
+        "name": "iiwa.transmission",
+        "file": "iiwa.transmission.xacro",
+        "fileBase": "iiwa.transmission--1nomkrt"
+      },
+      {
+        "name": "iiwa14_no_collision",
+        "file": "iiwa14_no_collision.urdf",
+        "fileBase": "iiwa14_no_collision--104xzyp"
+      },
+      {
+        "name": "iiwa14_polytope_collision",
+        "file": "iiwa14_polytope_collision.urdf",
+        "fileBase": "iiwa14_polytope_collision--1juqyhu"
+      },
+      {
+        "name": "iiwa14_primitive_collision",
+        "file": "iiwa14_primitive_collision.urdf",
+        "fileBase": "iiwa14_primitive_collision--1chdmy5"
+      },
+      {
+        "name": "iiwa14_spheres_collision",
+        "file": "iiwa14_spheres_collision.urdf",
+        "fileBase": "iiwa14_spheres_collision--fjs7yy"
+      },
+      {
+        "name": "iiwa14_spheres_dense_collision",
+        "file": "iiwa14_spheres_dense_collision.urdf",
+        "fileBase": "iiwa14_spheres_dense_collision--1tp34ai"
+      },
+      {
+        "name": "iiwa14_spheres_dense_elbow_collision",
+        "file": "iiwa14_spheres_dense_elbow_collision.urdf",
+        "fileBase": "iiwa14_spheres_dense_elbow_collision--ji6tr6"
+      },
+      {
+        "name": "iiwa14",
+        "file": "iiwa14.xacro",
+        "fileBase": "iiwa14--1jm4uig"
+      },
+      {
+        "name": "materials",
+        "file": "materials.xacro",
+        "fileBase": "materials--pb8gtn"
+      },
+      {
+        "name": "planar_iiwa14_spheres_dense_elbow_collision",
+        "file": "planar_iiwa14_spheres_dense_elbow_collision.urdf",
+        "fileBase": "planar_iiwa14_spheres_dense_elbow_collision--1m4na3l"
+      },
+      {
+        "name": "utilities",
+        "file": "utilities.xacro",
+        "fileBase": "utilities--1n4mkz9"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/RobotnikAutomation/robotnik_description",
+    "repoKey": "robotnikautomation/robotnik_description",
+    "path": "robots",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "rbkairos_plus",
+        "file": "rbkairos_plus.urdf.xacro",
+        "fileBase": "rbkairos_plus--y1ypm9"
+      },
+      {
+        "name": "rbkairos",
+        "file": "rbkairos.urdf.xacro",
+        "fileBase": "rbkairos--qdesk"
+      },
+      {
+        "name": "rbrobout_plus",
+        "file": "rbrobout_plus.urdf.xacro",
+        "fileBase": "rbrobout_plus--36gm6p"
+      },
+      {
+        "name": "rbrobout",
+        "file": "rbrobout.urdf.xacro",
+        "fileBase": "rbrobout--16ok138"
+      },
+      {
+        "name": "rbsummit",
+        "file": "rbsummit.urdf.xacro",
+        "fileBase": "rbsummit--1lggz84"
+      },
+      {
+        "name": "rbtheron",
+        "file": "rbtheron.urdf.xacro",
+        "fileBase": "rbtheron--1299ysi"
+      },
+      {
+        "name": "rbvogui_plus",
+        "file": "rbvogui_plus.urdf.xacro",
+        "fileBase": "rbvogui_plus--frys79"
+      },
+      {
+        "name": "rbvogui",
+        "file": "rbvogui.urdf.xacro",
+        "fileBase": "rbvogui--1wme348"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/ros-industrial/universal_robot",
+    "repoKey": "ros-industrial/universal_robot",
+    "path": "ur_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "ur10",
+        "file": "ur10.urdf.xacro",
+        "fileBase": "ur10--1ye1ycw"
+      },
+      {
+        "name": "ur10e",
+        "file": "ur10e.urdf.xacro",
+        "fileBase": "ur10e--3d7cwz"
+      },
+      {
+        "name": "ur3",
+        "file": "ur3.urdf.xacro",
+        "fileBase": "ur3--1jj82me"
+      },
+      {
+        "name": "ur3e",
+        "file": "ur3e.urdf.xacro",
+        "fileBase": "ur3e--1vzfpzp"
+      },
+      {
+        "name": "ur5",
+        "file": "ur5.urdf.xacro",
+        "fileBase": "ur5--1k37a0c"
+      },
+      {
+        "name": "ur5e",
+        "file": "ur5e.urdf.xacro",
+        "fileBase": "ur5e--1lz8wf3"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/s1lent4gnt/koch-v1-1",
+    "repoKey": "s1lent4gnt/koch-v1-1",
+    "path": "simulation",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "follower",
+        "file": "follower.urdf",
+        "fileBase": "follower--83c1jt"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/SCHUNK-SE-Co-KG/schunk_description",
+    "repoKey": "schunk-se-co-kg/schunk_description",
+    "path": "egp_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "egp",
+        "file": "egp.xacro",
+        "fileBase": "egp--2mp2bt"
+      },
+      {
+        "name": "egu_50",
+        "file": "egu_50.xacro",
+        "fileBase": "egu_50--1lbrtel"
+      },
+      {
+        "name": "pzn_plus",
+        "file": "pzn_plus.xacro",
+        "fileBase": "pzn_plus--rcucwh"
+      },
+      {
+        "name": "pzv_64",
+        "file": "pzv_64.xacro",
+        "fileBase": "pzv_64--12c2b2t"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/SCHUNK-SE-Co-KG/schunk_svh_ros_driver",
+    "repoKey": "schunk-se-co-kg/schunk_svh_ros_driver",
+    "path": "schunk_svh_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "svh",
+        "file": "svh.urdf.xacro",
+        "fileBase": "svh--6a3856"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/SIGRobotics-UIUC/LeKiwi",
+    "repoKey": "sigrobotics-uiuc/lekiwi",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "LeKiwi",
+        "file": "LeKiwi.urdf",
+        "fileBase": "lekiwi--gkj1ce"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-04T15:31:32.117Z"
+  },
+  {
+    "repo": "https://github.com/TetherIA/aero-hand-open",
+    "repoKey": "tetheria/aero-hand-open",
+    "path": "ros2/src/aero_hand_open_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "aero_hand_open_left",
+        "file": "aero_hand_open_left.urdf",
+        "fileBase": "aero_hand_open_left--gnzknp"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/TheRobotStudio/SO-ARM100",
+    "repoKey": "therobotstudio/so-arm100",
+    "org": "The Robot Studio",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "Arm",
+      "LeRobotCompatible",
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "SO-ARM100",
+        "file": "so100.urdf",
+        "fileBase": "so100--vyv9ty"
+      },
+      {
+        "name": "SO-ARM101",
+        "file": "so101_new_calib.urdf",
+        "fileBase": "so101_new_calib--1v0dn17"
+      },
+      {
+        "name": "so101_old_calib",
+        "file": "so101_old_calib.urdf",
+        "fileBase": "so101_old_calib--1byrygc"
+      }
+    ],
+    "hfDatasets": [
+      "https://huggingface.co/datasets/lirislab/sweep_tissue_cube"
+    ],
+    "authorWebsite": "https://www.therobotstudio.com/",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z",
+    "path": "Simulation/SO100"
+  },
+  {
+    "repo": "https://github.com/timqian/bambot",
+    "repoKey": "timqian/bambot",
+    "path": "website/public/URDF",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "bambot_v0",
+        "file": "bambot_v0.urdf",
+        "fileBase": "bambot_v0--12btfvh"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
     "repo": "https://github.com/unitreerobotics/unitree_ros",
     "repoKey": "unitreerobotics/unitree_ros",
     "org": "Unitree Robotics",
     "summary": "",
     "demo": "",
-    "tags": [],
+    "tags": [
+      "awesome-seed"
+    ],
     "robots": [
       {
         "name": "a1",
@@ -1259,44 +1866,74 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-02T23:36:56.837Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z",
+    "path": "robots"
   },
   {
-    "repo": "https://github.com/TheRobotStudio/SO-ARM100",
-    "repoKey": "therobotstudio/so-arm100",
-    "org": "The Robot Studio",
+    "repo": "https://github.com/userguide-galaxea/URDF",
+    "repoKey": "userguide-galaxea/urdf",
+    "path": "R1/urdf",
+    "org": "",
     "summary": "",
     "demo": "",
     "tags": [
-      "LeRobotCompatible",
-      "Arm"
+      "awesome-seed"
     ],
     "robots": [
       {
-        "name": "SO-ARM100",
-        "file": "so100.urdf",
-        "fileBase": "so100--vyv9ty"
-      },
-      {
-        "name": "SO-ARM101",
-        "file": "so101_new_calib.urdf",
-        "fileBase": "so101_new_calib--1v0dn17"
-      },
-      {
-        "name": "so101_old_calib",
-        "file": "so101_old_calib.urdf",
-        "fileBase": "so101_old_calib--1byrygc"
+        "name": "r1_v2_1_0",
+        "file": "r1_v2_1_0.urdf",
+        "fileBase": "r1_v2_1_0--w4c9mu"
       }
     ],
-    "hfDatasets": [
-      "https://huggingface.co/datasets/lirislab/sweep_tissue_cube"
-    ],
-    "authorWebsite": "https://www.therobotstudio.com/",
+    "hfDatasets": [],
+    "authorWebsite": "",
     "authorX": "",
     "authorLinkedin": "",
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-02T16:42:38.019Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z"
+  },
+  {
+    "repo": "https://github.com/xArm-Developer/xarm_ros2",
+    "repoKey": "xarm-developer/xarm_ros2",
+    "path": "xarm_description/urdf",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [
+      "awesome-seed"
+    ],
+    "robots": [
+      {
+        "name": "lite6",
+        "file": "lite6.urdf.xacro",
+        "fileBase": "lite6--18wavf2"
+      },
+      {
+        "name": "xarm5",
+        "file": "xarm5.urdf.xacro",
+        "fileBase": "xarm5--5eqp9a"
+      },
+      {
+        "name": "xarm6",
+        "file": "xarm6.urdf.xacro",
+        "fileBase": "xarm6--2xhgea"
+      },
+      {
+        "name": "xarm7",
+        "file": "xarm7.urdf.xacro",
+        "fileBase": "xarm7--1bu3noq"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T16:48:55.329Z"
   }
 ]
