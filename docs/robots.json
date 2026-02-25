@@ -1,5 +1,28 @@
 [
   {
+    "repo": "https://github.com/ianathompson/eDO_description",
+    "repoKey": "ianathompson/edo_description",
+    "org": "",
+    "summary": "",
+    "demo": "",
+    "tags": [],
+    "robots": [
+      {
+        "name": "edo_sim",
+        "file": "edo_sim.urdf",
+        "fileBase": "edo_sim--1t70ypx"
+      }
+    ],
+    "hfDatasets": [],
+    "authorWebsite": "",
+    "authorX": "",
+    "authorLinkedin": "",
+    "authorGithub": "",
+    "contact": "",
+    "extra": "",
+    "updatedAt": "2026-02-25T15:10:04.690Z"
+  },
+  {
     "repo": "https://github.com/Gepetto/example-robot-data",
     "repoKey": "gepetto/example-robot-data",
     "org": "",
