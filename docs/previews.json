@@ -1,78 +1,270 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-25T21:53:11.243Z",
+  "generatedAt": "2026-02-26T08:59:26.202Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
       "fileBase": "anymal--185350l",
       "webp": "previews/anybotics/anymal_c_simple_description/anymal--185350l.webp",
-      "png": "thumbnails/anybotics/anymal_c_simple_description/anymal--185350l.png"
+      "png": "thumbnails/anybotics/anymal_c_simple_description/anymal--185350l.png",
+      "sourceType": "urdf",
+      "meshCount": 48,
+      "linkCount": 78,
+      "jointCount": 77,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:48",
+        "links:78",
+        "joints:77",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "bulletphysics/bullet3",
       "fileBase": "minitaur--1c1xxsp",
       "webp": "previews/bulletphysics/bullet3/minitaur--1c1xxsp.webp",
-      "png": "thumbnails/bulletphysics/bullet3/minitaur--1c1xxsp.png"
+      "png": "thumbnails/bulletphysics/bullet3/minitaur--1c1xxsp.png",
+      "sourceType": "urdf",
+      "meshCount": 31,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 0,
+      "legCount": 8,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:31",
+        "links:27",
+        "joints:26",
+        "arms:0",
+        "legs:8",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "argo_drive--17j9fj2",
       "webp": "previews/frankarobotics/franka_description/argo_drive--17j9fj2.webp",
-      "png": "thumbnails/frankarobotics/franka_description/argo_drive--17j9fj2.png"
+      "png": "thumbnails/frankarobotics/franka_description/argo_drive--17j9fj2.png",
+      "sourceType": "xacro",
+      "meshCount": 1137,
+      "linkCount": 26,
+      "jointCount": 25,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 3,
+      "tags": [
+        "meshes:1137",
+        "links:26",
+        "joints:25",
+        "arms:0",
+        "legs:0",
+        "wheels:3",
+        "source:xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "cobot_pump_arguments--1cbeait",
       "webp": "previews/frankarobotics/franka_description/cobot_pump_arguments--1cbeait.webp",
-      "png": "thumbnails/frankarobotics/franka_description/cobot_pump_arguments--1cbeait.png"
+      "png": "thumbnails/frankarobotics/franka_description/cobot_pump_arguments--1cbeait.png",
+      "sourceType": "xacro",
+      "meshCount": 1,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "cobot_pump--1ets0gi",
       "webp": "previews/frankarobotics/franka_description/cobot_pump--1ets0gi.webp",
-      "png": "thumbnails/frankarobotics/franka_description/cobot_pump--1ets0gi.png"
+      "png": "thumbnails/frankarobotics/franka_description/cobot_pump--1ets0gi.png",
+      "sourceType": "urdf.xacro",
+      "meshCount": 1,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "ee_with_one_link--1cfmow8",
       "webp": "previews/frankarobotics/franka_description/ee_with_one_link--1cfmow8.webp",
-      "png": "thumbnails/frankarobotics/franka_description/ee_with_one_link--1cfmow8.png"
+      "png": "thumbnails/frankarobotics/franka_description/ee_with_one_link--1cfmow8.png",
+      "sourceType": "xacro",
+      "meshCount": 59,
+      "linkCount": 14,
+      "jointCount": 13,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:59",
+        "links:14",
+        "joints:13",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "fer--k8n88c",
       "webp": "previews/frankarobotics/franka_description/fer--k8n88c.webp",
-      "png": "thumbnails/frankarobotics/franka_description/fer--k8n88c.png"
+      "png": "thumbnails/frankarobotics/franka_description/fer--k8n88c.png",
+      "sourceType": "urdf.xacro",
+      "meshCount": 59,
+      "linkCount": 14,
+      "jointCount": 13,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:59",
+        "links:14",
+        "joints:13",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "fer.srdf--1yli12l",
       "webp": "previews/frankarobotics/franka_description/fer.srdf--1yli12l.webp",
-      "png": "thumbnails/frankarobotics/franka_description/fer.srdf--1yli12l.png"
+      "png": "thumbnails/frankarobotics/franka_description/fer.srdf--1yli12l.png",
+      "sourceType": "xacro",
+      "meshCount": 59,
+      "linkCount": 14,
+      "jointCount": 13,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:59",
+        "links:14",
+        "joints:13",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "fp3.srdf--1dnixgl",
       "webp": "previews/frankarobotics/franka_description/fp3.srdf--1dnixgl.webp",
-      "png": "thumbnails/frankarobotics/franka_description/fp3.srdf--1dnixgl.png"
+      "png": "thumbnails/frankarobotics/franka_description/fp3.srdf--1dnixgl.png",
+      "sourceType": "xacro",
+      "meshCount": 33,
+      "linkCount": 26,
+      "jointCount": 25,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:33",
+        "links:26",
+        "joints:25",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:xacro"
+      ]
     },
     {
       "repoKey": "frankarobotics/franka_description",
       "fileBase": "fr3_duo_fixed_structure--1d2htz7",
       "webp": "previews/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.webp",
-      "png": "thumbnails/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.png"
+      "png": "thumbnails/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.png",
+      "sourceType": "urdf.xacro",
+      "meshCount": 2,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:2",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ]
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
       "fileBase": "barkour_v0--1b1ih7q",
       "webp": "previews/google-deepmind/mujoco_menagerie/barkour_v0--1b1ih7q.webp",
-      "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_v0--1b1ih7q.png"
+      "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_v0--1b1ih7q.png",
+      "sourceType": "urdf",
+      "meshCount": 33,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:33",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
       "fileBase": "barkour_vb_rev_1_0_head_straight--1wgqhct",
       "webp": "previews/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.webp",
-      "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.png"
+      "png": "thumbnails/google-deepmind/mujoco_menagerie/barkour_vb_rev_1_0_head_straight--1wgqhct.png",
+      "sourceType": "urdf",
+      "meshCount": 25,
+      "linkCount": 35,
+      "jointCount": 34,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:25",
+        "links:35",
+        "joints:34",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "ros-industrial/universal_robot",
@@ -210,20 +402,68 @@
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so100--vyv9ty",
       "webp": "previews/therobotstudio/so-arm100/so100--vyv9ty.webp",
-      "png": "thumbnails/therobotstudio/so-arm100/so100--vyv9ty.png"
+      "png": "thumbnails/therobotstudio/so-arm100/so100--vyv9ty.png",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so101_new_calib--1v0dn17",
       "webp": "previews/therobotstudio/so-arm100/so101_new_calib--1v0dn17.webp",
-      "png": "thumbnails/therobotstudio/so-arm100/so101_new_calib--1v0dn17.png"
+      "png": "thumbnails/therobotstudio/so-arm100/so101_new_calib--1v0dn17.png",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "therobotstudio/so-arm100",
       "fileBase": "so101_old_calib--1byrygc",
       "webm": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webm",
       "webp": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webp",
-      "png": "thumbnails/therobotstudio/so-arm100/so101_old_calib--1byrygc.png"
+      "png": "thumbnails/therobotstudio/so-arm100/so101_old_calib--1byrygc.png",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ]
     }
   ]
 }
