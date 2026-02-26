@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:14:05.301Z",
+  "generatedAt": "2026-02-26T22:16:42.227Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -444,6 +444,28 @@
     },
     {
       "repoKey": "bulletphysics/bullet3",
+      "fileBase": "laikago_toes_zup--zr0vgh",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/laikago_toes_zup--zr0vgh.webp",
+      "png": "thumbnails/bulletphysics/bullet3/laikago_toes_zup--zr0vgh.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
       "fileBase": "laikago_toes--oxyocl",
       "sourceType": "urdf",
       "meshCount": 17,
@@ -463,6 +485,72 @@
       ],
       "webp": "previews/bulletphysics/bullet3/laikago_toes--oxyocl.webp",
       "png": "thumbnails/bulletphysics/bullet3/laikago_toes--oxyocl.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "laikago--wgeu8f",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 13,
+      "jointCount": 12,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:13",
+        "links:13",
+        "joints:12",
+        "arms:0",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/laikago--wgeu8f.webp",
+      "png": "thumbnails/bulletphysics/bullet3/laikago--wgeu8f.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "link1_com--33tvq4",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/link1_com--33tvq4.webp",
+      "png": "thumbnails/bulletphysics/bullet3/link1_com--33tvq4.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "link1--3bd4xu",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/link1--3bd4xu.webp",
+      "png": "thumbnails/bulletphysics/bullet3/link1--3bd4xu.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
