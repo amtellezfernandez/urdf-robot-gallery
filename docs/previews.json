@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:51:24.633Z",
+  "generatedAt": "2026-02-26T22:57:07.213Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2421,6 +2421,72 @@
       ],
       "webp": "previews/gepetto/example-robot-data/anymal-kinova--whb93k.webp",
       "png": "thumbnails/gepetto/example-robot-data/anymal-kinova--whb93k.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "b1--14ey35h",
+      "sourceType": "urdf",
+      "meshCount": 31,
+      "linkCount": 31,
+      "jointCount": 30,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:31",
+        "links:31",
+        "joints:30",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/b1--14ey35h.webp",
+      "png": "thumbnails/gepetto/example-robot-data/b1--14ey35h.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "baxter--46uisl",
+      "sourceType": "urdf",
+      "meshCount": 12,
+      "linkCount": 57,
+      "jointCount": 56,
+      "armCount": 3,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:12",
+        "links:57",
+        "joints:56",
+        "arms:3",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/baxter--46uisl.webp",
+      "png": "thumbnails/gepetto/example-robot-data/baxter--46uisl.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "bluevolta_bravo7_no_ee--geh81a",
+      "sourceType": "urdf",
+      "meshCount": 18,
+      "linkCount": 20,
+      "jointCount": 19,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:18",
+        "links:20",
+        "joints:19",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/bluevolta_bravo7_no_ee--geh81a.webp",
+      "png": "thumbnails/gepetto/example-robot-data/bluevolta_bravo7_no_ee--geh81a.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
