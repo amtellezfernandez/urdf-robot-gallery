@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:47:25.220Z",
+  "generatedAt": "2026-02-26T22:51:24.633Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2377,6 +2377,50 @@
       ],
       "webp": "previews/gepetto/example-robot-data/allegro_right_hand--exfv92.webp",
       "png": "thumbnails/gepetto/example-robot-data/allegro_right_hand--exfv92.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "anymal--14q30ai",
+      "sourceType": "urdf",
+      "meshCount": 48,
+      "linkCount": 78,
+      "jointCount": 77,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:48",
+        "links:78",
+        "joints:77",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/anymal--14q30ai.webp",
+      "png": "thumbnails/gepetto/example-robot-data/anymal--14q30ai.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "anymal-kinova--whb93k",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 37,
+      "jointCount": 36,
+      "armCount": 1,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:37",
+        "joints:36",
+        "arms:1",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/anymal-kinova--whb93k.webp",
+      "png": "thumbnails/gepetto/example-robot-data/anymal-kinova--whb93k.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
