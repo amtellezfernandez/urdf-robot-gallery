@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:19:15.128Z",
+  "generatedAt": "2026-02-26T22:23:00.128Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -771,6 +771,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/link6--1xf4gz.webp",
       "png": "thumbnails/bulletphysics/bullet3/link6--1xf4gz.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "microtaur--qpcl77",
+      "sourceType": "urdf",
+      "meshCount": 42,
+      "linkCount": 26,
+      "jointCount": 25,
+      "armCount": 4,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:42",
+        "links:26",
+        "joints:25",
+        "arms:4",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/microtaur--qpcl77.webp",
+      "png": "thumbnails/bulletphysics/bullet3/microtaur--qpcl77.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "mini_cheetah--91svrp",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/mini_cheetah--91svrp.webp",
+      "png": "thumbnails/bulletphysics/bullet3/mini_cheetah--91svrp.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
