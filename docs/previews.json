@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:23:00.128Z",
+  "generatedAt": "2026-02-26T22:24:23.186Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -837,6 +837,94 @@
       ],
       "webp": "previews/bulletphysics/bullet3/minitaur_derpy--czk6lu.webp",
       "png": "thumbnails/bulletphysics/bullet3/minitaur_derpy--czk6lu.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_fixed_all--ixvjk0",
+      "sourceType": "urdf",
+      "meshCount": 31,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:31",
+        "links:27",
+        "joints:26",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_fixed_all--ixvjk0.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_fixed_all--ixvjk0.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_fixed_knees--1xra67z",
+      "sourceType": "urdf",
+      "meshCount": 31,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 0,
+      "legCount": 8,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:31",
+        "links:27",
+        "joints:26",
+        "arms:0",
+        "legs:8",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_fixed_knees--1xra67z.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_fixed_knees--1xra67z.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_rainbow_dash_v1--1rps4c7",
+      "sourceType": "urdf",
+      "meshCount": 33,
+      "linkCount": 31,
+      "jointCount": 30,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:33",
+        "links:31",
+        "joints:30",
+        "arms:0",
+        "legs:4",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_rainbow_dash_v1--1rps4c7.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_rainbow_dash_v1--1rps4c7.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_rainbow_dash_v1--1sxmc6t",
+      "sourceType": "urdf",
+      "meshCount": 33,
+      "linkCount": 31,
+      "jointCount": 30,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:33",
+        "links:31",
+        "joints:30",
+        "arms:0",
+        "legs:4",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_rainbow_dash_v1--1sxmc6t.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_rainbow_dash_v1--1sxmc6t.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
