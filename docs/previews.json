@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:48:48.312Z",
+  "generatedAt": "2026-02-26T17:50:07.075Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -639,6 +639,72 @@
       ],
       "webp": "previews/bulletphysics/bullet3/r2d2--1y8gy8a.webp",
       "png": "thumbnails/bulletphysics/bullet3/r2d2--1y8gy8a.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "racecar_differential--1328pyj",
+      "sourceType": "urdf",
+      "meshCount": 21,
+      "linkCount": 21,
+      "jointCount": 20,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:21",
+        "links:21",
+        "joints:20",
+        "arms:0",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/racecar_differential--1328pyj.webp",
+      "png": "thumbnails/bulletphysics/bullet3/racecar_differential--1328pyj.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "racecar--1opwk7p",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 13,
+      "jointCount": 12,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:9",
+        "links:13",
+        "joints:12",
+        "arms:0",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/racecar--1opwk7p.webp",
+      "png": "thumbnails/bulletphysics/bullet3/racecar--1opwk7p.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "reduced_beam--4r6yuf",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/reduced_beam--4r6yuf.webp",
+      "png": "thumbnails/bulletphysics/bullet3/reduced_beam--4r6yuf.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
