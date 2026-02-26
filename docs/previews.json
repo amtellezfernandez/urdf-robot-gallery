@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:03:30.592Z",
+  "generatedAt": "2026-02-26T23:07:42.563Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2641,6 +2641,72 @@
       ],
       "webp": "previews/gepetto/example-robot-data/falcon_bravo7_gripper--6nnrqz.webp",
       "png": "thumbnails/gepetto/example-robot-data/falcon_bravo7_gripper--6nnrqz.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "falcon--1k68yjl",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 8,
+      "jointCount": 8,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:8",
+        "joints:8",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/falcon--1k68yjl.webp",
+      "png": "thumbnails/gepetto/example-robot-data/falcon--1k68yjl.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "g1_29dof_rev_1_0--w4f3al",
+      "sourceType": "urdf",
+      "meshCount": 8,
+      "linkCount": 39,
+      "jointCount": 38,
+      "armCount": 1,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:8",
+        "links:39",
+        "joints:38",
+        "arms:1",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/g1_29dof_rev_1_0--w4f3al.webp",
+      "png": "thumbnails/gepetto/example-robot-data/g1_29dof_rev_1_0--w4f3al.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "g1_29dof_with_hand_rev_1_0--1975m4a",
+      "sourceType": "urdf",
+      "meshCount": 49,
+      "linkCount": 53,
+      "jointCount": 52,
+      "armCount": 1,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:49",
+        "links:53",
+        "joints:52",
+        "arms:1",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/g1_29dof_with_hand_rev_1_0--1975m4a.webp",
+      "png": "thumbnails/gepetto/example-robot-data/g1_29dof_with_hand_rev_1_0--1975m4a.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
