@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:51:22.934Z",
+  "generatedAt": "2026-02-26T17:52:12.778Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -793,6 +793,72 @@
       ],
       "webp": "previews/bulletphysics/bullet3/traybox--ao4iwc.webp",
       "png": "thumbnails/bulletphysics/bullet3/traybox--ao4iwc.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "twojointrobot_w_fixedjoints--zeqx04",
+      "sourceType": "urdf",
+      "meshCount": 7,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:7",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/twojointrobot_w_fixedjoints--zeqx04.webp",
+      "png": "thumbnails/bulletphysics/bullet3/twojointrobot_w_fixedjoints--zeqx04.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "twojointrobot_wo_fixedjoints--ghqimz",
+      "sourceType": "urdf",
+      "meshCount": 4,
+      "linkCount": 4,
+      "jointCount": 3,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:4",
+        "links:4",
+        "joints:3",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/twojointrobot_wo_fixedjoints--ghqimz.webp",
+      "png": "thumbnails/bulletphysics/bullet3/twojointrobot_wo_fixedjoints--ghqimz.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "vision60--1poah66",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/vision60--1poah66.webp",
+      "png": "thumbnails/bulletphysics/bullet3/vision60--1poah66.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
