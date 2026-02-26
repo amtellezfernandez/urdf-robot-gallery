@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:52:12.778Z",
+  "generatedAt": "2026-02-26T17:52:47.257Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -859,6 +859,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/vision60--1poah66.webp",
       "png": "thumbnails/bulletphysics/bullet3/vision60--1poah66.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "wsg50_one_motor_gripper_left_finger--1f3sbjt",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/wsg50_one_motor_gripper_left_finger--1f3sbjt.webp",
+      "png": "thumbnails/bulletphysics/bullet3/wsg50_one_motor_gripper_left_finger--1f3sbjt.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
