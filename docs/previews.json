@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:47:09.082Z",
+  "generatedAt": "2026-02-26T17:47:47.453Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -529,6 +529,72 @@
       ],
       "webp": "previews/bulletphysics/bullet3/planemesh--l22zzp.webp",
       "png": "thumbnails/bulletphysics/bullet3/planemesh--l22zzp.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "plate--1u89ozk",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/plate--1u89ozk.webp",
+      "png": "thumbnails/bulletphysics/bullet3/plate--1u89ozk.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "pole--jozn38",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 5,
+      "jointCount": 4,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:5",
+        "joints:4",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/pole--jozn38.webp",
+      "png": "thumbnails/bulletphysics/bullet3/pole--jozn38.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "prismatic--1lityuu",
+      "sourceType": "urdf",
+      "meshCount": 2,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:2",
+        "links:2",
+        "joints:1",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/prismatic--1lityuu.webp",
+      "png": "thumbnails/bulletphysics/bullet3/prismatic--1lityuu.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
