@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:54:21.179Z",
+  "generatedAt": "2026-02-26T23:56:30.081Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4181,6 +4181,94 @@
       ],
       "webp": "previews/rimim/awd/block_projectile--rd527h.webp",
       "png": "thumbnails/rimim/awd/block_projectile--rd527h.png"
+    },
+    {
+      "repoKey": "rimim/awd",
+      "fileBase": "go_bdx--15rym5g",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 21,
+      "jointCount": 20,
+      "armCount": 1,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:21",
+        "joints:20",
+        "arms:1",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rimim/awd/go_bdx--15rym5g.webp",
+      "png": "thumbnails/rimim/awd/go_bdx--15rym5g.png"
+    },
+    {
+      "repoKey": "rimim/awd",
+      "fileBase": "heading_marker--kpl805",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rimim/awd/heading_marker--kpl805.webp",
+      "png": "thumbnails/rimim/awd/heading_marker--kpl805.png"
+    },
+    {
+      "repoKey": "rimim/awd",
+      "fileBase": "location_marker--1ascpk6",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rimim/awd/location_marker--1ascpk6.webp",
+      "png": "thumbnails/rimim/awd/location_marker--1ascpk6.png"
+    },
+    {
+      "repoKey": "rimim/awd",
+      "fileBase": "strike_target--7ctfji",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rimim/awd/strike_target--7ctfji.webp",
+      "png": "thumbnails/rimim/awd/strike_target--7ctfji.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
