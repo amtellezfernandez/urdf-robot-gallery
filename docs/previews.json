@@ -512,7 +512,23 @@
       "repoKey": "bulletphysics/bullet3",
       "fileBase": "minitaur--1c1xxsp",
       "webp": "previews/bulletphysics/bullet3/minitaur--1c1xxsp.webp",
-      "png": "thumbnails/bulletphysics/bullet3/minitaur--1c1xxsp.png"
+      "png": "thumbnails/bulletphysics/bullet3/minitaur--1c1xxsp.png",
+      "sourceType": "urdf",
+      "meshCount": 31,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 0,
+      "legCount": 8,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:31",
+        "links:27",
+        "joints:26",
+        "arms:0",
+        "legs:8",
+        "wheels:0",
+        "source:urdf"
+      ]
     },
     {
       "repoKey": "bulletphysics/bullet3",
