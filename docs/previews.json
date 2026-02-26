@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:07:42.563Z",
+  "generatedAt": "2026-02-26T23:12:43.566Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2707,6 +2707,94 @@
       ],
       "webp": "previews/gepetto/example-robot-data/g1_29dof_with_hand_rev_1_0--1975m4a.webp",
       "png": "thumbnails/gepetto/example-robot-data/g1_29dof_with_hand_rev_1_0--1975m4a.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "go1--vkyrbf",
+      "sourceType": "urdf",
+      "meshCount": 39,
+      "linkCount": 46,
+      "jointCount": 45,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:39",
+        "links:46",
+        "joints:45",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/go1--vkyrbf.webp",
+      "png": "thumbnails/gepetto/example-robot-data/go1--vkyrbf.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "go2--1q8nfh9",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 31,
+      "jointCount": 30,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:31",
+        "joints:30",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/go2--1q8nfh9.webp",
+      "png": "thumbnails/gepetto/example-robot-data/go2--1q8nfh9.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "hextilt_flying_arm_5--1caf3bs",
+      "sourceType": "urdf",
+      "meshCount": 7,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:7",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/hextilt_flying_arm_5--1caf3bs.webp",
+      "png": "thumbnails/gepetto/example-robot-data/hextilt_flying_arm_5--1caf3bs.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "hyq_no_sensors--1ctmt6p",
+      "sourceType": "urdf",
+      "meshCount": 21,
+      "linkCount": 19,
+      "jointCount": 18,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:21",
+        "links:19",
+        "joints:18",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/hyq_no_sensors--1ctmt6p.webp",
+      "png": "thumbnails/gepetto/example-robot-data/hyq_no_sensors--1ctmt6p.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
