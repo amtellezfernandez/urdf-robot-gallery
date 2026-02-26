@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:12:14.704Z",
+  "generatedAt": "2026-02-26T22:14:05.301Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -334,6 +334,72 @@
     },
     {
       "repoKey": "bulletphysics/bullet3",
+      "fileBase": "husky--12lh74p",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:9",
+        "links:11",
+        "joints:10",
+        "arms:0",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/husky--12lh74p.webp",
+      "png": "thumbnails/bulletphysics/bullet3/husky--12lh74p.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "husky--421ytr",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:9",
+        "links:11",
+        "joints:10",
+        "arms:0",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/husky--421ytr.webp",
+      "png": "thumbnails/bulletphysics/bullet3/husky--421ytr.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "kuka--mabmnt",
+      "sourceType": "urdf",
+      "meshCount": 8,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:8",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/kuka--mabmnt.webp",
+      "png": "thumbnails/bulletphysics/bullet3/kuka--mabmnt.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
       "fileBase": "laikago_toes_limits--8t56wa",
       "sourceType": "urdf",
       "meshCount": 17,
@@ -353,6 +419,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/laikago_toes_limits--8t56wa.webp",
       "png": "thumbnails/bulletphysics/bullet3/laikago_toes_limits--8t56wa.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "laikago_toes_zup_lores--1m4aiyv",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/laikago_toes_zup_lores--1m4aiyv.webp",
+      "png": "thumbnails/bulletphysics/bullet3/laikago_toes_zup_lores--1m4aiyv.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
