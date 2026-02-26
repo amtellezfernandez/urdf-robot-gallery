@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:47:07.311Z",
+  "generatedAt": "2026-02-26T23:49:03.496Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -3895,6 +3895,116 @@
       ],
       "webp": "previews/kinovarobotics/ros_kortex/gen3-7dof-novision_for_urdf_arm_v12--1ai0m5k.webp",
       "png": "thumbnails/kinovarobotics/ros_kortex/gen3-7dof-novision_for_urdf_arm_v12--1ai0m5k.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gen3-7dof-vision_arm_urdf_v12--17dcscj",
+      "sourceType": "urdf",
+      "meshCount": 8,
+      "linkCount": 12,
+      "jointCount": 11,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:8",
+        "links:12",
+        "joints:11",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gen3-7dof-vision_arm_urdf_v12--17dcscj.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gen3-7dof-vision_arm_urdf_v12--17dcscj.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gen3-lite--1o16jdh",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gen3-lite--1o16jdh.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gen3-lite--1o16jdh.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gen3-lite-gripper_urdf_simplified_v2--maqpb7",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 5,
+      "jointCount": 4,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:5",
+        "joints:4",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gen3-lite-gripper_urdf_simplified_v2--maqpb7.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gen3-lite-gripper_urdf_simplified_v2--maqpb7.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros2_kortex",
+      "fileBase": "gen3_2f85--1oog9z3",
+      "sourceType": "urdf",
+      "meshCount": 8,
+      "linkCount": 31,
+      "jointCount": 30,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:8",
+        "links:31",
+        "joints:30",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros2_kortex/gen3_2f85--1oog9z3.webp",
+      "png": "thumbnails/kinovarobotics/ros2_kortex/gen3_2f85--1oog9z3.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros2_kortex",
+      "fileBase": "gen3_lite--1o8pmrw",
+      "sourceType": "urdf",
+      "meshCount": 11,
+      "linkCount": 15,
+      "jointCount": 14,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:11",
+        "links:15",
+        "joints:14",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros2_kortex/gen3_lite--1o8pmrw.webp",
+      "png": "thumbnails/kinovarobotics/ros2_kortex/gen3_lite--1o8pmrw.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
