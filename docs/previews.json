@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:43:51.461Z",
+  "generatedAt": "2026-02-26T22:47:25.220Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2270,6 +2270,28 @@
     },
     {
       "repoKey": "gepetto/example-robot-data",
+      "fileBase": "a1--1ac70hh",
+      "sourceType": "urdf",
+      "meshCount": 19,
+      "linkCount": 23,
+      "jointCount": 22,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:19",
+        "links:23",
+        "joints:22",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/a1--1ac70hh.webp",
+      "png": "thumbnails/gepetto/example-robot-data/a1--1ac70hh.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
       "fileBase": "alex_nub_hands--123jyoy",
       "sourceType": "urdf",
       "meshCount": 97,
@@ -2289,6 +2311,50 @@
       ],
       "webp": "previews/gepetto/example-robot-data/alex_nub_hands--123jyoy.webp",
       "png": "thumbnails/gepetto/example-robot-data/alex_nub_hands--123jyoy.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "alex_sake_hands--31qf5v",
+      "sourceType": "urdf",
+      "meshCount": 101,
+      "linkCount": 39,
+      "jointCount": 38,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:101",
+        "links:39",
+        "joints:38",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/alex_sake_hands--31qf5v.webp",
+      "png": "thumbnails/gepetto/example-robot-data/alex_sake_hands--31qf5v.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "alexander_v1.lowerbodyonly--7h4ydq",
+      "sourceType": "urdf",
+      "meshCount": 11,
+      "linkCount": 23,
+      "jointCount": 22,
+      "armCount": 1,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:11",
+        "links:23",
+        "joints:22",
+        "arms:1",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/alexander_v1.lowerbodyonly--7h4ydq.webp",
+      "png": "thumbnails/gepetto/example-robot-data/alexander_v1.lowerbodyonly--7h4ydq.png"
     },
     {
       "repoKey": "gepetto/example-robot-data",
