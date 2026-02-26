@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:21:41.759Z",
+  "generatedAt": "2026-02-26T23:24:29.382Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -3147,6 +3147,94 @@
       ],
       "webp": "previews/gepetto/example-robot-data/solo12--s4tai2.webp",
       "png": "thumbnails/gepetto/example-robot-data/solo12--s4tai2.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "talos_full_v2_box--1riol4o",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 60,
+      "jointCount": 59,
+      "armCount": 2,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:60",
+        "joints:59",
+        "arms:2",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/talos_full_v2_box--1riol4o.webp",
+      "png": "thumbnails/gepetto/example-robot-data/talos_full_v2_box--1riol4o.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "talos_left_arm--1iah4mw",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/talos_left_arm--1iah4mw.webp",
+      "png": "thumbnails/gepetto/example-robot-data/talos_left_arm--1iah4mw.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "talos_reduced_box--tpvfww",
+      "sourceType": "urdf",
+      "meshCount": 52,
+      "linkCount": 60,
+      "jointCount": 59,
+      "armCount": 2,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:52",
+        "links:60",
+        "joints:59",
+        "arms:2",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/talos_reduced_box--tpvfww.webp",
+      "png": "thumbnails/gepetto/example-robot-data/talos_reduced_box--tpvfww.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "talos_reduced_corrected--13qe7wa",
+      "sourceType": "urdf",
+      "meshCount": 52,
+      "linkCount": 60,
+      "jointCount": 59,
+      "armCount": 2,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:52",
+        "links:60",
+        "joints:59",
+        "arms:2",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/talos_reduced_corrected--13qe7wa.webp",
+      "png": "thumbnails/gepetto/example-robot-data/talos_reduced_corrected--13qe7wa.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
