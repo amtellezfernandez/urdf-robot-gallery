@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:52:47.257Z",
+  "generatedAt": "2026-02-26T17:53:19.605Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -881,6 +881,72 @@
       ],
       "webp": "previews/bulletphysics/bullet3/wsg50_one_motor_gripper_left_finger--1f3sbjt.webp",
       "png": "thumbnails/bulletphysics/bullet3/wsg50_one_motor_gripper_left_finger--1f3sbjt.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "xarm6_robot_white--19n2gr4",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/xarm6_robot_white--19n2gr4.webp",
+      "png": "thumbnails/bulletphysics/bullet3/xarm6_robot_white--19n2gr4.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "xarm6_robot--f3rriq",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/xarm6_robot--f3rriq.webp",
+      "png": "thumbnails/bulletphysics/bullet3/xarm6_robot--f3rriq.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "xarm6_with_gripper--9ghe7y",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 15,
+      "jointCount": 14,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 1,
+      "tags": [
+        "meshes:0",
+        "links:15",
+        "joints:14",
+        "arms:0",
+        "legs:0",
+        "wheels:1",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/xarm6_with_gripper--9ghe7y.webp",
+      "png": "thumbnails/bulletphysics/bullet3/xarm6_with_gripper--9ghe7y.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
