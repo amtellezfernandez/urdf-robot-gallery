@@ -1,72 +1,28 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:30:29.601Z",
+  "generatedAt": "2026-02-26T17:38:14.201Z",
   "previews": [
     {
-      "repoKey": "anybotics/anymal_b_simple_description",
+      "repoKey": "anybotics/anymal_c_simple_description",
       "fileBase": "anymal--185350l",
       "sourceType": "urdf",
-      "meshCount": 142,
-      "linkCount": 22,
-      "jointCount": 21,
+      "meshCount": 48,
+      "linkCount": 78,
+      "jointCount": 77,
       "armCount": 0,
       "legCount": 4,
       "wheelCount": 0,
       "tags": [
-        "meshes:142",
-        "links:22",
-        "joints:21",
+        "meshes:48",
+        "links:78",
+        "joints:77",
         "arms:0",
         "legs:4",
         "wheels:0",
         "source:urdf"
       ],
-      "webp": "previews/anybotics/anymal_b_simple_description/anymal--185350l.webp",
-      "png": "thumbnails/anybotics/anymal_b_simple_description/anymal--185350l.png"
-    },
-    {
-      "repoKey": "bulletphysics/bullet3",
-      "fileBase": "a1--1uavuy9",
-      "sourceType": "urdf",
-      "meshCount": 18,
-      "linkCount": 22,
-      "jointCount": 21,
-      "armCount": 0,
-      "legCount": 4,
-      "wheelCount": 0,
-      "tags": [
-        "meshes:18",
-        "links:22",
-        "joints:21",
-        "arms:0",
-        "legs:4",
-        "wheels:0",
-        "source:urdf"
-      ],
-      "webp": "previews/bulletphysics/bullet3/a1--1uavuy9.webp",
-      "png": "thumbnails/bulletphysics/bullet3/a1--1uavuy9.png"
-    },
-    {
-      "repoKey": "bulletphysics/bullet3",
-      "fileBase": "aliengo--1s0z5af",
-      "sourceType": "urdf",
-      "meshCount": 18,
-      "linkCount": 18,
-      "jointCount": 17,
-      "armCount": 0,
-      "legCount": 4,
-      "wheelCount": 0,
-      "tags": [
-        "meshes:18",
-        "links:18",
-        "joints:17",
-        "arms:0",
-        "legs:4",
-        "wheels:0",
-        "source:urdf"
-      ],
-      "webp": "previews/bulletphysics/bullet3/aliengo--1s0z5af.webp",
-      "png": "thumbnails/bulletphysics/bullet3/aliengo--1s0z5af.png"
+      "webp": "previews/anybotics/anymal_c_simple_description/anymal--185350l.webp",
+      "png": "thumbnails/anybotics/anymal_c_simple_description/anymal--185350l.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
