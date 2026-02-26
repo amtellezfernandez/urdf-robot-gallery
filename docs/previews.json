@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:34:05.121Z",
+  "generatedAt": "2026-02-26T22:35:24.861Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -1500,6 +1500,28 @@
     },
     {
       "repoKey": "bulletphysics/bullet3",
+      "fileBase": "quadrotor--46pyp9",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/quadrotor--46pyp9.webp",
+      "png": "thumbnails/bulletphysics/bullet3/quadrotor--46pyp9.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
       "fileBase": "quadruped--1cc9ml",
       "sourceType": "urdf",
       "meshCount": 25,
@@ -1541,6 +1563,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/r2d2--1y8gy8a.webp",
       "png": "thumbnails/bulletphysics/bullet3/r2d2--1y8gy8a.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "r2d2--ok4tfk",
+      "sourceType": "urdf",
+      "meshCount": 16,
+      "linkCount": 16,
+      "jointCount": 15,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:16",
+        "links:16",
+        "joints:15",
+        "arms:2",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/r2d2--ok4tfk.webp",
+      "png": "thumbnails/bulletphysics/bullet3/r2d2--ok4tfk.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
