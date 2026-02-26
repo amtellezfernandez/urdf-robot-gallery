@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:56:30.081Z",
+  "generatedAt": "2026-02-26T23:59:42.214Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4269,6 +4269,72 @@
       ],
       "webp": "previews/rimim/awd/strike_target--7ctfji.webp",
       "png": "thumbnails/rimim/awd/strike_target--7ctfji.png"
+    },
+    {
+      "repoKey": "robotis-git/turtlebot3",
+      "fileBase": "turtlebot3_waffle_pi--13xns15",
+      "sourceType": "urdf",
+      "meshCount": 4,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 2,
+      "tags": [
+        "meshes:4",
+        "links:11",
+        "joints:10",
+        "arms:0",
+        "legs:0",
+        "wheels:2",
+        "source:urdf"
+      ],
+      "webp": "previews/robotis-git/turtlebot3/turtlebot3_waffle_pi--13xns15.webp",
+      "png": "thumbnails/robotis-git/turtlebot3/turtlebot3_waffle_pi--13xns15.png"
+    },
+    {
+      "repoKey": "robotis-git/turtlebot3",
+      "fileBase": "turtlebot3_waffle--hiw5vp",
+      "sourceType": "urdf",
+      "meshCount": 20,
+      "linkCount": 13,
+      "jointCount": 12,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 2,
+      "tags": [
+        "meshes:20",
+        "links:13",
+        "joints:12",
+        "arms:0",
+        "legs:0",
+        "wheels:2",
+        "source:urdf"
+      ],
+      "webp": "previews/robotis-git/turtlebot3/turtlebot3_waffle--hiw5vp.webp",
+      "png": "thumbnails/robotis-git/turtlebot3/turtlebot3_waffle--hiw5vp.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "allegro_hand_description_right--1mrn1fh",
+      "sourceType": "urdf",
+      "meshCount": 21,
+      "linkCount": 22,
+      "jointCount": 21,
+      "armCount": 4,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:21",
+        "links:22",
+        "joints:21",
+        "arms:4",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/allegro_hand_description_right--1mrn1fh.webp",
+      "png": "thumbnails/robotlocomotion/models/allegro_hand_description_right--1mrn1fh.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
