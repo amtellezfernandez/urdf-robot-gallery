@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:38:42.855Z",
+  "generatedAt": "2026-02-26T23:42:41.105Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -3653,6 +3653,50 @@
       ],
       "webp": "previews/hshi74/toddlerbot/toddlerbot_2xc_gripper--1kgb14a.webp",
       "png": "thumbnails/hshi74/toddlerbot/toddlerbot_2xc_gripper--1kgb14a.png"
+    },
+    {
+      "repoKey": "hshi74/toddlerbot",
+      "fileBase": "toddlerbot_2xm--3aejf2",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 91,
+      "jointCount": 90,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 5,
+      "tags": [
+        "meshes:15",
+        "links:91",
+        "joints:90",
+        "arms:0",
+        "legs:0",
+        "wheels:5",
+        "source:urdf"
+      ],
+      "webp": "previews/hshi74/toddlerbot/toddlerbot_2xm--3aejf2.webp",
+      "png": "thumbnails/hshi74/toddlerbot/toddlerbot_2xm--3aejf2.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gazebo_dual_robot--15xj4lz",
+      "sourceType": "urdf",
+      "meshCount": 16,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:16",
+        "links:27",
+        "joints:26",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gazebo_dual_robot--15xj4lz.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gazebo_dual_robot--15xj4lz.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
