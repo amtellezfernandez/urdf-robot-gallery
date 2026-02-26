@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:49:03.496Z",
+  "generatedAt": "2026-02-26T23:51:48.947Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4005,6 +4005,116 @@
       ],
       "webp": "previews/kinovarobotics/ros2_kortex/gen3_lite--1o8pmrw.webp",
       "png": "thumbnails/kinovarobotics/ros2_kortex/gen3_lite--1o8pmrw.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros2_kortex",
+      "fileBase": "gen3_lite--st1dgg",
+      "sourceType": "urdf.xacro",
+      "meshCount": 11,
+      "linkCount": 15,
+      "jointCount": 14,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:11",
+        "links:15",
+        "joints:14",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf.xacro"
+      ],
+      "webp": "previews/kinovarobotics/ros2_kortex/gen3_lite--st1dgg.webp",
+      "png": "thumbnails/kinovarobotics/ros2_kortex/gen3_lite--st1dgg.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros2_kortex",
+      "fileBase": "gen3-lite-gripper_urdf_simplified_v2--maqpb7",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 5,
+      "jointCount": 4,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:5",
+        "joints:4",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros2_kortex/gen3-lite-gripper_urdf_simplified_v2--maqpb7.webp",
+      "png": "thumbnails/kinovarobotics/ros2_kortex/gen3-lite-gripper_urdf_simplified_v2--maqpb7.png"
+    },
+    {
+      "repoKey": "leap-hand/leap_hand_sim",
+      "fileBase": "ball--8h1wes",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/leap-hand/leap_hand_sim/ball--8h1wes.webp",
+      "png": "thumbnails/leap-hand/leap_hand_sim/ball--8h1wes.png"
+    },
+    {
+      "repoKey": "leap-hand/leap_hand_sim",
+      "fileBase": "cube--1frj834",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/leap-hand/leap_hand_sim/cube--1frj834.webp",
+      "png": "thumbnails/leap-hand/leap_hand_sim/cube--1frj834.png"
+    },
+    {
+      "repoKey": "leap-hand/leap_hand_sim",
+      "fileBase": "robot--1825b6q",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 4,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:4",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/leap-hand/leap_hand_sim/robot--1825b6q.webp",
+      "png": "thumbnails/leap-hand/leap_hand_sim/robot--1825b6q.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
