@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:42:41.105Z",
+  "generatedAt": "2026-02-26T23:44:51.355Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -3697,6 +3697,94 @@
       ],
       "webp": "previews/kinovarobotics/ros_kortex/gazebo_dual_robot--15xj4lz.webp",
       "png": "thumbnails/kinovarobotics/ros_kortex/gazebo_dual_robot--15xj4lz.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gazebo_dual_robot--f8w2w",
+      "sourceType": "urdf",
+      "meshCount": 14,
+      "linkCount": 25,
+      "jointCount": 24,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:14",
+        "links:25",
+        "joints:24",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gazebo_dual_robot--f8w2w.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gazebo_dual_robot--f8w2w.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gen3--jet33r",
+      "sourceType": "urdf",
+      "meshCount": 7,
+      "linkCount": 12,
+      "jointCount": 11,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:7",
+        "links:12",
+        "joints:11",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gen3--jet33r.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gen3--jet33r.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gen3-6dof_brakes_no-vision_urdf_arm_v01--1ifgkke",
+      "sourceType": "urdf",
+      "meshCount": 6,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:6",
+        "links:8",
+        "joints:7",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gen3-6dof_brakes_no-vision_urdf_arm_v01--1ifgkke.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gen3-6dof_brakes_no-vision_urdf_arm_v01--1ifgkke.png"
+    },
+    {
+      "repoKey": "kinovarobotics/ros_kortex",
+      "fileBase": "gen3-6dof_brakes_vision_urdf_arm_v01--rwoo2",
+      "sourceType": "urdf",
+      "meshCount": 6,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:6",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/kinovarobotics/ros_kortex/gen3-6dof_brakes_vision_urdf_arm_v01--rwoo2.webp",
+      "png": "thumbnails/kinovarobotics/ros_kortex/gen3-6dof_brakes_vision_urdf_arm_v01--rwoo2.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
