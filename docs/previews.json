@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:38:48.770Z",
+  "generatedAt": "2026-02-26T17:39:21.901Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -67,6 +67,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/base--1i2necu.webp",
       "png": "thumbnails/bulletphysics/bullet3/base--1i2necu.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "concave_box--1dpicz3",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/concave_box--1dpicz3.webp",
+      "png": "thumbnails/bulletphysics/bullet3/concave_box--1dpicz3.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "deform_cube--1glyxss",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/deform_cube--1glyxss.webp",
+      "png": "thumbnails/bulletphysics/bullet3/deform_cube--1glyxss.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
