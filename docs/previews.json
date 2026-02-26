@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:11:31.413Z",
+  "generatedAt": "2026-02-26T22:12:14.704Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -265,6 +265,72 @@
       ],
       "webp": "previews/bulletphysics/bullet3/deform_cube--1glyxss.webp",
       "png": "thumbnails/bulletphysics/bullet3/deform_cube--1glyxss.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "domino--1j8nrgt",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/domino--1j8nrgt.webp",
+      "png": "thumbnails/bulletphysics/bullet3/domino--1j8nrgt.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "hinge--m5ijk1",
+      "sourceType": "urdf",
+      "meshCount": 3,
+      "linkCount": 3,
+      "jointCount": 2,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 1,
+      "tags": [
+        "meshes:3",
+        "links:3",
+        "joints:2",
+        "arms:0",
+        "legs:0",
+        "wheels:1",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/hinge--m5ijk1.webp",
+      "png": "thumbnails/bulletphysics/bullet3/hinge--m5ijk1.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "humanoid--1e6s65f",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 16,
+      "jointCount": 15,
+      "armCount": 2,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:16",
+        "joints:15",
+        "arms:2",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/humanoid--1e6s65f.webp",
+      "png": "thumbnails/bulletphysics/bullet3/humanoid--1e6s65f.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
