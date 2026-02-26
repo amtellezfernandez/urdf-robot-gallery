@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:37:22.992Z",
+  "generatedAt": "2026-02-26T22:38:15.249Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -1673,6 +1673,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/reduced_beam--4r6yuf.webp",
       "png": "thumbnails/bulletphysics/bullet3/reduced_beam--4r6yuf.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "spirit40--1i5xp59",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/spirit40--1i5xp59.webp",
+      "png": "thumbnails/bulletphysics/bullet3/spirit40--1i5xp59.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
