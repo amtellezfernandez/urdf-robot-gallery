@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:29:47.124Z",
+  "generatedAt": "2026-02-26T22:31:38.393Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -1214,6 +1214,28 @@
     },
     {
       "repoKey": "bulletphysics/bullet3",
+      "fileBase": "mug--coasso",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/mug--coasso.webp",
+      "png": "thumbnails/bulletphysics/bullet3/mug--coasso.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
       "fileBase": "mug--d5794d",
       "sourceType": "urdf",
       "meshCount": 1,
@@ -1233,6 +1255,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/mug--d5794d.webp",
       "png": "thumbnails/bulletphysics/bullet3/mug--d5794d.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "nao--1q0bkxo",
+      "sourceType": "urdf",
+      "meshCount": 39,
+      "linkCount": 79,
+      "jointCount": 78,
+      "armCount": 3,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:39",
+        "links:79",
+        "joints:78",
+        "arms:3",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/nao--1q0bkxo.webp",
+      "png": "thumbnails/bulletphysics/bullet3/nao--1q0bkxo.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "pan_tefal--155qvum",
+      "sourceType": "urdf",
+      "meshCount": 2,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:2",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/pan_tefal--155qvum.webp",
+      "png": "thumbnails/bulletphysics/bullet3/pan_tefal--155qvum.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
