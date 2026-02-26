@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:15:27.331Z",
+  "generatedAt": "2026-02-26T23:17:58.530Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2883,6 +2883,94 @@
       ],
       "webp": "previews/gepetto/example-robot-data/kinova--1dz2bx.webp",
       "png": "thumbnails/gepetto/example-robot-data/kinova--1dz2bx.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "panda_collision--1ujf3lq",
+      "sourceType": "urdf",
+      "meshCount": 59,
+      "linkCount": 13,
+      "jointCount": 12,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:59",
+        "links:13",
+        "joints:12",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/panda_collision--1ujf3lq.webp",
+      "png": "thumbnails/gepetto/example-robot-data/panda_collision--1ujf3lq.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "panda--1ul5s2d",
+      "sourceType": "urdf",
+      "meshCount": 59,
+      "linkCount": 13,
+      "jointCount": 12,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:59",
+        "links:13",
+        "joints:12",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/panda--1ul5s2d.webp",
+      "png": "thumbnails/gepetto/example-robot-data/panda--1ul5s2d.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "pr2--15ob39l",
+      "sourceType": "urdf",
+      "meshCount": 64,
+      "linkCount": 82,
+      "jointCount": 81,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:64",
+        "links:82",
+        "joints:81",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/pr2--15ob39l.webp",
+      "png": "thumbnails/gepetto/example-robot-data/pr2--15ob39l.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "quadrotor_base--z8vuaj",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/quadrotor_base--z8vuaj.webp",
+      "png": "thumbnails/gepetto/example-robot-data/quadrotor_base--z8vuaj.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
