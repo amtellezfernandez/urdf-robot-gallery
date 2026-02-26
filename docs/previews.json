@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:39:55.073Z",
+  "generatedAt": "2026-02-26T17:40:40.679Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -111,6 +111,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/deform_cube--1glyxss.webp",
       "png": "thumbnails/bulletphysics/bullet3/deform_cube--1glyxss.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "laikago_toes_limits--8t56wa",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 17,
+      "jointCount": 16,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:17",
+        "joints:16",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/laikago_toes_limits--8t56wa.webp",
+      "png": "thumbnails/bulletphysics/bullet3/laikago_toes_limits--8t56wa.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
