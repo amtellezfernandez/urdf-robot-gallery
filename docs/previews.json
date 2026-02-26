@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:47:47.453Z",
+  "generatedAt": "2026-02-26T17:48:48.312Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -595,6 +595,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/prismatic--1lityuu.webp",
       "png": "thumbnails/bulletphysics/bullet3/prismatic--1lityuu.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "quadruped--1cc9ml",
+      "sourceType": "urdf",
+      "meshCount": 25,
+      "linkCount": 25,
+      "jointCount": 24,
+      "armCount": 0,
+      "legCount": 8,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:25",
+        "links:25",
+        "joints:24",
+        "arms:0",
+        "legs:8",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/quadruped--1cc9ml.webp",
+      "png": "thumbnails/bulletphysics/bullet3/quadruped--1cc9ml.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "r2d2--1y8gy8a",
+      "sourceType": "urdf",
+      "meshCount": 16,
+      "linkCount": 16,
+      "jointCount": 15,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:16",
+        "links:16",
+        "joints:15",
+        "arms:2",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/r2d2--1y8gy8a.webp",
+      "png": "thumbnails/bulletphysics/bullet3/r2d2--1y8gy8a.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
