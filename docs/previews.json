@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:50:47.057Z",
+  "generatedAt": "2026-02-26T17:51:22.934Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -749,6 +749,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/terrain--6m241r.webp",
       "png": "thumbnails/bulletphysics/bullet3/terrain--6m241r.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "threecubes--39cdqn",
+      "sourceType": "urdf",
+      "meshCount": 3,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:3",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/threecubes--39cdqn.webp",
+      "png": "thumbnails/bulletphysics/bullet3/threecubes--39cdqn.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "traybox--ao4iwc",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/traybox--ao4iwc.webp",
+      "png": "thumbnails/bulletphysics/bullet3/traybox--ao4iwc.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
