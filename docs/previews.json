@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:38:14.201Z",
+  "generatedAt": "2026-02-26T17:38:48.770Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -23,6 +23,28 @@
       ],
       "webp": "previews/anybotics/anymal_c_simple_description/anymal--185350l.webp",
       "png": "thumbnails/anybotics/anymal_c_simple_description/anymal--185350l.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "base_com--12z40mo",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/base_com--12z40mo.webp",
+      "png": "thumbnails/bulletphysics/bullet3/base_com--12z40mo.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
