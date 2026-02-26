@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:24:29.382Z",
+  "generatedAt": "2026-02-26T23:27:05.911Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -3235,6 +3235,72 @@
       ],
       "webp": "previews/gepetto/example-robot-data/talos_reduced_corrected--13qe7wa.webp",
       "png": "thumbnails/gepetto/example-robot-data/talos_reduced_corrected--13qe7wa.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "talos_reduced--1l6ild6",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 60,
+      "jointCount": 59,
+      "armCount": 2,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:60",
+        "joints:59",
+        "arms:2",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/talos_reduced--1l6ild6.webp",
+      "png": "thumbnails/gepetto/example-robot-data/talos_reduced--1l6ild6.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "tiago_dual--15rt4hc",
+      "sourceType": "urdf",
+      "meshCount": 111,
+      "linkCount": 130,
+      "jointCount": 129,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 6,
+      "tags": [
+        "meshes:111",
+        "links:130",
+        "joints:129",
+        "arms:1",
+        "legs:0",
+        "wheels:6",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/tiago_dual--15rt4hc.webp",
+      "png": "thumbnails/gepetto/example-robot-data/tiago_dual--15rt4hc.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "tiago_pro--1xq159",
+      "sourceType": "urdf",
+      "meshCount": 11,
+      "linkCount": 58,
+      "jointCount": 57,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 4,
+      "tags": [
+        "meshes:11",
+        "links:58",
+        "joints:57",
+        "arms:1",
+        "legs:0",
+        "wheels:4",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/tiago_pro--1xq159.webp",
+      "png": "thumbnails/gepetto/example-robot-data/tiago_pro--1xq159.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
