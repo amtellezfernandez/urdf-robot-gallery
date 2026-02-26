@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:54:08.418Z",
+  "generatedAt": "2026-02-26T17:54:48.863Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -1145,6 +1145,28 @@
       ],
       "webp": "previews/gepetto/example-robot-data/alex_nub_hands--123jyoy.webp",
       "png": "thumbnails/gepetto/example-robot-data/alex_nub_hands--123jyoy.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "allegro_right_hand--exfv92",
+      "sourceType": "urdf",
+      "meshCount": 21,
+      "linkCount": 21,
+      "jointCount": 20,
+      "armCount": 4,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:21",
+        "links:21",
+        "joints:20",
+        "arms:4",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/allegro_right_hand--exfv92.webp",
+      "png": "thumbnails/gepetto/example-robot-data/allegro_right_hand--exfv92.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
