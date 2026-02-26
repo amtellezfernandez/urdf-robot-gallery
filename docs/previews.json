@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:25:52.000Z",
+  "generatedAt": "2026-02-26T17:28:13.908Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -67,6 +67,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/aliengo--1s0z5af.webp",
       "png": "thumbnails/bulletphysics/bullet3/aliengo--1s0z5af.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "base--1i2necu",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 2,
+      "jointCount": 1,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:2",
+        "joints:1",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/base--1i2necu.webp",
+      "png": "thumbnails/bulletphysics/bullet3/base--1i2necu.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
