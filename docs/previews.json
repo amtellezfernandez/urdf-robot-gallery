@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:51:48.947Z",
+  "generatedAt": "2026-02-26T23:54:21.179Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4115,6 +4115,72 @@
       ],
       "webp": "previews/leap-hand/leap_hand_sim/robot--1825b6q.webp",
       "png": "thumbnails/leap-hand/leap_hand_sim/robot--1825b6q.png"
+    },
+    {
+      "repoKey": "rethinkrobotics/baxter_common",
+      "fileBase": "baxter--1885pkh",
+      "sourceType": "urdf",
+      "meshCount": 32,
+      "linkCount": 49,
+      "jointCount": 48,
+      "armCount": 3,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:32",
+        "links:49",
+        "joints:48",
+        "arms:3",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rethinkrobotics/baxter_common/baxter--1885pkh.webp",
+      "png": "thumbnails/rethinkrobotics/baxter_common/baxter--1885pkh.png"
+    },
+    {
+      "repoKey": "rimim/awd",
+      "fileBase": "block_projectile_large--1odvej5",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rimim/awd/block_projectile_large--1odvej5.webp",
+      "png": "thumbnails/rimim/awd/block_projectile_large--1odvej5.png"
+    },
+    {
+      "repoKey": "rimim/awd",
+      "fileBase": "block_projectile--rd527h",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/rimim/awd/block_projectile--rd527h.webp",
+      "png": "thumbnails/rimim/awd/block_projectile--rd527h.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
