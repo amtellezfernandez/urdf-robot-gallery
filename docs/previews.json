@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:24:23.186Z",
+  "generatedAt": "2026-02-26T22:25:39.644Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -947,6 +947,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/minitaur_rainbow_dash--1griogz.webp",
       "png": "thumbnails/bulletphysics/bullet3/minitaur_rainbow_dash--1griogz.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_rainbow_dash--1rpk1ft",
+      "sourceType": "urdf",
+      "meshCount": 34,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 8,
+      "tags": [
+        "meshes:34",
+        "links:27",
+        "joints:26",
+        "arms:0",
+        "legs:0",
+        "wheels:8",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_rainbow_dash--1rpk1ft.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_rainbow_dash--1rpk1ft.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_single_motor--1jingik",
+      "sourceType": "urdf",
+      "meshCount": 8,
+      "linkCount": 4,
+      "jointCount": 3,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 1,
+      "tags": [
+        "meshes:8",
+        "links:4",
+        "joints:3",
+        "arms:0",
+        "legs:0",
+        "wheels:1",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_single_motor--1jingik.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_single_motor--1jingik.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
