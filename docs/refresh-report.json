@@ -1,11 +1,70 @@
 {
-  "generatedAt": "2026-02-04T13:33:33.452Z",
+  "generatedAt": "2026-02-26T16:40:52.944Z",
   "removedRepos": [],
-  "missingFiles": [],
+  "missingFiles": [
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "file": "ur10.urdf.xacro",
+      "reason": "not found in tree; preserving existing robot entry"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "file": "ur10e.urdf.xacro",
+      "reason": "not found in tree; preserving existing robot entry"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "file": "ur3.urdf.xacro",
+      "reason": "not found in tree; preserving existing robot entry"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "file": "ur3e.urdf.xacro",
+      "reason": "not found in tree; preserving existing robot entry"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "file": "ur5.urdf.xacro",
+      "reason": "not found in tree; preserving existing robot entry"
+    },
+    {
+      "repoKey": "ros-industrial/universal_robot",
+      "file": "ur5e.urdf.xacro",
+      "reason": "not found in tree; preserving existing robot entry"
+    }
+  ],
   "truncated": [],
   "updatedRepos": [
+    "anybotics/anymal_b_simple_description",
+    "anybotics/anymal_c_simple_description",
+    "frankarobotics/franka_description",
+    "bulletphysics/bullet3",
+    "gepetto/example-robot-data",
+    "google-deepmind/mujoco_menagerie",
+    "hshi74/toddlerbot",
+    "ianathompson/edo_description",
+    "interbotix/interbotix_ros_manipulators",
+    "kinovarobotics/ros_kortex",
+    "leap-hand/leap_hand_sim",
+    "kinovarobotics/ros2_kortex",
+    "lvjonok/skydio_x2_description",
+    "pal-robotics/tiago_robot",
+    "rethinkrobotics/baxter_common",
+    "pr2/pr2_common",
+    "rimim/awd",
     "robotis-git/turtlebot3",
+    "robotnikautomation/robotnik_description",
+    "robotlocomotion/models",
+    "s1lent4gnt/koch-v1-1",
+    "ros-industrial/universal_robot",
+    "schunk-se-co-kg/schunk_description",
+    "schunk-se-co-kg/schunk_svh_ros_driver",
+    "tetheria/aero-hand-open",
+    "sigrobotics-uiuc/lekiwi",
+    "therobotstudio/so-arm100",
+    "timqian/bambot",
+    "userguide-galaxea/urdf",
     "unitreerobotics/unitree_ros",
-    "therobotstudio/so-arm100"
+    "xarm-developer/xarm_ros2"
   ]
 }
