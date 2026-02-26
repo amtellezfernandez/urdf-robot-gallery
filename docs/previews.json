@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:38:15.249Z",
+  "generatedAt": "2026-02-26T22:39:12.318Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -1742,6 +1742,28 @@
     },
     {
       "repoKey": "bulletphysics/bullet3",
+      "fileBase": "test_joints_mb--159vix8",
+      "sourceType": "urdf",
+      "meshCount": 3,
+      "linkCount": 3,
+      "jointCount": 2,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:3",
+        "links:3",
+        "joints:2",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/test_joints_mb--159vix8.webp",
+      "png": "thumbnails/bulletphysics/bullet3/test_joints_mb--159vix8.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
       "fileBase": "threecubes--39cdqn",
       "sourceType": "urdf",
       "meshCount": 3,
@@ -1764,6 +1786,28 @@
     },
     {
       "repoKey": "bulletphysics/bullet3",
+      "fileBase": "traybox--1txiaxq",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/traybox--1txiaxq.webp",
+      "png": "thumbnails/bulletphysics/bullet3/traybox--1txiaxq.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
       "fileBase": "traybox--ao4iwc",
       "sourceType": "urdf",
       "meshCount": 5,
@@ -1783,6 +1827,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/traybox--ao4iwc.webp",
       "png": "thumbnails/bulletphysics/bullet3/traybox--ao4iwc.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "twojointrobot_w_fixedjoints--3xvd2",
+      "sourceType": "urdf",
+      "meshCount": 7,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:7",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/twojointrobot_w_fixedjoints--3xvd2.webp",
+      "png": "thumbnails/bulletphysics/bullet3/twojointrobot_w_fixedjoints--3xvd2.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
