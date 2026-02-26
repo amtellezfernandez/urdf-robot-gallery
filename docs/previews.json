@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:53:19.605Z",
+  "generatedAt": "2026-02-26T17:54:08.418Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -1123,6 +1123,28 @@
       ],
       "webp": "previews/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.webp",
       "png": "thumbnails/frankarobotics/franka_description/fr3_duo_fixed_structure--1d2htz7.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "alex_nub_hands--123jyoy",
+      "sourceType": "urdf",
+      "meshCount": 97,
+      "linkCount": 31,
+      "jointCount": 30,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:97",
+        "links:31",
+        "joints:30",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/alex_nub_hands--123jyoy.webp",
+      "png": "thumbnails/gepetto/example-robot-data/alex_nub_hands--123jyoy.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
