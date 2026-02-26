@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:33:15.666Z",
+  "generatedAt": "2026-02-26T22:34:05.121Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -1431,6 +1431,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/pole--jozn38.webp",
       "png": "thumbnails/bulletphysics/bullet3/pole--jozn38.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "pr2_gripper--1crfzik",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 5,
+      "jointCount": 4,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:5",
+        "joints:4",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/pr2_gripper--1crfzik.webp",
+      "png": "thumbnails/bulletphysics/bullet3/pr2_gripper--1crfzik.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "pr2_gripper--1g92kve",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 5,
+      "jointCount": 4,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:5",
+        "joints:4",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/pr2_gripper--1g92kve.webp",
+      "png": "thumbnails/bulletphysics/bullet3/pr2_gripper--1g92kve.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
