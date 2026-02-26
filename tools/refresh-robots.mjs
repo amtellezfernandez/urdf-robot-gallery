@@ -75,6 +75,53 @@ const parseRepo = (repoUrl) => {
   return { owner, repo };
 };
 
+const robotIdentity = (robot) => {
+  if (!robot) return "";
+  if (typeof robot === "string") return robot.trim().toLowerCase();
+  return String(robot.fileBase || robot.file || robot.name || "")
+    .trim()
+    .toLowerCase();
+};
+
+const toRobotObject = (robot) => {
+  if (!robot) return null;
+  if (typeof robot === "string") {
+    const name = robot.trim();
+    return name ? { name } : null;
+  }
+  return { ...robot };
+};
+
+const mergeRobotsPreserveExisting = (existingRobots, refreshedRobots) => {
+  const merged = [];
+  const indexByKey = new Map();
+
+  const append = (robot) => {
+    const objectRobot = toRobotObject(robot);
+    if (!objectRobot) return;
+    const key = robotIdentity(objectRobot);
+    if (!key) return;
+    if (!indexByKey.has(key)) {
+      indexByKey.set(key, merged.length);
+      merged.push(objectRobot);
+      return;
+    }
+    const idx = indexByKey.get(key);
+    const previous = merged[idx] || {};
+    merged[idx] = {
+      ...objectRobot,
+      ...previous,
+      name: previous.name || objectRobot.name,
+      file: previous.file || objectRobot.file,
+      fileBase: previous.fileBase || objectRobot.fileBase,
+    };
+  };
+
+  (Array.isArray(existingRobots) ? existingRobots : []).forEach(append);
+  (Array.isArray(refreshedRobots) ? refreshedRobots : []).forEach(append);
+  return merged;
+};
+
 const pickBestPath = (paths, preferredPrefix, originalPath) => {
   if (!Array.isArray(paths) || paths.length === 0) return "";
   let candidates = paths;
@@ -185,6 +232,50 @@ const githubFetch = async (url) => {
   }
 };
 
+const fetchBlobPathsByTraversal = async ({ owner, repo, branch }) => {
+  const rootTree = await githubFetch(
+    `https://api.github.com/repos/${owner}/${repo}/git/trees/${encodeURIComponent(branch)}`
+  );
+  const queue = [];
+  const blobPaths = [];
+  const rootEntries = Array.isArray(rootTree.tree) ? rootTree.tree : [];
+  for (const entry of rootEntries) {
+    if (!entry?.path) continue;
+    if (entry.type === "blob") {
+      blobPaths.push(entry.path);
+    } else if (entry.type === "tree" && entry.sha) {
+      queue.push({ sha: entry.sha, prefix: entry.path });
+    }
+  }
+
+  const MAX_TREE_REQUESTS = 5000;
+  let treeRequests = 1;
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (!current) continue;
+    treeRequests += 1;
+    if (treeRequests > MAX_TREE_REQUESTS) {
+      throw new Error(`tree traversal exceeded ${MAX_TREE_REQUESTS} requests`);
+    }
+
+    const subtree = await githubFetch(
+      `https://api.github.com/repos/${owner}/${repo}/git/trees/${encodeURIComponent(current.sha)}`
+    );
+    const entries = Array.isArray(subtree.tree) ? subtree.tree : [];
+    for (const child of entries) {
+      if (!child?.path) continue;
+      const fullPath = `${current.prefix}/${child.path}`;
+      if (child.type === "blob") {
+        blobPaths.push(fullPath);
+      } else if (child.type === "tree" && child.sha) {
+        queue.push({ sha: child.sha, prefix: fullPath });
+      }
+    }
+  }
+
+  return blobPaths;
+};
+
 const main = async () => {
   const raw = await fs.readFile(ROBOTS_PATH, "utf8");
   const robotsJson = JSON.parse(raw);
@@ -239,27 +330,42 @@ const main = async () => {
       return { keep: true };
     }
 
-    if (treeData.truncated) {
-      report.truncated.push(repoKey);
-      return { keep: true };
+    if (entry.path) {
+      console.warn(
+        `[refresh] ${repoKey} has path "${entry.path}" in docs/robots.json; scanning full repo by policy.`
+      );
     }
 
-    const treePaths = (treeData.tree || [])
-      .filter((node) => node?.path && node?.type === "blob")
-      .map((node) => node.path);
+    let treePaths = [];
+    if (treeData.truncated) {
+      report.truncated.push(repoKey);
+      console.warn(`[refresh] ${repoKey} recursive tree was truncated; using non-recursive traversal fallback.`);
+      try {
+        treePaths = await fetchBlobPathsByTraversal({
+          owner: repoInfo.owner,
+          repo: repoInfo.repo,
+          branch,
+        });
+      } catch (error) {
+        report.missingFiles.push({
+          repoKey,
+          reason: `tree traversal fallback failed: ${error.message}`,
+        });
+        return { keep: true };
+      }
+    } else {
+      treePaths = (treeData.tree || [])
+        .filter((node) => node?.path && node?.type === "blob")
+        .map((node) => node.path);
+    }
 
-    const normalizedPath = entry.path ? entry.path.replace(/^\/+|\/+$/g, "") : "";
-    const hasPrefix = normalizedPath
-      ? treePaths.some((p) => p.startsWith(`${normalizedPath}/`))
-      : false;
-    const normalizedTreePaths = normalizedPath && !hasPrefix
-      ? treePaths.map((p) => `${normalizedPath}/${p}`)
-      : treePaths;
-
-    const urdfPaths = normalizedTreePaths.filter((p) => hasSupportedRobotExtension(p));
+    const urdfPaths = treePaths.filter((p) => hasSupportedRobotExtension(p));
     if (urdfPaths.length === 0) {
-      report.removedRepos.push(repoKey);
-      return { keep: false };
+      report.missingFiles.push({
+        repoKey,
+        reason: "no urdf/xacro files detected during refresh; preserving existing entry",
+      });
+      return { keep: true };
     }
 
     const urdfByPath = new Map();
@@ -281,12 +387,12 @@ const main = async () => {
       if (!rawFile) continue;
       const direct = urdfByPath.get(rawFile.toLowerCase());
       const nameKey = path.posix.basename(rawFile).toLowerCase();
-      const candidate = direct || pickBestPath(urdfByName.get(nameKey), normalizedPath, rawFile);
+      const candidate = direct || pickBestPath(urdfByName.get(nameKey), "", rawFile);
       if (!candidate) {
         report.missingFiles.push({
           repoKey,
           file: rawFile,
-          reason: "not found in tree",
+          reason: "not found in tree; preserving existing robot entry",
         });
         continue;
       }
@@ -314,7 +420,7 @@ const main = async () => {
       });
     }
 
-    entry.robots = updatedRobots;
+    entry.robots = mergeRobotsPreserveExisting(robots, updatedRobots);
     report.updatedRepos.push(repoKey);
     return { keep: true };
   };

@@ -330,6 +330,52 @@ jobs:
               return robots;
             };
 
+            const mergeRobotsPreserveExisting = (previous, detected) => {
+              const toKey = (robot) => {
+                if (!robot) return "";
+                if (typeof robot === "string") return robot.trim().toLowerCase();
+                return String(robot.fileBase || robot.file || robot.name || "")
+                  .trim()
+                  .toLowerCase();
+              };
+              const toObject = (robot) => {
+                if (!robot) return null;
+                if (typeof robot === "string") {
+                  const name = robot.trim();
+                  if (!name) return null;
+                  return { name };
+                }
+                return { ...robot };
+              };
+
+              const merged = [];
+              const indexByKey = new Map();
+              const append = (robot) => {
+                const asObject = toObject(robot);
+                if (!asObject) return;
+                const key = toKey(asObject);
+                if (!key) return;
+                if (!indexByKey.has(key)) {
+                  indexByKey.set(key, merged.length);
+                  merged.push(asObject);
+                  return;
+                }
+                const idx = indexByKey.get(key);
+                const prev = merged[idx] || {};
+                merged[idx] = {
+                  ...asObject,
+                  ...prev,
+                  name: prev.name || asObject.name,
+                  file: prev.file || asObject.file,
+                  fileBase: prev.fileBase || asObject.fileBase,
+                };
+              };
+
+              (Array.isArray(previous) ? previous : []).forEach(append);
+              (Array.isArray(detected) ? detected : []).forEach(append);
+              return merged;
+            };
+
             const normalizeRepoKey = (value) =>
               value
                 ? value
@@ -398,7 +444,7 @@ jobs:
               return;
             }
 
-            const { owner, repo, path } = repoInfo;
+            const { owner, repo, path: submittedPath } = repoInfo;
             const desiredTitle = `robot-showcase-request: ${owner}/${repo}`;
             if ((issue.title || "").trim() !== desiredTitle) {
               try {
@@ -445,21 +491,14 @@ jobs:
             const allowedTagList = Array.isArray(allowedTags) ? allowedTags : [];
 
             const repoKeyCandidate = `${owner}/${repo}`.toLowerCase();
-            const alreadyIncluded = existing.findIndex(
+            const existingRepoIndex = existing.findIndex(
               (item) => normalizeRepoKey(item.repo || item.repoKey) === repoKeyCandidate
             );
-            if (alreadyIncluded >= 0) {
-              await ensureComment(
-                "Auto-ingest: repo already included.",
-                `Auto-ingest: ${owner}/${repo} is already included in the gallery. Closing this issue.`
+            const repoAlreadyIncluded = existingRepoIndex >= 0;
+            if (repoAlreadyIncluded) {
+              core.info(
+                `Repo ${owner}/${repo} already exists in docs/robots.json; refreshing robots for that existing entry.`
               );
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                state: "closed",
-              });
-              return;
             }
 
             let defaultBranch = "main";
@@ -488,7 +527,7 @@ jobs:
                 hasWriteAccess = false;
               }
             }
-            if (!isMaintainer && !hasWriteAccess) {
+            if (!repoAlreadyIncluded && !isMaintainer && !hasWriteAccess) {
               await ensureComment(
                 "Auto-ingest: manual review required.",
                 `Auto-ingest: manual review required. ${issueAuthor || "The submitter"} does not appear to have write access to ${owner}/${repo}. ` +
@@ -497,45 +536,87 @@ jobs:
               return;
             }
 
-            const fetchTree = async () => {
-              const treeRef = path ? `${defaultBranch}:${path}` : defaultBranch;
+            const fetchFullRepoTree = async () => {
               try {
-                const tree = await github.rest.git.getTree({
-                  owner,
-                  repo,
-                  tree_sha: treeRef,
-                  recursive: "1",
-                });
-                return tree.data.tree || [];
-              } catch {
-                if (!path) return [];
-                const rootTree = await github.rest.git.getTree({
+                const recursiveTree = await github.rest.git.getTree({
                   owner,
                   repo,
                   tree_sha: defaultBranch,
                   recursive: "1",
                 });
-                return (rootTree.data.tree || []).filter((entry) => entry.path.startsWith(path));
+                const entries = recursiveTree.data.tree || [];
+                if (!recursiveTree.data.truncated) {
+                  return entries;
+                }
+                core.info(
+                  `Recursive tree is truncated for ${owner}/${repo}; falling back to non-recursive traversal.`
+                );
+              } catch (error) {
+                core.info(
+                  `Recursive tree fetch failed for ${owner}/${repo}: ${error.message || error}. Falling back to non-recursive traversal.`
+                );
               }
+
+              const rootTree = await github.rest.git.getTree({
+                owner,
+                repo,
+                tree_sha: defaultBranch,
+              });
+              const queue = [];
+              const blobs = [];
+              const rootEntries = rootTree.data.tree || [];
+              for (const entry of rootEntries) {
+                if (!entry?.path) continue;
+                if (entry.type === "blob") {
+                  blobs.push({ path: entry.path, type: "blob" });
+                } else if (entry.type === "tree" && entry.sha) {
+                  queue.push({ sha: entry.sha, prefix: entry.path });
+                }
+              }
+
+              const MAX_TREE_REQUESTS = 5000;
+              let treeRequests = 1;
+              while (queue.length > 0) {
+                const current = queue.shift();
+                if (!current) continue;
+                treeRequests += 1;
+                if (treeRequests > MAX_TREE_REQUESTS) {
+                  throw new Error(
+                    `Repo traversal exceeded ${MAX_TREE_REQUESTS} tree requests for ${owner}/${repo}.`
+                  );
+                }
+
+                const subtree = await github.rest.git.getTree({
+                  owner,
+                  repo,
+                  tree_sha: current.sha,
+                });
+                for (const child of subtree.data.tree || []) {
+                  if (!child?.path) continue;
+                  const fullPath = `${current.prefix}/${child.path}`;
+                  if (child.type === "blob") {
+                    blobs.push({ path: fullPath, type: "blob" });
+                  } else if (child.type === "tree" && child.sha) {
+                    queue.push({ sha: child.sha, prefix: fullPath });
+                  }
+                }
+              }
+              return blobs;
             };
 
-            const tree = await fetchTree();
-            const normalizedPath = path ? path.replace(/^\/+|\/+$/g, "") : "";
-            const hasPrefix =
-              normalizedPath &&
-              tree.some((entry) => entry.path && entry.path.startsWith(`${normalizedPath}/`));
-            const normalizedTree =
-              normalizedPath && !hasPrefix
-                ? tree.map((entry) =>
-                    entry.path ? { ...entry, path: `${normalizedPath}/${entry.path}` } : entry
-                  )
-                : tree;
-            const urdfFiles = normalizedTree
+            if (submittedPath) {
+              core.info(
+                `Submission included path "${submittedPath}", but auto-ingest scans the full repository ${owner}/${repo}.`
+              );
+            }
+
+            const tree = await fetchFullRepoTree();
+            const urdfFiles = tree
               .filter((entry) => entry.type === "blob" && isSupportedRobotFile(entry.path))
               .map((entry) => entry.path);
             if (urdfFiles.length === 0) {
               const altFormats = [".sdf", ".mjcf", ".xml", ...KNOWN_MESH_EXTENSIONS];
-              const foundAlt = normalizedTree
+              const foundAlt = tree
                 .filter((entry) => entry.type === "blob")
                 .map((entry) => entry.path.toLowerCase())
                 .filter((path) => altFormats.some((ext) => path.endsWith(ext)));
@@ -547,7 +628,7 @@ jobs:
                 `Auto-ingest: no .urdf/.xacro files were detected in ${owner}/${repo}. ` +
                   altHint +
                   "Mesh files (.stl/.dae/.obj/...) are supported as assets, but a URDF/Xacro root file is still required. " +
-                  "Please add a URDF/Xacro or point to the correct path and re-open this issue."
+                  "Please add a URDF/Xacro and re-open this issue."
               );
               return;
             }
@@ -650,7 +731,6 @@ jobs:
             const entry = {
               repo: `https://github.com/${owner}/${repo}`,
               repoKey: `${owner}/${repo}`.toLowerCase(),
-              path: path || undefined,
               org: clean(fields["Author / Company / Lab (optional)"]),
               summary: clean(fields["Short summary"]),
               demo: clean(fields["Demo URL (optional)"]),
@@ -668,20 +748,24 @@ jobs:
 
             const repoKey = entry.repoKey;
             const idx = existing.findIndex((item) => normalizeRepoKey(item.repo || item.repoKey) === repoKey);
+            let previousRobotCount = 0;
+            let refreshedRobotCount = Array.isArray(entry.robots) ? entry.robots.length : 0;
             if (idx >= 0) {
               const prev = existing[idx];
+              previousRobotCount = Array.isArray(prev.robots) ? prev.robots.length : 0;
               const mergeValue = (value, fallback) => (value !== undefined && value !== "" ? value : fallback);
               const mergeArray = (value, fallback) => (Array.isArray(value) && value.length ? value : fallback);
+              const mergedRobots = mergeRobotsPreserveExisting(prev.robots, entry.robots);
               existing[idx] = {
                 ...prev,
                 repo: entry.repo || prev.repo,
                 repoKey,
-                path: mergeValue(entry.path, prev.path),
+                path: undefined,
                 org: mergeValue(entry.org, prev.org),
                 summary: mergeValue(entry.summary, prev.summary),
                 demo: mergeValue(entry.demo, prev.demo),
                 tags: mergeArray(entry.tags, prev.tags),
-                robots: mergeArray(entry.robots, prev.robots),
+                robots: mergeArray(mergedRobots, prev.robots),
                 hfDatasets: mergeArray(entry.hfDatasets, prev.hfDatasets),
                 authorWebsite: mergeValue(entry.authorWebsite, prev.authorWebsite),
                 authorX: mergeValue(entry.authorX, prev.authorX),
@@ -691,6 +775,7 @@ jobs:
                 extra: mergeValue(entry.extra, prev.extra),
                 updatedAt: entry.updatedAt,
               };
+              refreshedRobotCount = Array.isArray(existing[idx].robots) ? existing[idx].robots.length : 0;
             } else {
               existing.unshift(entry);
             }
@@ -727,11 +812,19 @@ jobs:
               repo: entry.repo,
             };
 
+            const addedRobots = Math.max(0, refreshedRobotCount - previousRobotCount);
+            const successComment =
+              idx >= 0
+                ? addedRobots > 0
+                  ? `Auto-ingest: ${owner}/${repo} was already in the gallery. Refreshed the existing entry and found ${addedRobots} new robot(s). Issue closed.`
+                  : `Auto-ingest: ${owner}/${repo} is already in the gallery. Refreshed the existing entry and found no additional robots. Issue closed.`
+                : "Auto-ingest: updated robots.json on main. This entry is now live.";
+
             await github.rest.issues.createComment({
               owner: galleryOwner,
               repo: galleryRepo,
               issue_number: issue.number,
-              body: "Auto-ingest: updated robots.json on main. This entry is now live.",
+              body: successComment,
             });
             await github.rest.issues.update({
               owner: galleryOwner,
