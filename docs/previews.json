@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:50:07.075Z",
+  "generatedAt": "2026-02-26T17:50:47.057Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -705,6 +705,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/reduced_beam--4r6yuf.webp",
       "png": "thumbnails/bulletphysics/bullet3/reduced_beam--4r6yuf.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "spirit40newer--28v4ya",
+      "sourceType": "urdf",
+      "meshCount": 17,
+      "linkCount": 21,
+      "jointCount": 20,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:17",
+        "links:21",
+        "joints:20",
+        "arms:0",
+        "legs:4",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/spirit40newer--28v4ya.webp",
+      "png": "thumbnails/bulletphysics/bullet3/spirit40newer--28v4ya.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "terrain--6m241r",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/terrain--6m241r.webp",
+      "png": "thumbnails/bulletphysics/bullet3/terrain--6m241r.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
