@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:46:30.627Z",
+  "generatedAt": "2026-02-26T17:47:09.082Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -485,6 +485,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/mug--d5794d.webp",
       "png": "thumbnails/bulletphysics/bullet3/mug--d5794d.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "pendulum_tendon_1_cart_rail--csi07x",
+      "sourceType": "urdf",
+      "meshCount": 19,
+      "linkCount": 19,
+      "jointCount": 18,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:19",
+        "links:19",
+        "joints:18",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/pendulum_tendon_1_cart_rail--csi07x.webp",
+      "png": "thumbnails/bulletphysics/bullet3/pendulum_tendon_1_cart_rail--csi07x.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "planemesh--l22zzp",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/planemesh--l22zzp.webp",
+      "png": "thumbnails/bulletphysics/bullet3/planemesh--l22zzp.png"
     },
     {
       "repoKey": "frankarobotics/franka_description",
