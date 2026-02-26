@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:27:05.911Z",
+  "generatedAt": "2026-02-26T23:29:23.143Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -3301,6 +3301,94 @@
       ],
       "webp": "previews/gepetto/example-robot-data/tiago_pro--1xq159.webp",
       "png": "thumbnails/gepetto/example-robot-data/tiago_pro--1xq159.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "ur10_joint_limited_robot--rp05nl",
+      "sourceType": "urdf",
+      "meshCount": 20,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:20",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/ur10_joint_limited_robot--rp05nl.webp",
+      "png": "thumbnails/gepetto/example-robot-data/ur10_joint_limited_robot--rp05nl.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "ur10_robot--14y91hn",
+      "sourceType": "urdf",
+      "meshCount": 20,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:20",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/ur10_robot--14y91hn.webp",
+      "png": "thumbnails/gepetto/example-robot-data/ur10_robot--14y91hn.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "ur3_gripper--h0hdrq",
+      "sourceType": "urdf",
+      "meshCount": 35,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:35",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/ur3_gripper--h0hdrq.webp",
+      "png": "thumbnails/gepetto/example-robot-data/ur3_gripper--h0hdrq.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "ur3_joint_limited_robot--8j5ii7",
+      "sourceType": "urdf",
+      "meshCount": 32,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:32",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/ur3_joint_limited_robot--8j5ii7.webp",
+      "png": "thumbnails/gepetto/example-robot-data/ur3_joint_limited_robot--8j5ii7.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
