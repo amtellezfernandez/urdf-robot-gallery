@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T21:46:29.012Z",
+  "generatedAt": "2026-02-26T21:47:18.626Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -507,6 +507,12 @@
       ],
       "webp": "previews/bulletphysics/bullet3/minitaur_v1--1yrolhj.webp",
       "png": "thumbnails/bulletphysics/bullet3/minitaur_v1--1yrolhj.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur--1c1xxsp",
+      "webp": "previews/bulletphysics/bullet3/minitaur--1c1xxsp.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur--1c1xxsp.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
