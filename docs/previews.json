@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:57:07.213Z",
+  "generatedAt": "2026-02-26T22:59:41.146Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -2487,6 +2487,94 @@
       ],
       "webp": "previews/gepetto/example-robot-data/bluevolta_bravo7_no_ee--geh81a.webp",
       "png": "thumbnails/gepetto/example-robot-data/bluevolta_bravo7_no_ee--geh81a.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "bluevolta--h4zjll",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 10,
+      "jointCount": 9,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:10",
+        "joints:9",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/bluevolta--h4zjll.webp",
+      "png": "thumbnails/gepetto/example-robot-data/bluevolta--h4zjll.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "bolt--1bsp0kx",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 9,
+      "jointCount": 8,
+      "armCount": 0,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:9",
+        "joints:8",
+        "arms:0",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/bolt--1bsp0kx.webp",
+      "png": "thumbnails/gepetto/example-robot-data/bolt--1bsp0kx.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "bravo7_gripper--boes0l",
+      "sourceType": "urdf",
+      "meshCount": 11,
+      "linkCount": 12,
+      "jointCount": 11,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:11",
+        "links:12",
+        "joints:11",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/bravo7_gripper--boes0l.webp",
+      "png": "thumbnails/gepetto/example-robot-data/bravo7_gripper--boes0l.png"
+    },
+    {
+      "repoKey": "gepetto/example-robot-data",
+      "fileBase": "bravo7_no_ee--13idwdc",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 10,
+      "jointCount": 9,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:10",
+        "joints:9",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/gepetto/example-robot-data/bravo7_no_ee--13idwdc.webp",
+      "png": "thumbnails/gepetto/example-robot-data/bravo7_no_ee--13idwdc.png"
     },
     {
       "repoKey": "google-deepmind/mujoco_menagerie",
