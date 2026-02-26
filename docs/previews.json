@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T22:40:11.630Z",
+  "generatedAt": "2026-02-26T22:41:18.864Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -1959,6 +1959,50 @@
       ],
       "webp": "previews/bulletphysics/bullet3/vision60--1poah66.webp",
       "png": "thumbnails/bulletphysics/bullet3/vision60--1poah66.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "vision60--2ekva5",
+      "sourceType": "urdf",
+      "meshCount": 37,
+      "linkCount": 23,
+      "jointCount": 22,
+      "armCount": 0,
+      "legCount": 4,
+      "wheelCount": 2,
+      "tags": [
+        "meshes:37",
+        "links:23",
+        "joints:22",
+        "arms:0",
+        "legs:4",
+        "wheels:2",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/vision60--2ekva5.webp",
+      "png": "thumbnails/bulletphysics/bullet3/vision60--2ekva5.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "widowx--1rkp2pz",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 10,
+      "jointCount": 9,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:10",
+        "joints:9",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/widowx--1rkp2pz.webp",
+      "png": "thumbnails/bulletphysics/bullet3/widowx--1rkp2pz.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
