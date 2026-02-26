@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T17:42:40.414Z",
+  "generatedAt": "2026-02-26T17:43:14.372Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_c_simple_description",
@@ -331,6 +331,28 @@
       ],
       "webp": "previews/bulletphysics/bullet3/link6--1xf4gz.webp",
       "png": "thumbnails/bulletphysics/bullet3/link6--1xf4gz.png"
+    },
+    {
+      "repoKey": "bulletphysics/bullet3",
+      "fileBase": "minitaur_derpy--czk6lu",
+      "sourceType": "urdf",
+      "meshCount": 39,
+      "linkCount": 27,
+      "jointCount": 26,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 8,
+      "tags": [
+        "meshes:39",
+        "links:27",
+        "joints:26",
+        "arms:0",
+        "legs:0",
+        "wheels:8",
+        "source:urdf"
+      ],
+      "webp": "previews/bulletphysics/bullet3/minitaur_derpy--czk6lu.webp",
+      "png": "thumbnails/bulletphysics/bullet3/minitaur_derpy--czk6lu.png"
     },
     {
       "repoKey": "bulletphysics/bullet3",
