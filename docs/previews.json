@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:12:19.206Z",
+  "generatedAt": "2026-02-27T00:14:00.186Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4753,6 +4753,94 @@
       ],
       "webp": "previews/robotlocomotion/models/panda_arm_link5split--cg5ji9.webp",
       "png": "thumbnails/robotlocomotion/models/panda_arm_link5split--cg5ji9.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "panda_hand--bwkxfm",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 4,
+      "jointCount": 3,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:4",
+        "joints:3",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/panda_hand--bwkxfm.webp",
+      "png": "thumbnails/robotlocomotion/models/panda_hand--bwkxfm.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "planar_iiwa14_spheres_dense_elbow_collision--1m4na3l",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 10,
+      "jointCount": 9,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:10",
+        "joints:9",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/planar_iiwa14_spheres_dense_elbow_collision--1m4na3l.webp",
+      "png": "thumbnails/robotlocomotion/models/planar_iiwa14_spheres_dense_elbow_collision--1m4na3l.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "quadrotor--16q40q5",
+      "sourceType": "urdf",
+      "meshCount": 26,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:26",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/quadrotor--16q40q5.webp",
+      "png": "thumbnails/robotlocomotion/models/quadrotor--16q40q5.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "table_top--wvmc6i",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/table_top--wvmc6i.webp",
+      "png": "thumbnails/robotlocomotion/models/table_top--wvmc6i.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
