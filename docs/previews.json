@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:14:00.186Z",
+  "generatedAt": "2026-02-27T00:19:19.461Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4843,6 +4843,50 @@
       "png": "thumbnails/robotlocomotion/models/table_top--wvmc6i.png"
     },
     {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "ur3e_cylinders_collision--1ptrjyu",
+      "sourceType": "urdf",
+      "meshCount": 7,
+      "linkCount": 10,
+      "jointCount": 9,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:7",
+        "links:10",
+        "joints:9",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/ur3e_cylinders_collision--1ptrjyu.webp",
+      "png": "thumbnails/robotlocomotion/models/ur3e_cylinders_collision--1ptrjyu.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "ur3e_spheres_collision--1odnfaj",
+      "sourceType": "urdf",
+      "meshCount": 7,
+      "linkCount": 10,
+      "jointCount": 9,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:7",
+        "links:10",
+        "joints:9",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/ur3e_spheres_collision--1odnfaj.webp",
+      "png": "thumbnails/robotlocomotion/models/ur3e_spheres_collision--1odnfaj.png"
+    },
+    {
       "repoKey": "ros-industrial/universal_robot",
       "fileBase": "ur10--1ye1ycw",
       "sourceType": "urdf.xacro",
@@ -4973,6 +5017,72 @@
       ],
       "webp": "previews/ros-industrial/universal_robot/ur5e--1lz8wf3.webp",
       "png": "thumbnails/ros-industrial/universal_robot/ur5e--1lz8wf3.png"
+    },
+    {
+      "repoKey": "s1lent4gnt/koch-v1-1",
+      "fileBase": "follower--83c1jt",
+      "sourceType": "urdf",
+      "meshCount": 0,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:0",
+        "links:7",
+        "joints:6",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/s1lent4gnt/koch-v1-1/follower--83c1jt.webp",
+      "png": "thumbnails/s1lent4gnt/koch-v1-1/follower--83c1jt.png"
+    },
+    {
+      "repoKey": "sigrobotics-uiuc/lekiwi",
+      "fileBase": "lekiwi--gkj1ce",
+      "sourceType": "urdf",
+      "meshCount": 20,
+      "linkCount": 45,
+      "jointCount": 44,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 3,
+      "tags": [
+        "meshes:20",
+        "links:45",
+        "joints:44",
+        "arms:1",
+        "legs:0",
+        "wheels:3",
+        "source:urdf"
+      ],
+      "webp": "previews/sigrobotics-uiuc/lekiwi/lekiwi--gkj1ce.webp",
+      "png": "thumbnails/sigrobotics-uiuc/lekiwi/lekiwi--gkj1ce.png"
+    },
+    {
+      "repoKey": "tetheria/aero-hand-open",
+      "fileBase": "aero_hand_open_left--gnzknp",
+      "sourceType": "urdf",
+      "meshCount": 22,
+      "linkCount": 22,
+      "jointCount": 21,
+      "armCount": 5,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:22",
+        "links:22",
+        "joints:21",
+        "arms:5",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/tetheria/aero-hand-open/aero_hand_open_left--gnzknp.webp",
+      "png": "thumbnails/tetheria/aero-hand-open/aero_hand_open_left--gnzknp.png"
     },
     {
       "repoKey": "therobotstudio/so-arm100",
