@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:19:19.461Z",
+  "generatedAt": "2026-02-27T00:24:36.828Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -5150,6 +5150,28 @@
       "webm": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webm",
       "webp": "previews/therobotstudio/so-arm100/so101_old_calib--1byrygc.webp",
       "png": "thumbnails/therobotstudio/so-arm100/so101_old_calib--1byrygc.png"
+    },
+    {
+      "repoKey": "timqian/bambot",
+      "fileBase": "bambot_v0_base--1te9xec",
+      "sourceType": "urdf",
+      "meshCount": 3,
+      "linkCount": 7,
+      "jointCount": 6,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 3,
+      "tags": [
+        "meshes:3",
+        "links:7",
+        "joints:6",
+        "arms:0",
+        "legs:0",
+        "wheels:3",
+        "source:urdf"
+      ],
+      "webp": "previews/timqian/bambot/bambot_v0_base--1te9xec.webp",
+      "png": "thumbnails/timqian/bambot/bambot_v0_base--1te9xec.png"
     }
   ]
 }
