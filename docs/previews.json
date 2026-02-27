@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:02:03.700Z",
+  "generatedAt": "2026-02-27T00:04:15.530Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4401,6 +4401,94 @@
       ],
       "webp": "previews/robotlocomotion/models/evo_bowl_compliant--s0p6id.webp",
       "png": "thumbnails/robotlocomotion/models/evo_bowl_compliant--s0p6id.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "hand--12mz7mj",
+      "sourceType": "urdf",
+      "meshCount": 5,
+      "linkCount": 3,
+      "jointCount": 2,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:5",
+        "links:3",
+        "joints:2",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/hand--12mz7mj.webp",
+      "png": "thumbnails/robotlocomotion/models/hand--12mz7mj.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "iiwa14_no_collision--104xzyp",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/iiwa14_no_collision--104xzyp.webp",
+      "png": "thumbnails/robotlocomotion/models/iiwa14_no_collision--104xzyp.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "iiwa14_polytope_collision--1juqyhu",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/iiwa14_polytope_collision--1juqyhu.webp",
+      "png": "thumbnails/robotlocomotion/models/iiwa14_polytope_collision--1juqyhu.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "iiwa14_primitive_collision--1chdmy5",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/iiwa14_primitive_collision--1chdmy5.webp",
+      "png": "thumbnails/robotlocomotion/models/iiwa14_primitive_collision--1chdmy5.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
