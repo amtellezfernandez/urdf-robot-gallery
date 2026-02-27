@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T09:27:48.060Z",
+  "generatedAt": "2026-02-27T09:59:58.554Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -5441,14 +5441,14 @@
       "repoKey": "unitreerobotics/unitree_ros",
       "fileBase": "g1_23dof_rev_1_0--9i7rnn",
       "sourceType": "urdf",
-      "meshCount": 6,
+      "meshCount": 27,
       "linkCount": 31,
       "jointCount": 30,
       "armCount": 3,
       "legCount": 2,
       "wheelCount": 0,
       "tags": [
-        "meshes:6",
+        "meshes:27",
         "links:31",
         "joints:30",
         "arms:3",
