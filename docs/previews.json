@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:06:46.427Z",
+  "generatedAt": "2026-02-27T00:09:19.925Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4599,6 +4599,94 @@
       ],
       "webp": "previews/robotlocomotion/models/j2n6s300--1fznu4s.webp",
       "png": "thumbnails/robotlocomotion/models/j2n6s300--1fznu4s.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "j2s7s300_arm--16a2xlz",
+      "sourceType": "urdf",
+      "meshCount": 14,
+      "linkCount": 9,
+      "jointCount": 8,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:14",
+        "links:9",
+        "joints:8",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/j2s7s300_arm--16a2xlz.webp",
+      "png": "thumbnails/robotlocomotion/models/j2s7s300_arm--16a2xlz.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "j2s7s300_hand_sphere_collision--1w3jvxx",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 3,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:8",
+        "joints:7",
+        "arms:3",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/j2s7s300_hand_sphere_collision--1w3jvxx.webp",
+      "png": "thumbnails/robotlocomotion/models/j2s7s300_hand_sphere_collision--1w3jvxx.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "j2s7s300_hand--1i4fery",
+      "sourceType": "urdf",
+      "meshCount": 9,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 3,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:9",
+        "links:8",
+        "joints:7",
+        "arms:3",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/j2s7s300_hand--1i4fery.webp",
+      "png": "thumbnails/robotlocomotion/models/j2s7s300_hand--1i4fery.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "j2s7s300_sphere_collision--1ippauh",
+      "sourceType": "urdf",
+      "meshCount": 23,
+      "linkCount": 16,
+      "jointCount": 15,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:23",
+        "links:16",
+        "joints:15",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/j2s7s300_sphere_collision--1ippauh.webp",
+      "png": "thumbnails/robotlocomotion/models/j2s7s300_sphere_collision--1ippauh.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
