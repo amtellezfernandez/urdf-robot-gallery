@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:52:09.744Z",
+  "generatedAt": "2026-02-27T00:56:41.880Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -5304,6 +5304,72 @@
       ],
       "webp": "previews/unitreerobotics/unitree_ros/b2w_description--i3juye.webp",
       "png": "thumbnails/unitreerobotics/unitree_ros/b2w_description--i3juye.png"
+    },
+    {
+      "repoKey": "unitreerobotics/unitree_ros",
+      "fileBase": "dex3_1_r--1ozstxw",
+      "sourceType": "urdf",
+      "meshCount": 8,
+      "linkCount": 8,
+      "jointCount": 7,
+      "armCount": 3,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:8",
+        "links:8",
+        "joints:7",
+        "arms:3",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/unitreerobotics/unitree_ros/dex3_1_r--1ozstxw.webp",
+      "png": "thumbnails/unitreerobotics/unitree_ros/dex3_1_r--1ozstxw.png"
+    },
+    {
+      "repoKey": "unitreerobotics/unitree_ros",
+      "fileBase": "dfq_left_hand--1fc09xp",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 14,
+      "jointCount": 13,
+      "armCount": 5,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:14",
+        "joints:13",
+        "arms:5",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/unitreerobotics/unitree_ros/dfq_left_hand--1fc09xp.webp",
+      "png": "thumbnails/unitreerobotics/unitree_ros/dfq_left_hand--1fc09xp.png"
+    },
+    {
+      "repoKey": "unitreerobotics/unitree_ros",
+      "fileBase": "dfq_right_hand--l0bj6k",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 14,
+      "jointCount": 13,
+      "armCount": 5,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:14",
+        "joints:13",
+        "arms:5",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/unitreerobotics/unitree_ros/dfq_right_hand--l0bj6k.webp",
+      "png": "thumbnails/unitreerobotics/unitree_ros/dfq_right_hand--l0bj6k.png"
     }
   ]
 }
