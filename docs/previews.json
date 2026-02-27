@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-26T23:59:42.214Z",
+  "generatedAt": "2026-02-27T00:02:03.700Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4335,6 +4335,72 @@
       ],
       "webp": "previews/robotlocomotion/models/allegro_hand_description_right--1mrn1fh.webp",
       "png": "thumbnails/robotlocomotion/models/allegro_hand_description_right--1mrn1fh.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "atlas_convex_hull--shueeg",
+      "sourceType": "urdf",
+      "meshCount": 48,
+      "linkCount": 70,
+      "jointCount": 69,
+      "armCount": 2,
+      "legCount": 2,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:48",
+        "links:70",
+        "joints:69",
+        "arms:2",
+        "legs:2",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/atlas_convex_hull--shueeg.webp",
+      "png": "thumbnails/robotlocomotion/models/atlas_convex_hull--shueeg.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "dual_iiwa14_polytope_collision--1w6x4kx",
+      "sourceType": "urdf",
+      "meshCount": 30,
+      "linkCount": 21,
+      "jointCount": 20,
+      "armCount": 2,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:30",
+        "links:21",
+        "joints:20",
+        "arms:2",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/dual_iiwa14_polytope_collision--1w6x4kx.webp",
+      "png": "thumbnails/robotlocomotion/models/dual_iiwa14_polytope_collision--1w6x4kx.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "evo_bowl_compliant--s0p6id",
+      "sourceType": "urdf",
+      "meshCount": 1,
+      "linkCount": 1,
+      "jointCount": 0,
+      "armCount": 0,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:1",
+        "links:1",
+        "joints:0",
+        "arms:0",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/evo_bowl_compliant--s0p6id.webp",
+      "png": "thumbnails/robotlocomotion/models/evo_bowl_compliant--s0p6id.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
