@@ -40,6 +40,48 @@ const concurrency = Math.max(1, Number(args.get("concurrency") || 2));
 const maxRetries = Math.max(0, Number(args.get("retries") || 3));
 const retryDelayMs = Math.max(250, Number(args.get("retry-delay-ms") || 1000));
 const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
+const EXCLUDED_ROBOT_PATH_SUBSTRINGS = ["/random_urdfs/"];
+const REPO_ROBOT_NAME_ALLOWLIST = {
+  "bulletphysics/bullet3": new Set([
+    "a1",
+    "aliengo",
+    "biped2d_pybullet",
+    "humanoid",
+    "husky",
+    "kuka",
+    "laikago",
+    "laikago_toes",
+    "laikago_toes_limits",
+    "laikago_toes_zup",
+    "laikago_toes_zup_lores",
+    "microtaur",
+    "mini_cheetah",
+    "minitaur",
+    "minitaur_derpy",
+    "minitaur_fixed_all",
+    "minitaur_fixed_knees",
+    "minitaur_rainbow_dash",
+    "minitaur_rainbow_dash_v1",
+    "minitaur_single_motor",
+    "minitaur_v1",
+    "nao",
+    "panda",
+    "pantilt",
+    "pr2_gripper",
+    "quadrotor",
+    "quadruped",
+    "r2d2",
+    "racecar",
+    "racecar_differential",
+    "spirit40",
+    "spirit40newer",
+    "vision60",
+    "widowx",
+    "xarm6_robot",
+    "xarm6_robot_white",
+    "xarm6_with_gripper",
+  ]),
+};
 
 const hasSupportedRobotExtension = (value) => {
   const normalized = String(value || "").toLowerCase();
@@ -55,6 +97,27 @@ const stripSupportedRobotExtension = (value) => {
     }
   }
   return normalized;
+};
+
+const isExcludedRobotPath = (value) => {
+  const normalized = String(value || "").toLowerCase();
+  if (!normalized) return false;
+  if (EXCLUDED_ROBOT_PATH_SUBSTRINGS.some((segment) => normalized.includes(segment))) {
+    return true;
+  }
+  const baseName = path.posix.basename(normalized);
+  if (/^\d+\.urdf$/i.test(baseName)) {
+    return true;
+  }
+  return false;
+};
+
+const isAllowedRobotPathForRepo = (repoKey, value) => {
+  const allowlist = REPO_ROBOT_NAME_ALLOWLIST[String(repoKey || "").toLowerCase()];
+  if (!allowlist) return true;
+  const fileName = path.posix.basename(String(value || ""));
+  const robotName = stripSupportedRobotExtension(fileName).toLowerCase();
+  return allowlist.has(robotName);
 };
 
 const normalizeRepoKey = (value) =>
@@ -359,7 +422,12 @@ const main = async () => {
         .map((node) => node.path);
     }
 
-    const urdfPaths = treePaths.filter((p) => hasSupportedRobotExtension(p));
+    const urdfPaths = treePaths.filter(
+      (p) =>
+        hasSupportedRobotExtension(p) &&
+        !isExcludedRobotPath(p) &&
+        isAllowedRobotPathForRepo(repoKey, p)
+    );
     if (urdfPaths.length === 0) {
       report.missingFiles.push({
         repoKey,
