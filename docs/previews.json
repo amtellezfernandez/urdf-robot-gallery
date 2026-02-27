@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T00:04:15.530Z",
+  "generatedAt": "2026-02-27T00:06:46.427Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -4489,6 +4489,116 @@
       ],
       "webp": "previews/robotlocomotion/models/iiwa14_primitive_collision--1chdmy5.webp",
       "png": "thumbnails/robotlocomotion/models/iiwa14_primitive_collision--1chdmy5.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "iiwa14_spheres_collision--fjs7yy",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/iiwa14_spheres_collision--fjs7yy.webp",
+      "png": "thumbnails/robotlocomotion/models/iiwa14_spheres_collision--fjs7yy.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "iiwa14_spheres_dense_collision--1tp34ai",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/iiwa14_spheres_dense_collision--1tp34ai.webp",
+      "png": "thumbnails/robotlocomotion/models/iiwa14_spheres_dense_collision--1tp34ai.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "iiwa14_spheres_dense_elbow_collision--ji6tr6",
+      "sourceType": "urdf",
+      "meshCount": 15,
+      "linkCount": 11,
+      "jointCount": 10,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:15",
+        "links:11",
+        "joints:10",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/iiwa14_spheres_dense_elbow_collision--ji6tr6.webp",
+      "png": "thumbnails/robotlocomotion/models/iiwa14_spheres_dense_elbow_collision--ji6tr6.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "j2n6s300_col--1jlhmbh",
+      "sourceType": "urdf",
+      "meshCount": 13,
+      "linkCount": 16,
+      "jointCount": 15,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:13",
+        "links:16",
+        "joints:15",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/j2n6s300_col--1jlhmbh.webp",
+      "png": "thumbnails/robotlocomotion/models/j2n6s300_col--1jlhmbh.png"
+    },
+    {
+      "repoKey": "robotlocomotion/models",
+      "fileBase": "j2n6s300--1fznu4s",
+      "sourceType": "urdf",
+      "meshCount": 19,
+      "linkCount": 15,
+      "jointCount": 14,
+      "armCount": 1,
+      "legCount": 0,
+      "wheelCount": 0,
+      "tags": [
+        "meshes:19",
+        "links:15",
+        "joints:14",
+        "arms:1",
+        "legs:0",
+        "wheels:0",
+        "source:urdf"
+      ],
+      "webp": "previews/robotlocomotion/models/j2n6s300--1fznu4s.webp",
+      "png": "thumbnails/robotlocomotion/models/j2n6s300--1fznu4s.png"
     },
     {
       "repoKey": "ros-industrial/universal_robot",
