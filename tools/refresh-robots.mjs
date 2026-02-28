@@ -229,6 +229,24 @@ const toPreviewBase = (value) => {
 };
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const MAX_ERROR_BODY_BYTES = 4096;
+const ABUSE_DETECTION_PATTERN = /abuse detection mechanism|secondary rate limit/i;
+
+const getHeaderValue = (headers, key) => {
+  const value = headers?.[key];
+  if (Array.isArray(value)) return value[0];
+  return value;
+};
+
+const parseRetryAfterMs = (headers) => {
+  const raw = getHeaderValue(headers, "retry-after");
+  if (raw == null) return null;
+  const value = Number(raw);
+  if (Number.isFinite(value) && value > 0) {
+    return Math.round(value * 1000);
+  }
+  return null;
+};
 
 const githubFetchOnce = (url) =>
   new Promise((resolve, reject) => {
@@ -243,11 +261,20 @@ const githubFetchOnce = (url) =>
       },
       (res) => {
         if (res.statusCode !== 200) {
-          const error = new Error(`GitHub API ${res.statusCode} for ${url}`);
-          error.statusCode = res.statusCode;
-          error.headers = res.headers;
-          res.resume();
-          reject(error);
+          let body = "";
+          res.setEncoding("utf8");
+          res.on("data", (chunk) => {
+            if (body.length >= MAX_ERROR_BODY_BYTES) return;
+            body += String(chunk).slice(0, MAX_ERROR_BODY_BYTES - body.length);
+          });
+          res.on("end", () => {
+            const reason = body ? `: ${body}` : "";
+            const error = new Error(`GitHub API ${res.statusCode} for ${url}${reason}`);
+            error.statusCode = res.statusCode;
+            error.headers = res.headers;
+            error.body = body;
+            reject(error);
+          });
           return;
         }
         let data = "";
@@ -269,6 +296,7 @@ const githubFetchOnce = (url) =>
 
 const githubFetch = async (url) => {
   let attempt = 0;
+  const abuseRetries = maxRetries + 2;
   while (true) {
     try {
       return await githubFetchOnce(url);
@@ -276,11 +304,28 @@ const githubFetch = async (url) => {
       attempt += 1;
       const status = error.statusCode || 0;
       const headers = error.headers || {};
+      const responseBody = String(error.body || "");
       const remaining = Number(headers["x-ratelimit-remaining"] || "");
       const reset = Number(headers["x-ratelimit-reset"] || "");
+      const retryAfterMs = parseRetryAfterMs(headers);
       if (status === 403 && Number.isFinite(remaining) && remaining === 0 && reset) {
         const waitMs = Math.max(reset * 1000 - Date.now() + 1000, retryDelayMs);
         console.warn(`[refresh] rate limit hit, waiting ${Math.ceil(waitMs / 1000)}s`);
+        await sleep(waitMs);
+        continue;
+      }
+      if (status === 403 && ABUSE_DETECTION_PATTERN.test(responseBody)) {
+        if (attempt > abuseRetries) {
+          throw error;
+        }
+        const fallbackMs = retryDelayMs * Math.pow(2, Math.min(attempt - 1, 5));
+        const baseDelayMs = retryAfterMs ?? fallbackMs;
+        const jitterMs = Math.floor(Math.random() * Math.max(250, Math.round(baseDelayMs * 0.2)));
+        const waitMs = Math.max(retryDelayMs, baseDelayMs + jitterMs);
+        console.warn(
+          `[refresh] abuse throttle detected, waiting ${Math.ceil(waitMs / 1000)}s ` +
+            `before retry ${attempt}/${abuseRetries}`
+        );
         await sleep(waitMs);
         continue;
       }
@@ -471,7 +516,7 @@ const main = async () => {
       updatedRobots.push({
         ...(isString ? {} : robot),
         name,
-        file: fileName,
+        file: candidate,
         fileBase,
       });
     }
@@ -483,7 +528,7 @@ const main = async () => {
       const fileName = path.posix.basename(extra);
       updatedRobots.push({
         name: stripSupportedRobotExtension(fileName),
-        file: fileName,
+        file: extra,
         fileBase: toPreviewBase(extra),
       });
     }
