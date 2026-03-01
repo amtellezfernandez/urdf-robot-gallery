@@ -3,9 +3,6 @@ name: Contributor Generate Previews
 on:
   workflow_dispatch:
     inputs:
-      issue:
-        description: "Issue URL or #"
-        required: false
       repo:
         description: "Repo URL or owner/repo"
         required: true
@@ -102,20 +99,12 @@ jobs:
         id: issue
         uses: actions/github-script@v7
         env:
-          ISSUE_INPUT: ${{ inputs.issue }}
           REPO_INPUT: ${{ inputs.repo }}
           ROBOT_TARGETS_INPUT: ${{ inputs.robot_targets }}
           UPSTREAM_REPO: ${{ env.UPSTREAM_REPO }}
         with:
           github-token: ${{ github.token }}
           script: |
-            const issueInputRaw = String(process.env.ISSUE_INPUT || "").trim();
-            const issueNumber = (() => {
-              if (!issueInputRaw) return 0;
-              if (/^\d+$/.test(issueInputRaw)) return Number(issueInputRaw);
-              const match = issueInputRaw.match(/\/issues\/(\d+)/i);
-              return match ? Number(match[1]) : 0;
-            })();
             const repoInputRaw = String(process.env.REPO_INPUT || "").trim();
             const robotTargetsInputRaw = String(process.env.ROBOT_TARGETS_INPUT || "").trim();
             const [owner, repo] = String(process.env.UPSTREAM_REPO || "").split("/");
@@ -128,9 +117,7 @@ jobs:
               return;
             }
 
-            const issueUrl = issueNumber
-              ? `https://github.com/${owner}/${repo}/issues/${issueNumber}`
-              : `https://github.com/${owner}/${repo}/blob/main/docs/preview-regeneration.md`;
+            const issueUrl = `https://github.com/${owner}/${repo}/blob/main/docs/preview-regeneration.md`;
             let repoKey = "";
 
             const normalizeFieldValue = (value) => {
@@ -181,8 +168,8 @@ jobs:
 
             core.info(`Resolved repoKey: ${repoKey}`);
             core.setOutput("repo_key", repoKey);
-            core.setOutput("mode", issueNumber ? "issue" : "repo");
-            core.setOutput("issue_number", issueNumber ? String(issueNumber) : "");
+            core.setOutput("mode", "repo");
+            core.setOutput("issue_number", "");
             core.setOutput("run_label", `repo ${repoKey}`);
             core.setOutput("issue_url", issueUrl);
             core.setOutput("mapping_present", mappingLines.length > 0 ? "true" : "false");
@@ -768,12 +755,8 @@ jobs:
             echo "## Contributor Preview Run";
             echo "";
             echo "- Run mode: \`${{ steps.issue.outputs.mode }}\`";
-            if [ -n "${{ steps.issue.outputs.issue_number }}" ]; then
-              echo "- Upstream issue: #${{ steps.issue.outputs.issue_number }}";
-            else
-              echo "- Upstream issue: (none)";
-            fi
-            echo "- Reference URL: ${{ steps.issue.outputs.issue_url }}";
+            echo "- Upstream issue: (not used in this workflow)";
+            echo "- Guide URL: ${{ steps.issue.outputs.issue_url }}";
             echo "- Resolved repoKey: \`${{ steps.issue.outputs.repo_key }}\`";
             if [ "${{ steps.issue.outputs.robot_targets_present }}" = "true" ]; then
               echo "- Robot target lines from workflow input: \`${{ steps.issue.outputs.robot_targets_count }}\`";
