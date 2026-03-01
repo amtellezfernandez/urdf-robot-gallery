@@ -14,11 +14,9 @@ body:
   - type: textarea
     id: tags
     attributes:
-      label: Tags
-      description: Checklist lines using [x] selected and [] not selected.
-      placeholder: |-
-        - [x] Arm
-        - [] Quadruped
+      label: Macro tags
+      description: One line with all macro tags, [x] selected and [] not selected.
+      placeholder: Macro tags: Arm [x], Biped [], Dual Arm [], Drone [], End Effector [x], Humanoid [], Mobile Manipulator [], Quadruped [], Wheeled [], Object [], Other []
   - type: input
     id: structure
     attributes:
