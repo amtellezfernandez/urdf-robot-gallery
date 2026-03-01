@@ -6,7 +6,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Quadruped"
+      "Quadrupeds"
     ],
     "robots": [
       {
@@ -32,7 +32,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Quadruped"
+      "Quadrupeds"
     ],
     "robots": [
       {
@@ -59,8 +59,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Quadruped",
-      "Simulation"
+      "Quadrupeds"
     ],
     "robots": [
       {
@@ -661,7 +660,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm"
+      "Arms"
     ],
     "robots": [
       {
@@ -887,8 +886,12 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Dataset",
-      "Simulation"
+      "Arms",
+      "Bipeds",
+      "Educational",
+      "Humanoids",
+      "Mobile Manipulators",
+      "Quadrupeds"
     ],
     "robots": [
       {
@@ -1296,9 +1299,15 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Dataset",
-      "MuJoCo",
-      "Simulation"
+      "Arms",
+      "Bipeds",
+      "Drones",
+      "Educational",
+      "End Effectors",
+      "Humanoids",
+      "Mobile Manipulators",
+      "Quadrupeds",
+      "Wheeled"
     ],
     "robots": [
       {
@@ -1330,7 +1339,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Humanoid"
+      "Humanoids"
     ],
     "robots": [
       {
@@ -1396,7 +1405,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm"
+      "Arms"
     ],
     "robots": [
       {
@@ -1423,7 +1432,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm"
+      "Arms"
     ],
     "robots": [
       {
@@ -1610,8 +1619,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm",
-      "ROS1"
+      "Arms"
     ],
     "robots": [
       {
@@ -1843,8 +1851,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm",
-      "ROS2"
+      "Arms"
     ],
     "robots": [
       {
@@ -2006,7 +2013,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Hand"
+      "End Effectors"
     ],
     "robots": [
       {
@@ -2043,7 +2050,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Aerial"
+      "Drones"
     ],
     "robots": [
       {
@@ -2070,9 +2077,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Mobile",
-      "Manipulator",
-      "ROS1"
+      "Mobile Manipulators"
     ],
     "robots": [
       {
@@ -2164,9 +2169,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Mobile",
-      "Manipulator",
-      "ROS1"
+      "Mobile Manipulators"
     ],
     "robots": [
       {
@@ -2453,8 +2456,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm",
-      "ROS1"
+      "Dual Arms"
     ],
     "robots": [
       {
@@ -2586,7 +2588,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Biped"
+      "Bipeds"
     ],
     "robots": [
       {
@@ -2681,8 +2683,10 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Dataset",
-      "Simulation"
+      "Arms",
+      "Dual Arms",
+      "End Effectors",
+      "Humanoids"
     ],
     "robots": [
       {
@@ -2934,9 +2938,8 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Mobile",
-      "Wheeled",
-      "ROS2"
+      "Mobile Manipulators",
+      "Wheeled"
     ],
     "robots": [
       {
@@ -3303,8 +3306,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm",
-      "ROS1"
+      "Arms"
     ],
     "robots": [
       {
@@ -3511,7 +3513,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm"
+      "Arms"
     ],
     "robots": [
       {
@@ -3538,7 +3540,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Gripper"
+      "End Effectors"
     ],
     "robots": [
       {
@@ -3670,7 +3672,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Hand"
+      "End Effectors"
     ],
     "robots": [
       {
@@ -3795,7 +3797,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Hand"
+      "End Effectors"
     ],
     "robots": [
       {
@@ -3826,8 +3828,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm",
-      "LeRobotCompatible"
+      "Arms"
     ],
     "robots": [
       {
@@ -3867,8 +3868,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Mobile",
-      "Manipulator"
+      "Mobile Manipulators"
     ],
     "robots": [
       {
@@ -3924,9 +3924,9 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Quadruped",
-      "Humanoid",
-      "Arm"
+      "Arms",
+      "Humanoids",
+      "Quadrupeds"
     ],
     "robots": [
       {
@@ -4563,8 +4563,7 @@
     "summary": "",
     "demo": "",
     "tags": [
-      "Arm",
-      "ROS2"
+      "Arms"
     ],
     "robots": [
       {
