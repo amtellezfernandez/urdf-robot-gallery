@@ -438,37 +438,14 @@ jobs:
           fs.appendFileSync(out, `selection_mode=${resolvedKeys.length > 0 ? "targeted" : "repo"}\n`);
           '
 
-      - name: Checkout urdf-star-studio tools
-        uses: actions/checkout@v4
-        with:
-          repository: urdf-studio/urdf-star-studio
-          ref: a54ff3041acb6d7fb25b4f288cfbe7d8509e352d
-          path: _tools/urdf-star-studio
-          fetch-depth: 1
-
-      - name: Checkout urdf-studio backend (xacro API)
-        uses: actions/checkout@v4
-        with:
-          repository: urdf-studio/urdf-studio
-          ref: 18756f17e05713daf8f4b66fe2fcab400b24c66e
-          path: _tools/urdf-studio
-          fetch-depth: 1
-
-      - name: Verify pretty-urdf resolver is present
+      - name: Verify bundled preview generator
         run: |
           set -euo pipefail
-          resolver="_tools/urdf-studio/pretty-urdf/dist/index.js"
-          if [ ! -f "$resolver" ]; then
-            echo "::error::Required resolver missing: $resolver"
-            echo "::error::Preview generation requires pretty-urdf dist exports."
-            exit 1
-          fi
+          test -f tools/contributor-preview/scripts/generate-missing-previews.mjs
+          test -f tools/contributor-preview/scripts/generate-robot-previews.mjs
+          test -f tools/contributor-preview/scripts/lib/missing-previews-core.mjs
 
       - name: Install gallery dependencies
-        run: npm ci
-
-      - name: Install preview generator dependencies
-        working-directory: _tools/urdf-star-studio
         run: npm ci
 
       - name: Tune preview framing defaults
@@ -478,7 +455,7 @@ jobs:
         run: |
           node -e '
           const fs = require("fs");
-          const path = "_tools/urdf-star-studio/scripts/lib/missing-previews-core.mjs";
+          const path = "tools/contributor-preview/scripts/lib/missing-previews-core.mjs";
           let source = fs.readFileSync(path, "utf8");
           const target = Number(process.env.FRAMING_TARGET_NDC || "0");
           const safety = Number(process.env.FRAMING_DISTANCE_SAFETY || "0");
@@ -499,15 +476,161 @@ jobs:
       - name: Install xacro API runtime deps
         run: |
           python -m pip install --upgrade pip
-          python -m pip install fastapi uvicorn
+          python -m pip install fastapi uvicorn xacro
 
       - name: Start local xacro API
         run: |
           set -euo pipefail
-          (
-            cd _tools/urdf-studio
-            python -c "from fastapi import FastAPI; from backend.api.xacro import router as xacro_router; import uvicorn; app=FastAPI(); app.add_api_route('/health', lambda: {'status': 'ok'}, methods=['GET']); app.include_router(xacro_router); uvicorn.run(app, host='127.0.0.1', port=8000, log_level='warning')"
-          ) > /tmp/xacro-api.log 2>&1 &
+          cat > /tmp/xacro-api.py <<'PY'
+          import base64
+          import io
+          import os
+          import re
+          import tempfile
+          from contextlib import redirect_stderr
+          from pathlib import Path
+          from typing import Dict, List, Optional
+
+          import uvicorn
+          from fastapi import FastAPI, HTTPException
+          from pydantic import BaseModel, Field
+          import xacro
+          import xacro.substitution_args as substitution_args
+
+          PACKAGE_NAME_PATTERN = re.compile(r"<name>\\s*([^<]+)\\s*</name>", re.IGNORECASE)
+
+
+          class XacroFile(BaseModel):
+              path: str
+              content_base64: str
+
+
+          class XacroExpandRequest(BaseModel):
+              target_path: str = Field(...)
+              files: List[XacroFile] = Field(default_factory=list)
+              args: Dict[str, str] = Field(default_factory=dict)
+              use_inorder: bool = Field(default=True)
+
+
+          class XacroExpandResponse(BaseModel):
+              urdf: str
+              stderr: Optional[str] = None
+
+
+          def _sanitize_relative_path(path: str) -> Path:
+              cleaned = str(path or "").replace("\\\\", "/").lstrip("/")
+              if not cleaned:
+                  raise HTTPException(status_code=400, detail="Empty file path in xacro payload.")
+              rel_path = Path(cleaned)
+              if any(part in ("..", "") for part in rel_path.parts):
+                  raise HTTPException(status_code=400, detail=f"Invalid file path in xacro payload: {path}")
+              return rel_path
+
+
+          def _extract_package_name(content: bytes, fallback: str) -> str:
+              text = content.decode("utf-8", errors="ignore")
+              match = PACKAGE_NAME_PATTERN.search(text)
+              if not match:
+                  return fallback
+              name = match.group(1).strip()
+              return name or fallback
+
+
+          def _build_package_map(root: Path, files: List[tuple[Path, bytes]]) -> Dict[str, str]:
+              package_map: Dict[str, str] = {}
+              for rel_path, content in files:
+                  if rel_path.name != "package.xml":
+                      continue
+                  fallback = rel_path.parent.name
+                  package_name = _extract_package_name(content, fallback)
+                  if not package_name:
+                      continue
+                  package_map.setdefault(package_name, str((root / rel_path.parent).resolve()))
+              return package_map
+
+
+          app = FastAPI()
+
+
+          @app.get("/health")
+          def health():
+              return {"status": "ok"}
+
+
+          @app.post("/xacro/expand", response_model=XacroExpandResponse)
+          def expand_xacro(payload: XacroExpandRequest) -> XacroExpandResponse:
+              target_rel = _sanitize_relative_path(payload.target_path)
+              decoded_files: List[tuple[Path, bytes]] = []
+              for file in payload.files:
+                  rel_path = _sanitize_relative_path(file.path)
+                  try:
+                      content = base64.b64decode(file.content_base64)
+                  except Exception as exc:
+                      raise HTTPException(
+                          status_code=400,
+                          detail=f"Failed to decode xacro file {file.path}: {exc}",
+                      ) from exc
+                  decoded_files.append((rel_path, content))
+
+              with tempfile.TemporaryDirectory(prefix="urdf-gallery-xacro-") as tmp_dir:
+                  root = Path(tmp_dir)
+                  for rel_path, content in decoded_files:
+                      dest = (root / rel_path).resolve()
+                      root_resolved = root.resolve()
+                      if not str(dest).startswith(str(root_resolved) + os.sep):
+                          raise HTTPException(
+                              status_code=400,
+                              detail=f"Invalid file path in xacro payload: {rel_path}",
+                          )
+                      dest.parent.mkdir(parents=True, exist_ok=True)
+                      dest.write_bytes(content)
+
+                  target_path = (root / target_rel).resolve()
+                  if not target_path.exists():
+                      raise HTTPException(
+                          status_code=400,
+                          detail=f"Target xacro file not found: {payload.target_path}",
+                      )
+
+                  package_map = _build_package_map(root, decoded_files)
+                  original_eval_find = getattr(substitution_args, "_eval_find", None)
+
+                  def _eval_find(pkg: str) -> str:
+                      found = package_map.get(pkg)
+                      if found:
+                          return found
+                      if original_eval_find is not None:
+                          return original_eval_find(pkg)
+                      raise RuntimeError(f"Package '{pkg}' not found in uploaded files.")
+
+                  stderr_buffer = io.StringIO()
+                  try:
+                      substitution_args._eval_find = _eval_find
+                      process_kwargs = {"mappings": dict(payload.args or {})}
+                      if bool(payload.use_inorder):
+                          process_kwargs["in_order"] = True
+                      with redirect_stderr(stderr_buffer):
+                          doc = xacro.process_file(str(target_path), **process_kwargs)
+                      urdf = (doc.toxml() or "").strip()
+                  except HTTPException:
+                      raise
+                  except Exception as exc:
+                      detail = str(exc).strip() or "xacro failed to expand the file."
+                      raise HTTPException(status_code=400, detail=detail) from exc
+                  finally:
+                      if original_eval_find is not None:
+                          substitution_args._eval_find = original_eval_find
+
+                  if not urdf:
+                      raise HTTPException(status_code=400, detail="xacro produced empty output.")
+                  stderr = stderr_buffer.getvalue().strip()
+                  return XacroExpandResponse(urdf=urdf, stderr=stderr or None)
+
+
+          if __name__ == "__main__":
+              uvicorn.run(app, host="127.0.0.1", port=8000, log_level="warning")
+          PY
+          python /tmp/xacro-api.py > /tmp/xacro-api.log 2>&1 &
           echo $! > /tmp/xacro-api.pid
 
           for _ in $(seq 1 30); do
@@ -611,7 +734,7 @@ jobs:
 
           if [ -n "$target_keys" ] && [ "${TARGET_SELECTION_MODE:-}" = "targeted" ]; then
             (
-              cd _tools/urdf-star-studio
+              cd tools/contributor-preview
               node scripts/generate-missing-previews.mjs \
                 --gallery "$GITHUB_WORKSPACE" \
                 --only "$target_keys" \
@@ -632,7 +755,7 @@ jobs:
           else
             while true; do
               (
-                cd _tools/urdf-star-studio
+                cd tools/contributor-preview
                 node scripts/generate-missing-previews.mjs \
                   --gallery "$GITHUB_WORKSPACE" \
                   --only-repos "$REPO_KEY" \
@@ -740,13 +863,12 @@ jobs:
           );
           '
 
-      - name: Cleanup tool checkout
+      - name: Cleanup xacro API
         if: always()
         run: |
           if [ -f /tmp/xacro-api.pid ]; then
             kill "$(cat /tmp/xacro-api.pid)" >/dev/null 2>&1 || true
           fi
-          rm -rf _tools
 
       - name: Workflow summary
         run: |
