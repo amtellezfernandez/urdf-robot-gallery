@@ -8,13 +8,15 @@ body:
     id: github_repo
     attributes:
       label: GitHub repo (URL or owner/repo)
+      description: Existing repo already in gallery.
       placeholder: TheRobotStudio/SO-ARM100
     validations:
       required: true
   - type: checkboxes
     id: tags
     attributes:
-      label: Tags
+      label: Tags (optional)
+      description: Controlled list from docs/tags.json.
       options:
         - label: Arm
         - label: Biped

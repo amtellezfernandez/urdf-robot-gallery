@@ -477,7 +477,7 @@ jobs:
               next.extra = lines.join("\n");
             }
 
-            const tagsInput = clean(fields["Tags"]) || clean(fields["Tags (optional)"]);
+            const tagsInput = clean(fields["Tags (optional)"]);
             if (tagsInput) {
               const rawTags = parseTags(tagsInput);
               const normalizedTags = [];
