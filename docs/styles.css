@@ -273,6 +273,14 @@ h1 {
   color: rgba(240, 240, 240, 0.6);
 }
 
+.empty-actions {
+  margin-top: 12px;
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .site-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 28px 0 40px;
