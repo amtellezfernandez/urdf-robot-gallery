@@ -3,14 +3,14 @@ name: Contributor Generate Previews
 on:
   workflow_dispatch:
     inputs:
-      issue_number:
-        description: "Issue number from urdf-studio/urdf-robot-gallery"
+      issue:
+        description: "Issue URL or #"
         required: false
       repo:
-        description: "Repo to regenerate (owner/repo or GitHub URL). Used when issue_number is empty."
+        description: "Repo URL or owner/repo"
         required: false
       robot_targets:
-        description: "Optional targeted robots (one per line or comma separated: path/file.urdf or fileBase)."
+        description: "Targets (optional)"
         required: false
 
 env:
@@ -34,7 +34,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     concurrency:
-      group: contributor-previews-${{ inputs.issue_number || inputs.repo }}
+      group: contributor-previews-${{ inputs.issue || inputs.repo }}
       cancel-in-progress: false
     steps:
       - name: Prevent upstream run
@@ -62,14 +62,22 @@ jobs:
       - name: Resolve run branch
         id: branch
         env:
-          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          ISSUE_INPUT: ${{ inputs.issue }}
           REPO_INPUT: ${{ inputs.repo }}
         run: |
           set -euo pipefail
-          issue_number="$(printf '%s' "${ISSUE_NUMBER:-}" | tr -d '[:space:]')"
+          issue_raw="$(printf '%s' "${ISSUE_INPUT:-}" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')"
+          issue_number=""
+          if [ -n "$issue_raw" ]; then
+            if printf '%s' "$issue_raw" | grep -Eq '^[0-9]+$'; then
+              issue_number="$issue_raw"
+            else
+              issue_number="$(printf '%s' "$issue_raw" | sed -nE 's#^.*/issues/([0-9]+).*$#\1#p')"
+            fi
+          fi
           repo_input="$(printf '%s' "${REPO_INPUT:-}" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')"
           if [ -z "$issue_number" ] && [ -z "$repo_input" ]; then
-            echo "::error::Provide either issue_number or repo."
+            echo "::error::Provide issue or repo."
             exit 1
           fi
 
@@ -113,14 +121,20 @@ jobs:
         id: issue
         uses: actions/github-script@v7
         env:
-          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          ISSUE_INPUT: ${{ inputs.issue }}
           REPO_INPUT: ${{ inputs.repo }}
           ROBOT_TARGETS_INPUT: ${{ inputs.robot_targets }}
           UPSTREAM_REPO: ${{ env.UPSTREAM_REPO }}
         with:
           github-token: ${{ github.token }}
           script: |
-            const issueNumber = Number(process.env.ISSUE_NUMBER || 0);
+            const issueInputRaw = String(process.env.ISSUE_INPUT || "").trim();
+            const issueNumber = (() => {
+              if (!issueInputRaw) return 0;
+              if (/^\d+$/.test(issueInputRaw)) return Number(issueInputRaw);
+              const match = issueInputRaw.match(/\/issues\/(\d+)/i);
+              return match ? Number(match[1]) : 0;
+            })();
             const repoInputRaw = String(process.env.REPO_INPUT || "").trim();
             const robotTargetsInputRaw = String(process.env.ROBOT_TARGETS_INPUT || "").trim();
             const [owner, repo] = String(process.env.UPSTREAM_REPO || "").split("/");
@@ -129,7 +143,7 @@ jobs:
               return;
             }
             if (!issueNumber && !repoInputRaw) {
-              core.setFailed("Provide issue_number or repo.");
+              core.setFailed("Provide issue or repo.");
               return;
             }
 
