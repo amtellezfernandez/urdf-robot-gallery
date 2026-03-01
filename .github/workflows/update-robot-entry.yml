@@ -594,7 +594,7 @@ jobs:
             const payload = JSON.parse(process.env.DISPATCH_PAYLOAD || "{}");
             try {
               await github.rest.repos.createDispatchEvent({
-                owner: "amtellezfernandez",
+                owner: "urdf-studio",
                 repo: "urdf-star-studio",
                 event_type: "robot-repos-updated",
                 client_payload: payload,

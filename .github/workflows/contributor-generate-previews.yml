@@ -441,7 +441,7 @@ jobs:
       - name: Checkout urdf-star-studio tools
         uses: actions/checkout@v4
         with:
-          repository: amtellezfernandez/urdf-star-studio
+          repository: urdf-studio/urdf-star-studio
           ref: a54ff3041acb6d7fb25b4f288cfbe7d8509e352d
           path: _tools/urdf-star-studio
           fetch-depth: 1
@@ -449,7 +449,7 @@ jobs:
       - name: Checkout urdf-studio backend (xacro API)
         uses: actions/checkout@v4
         with:
-          repository: amtellezfernandez/urdf-studio
+          repository: urdf-studio/urdf-studio
           ref: 18756f17e05713daf8f4b66fe2fcab400b24c66e
           path: _tools/urdf-studio
           fetch-depth: 1

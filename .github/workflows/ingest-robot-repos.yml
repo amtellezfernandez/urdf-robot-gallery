@@ -1175,7 +1175,7 @@ jobs:
             const payload = JSON.parse(process.env.DISPATCH_PAYLOAD || "{}");
             try {
               await github.rest.repos.createDispatchEvent({
-                owner: "amtellezfernandez",
+                owner: "urdf-studio",
                 repo: "urdf-star-studio",
                 event_type: "robot-repos-updated",
                 client_payload: payload,
@@ -1191,7 +1191,7 @@ jobs:
                   issue_number: payload.issueNumber,
                   body:
                     "Auto-ingest: saved to robots.json, but sync dispatch failed. " +
-                    "Please verify URDF_STUDIO_DISPATCH_TOKEN has access to amtellezfernandez/urdf-star-studio.",
+                    "Please verify URDF_STUDIO_DISPATCH_TOKEN has access to urdf-studio/urdf-star-studio.",
                 });
               }
             }
