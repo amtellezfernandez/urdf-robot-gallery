@@ -1129,16 +1129,20 @@ jobs:
                 : "Auto-ingest: updated robots.json on main. This entry is now live.";
             const suggestedForkOwner = issueAuthor || "<your-github-username>";
             const forkWorkflowUrl = `https://github.com/${suggestedForkOwner}/${galleryRepo}/actions/workflows/contributor-generate-previews.yml`;
-            const compareUrl = `https://github.com/${galleryOwner}/${galleryRepo}/compare/main...${suggestedForkOwner}:contrib/previews-issue-${issue.number}?expand=1`;
+            const safeRepoBranch = repoKey
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/^-+|-+$/g, "");
+            const compareUrl = `https://github.com/${galleryOwner}/${galleryRepo}/compare/main...${suggestedForkOwner}:contrib/previews-repo-${safeRepoBranch}?expand=1`;
             const contributorPreviewInstructions =
               "\n\nTo help with preview generation using your own GitHub API quota and runner minutes:\n" +
               `1. Fork this repository: https://github.com/${galleryOwner}/${galleryRepo}/fork\n` +
               `2. Open this workflow in your fork and click \"Run workflow\": ${forkWorkflowUrl}\n` +
-              `3. Enter only \`issue_number=${issue.number}\`\n` +
+              `3. Enter \`repo=${repoKey}\` (optional: set \`robot_targets\` for specific robots)\n` +
               `4. Open this PR URL after it pushes commits: ${compareUrl}\n` +
               "5. The workflow processes missing previews in commit batches of 5 and pushes each batch automatically.\n" +
-              "6. If the run stops early, run it again with the same issue_number to continue.\n" +
-              "7. If the workflow reports an existing open PR for this issue, skip it and pick another issue.";
+              "6. If the run stops early, run it again with the same repo input to continue.\n" +
+              "7. If the workflow reports an existing open PR for this repo branch, wait for that PR to finish.";
 
             await github.rest.issues.createComment({
               owner: galleryOwner,

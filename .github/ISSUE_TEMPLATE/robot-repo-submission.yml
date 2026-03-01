@@ -11,7 +11,7 @@ body:
         1) Submit repo.
         2) Bot ingests and posts detected files + suggested mapping/tags.
         3) (Optional) Edit mapping/tags and save issue to refresh.
-        4) Run "Contributor Generate Previews" in your fork with `issue_number`.
+        4) Run "Contributor Generate Previews" in your fork with `repo=owner/repo`.
         License is auto-detected from the repo.
         Macro tags are auto-detected when **Tags (optional)** is empty (fallback: Other).
   - type: input

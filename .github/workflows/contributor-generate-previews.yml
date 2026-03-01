@@ -3,12 +3,9 @@ name: Contributor Generate Previews
 on:
   workflow_dispatch:
     inputs:
-      issue:
-        description: "Issue URL or #"
-        required: false
       repo:
         description: "Repo URL or owner/repo"
-        required: false
+        required: true
       robot_targets:
         description: "Targets (optional)"
         required: false
@@ -34,7 +31,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     concurrency:
-      group: contributor-previews-${{ inputs.issue || inputs.repo }}
+      group: contributor-previews-${{ inputs.repo }}
       cancel-in-progress: false
     steps:
       - name: Prevent upstream run
@@ -62,48 +59,29 @@ jobs:
       - name: Resolve run branch
         id: branch
         env:
-          ISSUE_INPUT: ${{ inputs.issue }}
           REPO_INPUT: ${{ inputs.repo }}
         run: |
           set -euo pipefail
-          issue_raw="$(printf '%s' "${ISSUE_INPUT:-}" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')"
-          issue_number=""
-          if [ -n "$issue_raw" ]; then
-            if printf '%s' "$issue_raw" | grep -Eq '^[0-9]+$'; then
-              issue_number="$issue_raw"
-            else
-              issue_number="$(printf '%s' "$issue_raw" | sed -nE 's#^.*/issues/([0-9]+).*$#\1#p')"
-            fi
-          fi
           repo_input="$(printf '%s' "${REPO_INPUT:-}" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')"
-          if [ -z "$issue_number" ] && [ -z "$repo_input" ]; then
-            echo "::error::Provide issue or repo."
+          if [ -z "$repo_input" ]; then
+            echo "::error::Provide repo."
             exit 1
           fi
 
-          mode="repo"
-          repo_ref=""
-          if [ -n "$issue_number" ]; then
-            mode="issue"
-            branch="contrib/previews-issue-${issue_number}"
-            run_label="issue #${issue_number}"
-          else
-            repo_ref="$(printf '%s' "$repo_input" | sed -E 's#^https?://github.com/##I; s#\.git$##I; s#/+$##')"
-            if ! printf '%s' "$repo_ref" | grep -Eq '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'; then
-              echo "::error::Invalid repo input. Use owner/repo or full GitHub URL."
-              exit 1
-            fi
-            safe_repo="$(printf '%s' "$repo_ref" | tr '[:upper:]' '[:lower:]' | sed -E 's#[^a-z0-9]+#-#g; s#^-+|-+$##g')"
-            branch="contrib/previews-repo-${safe_repo}"
-            run_label="repo ${repo_ref}"
+          repo_ref="$(printf '%s' "$repo_input" | sed -E 's#^https?://github.com/##I; s#\.git$##I; s#/+$##')"
+          if ! printf '%s' "$repo_ref" | grep -Eq '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'; then
+            echo "::error::Invalid repo input. Use owner/repo or full GitHub URL."
+            exit 1
           fi
+          safe_repo="$(printf '%s' "$repo_ref" | tr '[:upper:]' '[:lower:]' | sed -E 's#[^a-z0-9]+#-#g; s#^-+|-+$##g')"
+          branch="contrib/previews-repo-${safe_repo}"
+          run_label="repo ${repo_ref}"
 
-          echo "mode=$mode" >> "$GITHUB_OUTPUT"
           echo "repo_ref=$repo_ref" >> "$GITHUB_OUTPUT"
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
           echo "run_label=$run_label" >> "$GITHUB_OUTPUT"
 
-      - name: Prepare issue branch
+      - name: Prepare run branch
         run: |
           set -euo pipefail
           git remote add upstream "https://github.com/${UPSTREAM_REPO}.git" || \
@@ -121,20 +99,12 @@ jobs:
         id: issue
         uses: actions/github-script@v7
         env:
-          ISSUE_INPUT: ${{ inputs.issue }}
           REPO_INPUT: ${{ inputs.repo }}
           ROBOT_TARGETS_INPUT: ${{ inputs.robot_targets }}
           UPSTREAM_REPO: ${{ env.UPSTREAM_REPO }}
         with:
           github-token: ${{ github.token }}
           script: |
-            const issueInputRaw = String(process.env.ISSUE_INPUT || "").trim();
-            const issueNumber = (() => {
-              if (!issueInputRaw) return 0;
-              if (/^\d+$/.test(issueInputRaw)) return Number(issueInputRaw);
-              const match = issueInputRaw.match(/\/issues\/(\d+)/i);
-              return match ? Number(match[1]) : 0;
-            })();
             const repoInputRaw = String(process.env.REPO_INPUT || "").trim();
             const robotTargetsInputRaw = String(process.env.ROBOT_TARGETS_INPUT || "").trim();
             const [owner, repo] = String(process.env.UPSTREAM_REPO || "").split("/");
@@ -142,58 +112,14 @@ jobs:
               core.setFailed("Invalid UPSTREAM_REPO.");
               return;
             }
-            if (!issueNumber && !repoInputRaw) {
-              core.setFailed("Provide issue or repo.");
+            if (!repoInputRaw) {
+              core.setFailed("Provide repo.");
               return;
             }
 
-            let issue;
-            if (issueNumber) {
-              try {
-                issue = (
-                  await github.rest.issues.get({
-                    owner,
-                    repo,
-                    issue_number: issueNumber,
-                  })
-                ).data;
-              } catch (error) {
-                core.warning(
-                  `Octokit issue fetch failed (${error.status || "unknown"} ${error.message || error}). Falling back to public API.`
-                );
-                const fallback = await fetch(
-                  `https://api.github.com/repos/${owner}/${repo}/issues/${issueNumber}`,
-                  {
-                    headers: {
-                      "User-Agent": "contributor-preview-workflow",
-                      "Accept": "application/vnd.github+json",
-                    },
-                  }
-                );
-                if (!fallback.ok) {
-                  core.setFailed(`Failed to fetch issue via public API (HTTP ${fallback.status}).`);
-                  return;
-                }
-                issue = await fallback.json();
-              }
-            }
-
-            const title = issue?.title || "";
-            const body = issue?.body || "";
-            const issueUrl = issueNumber
-              ? issue?.html_url || `https://github.com/${owner}/${repo}/issues/${issueNumber}`
-              : `https://github.com/${owner}/${repo}/blob/main/docs/preview-regeneration.md`;
+            const issueUrl = `https://github.com/${owner}/${repo}/blob/main/docs/preview-regeneration.md`;
             let repoKey = "";
 
-            const parseIssueFields = (text) => {
-              const fields = {};
-              const regex = /^###\s+(.+)\n+([\s\S]*?)(?=^###\s+|\Z)/gm;
-              let match;
-              while ((match = regex.exec(text || "")) !== null) {
-                fields[match[1].trim()] = String(match[2] || "").trim();
-              }
-              return fields;
-            };
             const normalizeFieldValue = (value) => {
               const normalized = String(value || "").trim();
               if (!normalized || normalized.toLowerCase() === "no response" || normalized === "_No response_") {
@@ -222,59 +148,29 @@ jobs:
 
               return "";
             };
-            const issueFields = parseIssueFields(body);
-            const mappingText = normalizeFieldValue(issueFields["Robot mapping (optional)"]);
-            const mappingLines = mappingText
-              ? mappingText
-                  .split(/\r?\n/)
-                  .map((line) => line.trim())
-                  .filter(Boolean)
-              : [];
-            const robotTargetsText =
-              normalizeFieldValue(robotTargetsInputRaw) ||
-              normalizeFieldValue(
-                issueFields["Robots to regenerate (optional)"] ||
-                  issueFields["Robots to regenerate"]
-              );
+            const mappingLines = [];
+            const robotTargetsText = normalizeFieldValue(robotTargetsInputRaw);
             const robotTargetLines = robotTargetsText
               ? robotTargetsText
                   .split(/\r?\n/)
                   .map((line) => line.trim())
                   .filter(Boolean)
               : [];
-            const issueTags = normalizeFieldValue(issueFields["Tags (optional)"]);
-            const repoFieldValue =
-              normalizeFieldValue(repoInputRaw) ||
-              issueFields["GitHub repo (URL or owner/repo)"] ||
-              issueFields["GitHub repo URL"] ||
-              "";
+            const issueTags = "";
+            const repoFieldValue = normalizeFieldValue(repoInputRaw);
 
             repoKey = parseRepoKeyValue(repoFieldValue);
 
-            if (!repoKey && issueNumber) {
-              const titleMatch = title.match(/robot-showcase-request:\s*([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)/i);
-              if (titleMatch) {
-                repoKey = titleMatch[1].toLowerCase();
-              }
-            }
-
-            if (!repoKey && issueNumber) {
-              const urlMatch = body.match(/https?:\/\/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)/i);
-              if (urlMatch) {
-                repoKey = `${urlMatch[1]}/${urlMatch[2]}`.toLowerCase();
-              }
-            }
-
             if (!repoKey) {
-              core.setFailed("Could not infer repoKey from issue. Use owner/repo or full GitHub URL in the issue form.");
+              core.setFailed("Could not parse repoKey. Use owner/repo or full GitHub URL.");
               return;
             }
 
             core.info(`Resolved repoKey: ${repoKey}`);
             core.setOutput("repo_key", repoKey);
-            core.setOutput("mode", issueNumber ? "issue" : "repo");
-            core.setOutput("issue_number", issueNumber ? String(issueNumber) : "");
-            core.setOutput("run_label", issueNumber ? `issue #${issueNumber}` : `repo ${repoKey}`);
+            core.setOutput("mode", "repo");
+            core.setOutput("issue_number", "");
+            core.setOutput("run_label", `repo ${repoKey}`);
             core.setOutput("issue_url", issueUrl);
             core.setOutput("mapping_present", mappingLines.length > 0 ? "true" : "false");
             core.setOutput("mapping_count", String(mappingLines.length));
@@ -340,7 +236,7 @@ jobs:
             if (conflict) {
               core.setFailed(
                 `Branch ${branch} is already being handled in ${conflict.html_url}. ` +
-                  "Please wait for that PR to close or use a different repo/issue."
+                  "Please wait for that PR to close or use a different repo."
               );
               return;
             }
@@ -859,31 +755,17 @@ jobs:
             echo "## Contributor Preview Run";
             echo "";
             echo "- Run mode: \`${{ steps.issue.outputs.mode }}\`";
-            if [ -n "${{ steps.issue.outputs.issue_number }}" ]; then
-              echo "- Upstream issue: #${{ steps.issue.outputs.issue_number }}";
-            else
-              echo "- Upstream issue: (none; direct repo run)";
-            fi
-            echo "- Issue URL: ${{ steps.issue.outputs.issue_url }}";
+            echo "- Upstream issue: (not used in this workflow)";
+            echo "- Guide URL: ${{ steps.issue.outputs.issue_url }}";
             echo "- Resolved repoKey: \`${{ steps.issue.outputs.repo_key }}\`";
-            if [ "${{ steps.issue.outputs.mapping_present }}" = "true" ]; then
-              echo "- Mapping lines in issue: \`${{ steps.issue.outputs.mapping_count }}\`";
-            else
-              echo "- Mapping lines in issue: none";
-            fi
             if [ "${{ steps.issue.outputs.robot_targets_present }}" = "true" ]; then
-              echo "- Robot target lines in issue: \`${{ steps.issue.outputs.robot_targets_count }}\`";
+              echo "- Robot target lines from workflow input: \`${{ steps.issue.outputs.robot_targets_count }}\`";
               echo "- Resolved target robots: \`${{ steps.target.outputs.resolved_count }}\`";
               if [ "${{ steps.target.outputs.unresolved_count }}" != "0" ]; then
                 echo "- Unresolved target lines: \`${{ steps.target.outputs.unresolved_count }}\`";
               fi
             else
-              echo "- Robot target lines in issue: none";
-            fi
-            if [ -n "${{ steps.issue.outputs.issue_tags }}" ]; then
-              echo "- Issue tags: \`${{ steps.issue.outputs.issue_tags }}\`";
-            else
-              echo "- Issue tags: none";
+              echo "- Robot target lines from workflow input: none";
             fi
             if [ "${{ steps.morphology.outputs.found }}" = "true" ]; then
               echo "- Detected morphology from generated previews (\`${{ steps.morphology.outputs.preview_count }}\` robot(s)): arms<=\`${{ steps.morphology.outputs.arm_max }}\`, legs<=\`${{ steps.morphology.outputs.leg_max }}\`, wheels<=\`${{ steps.morphology.outputs.wheel_max }}\`";
@@ -913,11 +795,7 @@ jobs:
             else
               echo "- \`docs/previews.json\` changed: yes";
             fi
-            if [ -n "${{ steps.issue.outputs.issue_number }}" ]; then
-              echo "- Re-run: open this workflow in your fork and run again with the same issue_number.";
-            else
-              echo "- Re-run: open this workflow in your fork and run again with the same repo input.";
-            fi
+            echo "- Re-run: open this workflow in your fork and run again with the same repo input.";
             if [ "${{ steps.push.outputs.no_changes }}" = "true" ]; then
               echo "- Result: no preview file changes were produced.";
               echo "- Next step: no PR needed for this run.";
@@ -925,21 +803,13 @@ jobs:
               echo "- Result: preview assets committed to your fork branch.";
               echo "- Open PR URL: ${{ steps.push.outputs.compare_url }}";
               echo "- Review checklist:";
-              echo "  1. Review issue mapping/tags: ${{ steps.issue.outputs.issue_url }}";
+              echo "  1. Review target repo and robot targets.";
               echo "  2. Review compare view.";
               echo "  3. Open PR.";
               if [ "${{ steps.push.outputs.limit_reached }}" = "true" ]; then
-                if [ -n "${{ steps.issue.outputs.issue_number }}" ]; then
-                  echo "- Note: reached safety limit (\`${{ env.MAX_BATCH_COMMITS }}\` commits). Re-run the workflow with the same issue_number to continue.";
-                else
-                  echo "- Note: reached safety limit (\`${{ env.MAX_BATCH_COMMITS }}\` commits). Re-run the workflow with the same repo input to continue.";
-                fi
+                echo "- Note: reached safety limit (\`${{ env.MAX_BATCH_COMMITS }}\` commits). Re-run the workflow with the same repo input to continue.";
               else
-                if [ -n "${{ steps.issue.outputs.issue_number }}" ]; then
-                  echo "- Next step after merge: re-run with the same issue_number until it reports no changes.";
-                else
-                  echo "- Next step after merge: re-run with the same repo input until it reports no changes.";
-                fi
+                echo "- Next step after merge: re-run with the same repo input until it reports no changes.";
               fi
             fi
           } >> "$GITHUB_STEP_SUMMARY"
