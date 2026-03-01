@@ -1,0 +1,198 @@
+name: Auto-merge trusted preview PRs
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  auto-merge:
+    if: startsWith(github.event.pull_request.head.ref, 'contrib/previews-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable auto-merge for trusted source
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (!pr) {
+              core.setFailed("Missing pull request payload.");
+              return;
+            }
+
+            if (pr.draft) {
+              core.notice("Draft PR. Auto-merge will be evaluated once ready for review.");
+              return;
+            }
+
+            const COMMENT_PREFIX = "Auto-merge preview:";
+            const headRef = String(pr.head?.ref || "");
+            const headOwner = String(pr.head?.repo?.owner?.login || "").toLowerCase();
+            const trustedMaintainers = new Set(["amtellezfernandez"]);
+
+            const clean = (value) => {
+              const normalized = String(value || "").trim();
+              if (!normalized || normalized.toLowerCase() === "no response" || normalized === "_No response_") {
+                return "";
+              }
+              return normalized;
+            };
+
+            const parseIssueFields = (text) => {
+              const fields = {};
+              const regex = /^###\s+(.+)\n+([\s\S]*?)(?=^###\s+|\Z)/gm;
+              let match;
+              while ((match = regex.exec(text || "")) !== null) {
+                fields[match[1].trim()] = clean(match[2]);
+              }
+              return fields;
+            };
+
+            const parseRepoOwner = (value) => {
+              let normalized = clean(value);
+              if (!normalized) return "";
+
+              const markdownUrl = normalized.match(/\((https?:\/\/github\.com\/[^)]+)\)/i);
+              if (markdownUrl) normalized = markdownUrl[1];
+
+              normalized = normalized.replace(/\.git$/i, "").replace(/\/+$/, "");
+
+              const ownerRepo = normalized.match(/^([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)$/);
+              if (ownerRepo) return ownerRepo[1].toLowerCase();
+
+              const urlMatch = normalized.match(/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)/i);
+              if (urlMatch) return urlMatch[1].toLowerCase();
+
+              return "";
+            };
+
+            const upsertBotComment = async (text) => {
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                per_page: 100,
+              });
+              const existing = comments.find(
+                (comment) =>
+                  comment?.user?.type === "Bot" &&
+                  typeof comment.body === "string" &&
+                  comment.body.startsWith(COMMENT_PREFIX)
+              );
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body: text,
+                });
+                return;
+              }
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: text,
+              });
+            };
+
+            let trusted = false;
+            let trustReason = "";
+
+            if (trustedMaintainers.has(headOwner)) {
+              trusted = true;
+              trustReason = `trusted maintainer fork (${headOwner})`;
+            }
+
+            if (!trusted) {
+              const issueMatch = headRef.match(/^contrib\/previews-issue-(\d+)$/);
+              if (issueMatch) {
+                const issueNumber = Number(issueMatch[1]);
+                try {
+                  const issue = (
+                    await github.rest.issues.get({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                    })
+                  ).data;
+                  const fields = parseIssueFields(issue.body || "");
+                  const repoOwner =
+                    parseRepoOwner(fields["GitHub repo (URL or owner/repo)"]) ||
+                    parseRepoOwner(fields["GitHub repo URL"]);
+                  if (repoOwner && repoOwner === headOwner) {
+                    trusted = true;
+                    trustReason = `source repo owner (${repoOwner})`;
+                  } else if (!repoOwner) {
+                    core.notice(`Issue #${issueNumber} does not include a parsable repo owner.`);
+                  } else {
+                    core.notice(
+                      `Head owner "${headOwner}" does not match source repo owner "${repoOwner}".`
+                    );
+                  }
+                } catch (error) {
+                  core.warning(
+                    `Could not validate source repo owner from issue #${issueNumber}: ${error.message || error}`
+                  );
+                }
+              } else {
+                core.notice("Branch does not encode an issue number; skipping source owner trust check.");
+              }
+            }
+
+            if (!trusted) {
+              core.notice("PR is not from an auto-merge trusted source.");
+              return;
+            }
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+            const changed = files.map((file) => file.filename);
+            const allowedPrefix = ["docs/previews/", "docs/thumbnails/"];
+            const allowedExact = new Set(["docs/previews.json"]);
+            const disallowed = changed.filter((name) => {
+              if (allowedExact.has(name)) return false;
+              return !allowedPrefix.some((prefix) => name.startsWith(prefix));
+            });
+
+            if (disallowed.length > 0) {
+              core.notice(
+                `Skipping auto-merge: disallowed changed file(s): ${disallowed.join(", ")}`
+              );
+              return;
+            }
+
+            try {
+              await github.graphql(
+                `
+                mutation EnableAutoMerge($pullRequestId: ID!) {
+                  enablePullRequestAutoMerge(
+                    input: { pullRequestId: $pullRequestId, mergeMethod: SQUASH }
+                  ) {
+                    pullRequest {
+                      number
+                    }
+                  }
+                }
+                `,
+                { pullRequestId: pr.node_id }
+              );
+              await upsertBotComment(
+                `${COMMENT_PREFIX} enabled for this PR because it comes from ${trustReason}.`
+              );
+            } catch (error) {
+              const message = String(error?.message || error);
+              if (message.toLowerCase().includes("already enabled")) {
+                core.notice("Auto-merge is already enabled.");
+                return;
+              }
+              core.warning(`Failed to enable auto-merge: ${message}`);
+            }

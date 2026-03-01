@@ -7,10 +7,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Fast flow:
-        1) Submit repo + update type.
-        2) Bot applies metadata/mapping/tag updates and closes the issue.
-        3) For preview generation, use the direct workflow guide instead of this issue form.
+        Keep this short:
+        1) Paste the repo.
+        2) Choose what to update.
+        3) Add tags and/or mapping only if needed.
   - type: input
     id: repo
     attributes:
@@ -28,21 +28,6 @@ body:
         - Mapping change
     validations:
       required: true
-  - type: input
-    id: org
-    attributes:
-      label: Author / Company / Lab (optional)
-      placeholder: The Robot Studio
-  - type: textarea
-    id: summary
-    attributes:
-      label: Short summary (optional)
-      placeholder: Updated summary.
-  - type: input
-    id: demo
-    attributes:
-      label: Demo URL (optional)
-      placeholder: https://huggingface.co/spaces/your-demo
   - type: input
     id: tags
     attributes:
