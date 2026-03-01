@@ -12,11 +12,9 @@ body:
   - type: input
     id: repo
     attributes:
-      label: GitHub repo (URL or owner/repo)
-      description: Existing repo already in gallery.
+      label: GitHub repo (URL or owner/repo) (optional)
+      description: Optional if robot lines below include full GitHub URLs.
       placeholder: TheRobotStudio/SO-ARM100
-    validations:
-      required: true
   - type: dropdown
     id: update_type
     attributes:
@@ -28,11 +26,13 @@ body:
   - type: textarea
     id: robot_targets
     attributes:
-      label: Robots to regenerate
-      description: Paste one robot per line. Supports copied gallery lines or path/file.urdf.
+      label: Robot URL(s) / targets to regenerate
+      description: >-
+        Paste one robot per line. Preferred: full GitHub URL copied from gallery.
+        Also supports copied gallery lines with fileBase/tags, or path/file.urdf.
       placeholder: |-
+        https://github.com/TheRobotStudio/SO-ARM100/blob/HEAD/robots/so100/so100.urdf
         SO-ARM100 - robots/so100/so100.urdf - fileBase: so100--abc123 - tags: Arm, Gripper
-        robots/so101/so101.urdf
     validations:
       required: true
   - type: textarea

@@ -458,6 +458,36 @@ jobs:
             return Array.from(set)[0] || "";
           };
 
+          const extractRobotPath = (line) => {
+            const text = String(line || "").trim();
+            if (!text) return "";
+
+            const githubBlobMatch = text.match(
+              /https?:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/blob\/[^\/]+\/([^?#\s]+)/i
+            );
+            if (githubBlobMatch?.[1]) {
+              try {
+                return decodeURIComponent(githubBlobMatch[1]);
+              } catch {
+                return githubBlobMatch[1];
+              }
+            }
+
+            const rawContentMatch = text.match(
+              /https?:\/\/raw\.githubusercontent\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/[^\/]+\/([^?#\s]+)/i
+            );
+            if (rawContentMatch?.[1]) {
+              try {
+                return decodeURIComponent(rawContentMatch[1]);
+              } catch {
+                return rawContentMatch[1];
+              }
+            }
+
+            const pathMatch = text.match(/([a-zA-Z0-9_./\\-]+\.(?:urdf(?:\.xacro)?|xacro))/i);
+            return pathMatch?.[1] || "";
+          };
+
           for (const line of lines) {
             let fileBase = "";
             const fbMatch = line.match(/filebase\s*[:=]\s*([a-z0-9._-]+--[a-z0-9]+)/i);
@@ -483,9 +513,9 @@ jobs:
             }
 
             if (!resolvedBase) {
-              const pathMatch = line.match(/([a-zA-Z0-9_./\\-]+\.(?:urdf(?:\.xacro)?|xacro))/i);
-              if (pathMatch?.[1]) {
-                const normalizedPath = normalizePath(pathMatch[1]).toLowerCase();
+              const extractedPath = extractRobotPath(line);
+              if (extractedPath) {
+                const normalizedPath = normalizePath(extractedPath).toLowerCase();
                 resolvedBase = pickUnique(byFilePath.get(normalizedPath));
                 if (!resolvedBase) {
                   const stem = stripExt(normalizedPath).split("/").pop()?.toLowerCase() || "";

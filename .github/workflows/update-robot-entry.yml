@@ -133,6 +133,30 @@ jobs:
               return "";
             };
 
+            const extractRepoKeysFromText = (value) => {
+              const text = String(value || "");
+              const keys = new Set();
+              const remember = (owner, repo) => {
+                const cleanOwner = String(owner || "").trim();
+                const cleanRepo = String(repo || "").trim().replace(/\.git$/i, "");
+                if (!cleanOwner || !cleanRepo) return;
+                keys.add(`${cleanOwner}/${cleanRepo}`.toLowerCase());
+              };
+
+              let match;
+              const githubPattern = /github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)/gi;
+              while ((match = githubPattern.exec(text)) !== null) {
+                remember(match[1], match[2]);
+              }
+
+              const rawPattern = /raw\.githubusercontent\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)/gi;
+              while ((match = rawPattern.exec(text)) !== null) {
+                remember(match[1], match[2]);
+              }
+
+              return Array.from(keys);
+            };
+
             const parseLines = (value) =>
               String(value || "")
                 .split(/\r?\n/)
@@ -252,12 +276,48 @@ jobs:
             };
 
             const fields = parseIssueFields(body);
-            const repoInput =
+            const updateTypeRaw = clean(fields["Update type"]);
+            const updateType = updateTypeRaw.toLowerCase();
+            let mode = "";
+            if (updateType.includes("metadata")) mode = "metadata";
+            if (updateType.includes("mapping")) mode = "mapping";
+            if (updateType.includes("regenerate")) mode = "regenerate";
+            if (!mode) {
+              await upsertComment(
+                "Auto-update: missing update type.",
+                "Auto-update: choose **Update type** and save the issue."
+              );
+              return;
+            }
+
+            const regenerateTargetsText = clean(
+              fields["Robots to regenerate (optional)"] || fields["Robots to regenerate"]
+            );
+            const regenerateTargets = parseLines(regenerateTargetsText);
+
+            let repoInput =
               clean(fields["GitHub repo (URL or owner/repo)"]) || clean(fields["GitHub repo URL"]);
+
+            if (!repoInput && mode === "regenerate") {
+              const inferredRepoKeys = extractRepoKeysFromText(regenerateTargetsText);
+              if (inferredRepoKeys.length === 1) {
+                repoInput = inferredRepoKeys[0];
+              } else if (inferredRepoKeys.length > 1) {
+                await upsertComment(
+                  "Auto-update: multiple repos detected.",
+                  "Auto-update: multiple repository URLs were detected in robot targets. " +
+                    "Use targets from only one repo per issue or set **GitHub repo (URL or owner/repo)** explicitly."
+                );
+                return;
+              }
+            }
+
             if (!repoInput) {
               await upsertComment(
                 "Auto-update: missing repo.",
-                "Auto-update: missing repo. Fill **GitHub repo (URL or owner/repo)** and save the issue."
+                mode === "regenerate"
+                  ? "Auto-update: missing repo. Fill **GitHub repo (URL or owner/repo)** or paste full GitHub robot URL(s) under **Robots to regenerate**."
+                  : "Auto-update: missing repo. Fill **GitHub repo (URL or owner/repo)** and save the issue."
               );
               return;
             }
@@ -273,20 +333,6 @@ jobs:
             const owner = parsed.owner;
             const repo = parsed.repo;
             const repoKey = `${owner}/${repo}`.toLowerCase();
-
-            const updateTypeRaw = clean(fields["Update type"]);
-            const updateType = updateTypeRaw.toLowerCase();
-            let mode = "";
-            if (updateType.includes("metadata")) mode = "metadata";
-            if (updateType.includes("mapping")) mode = "mapping";
-            if (updateType.includes("regenerate")) mode = "regenerate";
-            if (!mode) {
-              await upsertComment(
-                "Auto-update: missing update type.",
-                "Auto-update: choose **Update type** and save the issue."
-              );
-              return;
-            }
 
             const issueAuthor = issue.user?.login || "";
             const isMaintainer =
@@ -353,9 +399,6 @@ jobs:
             if (mode === "regenerate") {
               const suggestedForkOwner = issueAuthor || "<your-github-username>";
               const forkWorkflowUrl = `https://github.com/${suggestedForkOwner}/${galleryRepo}/actions/workflows/contributor-generate-previews.yml`;
-              const regenerateTargets = parseLines(
-                clean(fields["Robots to regenerate (optional)"] || fields["Robots to regenerate"])
-              );
               await upsertComment(
                 "Auto-update: preview regeneration requested.",
                 "Auto-update: preview regeneration requested.\n\n" +
