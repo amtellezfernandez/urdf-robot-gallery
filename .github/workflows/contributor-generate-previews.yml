@@ -162,6 +162,16 @@ jobs:
                   .map((line) => line.trim())
                   .filter(Boolean)
               : [];
+            const robotTargetsText = normalizeFieldValue(
+              issueFields["Robots to regenerate (optional)"] ||
+                issueFields["Robots to regenerate"]
+            );
+            const robotTargetLines = robotTargetsText
+              ? robotTargetsText
+                  .split(/\r?\n/)
+                  .map((line) => line.trim())
+                  .filter(Boolean)
+              : [];
             const issueTags = normalizeFieldValue(issueFields["Tags (optional)"]);
             const repoFieldValue =
               issueFields["GitHub repo (URL or owner/repo)"] ||
@@ -194,6 +204,9 @@ jobs:
             core.setOutput("issue_url", issueUrl);
             core.setOutput("mapping_present", mappingLines.length > 0 ? "true" : "false");
             core.setOutput("mapping_count", String(mappingLines.length));
+            core.setOutput("robot_targets_present", robotTargetLines.length > 0 ? "true" : "false");
+            core.setOutput("robot_targets_count", String(robotTargetLines.length));
+            core.setOutput("robot_targets_b64", Buffer.from(robotTargetsText, "utf8").toString("base64"));
             core.setOutput("issue_tags", issueTags ? issueTags.replace(/\r?\n/g, ", ") : "");
 
       - name: Check issue lock (no competing open PR)
@@ -289,6 +302,142 @@ jobs:
             process.exit(1);
           }
           console.log(`repoKey ${key} found in docs/robots.json`);
+          '
+
+      - name: Resolve targeted robot keys from issue
+        id: target
+        env:
+          REPO_KEY: ${{ steps.issue.outputs.repo_key }}
+          ROBOT_TARGETS_B64: ${{ steps.issue.outputs.robot_targets_b64 }}
+        run: |
+          node -e '
+          const fs = require("fs");
+          const repoKey = String(process.env.REPO_KEY || "").trim().toLowerCase();
+          const rawTargets = Buffer.from(String(process.env.ROBOT_TARGETS_B64 || ""), "base64")
+            .toString("utf8")
+            .trim();
+          const out = process.env.GITHUB_OUTPUT;
+          if (!rawTargets) {
+            fs.appendFileSync(out, "resolved_keys=\n");
+            fs.appendFileSync(out, "resolved_count=0\n");
+            fs.appendFileSync(out, "unresolved_count=0\n");
+            fs.appendFileSync(out, "selection_mode=repo\n");
+            process.exit(0);
+          }
+
+          const normalizePath = (value) =>
+            String(value || "")
+              .trim()
+              .replace(/\\/g, "/")
+              .replace(/^\.\//, "")
+              .replace(/^\/+/, "")
+              .replace(/\/+/g, "/");
+          const stripExt = (value) =>
+            String(value || "")
+              .replace(/\.urdf\.xacro$/i, "")
+              .replace(/\.xacro$/i, "")
+              .replace(/\.urdf$/i, "");
+
+          const docs = JSON.parse(fs.readFileSync("docs/robots.json", "utf8"));
+          const repoEntry = docs.find((entry) => String(entry?.repoKey || "").toLowerCase() === repoKey);
+          if (!repoEntry) {
+            fs.appendFileSync(out, "resolved_keys=\n");
+            fs.appendFileSync(out, "resolved_count=0\n");
+            fs.appendFileSync(out, "unresolved_count=0\n");
+            fs.appendFileSync(out, "selection_mode=repo\n");
+            process.exit(0);
+          }
+
+          const robots = Array.isArray(repoEntry.robots) ? repoEntry.robots : [];
+          const byFileBase = new Map();
+          const byFilePath = new Map();
+          const byStem = new Map();
+          const byName = new Map();
+          const remember = (map, key, fileBase) => {
+            if (!key || !fileBase) return;
+            if (!map.has(key)) map.set(key, new Set());
+            map.get(key).add(fileBase);
+          };
+
+          for (const robot of robots) {
+            const file = normalizePath(typeof robot === "string" ? robot : robot?.file || "");
+            const fileBase = String(typeof robot === "string" ? "" : robot?.fileBase || "").trim();
+            const name = String(typeof robot === "string" ? stripExt(file) : robot?.name || "").trim().toLowerCase();
+            if (!fileBase) continue;
+            remember(byFileBase, fileBase.toLowerCase(), fileBase);
+            remember(byFilePath, file.toLowerCase(), fileBase);
+            const stem = stripExt(file).split("/").pop()?.toLowerCase() || "";
+            remember(byStem, stem, fileBase);
+            remember(byName, name, fileBase);
+          }
+
+          const lines = rawTargets
+            .split(/\r?\n/)
+            .map((line) => line.trim())
+            .filter(Boolean);
+          const resolved = new Set();
+          let unresolvedCount = 0;
+
+          const pickUnique = (set) => {
+            if (!set || set.size !== 1) return "";
+            return Array.from(set)[0] || "";
+          };
+
+          for (const line of lines) {
+            let fileBase = "";
+            const fbMatch = line.match(/filebase\s*[:=]\s*([a-z0-9._-]+--[a-z0-9]+)/i);
+            if (fbMatch?.[1]) {
+              fileBase = fbMatch[1];
+            }
+            if (!fileBase) {
+              const keyMatch = line.match(/([a-z0-9_.-]+\/[a-z0-9_.-]+)::([a-z0-9._-]+--[a-z0-9]+)/i);
+              if (keyMatch?.[2]) {
+                fileBase = keyMatch[2];
+              }
+            }
+            if (!fileBase) {
+              const directMatch = line.match(/\b([a-z0-9._-]+--[a-z0-9]+)\b/i);
+              if (directMatch?.[1]) {
+                fileBase = directMatch[1];
+              }
+            }
+
+            let resolvedBase = "";
+            if (fileBase) {
+              resolvedBase = pickUnique(byFileBase.get(fileBase.toLowerCase()));
+            }
+
+            if (!resolvedBase) {
+              const pathMatch = line.match(/([a-zA-Z0-9_./\\-]+\.(?:urdf(?:\.xacro)?|xacro))/i);
+              if (pathMatch?.[1]) {
+                const normalizedPath = normalizePath(pathMatch[1]).toLowerCase();
+                resolvedBase = pickUnique(byFilePath.get(normalizedPath));
+                if (!resolvedBase) {
+                  const stem = stripExt(normalizedPath).split("/").pop()?.toLowerCase() || "";
+                  resolvedBase = pickUnique(byStem.get(stem));
+                }
+              }
+            }
+
+            if (!resolvedBase) {
+              const namePart = line.split(/\s[-:]\s/)[0].trim().toLowerCase();
+              if (namePart && namePart !== line.toLowerCase()) {
+                resolvedBase = pickUnique(byName.get(namePart));
+              }
+            }
+
+            if (resolvedBase) {
+              resolved.add(`${repoKey}::${resolvedBase}`);
+            } else {
+              unresolvedCount += 1;
+            }
+          }
+
+          const resolvedKeys = Array.from(resolved).sort();
+          fs.appendFileSync(out, `resolved_keys=${resolvedKeys.join(",")}\n`);
+          fs.appendFileSync(out, `resolved_count=${resolvedKeys.length}\n`);
+          fs.appendFileSync(out, `unresolved_count=${unresolvedCount}\n`);
+          fs.appendFileSync(out, `selection_mode=${resolvedKeys.length > 0 ? "targeted" : "repo"}\n`);
           '
 
       - name: Checkout urdf-star-studio tools
@@ -450,6 +599,8 @@ jobs:
           PREVIEW_BATCH_SIZE: ${{ env.PREVIEW_BATCH_SIZE }}
           MAX_BATCH_COMMITS: ${{ env.MAX_BATCH_COMMITS }}
           DEFAULT_FORMATS: ${{ env.DEFAULT_FORMATS }}
+          TARGET_ROBOT_KEYS: ${{ steps.target.outputs.resolved_keys }}
+          TARGET_SELECTION_MODE: ${{ steps.target.outputs.selection_mode }}
         run: |
           set -euo pipefail
           branch="contrib/previews-issue-${{ inputs.issue_number }}"
@@ -457,14 +608,15 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           commits_made=0
           limit_reached=false
+          target_keys="${TARGET_ROBOT_KEYS:-}"
 
-          while true; do
+          if [ -n "$target_keys" ] && [ "${TARGET_SELECTION_MODE:-}" = "targeted" ]; then
             (
               cd _tools/urdf-star-studio
               node scripts/generate-missing-previews.mjs \
                 --gallery "$GITHUB_WORKSPACE" \
-                --only-repos "$REPO_KEY" \
-                --max-per-repo "${PREVIEW_BATCH_SIZE}" \
+                --only "$target_keys" \
+                --force \
                 --formats "${DEFAULT_FORMATS}" \
                 --size "${PREVIEW_RENDER_SIZE}" \
                 --xacro-api-base "${XACRO_API_BASE_URL:-http://127.0.0.1:8000}" \
@@ -472,21 +624,43 @@ jobs:
                 --strict-alpha \
                 --concurrency 2
             )
-
             git add docs/previews docs/thumbnails docs/previews.json
-            if git diff --cached --quiet; then
-              break
+            if ! git diff --cached --quiet; then
+              commits_made=1
+              git commit -m "Add preview assets for issue #${{ inputs.issue_number }} (${REPO_KEY}) [targeted]"
+              git push origin "HEAD:$branch"
             fi
+          else
+            while true; do
+              (
+                cd _tools/urdf-star-studio
+                node scripts/generate-missing-previews.mjs \
+                  --gallery "$GITHUB_WORKSPACE" \
+                  --only-repos "$REPO_KEY" \
+                  --max-per-repo "${PREVIEW_BATCH_SIZE}" \
+                  --formats "${DEFAULT_FORMATS}" \
+                  --size "${PREVIEW_RENDER_SIZE}" \
+                  --xacro-api-base "${XACRO_API_BASE_URL:-http://127.0.0.1:8000}" \
+                  --no-background \
+                  --strict-alpha \
+                  --concurrency 2
+              )
 
-            commits_made=$((commits_made + 1))
-            git commit -m "Add preview assets for issue #${{ inputs.issue_number }} (${REPO_KEY}) [batch ${commits_made}]"
-            git push origin "HEAD:$branch"
+              git add docs/previews docs/thumbnails docs/previews.json
+              if git diff --cached --quiet; then
+                break
+              fi
 
-            if [ "$commits_made" -ge "${MAX_BATCH_COMMITS}" ]; then
-              limit_reached=true
-              break
-            fi
-          done
+              commits_made=$((commits_made + 1))
+              git commit -m "Add preview assets for issue #${{ inputs.issue_number }} (${REPO_KEY}) [batch ${commits_made}]"
+              git push origin "HEAD:$branch"
+
+              if [ "$commits_made" -ge "${MAX_BATCH_COMMITS}" ]; then
+                limit_reached=true
+                break
+              fi
+            done
+          fi
 
           compare_url="https://github.com/${UPSTREAM_REPO}/compare/main...${GITHUB_REPOSITORY_OWNER}:$branch?expand=1"
           if [ "$commits_made" -eq 0 ]; then
@@ -588,6 +762,15 @@ jobs:
             else
               echo "- Mapping lines in issue: none";
             fi
+            if [ "${{ steps.issue.outputs.robot_targets_present }}" = "true" ]; then
+              echo "- Robot target lines in issue: \`${{ steps.issue.outputs.robot_targets_count }}\`";
+              echo "- Resolved target robots: \`${{ steps.target.outputs.resolved_count }}\`";
+              if [ "${{ steps.target.outputs.unresolved_count }}" != "0" ]; then
+                echo "- Unresolved target lines: \`${{ steps.target.outputs.unresolved_count }}\`";
+              fi
+            else
+              echo "- Robot target lines in issue: none";
+            fi
             if [ -n "${{ steps.issue.outputs.issue_tags }}" ]; then
               echo "- Issue tags: \`${{ steps.issue.outputs.issue_tags }}\`";
             else
@@ -605,6 +788,7 @@ jobs:
             fi
             echo "- Xacro API: \`${XACRO_API_BASE_URL:-http://127.0.0.1:8000}\`";
             echo "- Branch: \`${{ steps.push.outputs.branch }}\`";
+            echo "- Selection mode: \`${{ steps.target.outputs.selection_mode }}\`";
             echo "- Batch size per commit: \`${{ env.PREVIEW_BATCH_SIZE }}\`";
             echo "- Render size: \`${{ env.PREVIEW_RENDER_SIZE }}x${{ env.PREVIEW_RENDER_SIZE }}\`";
             echo "- Framing target NDC: \`${{ env.PREVIEW_FRAMING_TARGET_NDC }}\`";

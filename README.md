@@ -121,6 +121,13 @@ If you submitted a repo and want to generate previews using your own GitHub API 
 6. Open `https://github.com/urdf-studio/urdf-robot-gallery/compare/main...<your-github-username>:contrib/previews-issue-<number>?expand=1` to create the PR (this acts as the issue lock).
 7. If the workflow says another open PR already exists for that issue, pick a different issue.
 
+Target only specific robots (fast path):
+
+1. Open the gallery card and use each robot row `Copy` button (copies `name + URDF path + fileBase + tags`).
+2. In `robot-entry-update.yml`, choose `Regenerate previews/thumbnails` and paste those lines into `Robots to regenerate (optional)`.
+3. Run the same `contributor-generate-previews.yml` workflow in your fork with that `issue_number`.
+4. The workflow resolves pasted lines and regenerates only those robots (forced refresh), then pushes to the same `contrib/previews-issue-<number>` branch.
+
 ## Maintainer manual ingest
 
 For manual review, open the `ingest-robot-repos.yml` workflow in GitHub Actions, click **Run workflow**, and enter the issue number.

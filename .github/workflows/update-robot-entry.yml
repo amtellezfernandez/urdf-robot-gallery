@@ -353,9 +353,14 @@ jobs:
             if (mode === "regenerate") {
               const suggestedForkOwner = issueAuthor || "<your-github-username>";
               const forkWorkflowUrl = `https://github.com/${suggestedForkOwner}/${galleryRepo}/actions/workflows/contributor-generate-previews.yml`;
+              const regenerateTargets = parseLines(clean(fields["Robots to regenerate (optional)"]));
               await upsertComment(
                 "Auto-update: preview regeneration requested.",
                 "Auto-update: preview regeneration requested.\n\n" +
+                  (regenerateTargets.length
+                    ? `Targeted robots requested: \`${regenerateTargets.length}\` line(s).\n`
+                    : "Targeted robots requested: all missing robots in this repo.\n") +
+                  "Tip: use gallery Copy buttons (URDF path + fileBase + tags) in the issue field.\n\n" +
                   "Next:\n" +
                   `1. Run this workflow in your fork: ${forkWorkflowUrl}\n` +
                   `2. Enter only \`issue_number=${issue.number}\`\n` +

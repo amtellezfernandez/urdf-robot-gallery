@@ -1,6 +1,8 @@
 const dataUrl = "robots.json";
 const issueUrl =
   "https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=robot-repo-submission.yml";
+const updateIssueUrl =
+  "https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=robot-entry-update.yml";
 
 const grid = document.getElementById("grid");
 const emptyState = document.getElementById("empty");
@@ -19,8 +21,61 @@ const normalizeLicense = (value) => {
   return raw;
 };
 
+const normalizeRobotPath = (value) =>
+  (value || "")
+    .toString()
+    .trim()
+    .replace(/\\/g, "/")
+    .replace(/^\.\//, "")
+    .replace(/^\/+/, "");
+
+const toRobotEntry = (entry) => {
+  if (typeof entry === "string") {
+    const file = normalizeRobotPath(entry);
+    return {
+      name: file.replace(/\.(urdf(\.xacro)?|xacro)$/i, ""),
+      file,
+      fileBase: "",
+    };
+  }
+  const file = normalizeRobotPath(entry?.file || entry?.name || "");
+  return {
+    name: (entry?.name || file.replace(/\.(urdf(\.xacro)?|xacro)$/i, "") || "robot").toString(),
+    file,
+    fileBase: (entry?.fileBase || "").toString(),
+  };
+};
+
+const createRobotIssuePayload = (repoTags, robotEntry) => {
+  const tags = Array.isArray(repoTags) ? repoTags.filter(Boolean) : [];
+  const tagsValue = tags.length > 0 ? tags.join(", ") : "none";
+  return (
+    `${robotEntry.name} - ${robotEntry.file}` +
+    (robotEntry.fileBase ? ` - fileBase: ${robotEntry.fileBase}` : "") +
+    ` - tags: ${tagsValue}`
+  );
+};
+
+const copyText = async (text) => {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "readonly");
+  textarea.style.position = "absolute";
+  textarea.style.left = "-10000px";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+};
+
 const matchesQuery = (robot, query) => {
   if (!query) return true;
+  const robotEntries = (robot.robots || []).map(toRobotEntry);
   const haystack = [
     robot.name,
     robot.org,
@@ -28,6 +83,8 @@ const matchesQuery = (robot, query) => {
     robot.repo,
     robot.demo,
     robot.license,
+    ...robotEntries.map((entry) => entry.file),
+    ...robotEntries.map((entry) => entry.fileBase),
     ...(robot.tags || []),
   ]
     .map(normalize)
@@ -59,12 +116,64 @@ const renderCard = (robot) => {
   const normalizedLicense = normalizeLicense(robot.license);
   licenseLine.textContent = `License: ${normalizedLicense || "Unknown"}`;
 
-  let robotsLine = null;
+  let robotsList = null;
   if (Array.isArray(robot.robots) && robot.robots.length > 0) {
-    const names = robot.robots.map((entry) => entry.name || entry).join(", ");
-    robotsLine = document.createElement("p");
-    robotsLine.className = "robots";
-    robotsLine.textContent = `Robots: ${names}`;
+    const robotEntries = robot.robots.map(toRobotEntry).filter((entry) => entry.file);
+    if (robotEntries.length > 0) {
+      robotsList = document.createElement("div");
+      robotsList.className = "robot-list";
+
+      const listLabel = document.createElement("p");
+      listLabel.className = "robots";
+      listLabel.textContent = "URDF files";
+      robotsList.appendChild(listLabel);
+
+      robotEntries.forEach((robotEntry) => {
+        const row = document.createElement("div");
+        row.className = "robot-item";
+
+        const info = document.createElement("div");
+        info.className = "robot-info";
+
+        const robotTitle = document.createElement("span");
+        robotTitle.className = "robot-name";
+        robotTitle.textContent = robotEntry.name;
+        info.appendChild(robotTitle);
+
+        const robotFile = document.createElement("code");
+        robotFile.className = "robot-file";
+        robotFile.textContent = robotEntry.file;
+        info.appendChild(robotFile);
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.className = "copy-btn";
+        copyButton.textContent = "Copy";
+        copyButton.title =
+          "Copy a ready-to-paste line for Robot Entry Update issue (targeted regenerate/tags)";
+        copyButton.addEventListener("click", async () => {
+          const payload = createRobotIssuePayload(robot.tags || [], robotEntry);
+          try {
+            await copyText(payload);
+            copyButton.classList.add("copied");
+            copyButton.textContent = "Copied";
+            window.setTimeout(() => {
+              copyButton.classList.remove("copied");
+              copyButton.textContent = "Copy";
+            }, 1300);
+          } catch {
+            copyButton.textContent = "Error";
+            window.setTimeout(() => {
+              copyButton.textContent = "Copy";
+            }, 1300);
+          }
+        });
+
+        row.appendChild(info);
+        row.appendChild(copyButton);
+        robotsList.appendChild(row);
+      });
+    }
   }
 
   const tags = document.createElement("div");
@@ -96,11 +205,23 @@ const renderCard = (robot) => {
     links.appendChild(demoLink);
   }
 
+  const updateLink = document.createElement("a");
+  const repoValue = (robot.repo || "").replace(/^https?:\/\/github\.com\//i, "").replace(/\/+$/, "");
+  const updatePrefill = repoValue
+    ? `${updateIssueUrl}&repo=${encodeURIComponent(repoValue)}`
+    : updateIssueUrl;
+  updateLink.href = updatePrefill;
+  updateLink.target = "_blank";
+  updateLink.rel = "noopener noreferrer";
+  updateLink.className = "secondary";
+  updateLink.textContent = "Update/regenerate →";
+  links.appendChild(updateLink);
+
   card.appendChild(heading);
   card.appendChild(summary);
   card.appendChild(licenseLine);
-  if (robotsLine) {
-    card.appendChild(robotsLine);
+  if (robotsList) {
+    card.appendChild(robotsList);
   }
   if (robot.tags && robot.tags.length) {
     card.appendChild(tags);
