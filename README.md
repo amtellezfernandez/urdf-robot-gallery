@@ -114,12 +114,16 @@ If you submitted a repo and want to generate previews using your own GitHub API 
 
 1. Fork this repository.
 2. Open `https://github.com/<your-github-username>/urdf-robot-gallery/actions/workflows/contributor-generate-previews.yml` and click **Run workflow**.
-3. Enter only `issue_number` (your submission issue number in `urdf-studio/urdf-robot-gallery`).
-4. The workflow processes all missing previews for that repo in commit batches of 5 and pushes each batch to `contrib/previews-issue-<number>`.
+3. Use one of these inputs:
+   - tracked mode: enter `issue_number` (recommended), or
+   - direct mode: paste `repo` (`owner/repo` or GitHub URL) if you do not have an issue handy.
+4. The workflow processes previews for that repo and pushes to:
+   - `contrib/previews-issue-<number>` when using `issue_number`
+   - `contrib/previews-repo-<owner>-<repo>` when using direct `repo`
    Generated media is normalized to `800x800`, and preview framing is tuned so robots fill cards more consistently.
-5. If the run stops early (timeout/cancel), run it again with the same issue number and it resumes from the same branch.
-6. Open `https://github.com/urdf-studio/urdf-robot-gallery/compare/main...<your-github-username>:contrib/previews-issue-<number>?expand=1` to create the PR (this acts as the issue lock).
-7. If the workflow says another open PR already exists for that issue, pick a different issue.
+5. If the run stops early (timeout/cancel), run it again with the same input (`issue_number` or `repo`) and it resumes from the same branch.
+6. Open the compare URL shown in the workflow summary to create the PR (this acts as the lock).
+7. If the workflow says another open PR already exists for that branch, pick a different issue/repo run.
 
 Target only specific robots (fast path):
 

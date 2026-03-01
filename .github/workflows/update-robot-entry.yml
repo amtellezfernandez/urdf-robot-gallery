@@ -363,8 +363,9 @@ jobs:
                   "Tip: use gallery Copy buttons (URDF path + fileBase + tags) in the issue field.\n\n" +
                   "Next:\n" +
                   `1. Run this workflow in your fork: ${forkWorkflowUrl}\n` +
-                  `2. Enter only \`issue_number=${issue.number}\`\n` +
-                  "3. Open the PR from the compare view.\n\n" +
+                  `2. Quick path: enter only \`issue_number=${issue.number}\` (recommended for tracking)\n` +
+                  `3. Or run without issue number and set \`repo=${repoKey}\` for direct repo regeneration\n` +
+                  "4. Open the PR from the compare view.\n\n" +
                   "Issue left open for tracking preview regeneration."
               );
               return;
