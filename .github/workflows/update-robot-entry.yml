@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   update:
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.issue.labels.*.name, ','), 'robot-update') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate-targeted') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate-repo') || startsWith(github.event.issue.title || '', 'robot-preview-regeneration-request') || startsWith(github.event.issue.title || '', 'robot-targeted-preview-regeneration-request') || startsWith(github.event.issue.title || '', 'robot-repo-preview-regeneration-request')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.issue.labels.*.name, ','), 'robot-update') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate-targeted') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate-repo') || startsWith(github.event.issue.title || '', 'robot-update-request') || startsWith(github.event.issue.title || '', 'robot-preview-regeneration-request') || startsWith(github.event.issue.title || '', 'robot-targeted-preview-regeneration-request') || startsWith(github.event.issue.title || '', 'robot-repo-preview-regeneration-request')
     runs-on: ubuntu-latest
     permissions:
       contents: write
