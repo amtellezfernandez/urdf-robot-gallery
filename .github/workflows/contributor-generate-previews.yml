@@ -169,7 +169,6 @@ jobs:
             core.info(`Resolved repoKey: ${repoKey}`);
             core.setOutput("repo_key", repoKey);
             core.setOutput("mode", "repo");
-            core.setOutput("issue_number", "");
             core.setOutput("run_label", `repo ${repoKey}`);
             core.setOutput("issue_url", issueUrl);
             core.setOutput("mapping_present", mappingLines.length > 0 ? "true" : "false");
@@ -755,7 +754,6 @@ jobs:
             echo "## Contributor Preview Run";
             echo "";
             echo "- Run mode: \`${{ steps.issue.outputs.mode }}\`";
-            echo "- Upstream issue: (not used in this workflow)";
             echo "- Guide URL: ${{ steps.issue.outputs.issue_url }}";
             echo "- Resolved repoKey: \`${{ steps.issue.outputs.repo_key }}\`";
             if [ "${{ steps.issue.outputs.robot_targets_present }}" = "true" ]; then
