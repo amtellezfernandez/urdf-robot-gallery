@@ -13,6 +13,11 @@ const state = {
 };
 
 const normalize = (value) => (value || "").toString().toLowerCase();
+const normalizeLicense = (value) => {
+  const raw = (value || "").toString().trim();
+  if (!raw || raw.toUpperCase() === "NOASSERTION") return "";
+  return raw;
+};
 
 const matchesQuery = (robot, query) => {
   if (!query) return true;
@@ -22,6 +27,7 @@ const matchesQuery = (robot, query) => {
     robot.summary,
     robot.repo,
     robot.demo,
+    robot.license,
     ...(robot.tags || []),
   ]
     .map(normalize)
@@ -47,6 +53,11 @@ const renderCard = (robot) => {
 
   const summary = document.createElement("p");
   summary.textContent = robot.summary;
+
+  const licenseLine = document.createElement("p");
+  licenseLine.className = "license";
+  const normalizedLicense = normalizeLicense(robot.license);
+  licenseLine.textContent = `License: ${normalizedLicense || "Unknown"}`;
 
   let robotsLine = null;
   if (Array.isArray(robot.robots) && robot.robots.length > 0) {
@@ -87,6 +98,7 @@ const renderCard = (robot) => {
 
   card.appendChild(heading);
   card.appendChild(summary);
+  card.appendChild(licenseLine);
   if (robotsLine) {
     card.appendChild(robotsLine);
   }

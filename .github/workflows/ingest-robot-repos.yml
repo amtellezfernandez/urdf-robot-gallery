@@ -69,6 +69,37 @@ jobs:
               });
             };
 
+            const upsertComment = async (prefix, text) => {
+              const comments = await github.rest.issues.listComments({
+                owner: issueOwner,
+                repo: issueRepo,
+                issue_number: issue.number,
+                per_page: 100,
+              });
+              const existing = comments.data.find(
+                (comment) =>
+                  comment.user &&
+                  comment.user.type === "Bot" &&
+                  typeof comment.body === "string" &&
+                  comment.body.startsWith(prefix)
+              );
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: issueOwner,
+                  repo: issueRepo,
+                  comment_id: existing.id,
+                  body: text,
+                });
+                return;
+              }
+              await github.rest.issues.createComment({
+                owner: issueOwner,
+                repo: issueRepo,
+                issue_number: issue.number,
+                body: text,
+              });
+            };
+
             const issueAuthor = issue.user?.login || "";
             const isMaintainer =
               issueAuthor.toLowerCase() === "amtellezfernandez" ||
@@ -290,45 +321,128 @@ jobs:
                 .replace(/[^a-z0-9]+/g, "")
                 .trim();
 
+            const pushUnique = (array, value) => {
+              if (!value) return;
+              if (!array.includes(value)) array.push(value);
+            };
+
+            const inferSuggestedTagsFromPath = (value) => {
+              const tags = [];
+              const text = String(value || "").toLowerCase();
+              if (!text) return tags;
+
+              if (/(humanoid|anthro|atlas|talos|nao)/i.test(text)) pushUnique(tags, "Humanoid");
+              if (/(quadruped|quad|dog|spot|anymal|go1|go2|a1|mini[_-]?cheetah)/i.test(text)) {
+                pushUnique(tags, "Quadruped");
+              }
+              if (/(biped|two[_-]?leg|2leg)/i.test(text)) pushUnique(tags, "Biped");
+              if (/(arm|manipulator|franka|kinova|jaco|xarm|ur[0-9]|so[_-]?arm)/i.test(text)) {
+                pushUnique(tags, "Arm");
+                pushUnique(tags, "Manipulator");
+              }
+              if (/(gripper|claw|end[_-]?effector|eef)/i.test(text)) pushUnique(tags, "Gripper");
+              if (/(hand|dexterous)/i.test(text)) pushUnique(tags, "Hand");
+              if (/(wheel|wheeled|diff[_-]?drive|ackermann|caster|mecanum|omni|rover|ugv)/i.test(text)) {
+                pushUnique(tags, "Wheeled");
+                pushUnique(tags, "Mobile");
+              }
+              if (/(tracked|tank)/i.test(text)) {
+                pushUnique(tags, "Tracked");
+                pushUnique(tags, "Mobile");
+              }
+              if (/(drone|uav|quadrotor|multirotor|aerial)/i.test(text)) pushUnique(tags, "Aerial");
+              if (/(underwater|auv|rov)/i.test(text)) pushUnique(tags, "Underwater");
+              return tags;
+            };
+
+            const inferRepoSuggestedTags = (paths) => {
+              const inferred = [];
+              for (const filePath of Array.isArray(paths) ? paths : []) {
+                const defaultName = stripSupportedRobotExtension(filePath.split("/").pop() || filePath);
+                const tags = inferSuggestedTagsFromPath(`${filePath} ${defaultName}`);
+                for (const tag of tags) pushUnique(inferred, tag);
+              }
+              return inferred;
+            };
+
             const TAG_ALIASES = new Map([
               ["lerobot", "LeRobotCompatible"],
               ["arms", "Arm"],
+              ["dogs", "Quadruped"],
+              ["dog", "Quadruped"],
+              ["rover", "Wheeled"],
+              ["ugv", "Wheeled"],
+              ["mobilebase", "Mobile"],
             ]);
+
+            const canonicalizeTags = (tags, allowedTagMap) => {
+              const normalized = [];
+              const invalid = [];
+              for (const tag of Array.isArray(tags) ? tags : []) {
+                const key = normalizeTagKey(tag);
+                const canonical = TAG_ALIASES.get(key) || allowedTagMap.get(key);
+                if (!canonical) {
+                  invalid.push(tag);
+                  continue;
+                }
+                if (!normalized.includes(canonical)) {
+                  normalized.push(canonical);
+                }
+              }
+              return { normalized, invalid };
+            };
 
             const parseRobotMapping = (value) => {
               if (!value) return [];
               const lines = parseLines(value);
               const robots = [];
-              for (const line of lines) {
+              for (const [index, line] of lines.entries()) {
                 let name = "";
                 let file = "";
                 const separators = [" — ", " – ", " - ", " —", " –", " -"];
-                let parts = null;
+                let splitAt = -1;
+                let splitBy = "";
                 for (const sep of separators) {
-                  if (line.includes(sep)) {
-                    parts = line.split(sep);
+                  const foundAt = line.indexOf(sep);
+                  if (foundAt > -1) {
+                    splitAt = foundAt;
+                    splitBy = sep;
                     break;
                   }
                 }
-                if (!parts && line.includes(":")) {
-                  parts = line.split(":");
+                if (splitAt < 0 && line.includes(":")) {
+                  splitAt = line.indexOf(":");
+                  splitBy = ":";
                 }
-                if (parts && parts.length >= 2) {
-                  name = parts[0].trim();
-                  file = parts.slice(1).join("-").trim();
+                if (splitAt >= 0) {
+                  name = line.slice(0, splitAt).trim();
+                  file = line.slice(splitAt + splitBy.length).trim();
                 } else {
                   name = line.trim();
                 }
                 if (!name && !file) continue;
                 if (file) {
-                  const fileName = file.split("/").pop() || file;
-                  robots.push({ name: name || stripSupportedRobotExtension(fileName), file: fileName });
+                  const fallbackName = stripSupportedRobotExtension(file.split("/").pop() || file);
+                  robots.push({
+                    name: name || fallbackName,
+                    file,
+                    rawLine: line,
+                    lineNumber: index + 1,
+                  });
                 } else {
-                  robots.push({ name });
+                  robots.push({ name, rawLine: line, lineNumber: index + 1 });
                 }
               }
               return robots;
             };
+
+            const normalizeRelativePath = (value) =>
+              String(value || "")
+                .trim()
+                .replace(/\\/g, "/")
+                .replace(/^\.\//, "")
+                .replace(/^\/+/, "")
+                .replace(/\/+/g, "/");
 
             const mergeRobotsPreserveExisting = (previous, detected) => {
               const toKey = (robot) => {
@@ -422,7 +536,9 @@ jobs:
             };
 
             const fields = parseIssueFields(body);
-            let repoUrl = clean(fields["GitHub repo URL"]);
+            let repoUrl =
+              clean(fields["GitHub repo (URL or owner/repo)"]) || clean(fields["GitHub repo URL"]);
+            const mappingInputValue = clean(fields["Robot mapping (optional)"]);
             if (!repoUrl) {
               const match = body.match(/https?:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+(?:\/[^\s\)]*)?/);
               if (match) {
@@ -430,7 +546,10 @@ jobs:
               }
             }
             if (!repoUrl) {
-              await ensureComment("Auto-ingest: missing GitHub repo URL.", "Auto-ingest: missing GitHub repo URL.");
+              await ensureComment(
+                "Auto-ingest: missing GitHub repo URL.",
+                "Auto-ingest: missing GitHub repo input. Please provide owner/repo or a full GitHub URL."
+              );
               return;
             }
 
@@ -438,8 +557,8 @@ jobs:
             if (!repoInfo || repoInfo.error) {
               const errorMessage =
                 repoInfo && repoInfo.error === "missing-repo"
-                  ? `Auto-ingest: please provide a full GitHub repo URL (owner/repo). I received an org URL: ${repoUrl}\nExample: https://github.com/TheRobotStudio/SO-ARM100`
-                  : `Auto-ingest: couldn't parse repo URL: ${repoUrl}`;
+                  ? `Auto-ingest: please provide owner/repo or full GitHub URL. I received an org-only value: ${repoUrl}\nExamples:\n- TheRobotStudio/SO-ARM100\n- https://github.com/TheRobotStudio/SO-ARM100`
+                  : `Auto-ingest: couldn't parse repo input: ${repoUrl}\nPlease provide owner/repo or a full GitHub URL.`;
               await ensureComment("Auto-ingest: couldn't parse repo URL:", errorMessage);
               return;
             }
@@ -531,7 +650,8 @@ jobs:
               await ensureComment(
                 "Auto-ingest: manual review required.",
                 `Auto-ingest: manual review required. ${issueAuthor || "The submitter"} does not appear to have write access to ${owner}/${repo}. ` +
-                  "This submission will be reviewed manually by a maintainer."
+                  "This submission will be reviewed manually by a maintainer. " +
+                  "Preview generation is deferred until a maintainer approves and ingests this entry."
               );
               return;
             }
@@ -633,20 +753,66 @@ jobs:
               return;
             }
 
-            const rawTags = parseTags(clean(fields["Tags (optional)"]));
-            const normalizedTags = [];
-            const invalidTags = [];
-            for (const tag of rawTags) {
-              const key = normalizeTagKey(tag);
-              const canonical = TAG_ALIASES.get(key) || allowedTagMap.get(key);
-              if (!canonical) {
-                invalidTags.push(tag);
-                continue;
+            const sortedUrdfFiles = [...urdfFiles].sort((a, b) =>
+              a.localeCompare(b, undefined, { sensitivity: "base" })
+            );
+            const suggestedMappingLines = sortedUrdfFiles.map((filePath) => {
+              const defaultName = stripSupportedRobotExtension(filePath.split("/").pop() || filePath);
+              return `${defaultName} — ${filePath}`;
+            });
+            const suggestedTagLines = sortedUrdfFiles.map((filePath) => {
+              const defaultName = stripSupportedRobotExtension(filePath.split("/").pop() || filePath);
+              const suggestedTags = inferSuggestedTagsFromPath(`${filePath} ${defaultName}`);
+              return `${defaultName} — ${filePath} | tags: ${suggestedTags.length ? suggestedTags.join(", ") : "(none)"}`;
+            });
+            const detectedMacroTags = inferRepoSuggestedTags(sortedUrdfFiles);
+            const detectedPrefix = "Auto-ingest: detected URDF/Xacro files.";
+            const maxCommentChars = 62000;
+            let listLines = sortedUrdfFiles;
+            let mappingLines = suggestedMappingLines;
+            let tagLines = suggestedTagLines;
+            let omittedCount = 0;
+            let detectedComment = "";
+            while (true) {
+              const linesText = listLines.join("\n");
+              const mappingText = mappingLines.join("\n");
+              const tagsText = tagLines.join("\n");
+              const omittedNotice =
+                omittedCount > 0
+                  ? `\n\nNote: ${omittedCount} additional file(s) were omitted from this comment due to GitHub comment size limits.`
+                  : "";
+              detectedComment =
+                `${detectedPrefix}\n\n` +
+                `Detected **${sortedUrdfFiles.length}** URDF/Xacro file(s) in \`${owner}/${repo}\`.\n` +
+                "Use exact paths in mapping.\n\n" +
+                `Detected repo-level macro tags (heuristic): ${
+                  detectedMacroTags.length ? detectedMacroTags.join(", ") : "(none)"
+                }\n\n` +
+                "<details>\n<summary>Detected robot root files</summary>\n\n" +
+                "```text\n" +
+                `${linesText}\n` +
+                "```\n</details>\n\n" +
+                "<details>\n<summary>Suggested mapping (copy, edit names, paste into issue)</summary>\n\n" +
+                "```text\n" +
+                `${mappingText}\n` +
+                "```\n</details>\n\n" +
+                "<details>\n<summary>Suggested per-file tags (heuristic)</summary>\n\n" +
+                "```text\n" +
+                `${tagsText}\n` +
+                "```\n</details>" +
+                omittedNotice;
+              if (detectedComment.length <= maxCommentChars || listLines.length <= 1) {
+                break;
               }
-              if (!normalizedTags.includes(canonical)) {
-                normalizedTags.push(canonical);
-              }
+              omittedCount += 1;
+              listLines = listLines.slice(0, -1);
+              mappingLines = mappingLines.slice(0, -1);
+              tagLines = tagLines.slice(0, -1);
             }
+            await upsertComment(detectedPrefix, detectedComment);
+
+            const rawTags = parseTags(clean(fields["Tags (optional)"]));
+            const { normalized: correctedTags, invalid: invalidTags } = canonicalizeTags(rawTags, allowedTagMap);
             if (invalidTags.length > 0) {
               const allowedText = allowedTagList.length
                 ? `Allowed tags: ${allowedTagList.join(", ")}.`
@@ -657,42 +823,107 @@ jobs:
               );
               return;
             }
+            const { normalized: detectedCanonicalTags } = canonicalizeTags(
+              detectedMacroTags,
+              allowedTagMap
+            );
+            const normalizedTags = correctedTags;
+            await upsertComment(
+              "Auto-ingest: tag reconciliation.",
+              "Auto-ingest: tag reconciliation.\n\n" +
+                `Detected macro tags (heuristic): ${
+                  detectedCanonicalTags.length ? detectedCanonicalTags.join(", ") : "(none)"
+                }\n` +
+                `Issue tags (**Tags (optional)**): ${
+                  correctedTags.length ? correctedTags.join(", ") : "(none provided)"
+                }\n` +
+                `Applied tags in robots.json: ${
+                  normalizedTags.length ? normalizedTags.join(", ") : "(none)"
+                }\n\n` +
+                (correctedTags.length > 0
+                  ? "Applied issue tags."
+                  : "No issue tags provided; detected tags are suggestions only.")
+            );
 
-            const mapping = parseRobotMapping(clean(fields["Robot mapping (optional)"]));
-            const urdfFileNameMap = new Map();
+            const mapping = parseRobotMapping(mappingInputValue);
+            const urdfPathLookup = new Map();
+            const urdfFileNameLookup = new Map();
             for (const filePath of urdfFiles) {
-              const fileName = filePath.split("/").pop() || filePath;
-              const key = fileName.toLowerCase();
-              if (!urdfFileNameMap.has(key)) urdfFileNameMap.set(key, []);
-              urdfFileNameMap.get(key).push(filePath);
+              const normalizedPath = normalizeRelativePath(filePath).toLowerCase();
+              const fileName = normalizedPath.split("/").pop() || normalizedPath;
+              urdfPathLookup.set(normalizedPath, filePath);
+              if (!urdfFileNameLookup.has(fileName)) urdfFileNameLookup.set(fileName, []);
+              urdfFileNameLookup.get(fileName).push(filePath);
             }
-            const pickBestPath = (paths) => {
-              if (!Array.isArray(paths) || paths.length === 0) return "";
-              return [...paths].sort((a, b) => a.length - b.length || a.localeCompare(b))[0];
+            const buildCandidates = (value) => {
+              const normalized = normalizeRelativePath(value).toLowerCase();
+              if (!normalized) return [];
+              const candidates = new Set([normalized]);
+              if (!isSupportedRobotFile(normalized)) {
+                for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
+                  candidates.add(`${normalized}${ext}`);
+                }
+              }
+              return [...candidates];
             };
             const mappedRobots = [];
             const mappedFileKeys = new Set();
+            const mappingWarnings = [];
             if (mapping.length > 0) {
               for (const robot of mapping) {
+                const lineNumber = robot.lineNumber || "?";
+                const rawLine = robot.rawLine || `${robot.name || ""}${robot.file ? ` — ${robot.file}` : ""}`.trim();
                 const rawFile = (robot.file || "").trim();
-                if (!rawFile) continue;
-                const rawLower = rawFile.toLowerCase();
-                const candidateKeys = new Set();
-                const addCandidate = (value) => {
-                  const fileName = (value.split("/").pop() || value).toLowerCase();
-                  if (fileName) candidateKeys.add(fileName);
-                };
-                if (isSupportedRobotFile(rawFile)) addCandidate(rawLower);
-                addCandidate(rawLower);
-                for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
-                  addCandidate(`${rawLower}${ext}`);
+                if (!rawFile) {
+                  mappingWarnings.push(
+                    `line ${lineNumber}: "${rawLine}" was ignored because no URDF file was provided. Use "RobotName — file.urdf".`
+                  );
+                  continue;
                 }
-                let actualPath = "";
-                for (const key of candidateKeys) {
-                  actualPath = pickBestPath(urdfFileNameMap.get(key));
-                  if (actualPath) break;
+
+                const normalizedFile = normalizeRelativePath(rawFile);
+                const isPathLike = normalizedFile.includes("/");
+                const actualMatches = [];
+
+                if (isPathLike) {
+                  const pathCandidates = buildCandidates(normalizedFile);
+                  for (const candidate of pathCandidates) {
+                    const matched = urdfPathLookup.get(candidate);
+                    if (matched) actualMatches.push(matched);
+                  }
+                } else {
+                  const fileCandidates = buildCandidates(normalizedFile).map(
+                    (candidate) => candidate.split("/").pop() || candidate
+                  );
+                  for (const candidate of fileCandidates) {
+                    const matches = urdfFileNameLookup.get(candidate);
+                    if (matches && matches.length) {
+                      actualMatches.push(...matches);
+                    }
+                  }
                 }
-                if (!actualPath) continue;
+
+                const uniqueMatches = [...new Set(actualMatches)].sort((a, b) =>
+                  a.localeCompare(b, undefined, { sensitivity: "base" })
+                );
+
+                if (uniqueMatches.length === 0) {
+                  mappingWarnings.push(
+                    `line ${lineNumber}: "${rawLine}" did not match any detected URDF/Xacro file.`
+                  );
+                  continue;
+                }
+
+                if (uniqueMatches.length > 1) {
+                  const previewMatches = uniqueMatches.slice(0, 5).join(", ");
+                  const extra = uniqueMatches.length > 5 ? ` (+${uniqueMatches.length - 5} more)` : "";
+                  mappingWarnings.push(
+                    `line ${lineNumber}: "${rawLine}" is ambiguous (${previewMatches}${extra}). Use a path like subdir/file.urdf.`
+                  );
+                  continue;
+                }
+
+                const actualPath = uniqueMatches[0];
                 const baseName = stripSupportedRobotExtension(actualPath.split("/").pop() || actualPath);
                 const name = (robot.name || baseName).trim();
                 const fileName = actualPath.split("/").pop() || actualPath;
@@ -704,6 +935,27 @@ jobs:
                 mappedFileKeys.add(fileBase.toLowerCase());
               }
             }
+
+            if (mappingWarnings.length > 0) {
+              const displayedWarnings = mappingWarnings.slice(0, 20).map((warning) => `- ${warning}`).join("\n");
+              const moreWarnings =
+                mappingWarnings.length > 20 ? `\n- ...and ${mappingWarnings.length - 20} more warning(s).` : "";
+              await upsertComment(
+                "Auto-ingest: robot mapping warnings.",
+                "Auto-ingest: robot mapping warnings.\n" +
+                  "Some mapping rows were ignored; ingest continued with detected robots.\n" +
+                  "Accepted formats:\n" +
+                  "- RobotName — file.urdf\n" +
+                  "- RobotName — subdir/file.urdf\n\n" +
+                  `${displayedWarnings}${moreWarnings}`
+              );
+            } else if (mappingInputValue) {
+              await upsertComment(
+                "Auto-ingest: robot mapping warnings.",
+                "Auto-ingest: robot mapping warnings.\nNo mapping warnings in the latest run."
+              );
+            }
+
             const detectedRobots = urdfFiles.map((filePath) => ({
               name: stripSupportedRobotExtension(filePath.split("/").pop() || filePath),
               file: filePath.split("/").pop() || filePath,
@@ -819,12 +1071,24 @@ jobs:
                   ? `Auto-ingest: ${owner}/${repo} was already in the gallery. Refreshed the existing entry and found ${addedRobots} new robot(s). Issue closed.`
                   : `Auto-ingest: ${owner}/${repo} is already in the gallery. Refreshed the existing entry and found no additional robots. Issue closed.`
                 : "Auto-ingest: updated robots.json on main. This entry is now live.";
+            const suggestedForkOwner = issueAuthor || "<your-github-username>";
+            const forkWorkflowUrl = `https://github.com/${suggestedForkOwner}/${galleryRepo}/actions/workflows/contributor-generate-previews.yml`;
+            const compareUrl = `https://github.com/${galleryOwner}/${galleryRepo}/compare/main...${suggestedForkOwner}:contrib/previews-issue-${issue.number}?expand=1`;
+            const contributorPreviewInstructions =
+              "\n\nTo help with preview generation using your own GitHub API quota and runner minutes:\n" +
+              `1. Fork this repository: https://github.com/${galleryOwner}/${galleryRepo}/fork\n` +
+              `2. Open this workflow in your fork and click \"Run workflow\": ${forkWorkflowUrl}\n` +
+              `3. Enter only \`issue_number=${issue.number}\`\n` +
+              `4. Open this PR URL after it pushes commits: ${compareUrl}\n` +
+              "5. The workflow processes missing previews in commit batches of 5 and pushes each batch automatically.\n" +
+              "6. If the run stops early, run it again with the same issue_number to continue.\n" +
+              "7. If the workflow reports an existing open PR for this issue, skip it and pick another issue.";
 
             await github.rest.issues.createComment({
               owner: galleryOwner,
               repo: galleryRepo,
               issue_number: issue.number,
-              body: successComment,
+              body: `${successComment}${contributorPreviewInstructions}`,
             });
             await github.rest.issues.update({
               owner: galleryOwner,

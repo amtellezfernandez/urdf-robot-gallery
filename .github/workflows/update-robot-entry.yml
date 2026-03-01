@@ -1,0 +1,531 @@
+name: Update robot entry
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to process
+        required: true
+
+concurrency:
+  group: update-robot-entry
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.issue.labels.*.name, ','), 'robot-update') || startsWith(github.event.issue.title || '', 'robot-update-request')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Apply update request
+        id: update
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const inputIssueNumber = context.payload.inputs?.issue_number;
+            const issueNumber = context.payload.issue?.number || (inputIssueNumber ? Number(inputIssueNumber) : null);
+            if (!issueNumber) {
+              core.setFailed("Missing issue number.");
+              return;
+            }
+
+            const issue =
+              context.payload.issue ||
+              (
+                await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                })
+              ).data;
+
+            const issueOwner = context.repo.owner;
+            const issueRepo = context.repo.repo;
+            const body = issue.body || "";
+
+            const upsertComment = async (prefix, text) => {
+              const comments = await github.rest.issues.listComments({
+                owner: issueOwner,
+                repo: issueRepo,
+                issue_number: issue.number,
+                per_page: 100,
+              });
+              const existing = comments.data.find(
+                (comment) =>
+                  comment.user &&
+                  comment.user.type === "Bot" &&
+                  typeof comment.body === "string" &&
+                  comment.body.startsWith(prefix)
+              );
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: issueOwner,
+                  repo: issueRepo,
+                  comment_id: existing.id,
+                  body: text,
+                });
+                return;
+              }
+              await github.rest.issues.createComment({
+                owner: issueOwner,
+                repo: issueRepo,
+                issue_number: issue.number,
+                body: text,
+              });
+            };
+
+            const clean = (value) => {
+              if (!value) return "";
+              const trimmed = String(value).trim();
+              if (!trimmed || trimmed.toLowerCase() === "no response" || trimmed === "_No response_") {
+                return "";
+              }
+              return trimmed;
+            };
+
+            const parseIssueFields = (text) => {
+              const fields = {};
+              const regex = /^###\s+(.+)\n+([\s\S]*?)(?=^###\s+|\Z)/gm;
+              let match;
+              while ((match = regex.exec(text || "")) !== null) {
+                fields[match[1].trim()] = clean(match[2]);
+              }
+              return fields;
+            };
+
+            const parseRepoUrl = (url) => {
+              if (!url) return { error: "missing" };
+              let normalized = url.trim();
+              if (!normalized) return { error: "missing" };
+
+              const mdMatch = normalized.match(/\((https?:\/\/github\.com\/[^)]+)\)/);
+              if (mdMatch) normalized = mdMatch[1];
+
+              normalized = normalized.replace(/\.git$/i, "").replace(/\/+$/, "");
+
+              if (!normalized.includes("github.com")) {
+                const parts = normalized.split("/").filter(Boolean);
+                if (parts.length < 2) return { error: "invalid" };
+                return { owner: parts[0], repo: parts[1], path: parts.slice(2).join("/") || "" };
+              }
+
+              try {
+                const urlObj = new URL(normalized);
+                const parts = urlObj.pathname.split("/").filter(Boolean);
+                if (parts.length < 2) return { error: "invalid" };
+                return { owner: parts[0], repo: parts[1].replace(/\.git$/i, "") };
+              } catch {
+                return { error: "invalid" };
+              }
+            };
+
+            const normalizeRepoKey = (value) => {
+              const parsed = parseRepoUrl(value || "");
+              if (parsed.owner && parsed.repo) {
+                return `${parsed.owner}/${parsed.repo}`.toLowerCase();
+              }
+              const parts = String(value || "").replace(/\.git$/i, "").split("/").filter(Boolean);
+              if (parts.length >= 2) return `${parts[parts.length - 2]}/${parts[parts.length - 1]}`.toLowerCase();
+              return "";
+            };
+
+            const parseLines = (value) =>
+              String(value || "")
+                .split(/\r?\n/)
+                .map((line) => line.trim())
+                .filter(Boolean);
+
+            const parseTags = (value) =>
+              parseLines(String(value || "").replace(/,/g, "\n"));
+
+            const normalizeTagKey = (value) =>
+              String(value || "")
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "")
+                .trim();
+
+            const TAG_ALIASES = new Map([
+              ["lerobot", "LeRobotCompatible"],
+              ["arms", "Arm"],
+              ["dogs", "Quadruped"],
+              ["dog", "Quadruped"],
+              ["rover", "Wheeled"],
+              ["ugv", "Wheeled"],
+              ["mobilebase", "Mobile"],
+            ]);
+
+            const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
+            const isSupportedRobotFile = (value) => {
+              const lowered = String(value || "").toLowerCase();
+              return SUPPORTED_ROBOT_EXTENSIONS.some((ext) => lowered.endsWith(ext));
+            };
+            const stripSupportedRobotExtension = (value) => {
+              const normalized = String(value || "");
+              const lowered = normalized.toLowerCase();
+              for (const ext of SUPPORTED_ROBOT_EXTENSIONS) {
+                if (lowered.endsWith(ext)) {
+                  return normalized.slice(0, normalized.length - ext.length);
+                }
+              }
+              return normalized;
+            };
+            const slugify = (value) =>
+              value
+                .trim()
+                .replace(/\.urdf\.xacro$/i, "")
+                .replace(/\.xacro$/i, "")
+                .replace(/\.urdf$/i, "")
+                .replace(/[^a-zA-Z0-9._-]+/g, "-")
+                .replace(/-+/g, "-")
+                .replace(/^-|-$/g, "")
+                .toLowerCase();
+            const hashString = (value) => {
+              let hash = 2166136261;
+              for (let i = 0; i < value.length; i += 1) {
+                hash ^= value.charCodeAt(i);
+                hash = Math.imul(hash, 16777619);
+              }
+              return (hash >>> 0).toString(36);
+            };
+            const toPreviewBase = (value) => {
+              const normalized = stripSupportedRobotExtension(String(value || "").replace(/\\/g, "/"));
+              const name = normalized.split("/").pop() || normalized;
+              const slug = slugify(name) || "robot";
+              return `${slug}--${hashString(normalized)}`;
+            };
+            const normalizeRelativePath = (value) =>
+              String(value || "")
+                .trim()
+                .replace(/\\/g, "/")
+                .replace(/^\.\//, "")
+                .replace(/^\/+/, "")
+                .replace(/\/+/g, "/");
+
+            const parseRobotMapping = (value) => {
+              const robots = [];
+              const warnings = [];
+              const lines = parseLines(value);
+              for (const [index, line] of lines.entries()) {
+                let name = "";
+                let file = "";
+                const separators = [" — ", " – ", " - ", ":", " —", " –", " -"];
+                let splitAt = -1;
+                let splitBy = "";
+                for (const sep of separators) {
+                  const foundAt = line.indexOf(sep);
+                  if (foundAt > -1) {
+                    splitAt = foundAt;
+                    splitBy = sep;
+                    break;
+                  }
+                }
+                if (splitAt >= 0) {
+                  name = line.slice(0, splitAt).trim();
+                  file = line.slice(splitAt + splitBy.length).trim();
+                } else {
+                  name = line.trim();
+                }
+                if (!file) {
+                  warnings.push(`line ${index + 1}: "${line}" ignored (missing file path).`);
+                  continue;
+                }
+                const normalizedPath = normalizeRelativePath(file);
+                if (!isSupportedRobotFile(normalizedPath)) {
+                  warnings.push(
+                    `line ${index + 1}: "${line}" ignored (file must end with .urdf, .xacro, or .urdf.xacro).`
+                  );
+                  continue;
+                }
+                const basename = normalizedPath.split("/").pop() || normalizedPath;
+                const fallbackName = stripSupportedRobotExtension(normalizedPath);
+                robots.push({
+                  name: name || fallbackName,
+                  file: normalizedPath,
+                  fileBase: toPreviewBase(normalizedPath),
+                });
+              }
+              return { robots, warnings };
+            };
+
+            const fields = parseIssueFields(body);
+            const repoInput =
+              clean(fields["GitHub repo (URL or owner/repo)"]) || clean(fields["GitHub repo URL"]);
+            if (!repoInput) {
+              await upsertComment(
+                "Auto-update: missing repo.",
+                "Auto-update: missing repo. Fill **GitHub repo (URL or owner/repo)** and save the issue."
+              );
+              return;
+            }
+
+            const parsed = parseRepoUrl(repoInput);
+            if (!parsed.owner || !parsed.repo) {
+              await upsertComment(
+                "Auto-update: invalid repo.",
+                `Auto-update: couldn't parse repo value: ${repoInput}`
+              );
+              return;
+            }
+            const owner = parsed.owner;
+            const repo = parsed.repo;
+            const repoKey = `${owner}/${repo}`.toLowerCase();
+
+            const updateTypeRaw = clean(fields["Update type"]);
+            const updateType = updateTypeRaw.toLowerCase();
+            let mode = "";
+            if (updateType.includes("metadata")) mode = "metadata";
+            if (updateType.includes("mapping")) mode = "mapping";
+            if (updateType.includes("regenerate")) mode = "regenerate";
+            if (!mode) {
+              await upsertComment(
+                "Auto-update: missing update type.",
+                "Auto-update: choose **Update type** and save the issue."
+              );
+              return;
+            }
+
+            const issueAuthor = issue.user?.login || "";
+            const isMaintainer =
+              issueAuthor.toLowerCase() === "amtellezfernandez" ||
+              issueAuthor.toLowerCase() === "urdf-studio";
+            const actor = String(context.actor || "").toLowerCase();
+            const actorIsMaintainer = actor === "amtellezfernandez" || actor === "urdf-studio";
+            if (!isMaintainer && !actorIsMaintainer && issueAuthor) {
+              let hasWriteAccess = false;
+              try {
+                const permission = await github.rest.repos.getCollaboratorPermissionLevel({
+                  owner,
+                  repo,
+                  username: issueAuthor,
+                });
+                const level = permission?.data?.permission || "";
+                hasWriteAccess = ["admin", "maintain", "write"].includes(level);
+              } catch {
+                hasWriteAccess = false;
+              }
+              if (!hasWriteAccess) {
+                await upsertComment(
+                  "Auto-update: manual review required.",
+                  `Auto-update: manual review required. ${issueAuthor} does not appear to have write access to ${owner}/${repo}.`
+                );
+                return;
+              }
+            }
+
+            const galleryOwner = context.repo.owner;
+            const galleryRepo = context.repo.repo;
+            const galleryInfo = await github.rest.repos.get({
+              owner: galleryOwner,
+              repo: galleryRepo,
+            });
+            const galleryDefaultBranch = galleryInfo.data.default_branch || "main";
+
+            let existing = [];
+            let existingSha = null;
+            try {
+              const file = await github.rest.repos.getContent({
+                owner: galleryOwner,
+                repo: galleryRepo,
+                path: "docs/robots.json",
+                ref: galleryDefaultBranch,
+              });
+              if (!Array.isArray(file.data) && file.data.content) {
+                existing = JSON.parse(Buffer.from(file.data.content, "base64").toString("utf8"));
+                existingSha = file.data.sha;
+              }
+            } catch {
+              existing = [];
+            }
+
+            const idx = existing.findIndex((item) => normalizeRepoKey(item.repo || item.repoKey) === repoKey);
+            if (idx < 0) {
+              await upsertComment(
+                "Auto-update: repo not found.",
+                `Auto-update: ${repoKey} is not in docs/robots.json yet. Submit a new repository issue first.`
+              );
+              return;
+            }
+
+            if (mode === "regenerate") {
+              const suggestedForkOwner = issueAuthor || "<your-github-username>";
+              const forkWorkflowUrl = `https://github.com/${suggestedForkOwner}/${galleryRepo}/actions/workflows/contributor-generate-previews.yml`;
+              await upsertComment(
+                "Auto-update: preview regeneration requested.",
+                "Auto-update: preview regeneration requested.\n\n" +
+                  "Next:\n" +
+                  `1. Run this workflow in your fork: ${forkWorkflowUrl}\n` +
+                  `2. Enter only \`issue_number=${issue.number}\`\n` +
+                  "3. Open the PR from the compare view.\n\n" +
+                  "Issue left open for tracking preview regeneration."
+              );
+              return;
+            }
+
+            const allowedTagsFile = await github.rest.repos.getContent({
+              owner: galleryOwner,
+              repo: galleryRepo,
+              path: "docs/tags.json",
+              ref: galleryDefaultBranch,
+            });
+            const allowedTagsRaw = Array.isArray(allowedTagsFile.data)
+              ? "[]"
+              : Buffer.from(allowedTagsFile.data.content || "", "base64").toString("utf8");
+            const allowedTags = JSON.parse(allowedTagsRaw || "[]");
+            const allowedTagMap = new Map(
+              (Array.isArray(allowedTags) ? allowedTags : []).map((tag) => [normalizeTagKey(tag), tag])
+            );
+
+            const next = {
+              ...existing[idx],
+              repo: `https://github.com/${owner}/${repo}`,
+              repoKey,
+              updatedAt: new Date().toISOString(),
+            };
+
+            const assignIfPresent = (targetKey, label) => {
+              const value = clean(fields[label]);
+              if (value) next[targetKey] = value;
+            };
+            assignIfPresent("org", "Author / Company / Lab (optional)");
+            assignIfPresent("summary", "Short summary (optional)");
+            assignIfPresent("demo", "Demo URL (optional)");
+            assignIfPresent("extra", "Notes (optional)");
+
+            const tagsInput = clean(fields["Tags (optional)"]);
+            if (tagsInput) {
+              const rawTags = parseTags(tagsInput);
+              const normalizedTags = [];
+              const invalidTags = [];
+              for (const tag of rawTags) {
+                const key = normalizeTagKey(tag);
+                const canonical = TAG_ALIASES.get(key) || allowedTagMap.get(key);
+                if (!canonical) {
+                  invalidTags.push(tag);
+                  continue;
+                }
+                if (!normalizedTags.includes(canonical)) normalizedTags.push(canonical);
+              }
+              if (invalidTags.length > 0) {
+                await upsertComment(
+                  "Auto-update: invalid tags.",
+                  `Auto-update: invalid tags provided: ${invalidTags.join(", ")}`
+                );
+                return;
+              }
+              next.tags = normalizedTags;
+            }
+
+            if (mode === "mapping") {
+              const mappingInput = clean(fields["Robot mapping (optional)"]);
+              if (!mappingInput) {
+                await upsertComment(
+                  "Auto-update: missing mapping.",
+                  "Auto-update: for **Mapping change**, fill **Robot mapping (optional)** and save."
+                );
+                return;
+              }
+              const { robots, warnings } = parseRobotMapping(mappingInput);
+              if (!robots.length) {
+                await upsertComment(
+                  "Auto-update: invalid mapping.",
+                  "Auto-update: no valid mapping rows were found. Use `RobotName — path/file.urdf` (or `.xacro`, `.urdf.xacro`)."
+                );
+                return;
+              }
+              next.robots = robots;
+              if (warnings.length) {
+                await upsertComment(
+                  "Auto-update: mapping warnings.",
+                  "Auto-update: mapping warnings.\n" + warnings.map((w) => `- ${w}`).join("\n")
+                );
+              }
+            }
+
+            existing[idx] = next;
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: galleryOwner,
+              repo: galleryRepo,
+              path: "docs/robots.json",
+              message: `Update robots.json from issue #${issue.number}`,
+              content: Buffer.from(JSON.stringify(existing, null, 2)).toString("base64"),
+              sha: existingSha || undefined,
+              branch: galleryDefaultBranch,
+            });
+
+            const meta = {
+              version: 1,
+              generatedAt: new Date().toISOString(),
+              count: existing.length,
+            };
+            let metaSha = null;
+            try {
+              const metaFile = await github.rest.repos.getContent({
+                owner: galleryOwner,
+                repo: galleryRepo,
+                path: "docs/robots.meta.json",
+                ref: galleryDefaultBranch,
+              });
+              if (!Array.isArray(metaFile.data)) metaSha = metaFile.data.sha || null;
+            } catch {
+              metaSha = null;
+            }
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: galleryOwner,
+              repo: galleryRepo,
+              path: "docs/robots.meta.json",
+              message: `Update robots.meta.json from issue #${issue.number}`,
+              content: Buffer.from(JSON.stringify(meta, null, 2)).toString("base64"),
+              sha: metaSha || undefined,
+              branch: galleryDefaultBranch,
+            });
+
+            const summary =
+              mode === "mapping"
+                ? `Auto-update: mapping updated for ${repoKey} (${Array.isArray(next.robots) ? next.robots.length : 0} robots). Issue closed.`
+                : `Auto-update: metadata updated for ${repoKey}. Issue closed.`;
+            await upsertComment("Auto-update: completed.", `Auto-update: completed.\n\n${summary}`);
+            await github.rest.issues.update({
+              owner: galleryOwner,
+              repo: galleryRepo,
+              issue_number: issue.number,
+              state: "closed",
+            });
+
+            core.setOutput(
+              "dispatch_payload",
+              JSON.stringify({
+                issueNumber: issue.number,
+                repo: next.repo,
+              })
+            );
+
+      - name: Trigger URDF Studio sync
+        if: ${{ steps.update.outputs.dispatch_payload != '' }}
+        uses: actions/github-script@v7
+        env:
+          DISPATCH_PAYLOAD: ${{ steps.update.outputs.dispatch_payload }}
+          DISPATCH_TOKEN: ${{ secrets.URDF_STUDIO_DISPATCH_TOKEN }}
+        with:
+          github-token: ${{ secrets.URDF_STUDIO_DISPATCH_TOKEN }}
+          script: |
+            if (!process.env.DISPATCH_TOKEN) {
+              core.info("URDF_STUDIO_DISPATCH_TOKEN is not set. Skipping dispatch.");
+              return;
+            }
+            const payload = JSON.parse(process.env.DISPATCH_PAYLOAD || "{}");
+            try {
+              await github.rest.repos.createDispatchEvent({
+                owner: "amtellezfernandez",
+                repo: "urdf-star-studio",
+                event_type: "robot-repos-updated",
+                client_payload: payload,
+              });
+            } catch (error) {
+              core.warning(
+                `URDF Studio dispatch failed: ${error.status || "unknown"} ${error.message || error}`
+              );
+            }

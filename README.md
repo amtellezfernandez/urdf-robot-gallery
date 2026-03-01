@@ -7,6 +7,9 @@ This repository collects robot showcase submissions for URDF Studio.
 Use the submission form:
 https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=robot-repo-submission.yml
 
+To update an existing gallery entry:
+https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=robot-entry-update.yml
+
 For shared scenes, use:
 https://github.com/urdf-studio/urdf-robot-gallery/issues/new?template=scene-submission.yml
 
@@ -15,7 +18,18 @@ Auto-ingest policy:
 - Repeated failed submissions (including missing URDFs) from the same author may be throttled and routed to manual review.
 - If no URDF/Xacro files are detected in the repo, the entry is not added.
   Mesh assets (`.stl`, `.dae`, `.obj`, etc.) are supported, but they must be referenced by a URDF/Xacro root file.
+- Robot mapping accepts both `RobotName — file.urdf` and `RobotName — subdir/file.urdf`.
+  If a filename is ambiguous across folders, use the path form.
+- Auto-ingest posts a comment with the detected URDF/Xacro file list and a suggested mapping block.
+  It also includes suggested per-file tags (heuristic) and a repo-level macro tag suggestion.
+  If `Tags (optional)` is empty, detected macro tags remain suggestions only.
+  If `Tags (optional)` is provided, those corrected tags are applied.
+  Auto-ingest publishes detected vs corrected vs applied tags in a reconciliation comment.
+  Ingest runs immediately; you can optionally edit mapping/tags and save the issue to refresh.
 - Issue titles are updated automatically to include the repo name for easier tracking.
+- Existing-entry updates use `robot-entry-update.yml`:
+  `Metadata only` and `Mapping change` are auto-applied and closed;
+  `Regenerate previews/thumbnails` stays open for contributor preview PR tracking.
 
 ## Tag taxonomy
 
@@ -81,11 +95,7 @@ node tools/refresh-robots.mjs --token $GITHUB_TOKEN
 node tools/refresh-robots.mjs --token $GITHUB_TOKEN --write
 ```
 
-Or trigger the GitHub Action:
-
-```sh
-gh workflow run refresh-robots.yml -R urdf-studio/urdf-robot-gallery -f write=true
-```
+Or trigger `refresh-robots.yml` from the GitHub Actions UI with `write=true`.
 
 The script writes a report to `docs/backfill-report.json` with preview keys that should be
 regenerated and also saves a comma-separated list in `docs/backfill-preview-keys.txt`.
@@ -98,13 +108,22 @@ node tools/rebuild-previews.mjs \
   --gallery /path/to/urdf-robot-gallery
 ```
 
+## Contributor-generated previews (fork workflow)
+
+If you submitted a repo and want to generate previews using your own GitHub API quota and runner minutes:
+
+1. Fork this repository.
+2. Open `https://github.com/<your-github-username>/urdf-robot-gallery/actions/workflows/contributor-generate-previews.yml` and click **Run workflow**.
+3. Enter only `issue_number` (your submission issue number in `urdf-studio/urdf-robot-gallery`).
+4. The workflow processes all missing previews for that repo in commit batches of 5 and pushes each batch to `contrib/previews-issue-<number>`.
+   Generated media is normalized to `800x800`, and preview framing is tuned so robots fill cards more consistently.
+5. If the run stops early (timeout/cancel), run it again with the same issue number and it resumes from the same branch.
+6. Open `https://github.com/urdf-studio/urdf-robot-gallery/compare/main...<your-github-username>:contrib/previews-issue-<number>?expand=1` to create the PR (this acts as the issue lock).
+7. If the workflow says another open PR already exists for that issue, pick a different issue.
+
 ## Maintainer manual ingest
 
-For manual review, trigger the workflow with the issue number:
-
-```sh
-gh workflow run ingest-robot-repos.yml -R urdf-studio/urdf-robot-gallery -f issue_number=123
-```
+For manual review, open the `ingest-robot-repos.yml` workflow in GitHub Actions, click **Run workflow**, and enter the issue number.
 
 ## Where the gallery is displayed
 

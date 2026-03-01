@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-27T09:59:58.554Z",
+  "generatedAt": "2026-03-01T00:57:08.286Z",
   "previews": [
     {
       "repoKey": "anybotics/anymal_b_simple_description",
@@ -5562,7 +5562,6 @@
     {
       "repoKey": "unitreerobotics/unitree_ros",
       "fileBase": "g1_29dof_mode_15_with_dex1_1--s00477",
-      "webp": "previews/unitreerobotics/unitree_ros/g1_29dof_mode_15_with_dex1_1--s00477.webp",
       "png": "thumbnails/unitreerobotics/unitree_ros/g1_29dof_mode_15_with_dex1_1--s00477.png"
     }
   ]

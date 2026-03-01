@@ -169,6 +169,13 @@ h1 {
   color: rgba(240, 240, 240, 0.55);
 }
 
+.card p.license {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.56);
+}
+
 .card .tags {
   display: flex;
   flex-wrap: wrap;

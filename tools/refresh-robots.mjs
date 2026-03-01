@@ -228,6 +228,12 @@ const toPreviewBase = (value) => {
   return `${slug}--${hashString(normalized)}`;
 };
 
+const normalizeLicense = (licenseValue) => {
+  const raw = String(licenseValue || "").trim();
+  if (!raw || raw.toUpperCase() === "NOASSERTION") return "";
+  return raw;
+};
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const MAX_ERROR_BODY_BYTES = 4096;
 const ABUSE_DETECTION_PATTERN = /abuse detection mechanism|secondary rate limit/i;
@@ -423,6 +429,12 @@ const main = async () => {
       });
       return { keep: true };
     }
+
+    const detectedLicense = normalizeLicense(
+      repoData?.license?.spdx_id || repoData?.license?.name || ""
+    );
+    const existingLicense = normalizeLicense(entry.license);
+    entry.license = detectedLicense || existingLicense;
 
     const branch = repoData.default_branch || "main";
     let treeData;

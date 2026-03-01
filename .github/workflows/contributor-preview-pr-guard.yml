@@ -1,0 +1,87 @@
+name: Contributor Preview PR Guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  guard:
+    if: startsWith(github.head_ref, 'contrib/previews-issue-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure no duplicate open contributor PR for same issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const headRef = context.payload.pull_request.head.ref || "";
+            const pullNumber = context.payload.pull_request.number;
+            const issueMatch = headRef.match(/^contrib\/previews-issue-(\d+)$/);
+            if (!issueMatch) {
+              core.notice(`Skipping duplicate check: branch "${headRef}" does not match expected pattern.`);
+              return;
+            }
+
+            const openPulls = await github.paginate(github.rest.pulls.list, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              base: context.payload.pull_request.base.ref,
+              per_page: 100,
+            });
+
+            const duplicates = openPulls.filter((pr) => {
+              if (pr.number === pullNumber) return false;
+              return (pr.head?.ref || "") === headRef;
+            });
+
+            if (duplicates.length > 0) {
+              const links = duplicates.map((pr) => pr.html_url).join(", ");
+              core.setFailed(
+                `Another open contributor PR already exists for issue #${issueMatch[1]} (${links}). ` +
+                  "Close this duplicate PR and coordinate on the existing one."
+              );
+              return;
+            }
+
+            core.notice(`No duplicate open PR found for issue #${issueMatch[1]}.`);
+
+      - name: Validate changed files are preview-only
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const allowedPrefix = [
+              "docs/previews/",
+              "docs/thumbnails/",
+            ];
+            const allowedExact = new Set(["docs/previews.json"]);
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              per_page: 100,
+            });
+
+            const changed = files.map((file) => file.filename);
+            if (changed.length === 0) {
+              core.setFailed("No changed files found in this PR.");
+              return;
+            }
+
+            const disallowed = changed.filter((name) => {
+              if (allowedExact.has(name)) return false;
+              return !allowedPrefix.some((prefix) => name.startsWith(prefix));
+            });
+
+            if (disallowed.length > 0) {
+              core.setFailed(
+                "Contributor preview PRs may only change docs/previews/**, docs/thumbnails/**, and docs/previews.json. " +
+                `Disallowed files: ${disallowed.join(", ")}`
+              );
+              return;
+            }
+
+            core.notice(`Preview-only PR guard passed (${changed.length} file(s)).`);

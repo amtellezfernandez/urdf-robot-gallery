@@ -86,6 +86,12 @@ const toPreviewBase = (value) => {
   return `${slug}--${hashString(normalized)}`;
 };
 
+const normalizeLicense = (licenseValue) => {
+  const raw = String(licenseValue || "").trim();
+  if (!raw || raw.toUpperCase() === "NOASSERTION") return "";
+  return raw;
+};
+
 const normalizeRepoKey = (value) =>
   value
     ? value
@@ -281,6 +287,12 @@ const main = async () => {
       });
       return;
     }
+
+    const detectedLicense = normalizeLicense(
+      repoData?.license?.spdx_id || repoData?.license?.name || ""
+    );
+    const existingLicense = normalizeLicense(entry.license);
+    entry.license = detectedLicense || existingLicense;
 
     const branch = repoData.default_branch || "main";
     let treeData;

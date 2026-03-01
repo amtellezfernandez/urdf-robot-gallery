@@ -1,0 +1,64 @@
+name: Robot Entry Update
+description: Update metadata, mapping, or preview refresh request for an existing repo.
+title: "robot-update-request"
+labels:
+  - robot-update
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fast flow:
+        1) Submit repo + update type.
+        2) For metadata/mapping updates, bot applies changes and closes the issue.
+        3) For preview regeneration, bot keeps the issue open and points to the preview workflow.
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repo (URL or owner/repo)
+      description: Existing repo already in gallery.
+      placeholder: TheRobotStudio/SO-ARM100
+    validations:
+      required: true
+  - type: dropdown
+    id: update_type
+    attributes:
+      label: Update type
+      options:
+        - Metadata only
+        - Mapping change
+        - Regenerate previews/thumbnails
+    validations:
+      required: true
+  - type: input
+    id: org
+    attributes:
+      label: Author / Company / Lab (optional)
+      placeholder: The Robot Studio
+  - type: textarea
+    id: summary
+    attributes:
+      label: Short summary (optional)
+      placeholder: Updated summary.
+  - type: input
+    id: demo
+    attributes:
+      label: Demo URL (optional)
+      placeholder: https://huggingface.co/spaces/your-demo
+  - type: input
+    id: tags
+    attributes:
+      label: Tags (optional)
+      description: Controlled list from docs/tags.json.
+      placeholder: Arm, Gripper, Humanoid
+  - type: textarea
+    id: robots
+    attributes:
+      label: Robot mapping (optional)
+      description: Needed for "Mapping change". Format "RobotName — path/file.urdf" (or `.xacro`, `.urdf.xacro`).
+      placeholder: |-
+        SO-ARM100 — robots/so100/so100.urdf
+        SO-ARM101 — robots/so101/so101.urdf
+  - type: textarea
+    id: extra
+    attributes:
+      label: Notes (optional)
