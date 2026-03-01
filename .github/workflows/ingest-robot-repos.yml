@@ -364,6 +364,9 @@ jobs:
                 pushUnique(tags, "Mobile Manipulator");
               }
               if (/(drone|uav|quadrotor|multirotor|aerial)/i.test(text)) pushUnique(tags, "Drone");
+              if (/(object|cube|box|sphere|cylinder|table|desk|chair|bottle|can|cup|plate|pan|obstacle|prop)/i.test(text)) {
+                pushUnique(tags, "Object");
+              }
               return tags;
             };
 
@@ -406,6 +409,8 @@ jobs:
               ["drones", "Drone"],
               ["drone", "Drone"],
               ["aerial", "Drone"],
+              ["object", "Object"],
+              ["objects", "Object"],
               ["tracked", "Wheeled"],
               ["track", "Wheeled"],
               ["rover", "Wheeled"],

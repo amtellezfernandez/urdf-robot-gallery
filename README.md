@@ -22,8 +22,8 @@ Auto-ingest policy:
   If a filename is ambiguous across folders, use the path form.
 - Auto-ingest posts a comment with the detected URDF/Xacro file list and a suggested mapping block.
   It also includes suggested per-file tags (heuristic) and a repo-level macro tag suggestion.
-  If `Tags (optional)` is empty, detected macro tags remain suggestions only.
-  If `Tags (optional)` is provided, those corrected tags are applied.
+  If `Tags (optional)` is empty, detected macro tags are applied automatically (fallback: `Other`).
+  If `Tags (optional)` is provided, those corrected tags override the detection.
   Auto-ingest publishes detected vs corrected vs applied tags in a reconciliation comment.
   Ingest runs immediately; you can optionally edit mapping/tags and save the issue to refresh.
 - Issue titles are updated automatically to include the repo name for easier tracking.

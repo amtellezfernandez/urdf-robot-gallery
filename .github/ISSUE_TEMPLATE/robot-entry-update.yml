@@ -48,7 +48,7 @@ body:
     attributes:
       label: Tags (optional)
       description: Controlled list from docs/tags.json.
-      placeholder: Arm, Gripper, Humanoid
+      placeholder: Arm, End Effector, Object
   - type: textarea
     id: robots
     attributes:

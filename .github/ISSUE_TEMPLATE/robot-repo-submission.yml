@@ -63,8 +63,8 @@ body:
       label: Tags (optional)
       description: >-
         Optional correction/override. If empty, detected macro tags are used automatically.
-        Allowed macro tags: Arm, Biped, Dual Arm, Drone, End Effector, Humanoid, Mobile Manipulator, Quadruped, Wheeled, Other.
-      placeholder: Arm, End Effector, Humanoid
+        Allowed macro tags: Arm, Biped, Dual Arm, Drone, End Effector, Humanoid, Mobile Manipulator, Quadruped, Wheeled, Object, Other.
+      placeholder: Arm, End Effector, Object
   - type: textarea
     id: hf_datasets
     attributes:
