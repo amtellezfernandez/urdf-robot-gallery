@@ -12,25 +12,12 @@ body:
       placeholder: TheRobotStudio/SO-ARM100
     validations:
       required: true
-  - type: dropdown
+  - type: input
     id: tags
     attributes:
       label: Tags (optional)
       description: Controlled list from docs/tags.json.
-      multiple: true
-      options:
-        - Arm
-        - Biped
-        - Dual Arm
-        - Drone
-        - Educational
-        - End Effector
-        - Humanoid
-        - Mobile Manipulator
-        - Quadruped
-        - Wheeled
-        - Object
-        - Other
+      placeholder: Arm, End Effector, Object
   - type: input
     id: structure
     attributes:

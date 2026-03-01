@@ -164,14 +164,7 @@ jobs:
                 .filter(Boolean);
 
             const parseTags = (value) =>
-              parseLines(String(value || "").replace(/,/g, "\n"))
-                .map((tag) =>
-                  String(tag || "")
-                    .replace(/^-+\s*\[[xX ]\]\s*/g, "")
-                    .replace(/^-+\s*/g, "")
-                    .trim()
-                )
-                .filter(Boolean);
+              parseLines(String(value || "").replace(/,/g, "\n"));
 
             const normalizeTagKey = (value) =>
               String(value || "")
