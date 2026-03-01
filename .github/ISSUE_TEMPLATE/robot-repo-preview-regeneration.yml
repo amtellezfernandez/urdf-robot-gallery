@@ -1,4 +1,4 @@
-name: "🔄 [ISSUE] Regenerate Missing Repo Previews"
+name: "⚠️ [ISSUE] Regenerate Missing Repo Previews"
 description: Regenerate missing thumbnails/videos for an existing repo.
 title: "robot-repo-preview-regeneration-request"
 labels:
