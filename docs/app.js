@@ -208,7 +208,7 @@ const renderCard = (robot) => {
   const updateLink = document.createElement("a");
   const repoValue = (robot.repo || "").replace(/^https?:\/\/github\.com\//i, "").replace(/\/+$/, "");
   const updatePrefill = repoValue
-    ? `${updateIssueUrl}&repo=${encodeURIComponent(repoValue)}`
+    ? `${updateIssueUrl}&github_repo=${encodeURIComponent(repoValue)}&repo=${encodeURIComponent(repoValue)}`
     : updateIssueUrl;
   updateLink.href = updatePrefill;
   updateLink.target = "_blank";

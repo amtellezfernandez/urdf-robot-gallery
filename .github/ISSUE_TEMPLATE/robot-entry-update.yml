@@ -5,7 +5,7 @@ labels:
   - robot-update
 body:
   - type: input
-    id: repo
+    id: github_repo
     attributes:
       label: GitHub repo (URL or owner/repo)
       description: Existing repo already in gallery.
