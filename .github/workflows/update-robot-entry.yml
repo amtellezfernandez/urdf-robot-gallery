@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   update:
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.issue.labels.*.name, ','), 'robot-update') || startsWith(github.event.issue.title || '', 'robot-update-request')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.issue.labels.*.name, ','), 'robot-update') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate-targeted') || contains(join(github.event.issue.labels.*.name, ','), 'robot-regenerate-repo') || startsWith(github.event.issue.title || '', 'robot-update-request') || startsWith(github.event.issue.title || '', 'robot-preview-regeneration-request') || startsWith(github.event.issue.title || '', 'robot-targeted-preview-regeneration-request') || startsWith(github.event.issue.title || '', 'robot-repo-preview-regeneration-request')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -353,7 +353,9 @@ jobs:
             if (mode === "regenerate") {
               const suggestedForkOwner = issueAuthor || "<your-github-username>";
               const forkWorkflowUrl = `https://github.com/${suggestedForkOwner}/${galleryRepo}/actions/workflows/contributor-generate-previews.yml`;
-              const regenerateTargets = parseLines(clean(fields["Robots to regenerate (optional)"]));
+              const regenerateTargets = parseLines(
+                clean(fields["Robots to regenerate (optional)"] || fields["Robots to regenerate"])
+              );
               await upsertComment(
                 "Auto-update: preview regeneration requested.",
                 "Auto-update: preview regeneration requested.\n\n" +

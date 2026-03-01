@@ -1,0 +1,41 @@
+name: Robot Preview Regeneration (Targeted)
+description: Regenerate thumbnails/videos for one or more specific robot files in an existing repo.
+title: "robot-targeted-preview-regeneration-request"
+labels:
+  - robot-regenerate-targeted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this issue to regenerate previews for specific robot files.
+        Paste one or more robot paths below (or gallery copied lines containing path/fileBase/tags).
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repo (URL or owner/repo)
+      description: Existing repo already in gallery.
+      placeholder: TheRobotStudio/SO-ARM100
+    validations:
+      required: true
+  - type: dropdown
+    id: update_type
+    attributes:
+      label: Update type
+      options:
+        - Regenerate previews/thumbnails
+    validations:
+      required: true
+  - type: textarea
+    id: robot_targets
+    attributes:
+      label: Robots to regenerate
+      description: Paste one robot per line. Supports copied gallery lines or path/file.urdf.
+      placeholder: |-
+        SO-ARM100 - robots/so100/so100.urdf - fileBase: so100--abc123 - tags: Arm, Gripper
+        robots/so101/so101.urdf
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Notes (optional)
