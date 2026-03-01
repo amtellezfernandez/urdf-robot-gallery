@@ -12,7 +12,8 @@ body:
         2) Bot ingests and posts detected files + suggested mapping/tags.
         3) (Optional) Edit mapping/tags and save issue to refresh.
         4) Run "Contributor Generate Previews" in your fork with `issue_number`.
-        Tags come only from **Tags (optional)**. If empty, no macro tags are applied.
+        License is auto-detected from the repo.
+        Macro tags are auto-detected when **Tags (optional)** is empty (fallback: Other).
   - type: input
     id: repo
     attributes:
@@ -61,9 +62,9 @@ body:
     attributes:
       label: Tags (optional)
       description: >-
-        Optional correction. If empty, no macro tags are applied.
-        Common macro tags: Arm, Gripper, Hand, Humanoid, Quadruped, Biped, Wheeled, Tracked, Mobile, Aerial, Underwater.
-      placeholder: Arm, Gripper, Humanoid
+        Optional correction/override. If empty, detected macro tags are used automatically.
+        Allowed macro tags: Arm, Biped, Dual Arm, Drone, End Effector, Humanoid, Mobile Manipulator, Quadruped, Wheeled, Other.
+      placeholder: Arm, End Effector, Humanoid
   - type: textarea
     id: hf_datasets
     attributes:

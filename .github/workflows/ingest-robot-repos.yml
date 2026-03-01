@@ -269,6 +269,12 @@ jobs:
                 .filter(Boolean);
             };
 
+            const normalizeLicense = (value) => {
+              const raw = String(value || "").trim();
+              if (!raw || raw.toUpperCase() === "NOASSERTION") return "No license";
+              return raw;
+            };
+
             const SUPPORTED_ROBOT_EXTENSIONS = [".urdf.xacro", ".xacro", ".urdf"];
             const KNOWN_MESH_EXTENSIONS = [".stl", ".dae", ".obj", ".ply", ".glb", ".gltf", ".fbx"];
 
@@ -336,22 +342,28 @@ jobs:
                 pushUnique(tags, "Quadruped");
               }
               if (/(biped|two[_-]?leg|2leg)/i.test(text)) pushUnique(tags, "Biped");
-              if (/(arm|manipulator|franka|kinova|jaco|xarm|ur[0-9]|so[_-]?arm)/i.test(text)) {
+              if (/(dual[_-]?arm|2[_-]?arm|two[_-]?arm|baxter|yumi|nextage|torso)/i.test(text)) {
+                pushUnique(tags, "Dual Arm");
+              }
+              if (/(gripper|claw|end[_-]?effector|eef|hand|dexterous)/i.test(text)) {
+                pushUnique(tags, "End Effector");
+              }
+              if (/(arm|manipulator|franka|kinova|jaco|xarm|ur[0-9]|so[_-]?arm|iiwa|panda)/i.test(text)) {
                 pushUnique(tags, "Arm");
-                pushUnique(tags, "Manipulator");
               }
-              if (/(gripper|claw|end[_-]?effector|eef)/i.test(text)) pushUnique(tags, "Gripper");
-              if (/(hand|dexterous)/i.test(text)) pushUnique(tags, "Hand");
-              if (/(wheel|wheeled|diff[_-]?drive|ackermann|caster|mecanum|omni|rover|ugv)/i.test(text)) {
+              const hasWheels = /(wheel|wheeled|diff[_-]?drive|ackermann|caster|mecanum|omni|rover|ugv|mobile[_-]?base|base)/i.test(
+                text
+              );
+              const hasManipulator = /(arm|manipulator|franka|kinova|jaco|xarm|ur[0-9]|iiwa|panda|gripper|end[_-]?effector)/i.test(
+                text
+              );
+              if (hasWheels) {
                 pushUnique(tags, "Wheeled");
-                pushUnique(tags, "Mobile");
               }
-              if (/(tracked|tank)/i.test(text)) {
-                pushUnique(tags, "Tracked");
-                pushUnique(tags, "Mobile");
+              if (hasWheels && hasManipulator) {
+                pushUnique(tags, "Mobile Manipulator");
               }
-              if (/(drone|uav|quadrotor|multirotor|aerial)/i.test(text)) pushUnique(tags, "Aerial");
-              if (/(underwater|auv|rov)/i.test(text)) pushUnique(tags, "Underwater");
+              if (/(drone|uav|quadrotor|multirotor|aerial)/i.test(text)) pushUnique(tags, "Drone");
               return tags;
             };
 
@@ -366,13 +378,39 @@ jobs:
             };
 
             const TAG_ALIASES = new Map([
-              ["lerobot", "LeRobotCompatible"],
+              ["lerobot", "Other"],
               ["arms", "Arm"],
+              ["arm", "Arm"],
+              ["manipulator", "Arm"],
+              ["manipulators", "Arm"],
+              ["bipeds", "Biped"],
+              ["biped", "Biped"],
+              ["dualarms", "Dual Arm"],
+              ["dualarm", "Dual Arm"],
+              ["endeffectors", "End Effector"],
+              ["endeffector", "End Effector"],
+              ["grippers", "End Effector"],
+              ["gripper", "End Effector"],
+              ["hands", "End Effector"],
+              ["hand", "End Effector"],
+              ["humanoids", "Humanoid"],
+              ["humanoid", "Humanoid"],
+              ["mobilemanipulators", "Mobile Manipulator"],
+              ["mobilemanipulator", "Mobile Manipulator"],
+              ["mobile", "Mobile Manipulator"],
+              ["mobilebase", "Mobile Manipulator"],
+              ["quadrupeds", "Quadruped"],
+              ["quadruped", "Quadruped"],
               ["dogs", "Quadruped"],
               ["dog", "Quadruped"],
+              ["drones", "Drone"],
+              ["drone", "Drone"],
+              ["aerial", "Drone"],
+              ["tracked", "Wheeled"],
+              ["track", "Wheeled"],
               ["rover", "Wheeled"],
               ["ugv", "Wheeled"],
-              ["mobilebase", "Mobile"],
+              ["wheeled", "Wheeled"],
             ]);
 
             const canonicalizeTags = (tags, allowedTagMap) => {
@@ -621,9 +659,13 @@ jobs:
             }
 
             let defaultBranch = "main";
+            let detectedLicense = "No license";
             try {
               const repoData = await github.rest.repos.get({ owner, repo });
               defaultBranch = repoData.data.default_branch || "main";
+              detectedLicense = normalizeLicense(
+                repoData?.data?.license?.spdx_id || repoData?.data?.license?.name || ""
+              );
             } catch (error) {
               await ensureComment(
                 "Auto-ingest: couldn't access",
@@ -827,7 +869,12 @@ jobs:
               detectedMacroTags,
               allowedTagMap
             );
-            const normalizedTags = correctedTags;
+            const normalizedTags =
+              correctedTags.length > 0
+                ? correctedTags
+                : detectedCanonicalTags.length > 0
+                  ? detectedCanonicalTags
+                  : ["Other"];
             await upsertComment(
               "Auto-ingest: tag reconciliation.",
               "Auto-ingest: tag reconciliation.\n\n" +
@@ -842,7 +889,9 @@ jobs:
                 }\n\n` +
                 (correctedTags.length > 0
                   ? "Applied issue tags."
-                  : "No issue tags provided; detected tags are suggestions only.")
+                  : detectedCanonicalTags.length > 0
+                    ? "No issue tags provided; applied detected macro tags."
+                    : "No issue tags provided and no detection matched; applied Other.")
             );
 
             const mapping = parseRobotMapping(mappingInputValue);
@@ -987,6 +1036,7 @@ jobs:
               summary: clean(fields["Short summary"]),
               demo: clean(fields["Demo URL (optional)"]),
               tags: normalizedTags,
+              license: detectedLicense,
               robots: robots.length ? robots : undefined,
               hfDatasets: parseLines(clean(fields["Hugging Face datasets (one per line, optional)"])),
               authorWebsite: clean(fields["Author website (optional)"]),
@@ -1017,6 +1067,7 @@ jobs:
                 summary: mergeValue(entry.summary, prev.summary),
                 demo: mergeValue(entry.demo, prev.demo),
                 tags: mergeArray(entry.tags, prev.tags),
+                license: mergeValue(entry.license, prev.license),
                 robots: mergeArray(mergedRobots, prev.robots),
                 hfDatasets: mergeArray(entry.hfDatasets, prev.hfDatasets),
                 authorWebsite: mergeValue(entry.authorWebsite, prev.authorWebsite),
