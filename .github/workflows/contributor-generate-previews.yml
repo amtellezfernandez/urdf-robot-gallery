@@ -182,9 +182,7 @@ jobs:
             const body = issue?.body || "";
             const issueUrl = issueNumber
               ? issue?.html_url || `https://github.com/${owner}/${repo}/issues/${issueNumber}`
-              : `https://github.com/${owner}/${repo}/issues/new?template=robot-repo-preview-regeneration.yml&repo=${encodeURIComponent(
-                  repoInputRaw
-                )}`;
+              : `https://github.com/${owner}/${repo}/blob/main/docs/preview-regeneration.md`;
             let repoKey = "";
 
             const parseIssueFields = (text) => {
