@@ -1,6 +1,5 @@
 name: "⚠️ [ISSUE] Robot Entry Update"
 description: Update metadata, mapping, or tags for an existing repo.
-title: "robot-update-request"
 labels:
   - robot-update
 body:
