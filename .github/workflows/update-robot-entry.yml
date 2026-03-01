@@ -278,17 +278,24 @@ jobs:
             const fields = parseIssueFields(body);
             const updateTypeRaw = clean(fields["Update type"]);
             const updateType = updateTypeRaw.toLowerCase();
-            let mode = "";
-            if (updateType.includes("metadata")) mode = "metadata";
-            if (updateType.includes("mapping")) mode = "mapping";
+            const issueTitle = String(issue.title || "");
+            const issueLabelSet = new Set((issue.labels || []).map((label) => String(label?.name || "").toLowerCase()));
+            const regenerateTitlePrefixes = [
+              "robot-preview-regeneration-request",
+              "robot-targeted-preview-regeneration-request",
+              "robot-repo-preview-regeneration-request",
+            ];
+            const isRegenerateIssue =
+              issueLabelSet.has("robot-regenerate") ||
+              issueLabelSet.has("robot-regenerate-targeted") ||
+              issueLabelSet.has("robot-regenerate-repo") ||
+              regenerateTitlePrefixes.some((prefix) => issueTitle.startsWith(prefix));
+
+            let mode = "mapping";
             if (updateType.includes("regenerate")) mode = "regenerate";
-            if (!mode) {
-              await upsertComment(
-                "Auto-update: missing update type.",
-                "Auto-update: choose **Update type** and save the issue."
-              );
-              return;
-            }
+            else if (updateType.includes("metadata")) mode = "metadata";
+            else if (updateType.includes("mapping")) mode = "mapping";
+            else if (isRegenerateIssue) mode = "regenerate";
 
             const regenerateTargetsText = clean(
               fields["Robots to regenerate (optional)"] || fields["Robots to regenerate"]
@@ -437,14 +444,31 @@ jobs:
               updatedAt: new Date().toISOString(),
             };
 
-            const assignIfPresent = (targetKey, label) => {
-              const value = clean(fields[label]);
+            const readField = (...labels) => {
+              for (const label of labels) {
+                const value = clean(fields[label]);
+                if (value) return value;
+              }
+              return "";
+            };
+
+            const assignIfPresent = (targetKey, ...labels) => {
+              const value = readField(...labels);
               if (value) next[targetKey] = value;
             };
             assignIfPresent("org", "Author / Company / Lab (optional)");
             assignIfPresent("summary", "Short summary (optional)");
             assignIfPresent("demo", "Demo URL (optional)");
             assignIfPresent("extra", "Notes (optional)");
+
+            const structureValue = readField("Structure");
+            const morphologyValue = readField("Morphology");
+            if (structureValue || morphologyValue) {
+              const lines = [];
+              if (structureValue) lines.push(`Structure: ${structureValue}`);
+              if (morphologyValue) lines.push(`Morphology: ${morphologyValue}`);
+              next.extra = lines.join("\n");
+            }
 
             const tagsInput = clean(fields["Tags (optional)"]);
             if (tagsInput) {
@@ -470,12 +494,12 @@ jobs:
               next.tags = normalizedTags;
             }
 
-            if (mode === "mapping") {
-              const mappingInput = clean(fields["Robot mapping (optional)"]);
+            if (mode !== "regenerate") {
+              const mappingInput = readField("Robot mapping", "Robot mapping (optional)");
               if (!mappingInput) {
                 await upsertComment(
                   "Auto-update: missing mapping.",
-                  "Auto-update: for **Mapping change**, fill **Robot mapping (optional)** and save."
+                  "Auto-update: fill **Robot mapping** and save."
                 );
                 return;
               }

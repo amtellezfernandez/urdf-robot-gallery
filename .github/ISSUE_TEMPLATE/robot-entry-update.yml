@@ -12,30 +12,27 @@ body:
       placeholder: TheRobotStudio/SO-ARM100
     validations:
       required: true
-  - type: dropdown
-    id: update_type
-    attributes:
-      label: Update type
-      options:
-        - Metadata only
-        - Mapping change
-    validations:
-      required: true
   - type: input
     id: tags
     attributes:
       label: Tags (optional)
       description: Controlled list from docs/tags.json.
       placeholder: Arm, End Effector, Object
-  - type: textarea
+  - type: input
+    id: structure
+    attributes:
+      label: Structure
+      placeholder: Meshes 2 · Links 2 · Joints 1
+  - type: input
+    id: morphology
+    attributes:
+      label: Morphology
+      placeholder: Arms 1 · Legs 0 · Wheels 0
+  - type: input
     id: robots
     attributes:
-      label: Robot mapping (optional)
-      description: Needed for "Mapping change". Format "RobotName — path/file.urdf" (or `.xacro`, `.urdf.xacro`).
-      placeholder: |-
-        SO-ARM100 — robots/so100/so100.urdf
-        SO-ARM101 — robots/so101/so101.urdf
-  - type: textarea
-    id: extra
-    attributes:
-      label: Notes (optional)
+      label: Robot mapping
+      description: Format "RobotName — path/file.urdf" (or `.xacro`, `.urdf.xacro`).
+      placeholder: SO-ARM100 — robots/so100/so100.urdf
+    validations:
+      required: true
