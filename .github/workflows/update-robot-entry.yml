@@ -167,7 +167,7 @@ jobs:
               parseLines(String(value || "").replace(/,/g, "\n"))
                 .map((tag) =>
                   String(tag || "")
-                    .replace(/^-+\s*\[(?:x|X|\s)?\]\s*/g, "")
+                    .replace(/^-+\s*\[[xX ]\]\s*/g, "")
                     .replace(/^-+\s*/g, "")
                     .trim()
                 )
