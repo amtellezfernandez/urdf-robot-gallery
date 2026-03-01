@@ -1,4 +1,4 @@
-name: "11 [ISSUE] Robot Entry Update"
+name: "11 🛠️ [ISSUE] Robot Entry Update"
 description: Update metadata, mapping, tags, or preview request for an existing repo.
 title: "robot-update-request"
 labels:
