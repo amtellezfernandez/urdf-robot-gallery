@@ -2626,7 +2626,8 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-03T00:07:31.058Z"
+    "updatedAt": "2026-02-03T00:07:31.058Z",
+    "license": "Apache-2.0"
   },
   {
     "repo": "https://github.com/RobotLocomotion/models",
@@ -3724,7 +3725,8 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-04T15:31:32.117Z"
+    "updatedAt": "2026-02-04T15:31:32.117Z",
+    "license": "Apache-2.0"
   },
   {
     "repo": "https://github.com/TetherIA/aero-hand-open",
@@ -4480,7 +4482,8 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-25T16:48:55.329Z"
+    "updatedAt": "2026-02-25T16:48:55.329Z",
+    "license": "No license"
   },
   {
     "repo": "https://github.com/xArm-Developer/xarm_ros2",
