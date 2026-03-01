@@ -3078,7 +3078,6 @@
       "webp": "previews/gepetto/example-robot-data/g1_29dof_with_hand_rev_1_0--1975m4a.webp",
       "png": "thumbnails/gepetto/example-robot-data/g1_29dof_with_hand_rev_1_0--1975m4a.png",
       "macroTags": [
-        "End Effector",
         "Humanoid"
       ]
     },
@@ -4158,7 +4157,6 @@
       "webp": "previews/hshi74/toddlerbot/toddlerbot_2xc_gripper--1kgb14a.webp",
       "png": "thumbnails/hshi74/toddlerbot/toddlerbot_2xc_gripper--1kgb14a.png",
       "macroTags": [
-        "End Effector",
         "Humanoid"
       ]
     },
@@ -6264,7 +6262,6 @@
       "webp": "previews/unitreerobotics/unitree_ros/g1_29dof_lock_waist_with_hand_rev_1_0--1gp8vu3.webp",
       "png": "thumbnails/unitreerobotics/unitree_ros/g1_29dof_lock_waist_with_hand_rev_1_0--1gp8vu3.png",
       "macroTags": [
-        "End Effector",
         "Humanoid"
       ]
     },
@@ -6333,7 +6330,6 @@
       "webp": "previews/unitreerobotics/unitree_ros/g1_29dof_mode_15_brainco_hand--k6rcr9.webp",
       "png": "thumbnails/unitreerobotics/unitree_ros/g1_29dof_mode_15_brainco_hand--k6rcr9.png",
       "macroTags": [
-        "End Effector",
         "Humanoid"
       ]
     },
