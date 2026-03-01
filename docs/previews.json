@@ -1523,9 +1523,7 @@
       ],
       "webp": "previews/bulletphysics/bullet3/pendulum_tendon_1_cart_rail--csi07x.webp",
       "png": "thumbnails/bulletphysics/bullet3/pendulum_tendon_1_cart_rail--csi07x.png",
-      "macroTags": [
-        "Educational"
-      ]
+      "macroTags": []
     },
     {
       "repoKey": "bulletphysics/bullet3",
@@ -2977,9 +2975,7 @@
       ],
       "webp": "previews/gepetto/example-robot-data/double_pendulum_continuous--xpwlot.webp",
       "png": "thumbnails/gepetto/example-robot-data/double_pendulum_continuous--xpwlot.png",
-      "macroTags": [
-        "Educational"
-      ]
+      "macroTags": []
     },
     {
       "repoKey": "gepetto/example-robot-data",
@@ -3503,7 +3499,6 @@
       "webp": "previews/gepetto/example-robot-data/simple_humanoid--zyrg6h.webp",
       "png": "thumbnails/gepetto/example-robot-data/simple_humanoid--zyrg6h.png",
       "macroTags": [
-        "Educational",
         "Humanoid"
       ]
     },
