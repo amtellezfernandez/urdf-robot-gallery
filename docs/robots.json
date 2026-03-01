@@ -5,9 +5,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Quadrupeds"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "anymal",
@@ -31,9 +29,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Quadrupeds"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "anymal",
@@ -58,9 +54,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Quadrupeds"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "minitaur",
@@ -659,9 +653,7 @@
     "org": "Franka Robotics",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "cobot_pump",
@@ -885,14 +877,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms",
-      "Bipeds",
-      "Educational",
-      "Humanoids",
-      "Mobile Manipulators",
-      "Quadrupeds"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "a1",
@@ -1298,17 +1283,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms",
-      "Bipeds",
-      "Drones",
-      "Educational",
-      "End Effectors",
-      "Humanoids",
-      "Mobile Manipulators",
-      "Quadrupeds",
-      "Wheeled"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "barkour_v0",
@@ -1338,9 +1313,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Humanoids"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "toddlerbot_2xc",
@@ -1404,9 +1377,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "edo_sim",
@@ -1431,9 +1402,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "vx300s",
@@ -1618,9 +1587,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "gen3",
@@ -1850,9 +1817,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "gen3_macro",
@@ -2012,9 +1977,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "End Effectors"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "robot",
@@ -2049,9 +2012,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Drones"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "skydio_x2",
@@ -2076,9 +2037,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Mobile Manipulators"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "tiago",
@@ -2168,9 +2127,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Mobile Manipulators"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "common",
@@ -2455,9 +2412,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Dual Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "baxter",
@@ -2587,9 +2542,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Bipeds"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "go_bdx",
@@ -2682,12 +2635,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms",
-      "Dual Arms",
-      "End Effectors",
-      "Humanoids"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "atlas_convex_hull",
@@ -2937,10 +2885,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Mobile Manipulators",
-      "Wheeled"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "rbkairos_plus",
@@ -3305,9 +3250,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "ur10",
@@ -3512,9 +3455,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "follower",
@@ -3539,9 +3480,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "End Effectors"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "egp",
@@ -3671,9 +3610,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "End Effectors"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "svh",
@@ -3796,9 +3733,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "End Effectors"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "aero_hand_open_left",
@@ -3827,9 +3762,7 @@
     "org": "The Robot Studio",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "SO-ARM100",
@@ -3867,9 +3800,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Mobile Manipulators"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "bambot_v0",
@@ -3923,11 +3854,7 @@
     "org": "Unitree Robotics",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms",
-      "Humanoids",
-      "Quadrupeds"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "a1",
@@ -4562,9 +4489,7 @@
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [
-      "Arms"
-    ],
+    "tags": [],
     "robots": [
       {
         "name": "lite6",

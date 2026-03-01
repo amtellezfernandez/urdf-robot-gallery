@@ -30,6 +30,26 @@
           "type": "array",
           "items": { "type": "string" }
         },
+        "macroTags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Arms",
+              "Bipeds",
+              "Dual Arms",
+              "Drones",
+              "Educational",
+              "End Effectors",
+              "Humanoids",
+              "Mobile Manipulators",
+              "Quadrupeds",
+              "Wheeled",
+              "Other"
+            ]
+          },
+          "uniqueItems": true
+        },
         "meshCount": { "type": "integer", "minimum": 0 },
         "linkCount": { "type": "integer", "minimum": 0 },
         "jointCount": { "type": "integer", "minimum": 0 },
