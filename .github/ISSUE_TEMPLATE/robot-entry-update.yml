@@ -12,7 +12,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: tags
+    id: macro_tags
     attributes:
       label: Tags
       description: Checklist lines using [x] selected and [] not selected.
