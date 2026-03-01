@@ -8,13 +8,7 @@ body:
     attributes:
       value: |
         Use this issue to regenerate previews for specific robot files.
-        Paste one or more robot paths below (or gallery copied lines containing path/fileBase/tags).
-  - type: input
-    id: repo
-    attributes:
-      label: GitHub repo (URL or owner/repo) (optional)
-      description: Optional if robot lines below include full GitHub URLs.
-      placeholder: TheRobotStudio/SO-ARM100
+        Paste one or more full GitHub robot file URLs below.
   - type: dropdown
     id: update_type
     attributes:
@@ -28,11 +22,10 @@ body:
     attributes:
       label: Robot URL(s) / targets to regenerate
       description: >-
-        Paste one robot per line. Preferred: full GitHub URL copied from gallery.
-        Also supports copied gallery lines with fileBase/tags, or path/file.urdf.
+        Paste one full GitHub robot file URL per line (copied from gallery).
       placeholder: |-
         https://github.com/TheRobotStudio/SO-ARM100/blob/HEAD/robots/so100/so100.urdf
-        SO-ARM100 - robots/so100/so100.urdf - fileBase: so100--abc123 - tags: Arm, Gripper
+        https://github.com/bulletphysics/bullet3/blob/HEAD/data/quadruped/minitaur.urdf
     validations:
       required: true
   - type: textarea
