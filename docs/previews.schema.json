@@ -35,15 +35,15 @@
           "items": {
             "type": "string",
             "enum": [
-              "Arms",
-              "Bipeds",
-              "Dual Arms",
-              "Drones",
+              "Arm",
+              "Biped",
+              "Dual Arm",
+              "Drone",
               "Educational",
-              "End Effectors",
-              "Humanoids",
-              "Mobile Manipulators",
-              "Quadrupeds",
+              "End Effector",
+              "Humanoid",
+              "Mobile Manipulator",
+              "Quadruped",
               "Wheeled",
               "Other"
             ]
