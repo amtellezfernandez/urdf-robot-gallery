@@ -4,13 +4,6 @@ title: "robot-update-request"
 labels:
   - robot-update
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Keep this short:
-        1) Paste the repo.
-        2) Choose what to update.
-        3) Add tags and/or mapping only if needed.
   - type: input
     id: repo
     attributes:
