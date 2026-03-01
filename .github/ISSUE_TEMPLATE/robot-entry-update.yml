@@ -11,23 +11,14 @@ body:
       placeholder: TheRobotStudio/SO-ARM100
     validations:
       required: true
-  - type: checkboxes
+  - type: textarea
     id: tags
     attributes:
       label: Tags
-      options:
-        - label: Arm
-        - label: Biped
-        - label: Dual Arm
-        - label: Drone
-        - label: Educational
-        - label: End Effector
-        - label: Humanoid
-        - label: Mobile Manipulator
-        - label: Quadruped
-        - label: Wheeled
-        - label: Object
-        - label: Other
+      description: Autofilled as checklist lines, e.g. "- [x] Object"
+      placeholder: |-
+        - [x] Arm
+        - [x] End Effector
   - type: input
     id: structure
     attributes:
