@@ -16,6 +16,7 @@ Use this flow when you only need to regenerate thumbnails/videos and do not need
 
 ## Inputs
 
+- `issue` (optional): issue URL or number, for tracking context.
 - `repo` (required): `owner/repo` or repo URL.
 - `robot_targets` (optional): one target per line.
   - Supports full GitHub robot URLs, for example:
