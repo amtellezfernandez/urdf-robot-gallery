@@ -1,5 +1,5 @@
-name: Robot Preview Regeneration (Targeted)
-description: Regenerate thumbnails/videos for one or more specific robot files in an existing repo.
+name: "12 [ISSUE] Regenerate One Robot Preview"
+description: Regenerate thumbnails/videos for specific robot files in an existing repo.
 title: "robot-targeted-preview-regeneration-request"
 labels:
   - robot-regenerate-targeted

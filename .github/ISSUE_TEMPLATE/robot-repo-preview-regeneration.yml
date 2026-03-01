@@ -1,5 +1,5 @@
-name: Repo Missing Previews Regeneration
-description: Regenerate missing thumbnails/videos for an entire existing repo.
+name: "13 [ISSUE] Regenerate Missing Repo Previews"
+description: Regenerate missing thumbnails/videos for an existing repo.
 title: "robot-repo-preview-regeneration-request"
 labels:
   - robot-regenerate-repo

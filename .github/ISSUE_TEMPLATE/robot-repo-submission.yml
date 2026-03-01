@@ -1,5 +1,5 @@
-name: Robot Repo Submission
-description: Submit a robot repository.
+name: "01 [NEW ENTRY] Robot Repo"
+description: Submit a new robot repository.
 title: "robot-showcase-request"
 labels:
   - robot-repo
