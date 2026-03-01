@@ -15,10 +15,10 @@ body:
     id: tags
     attributes:
       label: Tags
-      description: Autofilled as checklist lines, e.g. "- [x] Object"
+      description: Checklist lines using [x] selected and [] not selected.
       placeholder: |-
         - [x] Arm
-        - [x] End Effector
+        - [] Quadruped
   - type: input
     id: structure
     attributes:
