@@ -1,0 +1,31 @@
+name: "⚠️ [ISSUE] Regenerate Missing Repo Previews"
+description: Regenerate missing thumbnails/videos for an existing repo.
+title: "robot-repo-preview-regeneration-request"
+labels:
+  - robot-regenerate-repo
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this issue to regenerate missing previews for a full repository.
+        This is repo-wide regeneration for missing media.
+  - type: dropdown
+    id: update_type
+    attributes:
+      label: Update type
+      options:
+        - Regenerate previews/thumbnails
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repo (URL or owner/repo)
+      description: Existing repo already in gallery.
+      placeholder: bulletphysics/bullet3
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Notes (optional)
