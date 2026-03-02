@@ -9,6 +9,7 @@
 import fs from "node:fs/promises";
 import fsSync from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 import { chromium } from "playwright";
 import { parseArgs } from "./lib/cli.mjs";
 import { ensureDir } from "./lib/fs-utils.mjs";
@@ -113,6 +114,30 @@ const isFramingOverflowError = (message = "") => FRAMING_OVERFLOW_RE.test(String
 const isSkippableRobotError = (message = "") =>
   SKIPPABLE_ERROR_PATTERNS.some((pattern) => pattern.test(String(message)));
 
+const PLAYWRIGHT_MISSING_BROWSER_RE =
+  /executable doesn't exist|download new browsers|playwright install/i;
+
+const launchBrowserWithAutoInstall = async ({ launchArgs, cacheDir }) => {
+  const launch = async () =>
+    chromium.launch({
+      headless: true,
+      args: launchArgs,
+    });
+
+  try {
+    return await launch();
+  } catch (error) {
+    const message = String(error?.message || error);
+    if (!PLAYWRIGHT_MISSING_BROWSER_RE.test(message)) {
+      throw error;
+    }
+
+    console.warn("[preview] Playwright browser missing. Installing chromium and retrying once...");
+    execSync("npx playwright install chromium", { stdio: "inherit" });
+    return launch();
+  }
+};
+
 const main = async () => {
   const config = await readPreviewConfig(configPath);
   const finalConfig = applyModeConfig(config);
@@ -170,9 +195,9 @@ const main = async () => {
     if (cacheDir) {
       launchArgs.push(`--user-data-dir=${cacheDir}`);
     }
-    browser = await chromium.launch({
-      headless: true,
-      args: launchArgs,
+    browser = await launchBrowserWithAutoInstall({
+      launchArgs,
+      cacheDir,
     });
 
     const results = [];
