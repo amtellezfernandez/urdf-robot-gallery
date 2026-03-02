@@ -49,7 +49,10 @@
       "required": ["file"],
       "properties": {
         "name": { "type": "string" },
-        "file": { "type": "string", "pattern": "^[^/\\\\\\\\]+\\\\.[uU][rR][dD][fF]$" },
+        "file": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.(?:[uU][rR][dD][fF]|[xX][aA][cC][rR][oO])$"
+        },
         "fileBase": { "type": "string" }
       },
       "additionalProperties": false

@@ -2,7 +2,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
-import Ajv from "ajv";
+import Ajv2020 from "ajv/dist/2020.js";
 
 const ROOT = path.resolve();
 const ROBOTS_PATH = path.join(ROOT, "docs", "robots.json");
@@ -24,7 +24,7 @@ const normalizeRepoKey = (value) =>
         .toLowerCase()
     : "";
 
-const FILEBASE_REGEX = /^[a-z0-9][a-z0-9._-]*--[a-z0-9]+$/i;
+const FILEBASE_REGEX = /^[a-z0-9_][a-z0-9._-]*--[a-z0-9]+$/i;
 
 const main = async () => {
   const [robots, schema, allowedTags] = await Promise.all([
@@ -33,7 +33,7 @@ const main = async () => {
     readJson(TAGS_PATH),
   ]);
 
-  const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
+  const ajv = new Ajv2020({ allErrors: true, allowUnionTypes: true });
   const validate = ajv.compile(schema);
   if (!validate(robots)) {
     console.error("[validate-robots] Schema validation failed.");

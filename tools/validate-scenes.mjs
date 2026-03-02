@@ -2,7 +2,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
-import Ajv from "ajv";
+import Ajv2020 from "ajv/dist/2020.js";
 
 const ROOT = path.resolve();
 const SCENES_PATH = path.join(ROOT, "docs", "scenes", "index.json");
@@ -26,7 +26,7 @@ const normalizeUrl = (value) => {
 const main = async () => {
   const [scenes, schema] = await Promise.all([readJson(SCENES_PATH), readJson(SCHEMA_PATH)]);
 
-  const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
+  const ajv = new Ajv2020({ allErrors: true, allowUnionTypes: true });
   const validate = ajv.compile(schema);
   if (!validate(scenes)) {
     console.error("[validate-scenes] Schema validation failed.");
