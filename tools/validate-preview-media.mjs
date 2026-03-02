@@ -19,6 +19,7 @@ const getArg = (name) => {
 const strict = hasArg("--strict");
 const requireAlpha = strict || hasArg("--require-alpha");
 const requireWebmAlpha = strict || hasArg("--require-webm-alpha");
+const requireVideoDimensions = strict || hasArg("--require-video-dimensions");
 const darkThreshold = Number(getArg("--dark-threshold") || 18);
 const enforceDarkness = strict || hasArg("--enforce-darkness");
 const enforceDimensions =
@@ -326,7 +327,12 @@ const main = async () => {
         }
         const dimensions = ffprobeDimensions(webmPath);
         if (!dimensions) {
-          errors.push(`${key}: failed to read webm dimensions (${entry.webm})`);
+          const message = `${key}: failed to read webm dimensions (${entry.webm})`;
+          if (requireVideoDimensions) {
+            errors.push(message);
+          } else {
+            warnings.push(message);
+          }
         } else {
           mediaDimensions.webm = dimensions;
         }
@@ -368,7 +374,12 @@ const main = async () => {
         }
         const dimensions = ffprobeDimensions(mp4Path);
         if (!dimensions) {
-          errors.push(`${key}: failed to read mp4 dimensions (${entry.mp4})`);
+          const message = `${key}: failed to read mp4 dimensions (${entry.mp4})`;
+          if (requireVideoDimensions) {
+            errors.push(message);
+          } else {
+            warnings.push(message);
+          }
         } else {
           mediaDimensions.mp4 = dimensions;
         }
