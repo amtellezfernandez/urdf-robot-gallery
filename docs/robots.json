@@ -3731,11 +3731,12 @@
   {
     "repo": "https://github.com/TetherIA/aero-hand-open",
     "repoKey": "tetheria/aero-hand-open",
-    "path": "ros2/src/aero_hand_open_description/urdf",
     "org": "",
     "summary": "",
     "demo": "",
-    "tags": [],
+    "tags": [
+      "End Effector"
+    ],
     "robots": [
       {
         "name": "aero_hand_open_left",
@@ -3755,8 +3756,8 @@
     "authorGithub": "",
     "contact": "",
     "extra": "",
-    "updatedAt": "2026-02-25T16:48:55.329Z",
-    "license": "Apache-2.0"
+    "updatedAt": "2026-03-02T22:45:45.684Z",
+    "license": "No license"
   },
   {
     "repo": "https://github.com/TheRobotStudio/SO-ARM100",
