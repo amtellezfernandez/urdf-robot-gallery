@@ -829,6 +829,12 @@ jobs:
           npm run validate:previews
           npm run validate:preview-media -- --only-repo-key "${REPO_KEY}" --enforce-dimensions --warn-min-fill "${PREVIEW_WARN_MIN_FILL}" --enforce-min-fill "${PREVIEW_ENFORCE_MIN_FILL}" --warn-min-edge-margin "${PREVIEW_WARN_MIN_EDGE_MARGIN}" --enforce-min-edge-margin "${PREVIEW_ENFORCE_MIN_EDGE_MARGIN}"
 
+      - name: Warn if targeted run produced no media files
+        if: steps.target.outputs.selection_mode == 'targeted' && steps.push.outputs.previews_changed == '0' && steps.push.outputs.thumbs_changed == '0'
+        run: |
+          echo "::warning::Targeted run completed without generating preview/thumbnails media files."
+          echo "::warning::Check robot target paths. If you intended full repo regeneration, leave robot_targets empty."
+
       - name: Summarize detected morphology from previews
         id: morphology
         env:
@@ -928,6 +934,9 @@ jobs:
             echo "- Batch commits pushed in this run: \`${{ steps.push.outputs.batch_commits }}\`";
             echo "- Changed thumbnails: \`${{ steps.push.outputs.thumbs_changed }}\`";
             echo "- Changed preview animations: \`${{ steps.push.outputs.previews_changed }}\`";
+            if [ "${{ steps.target.outputs.selection_mode }}" = "targeted" ] && [ "${{ steps.push.outputs.previews_changed }}" = "0" ] && [ "${{ steps.push.outputs.thumbs_changed }}" = "0" ]; then
+              echo "- Warning: targeted run produced no media files. Check target paths; use repo-wide mode by leaving robot targets empty.";
+            fi
             if [ "${{ steps.push.outputs.previews_manifest_changed }}" = "0" ]; then
               echo "- \`docs/previews.json\` changed: no";
             else
