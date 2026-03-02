@@ -88,11 +88,11 @@ jobs:
             git remote set-url upstream "https://github.com/${UPSTREAM_REPO}.git"
           branch="${{ steps.branch.outputs.branch }}"
           git fetch upstream main
-          git fetch origin "$branch" || true
-          if git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
-            git checkout -B "$branch" "origin/$branch"
-          else
-            git checkout -B "$branch" upstream/main
+          git checkout -B "$branch" upstream/main
+
+          # Keep contributor branch reproducible; no manual branch delete needed.
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            git push --force-with-lease origin "$branch"
           fi
 
       - name: Resolve repoKey and run context
